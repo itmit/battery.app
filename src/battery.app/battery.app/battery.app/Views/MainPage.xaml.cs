@@ -1,7 +1,10 @@
-﻿using System;
+﻿
+using battery.app.Controls;
 using System.ComponentModel;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+using Xamarin.Forms.PlatformConfiguration;
+using Xamarin.Forms.PlatformConfiguration.AndroidSpecific;
+using TabbedPage = Xamarin.Forms.TabbedPage;
 
 namespace battery.app.Views
 {
@@ -13,6 +16,9 @@ namespace battery.app.Views
         public MainPage()
         {
             InitializeComponent();
+            Effects.Add(new NoShiftEffect());
+            On<Android>()
+                .SetToolbarPlacement(ToolbarPlacement.Bottom);
         }
     }
 }

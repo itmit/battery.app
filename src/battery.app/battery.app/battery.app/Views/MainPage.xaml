@@ -5,8 +5,12 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             mc:Ignorable="d"
             xmlns:views="clr-namespace:battery.app.Views"
-            x:Class="battery.app.Views.MainPage">
-
+            xmlns:local="clr-namespace:battery.app.Controls"
+            x:Class="battery.app.Views.MainPage"
+            BarBackgroundColor="Transparent"
+            SelectedItem="Red"
+            UnselectedTabColor="Gray"
+            >
     <TabbedPage.Children>
         <NavigationPage Title="Browse">
             <NavigationPage.Icon>
