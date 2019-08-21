@@ -4,33 +4,59 @@
             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             mc:Ignorable="d"
-            xmlns:views="clr-namespace:battery.app.Views"
             xmlns:local="clr-namespace:battery.app.Controls"
+            xmlns:Page="clr-namespace:battery.app.Page"
             x:Class="battery.app.Views.MainPage"
             BarBackgroundColor="Transparent"
             SelectedItem="Red"
             UnselectedTabColor="Gray"
             >
+    <TabbedPage.Effects>
+        <local:NoShiftEffect/>
+    </TabbedPage.Effects>
     <TabbedPage.Children>
-        <NavigationPage Title="Browse">
+        <NavigationPage>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_feed.png"/>
+                    <On Platform="Android" Value="qrcode_solid.png"/>
+                    <On Platform="iOS" Value="qrcode_solid.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:ItemsPage />
+                <Page:ScanningPage />
             </x:Arguments>
         </NavigationPage>
-        
-        <NavigationPage Title="About">
+        <NavigationPage>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="iOS" Value="tab_about.png"/>
+                    <On Platform="Android" Value="plus_solid.png"/>
+                    <On Platform="iOS" Value="plus_solid.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <views:AboutPage />
+                <Page:ShipmentPage />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage>
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="list_ul_solid.png"/>
+                    <On Platform="iOS" Value="list_ul_solid.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <Page:ShippingListPage />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage>
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="arrow_right_solid.png"/>
+                    <On Platform="iOS" Value="arrow_right_solid.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <Page:ShippingListPage />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>

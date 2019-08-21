@@ -16,7 +16,6 @@ namespace battery.app.Views
         public MainPage()
         {
             InitializeComponent();
-            Effects.Add(new NoShiftEffect());
             On<Android>()
                 .SetToolbarPlacement(ToolbarPlacement.Bottom);
         }

@@ -2,14 +2,15 @@
 using Android.Support.Design.Widget;
 using Android.Views;
 using battery.app.Controls;
+using battery.app.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: ResolutionGroupName("itmit")]
-[assembly: ExportEffect(typeof(NoShiftEffect), "NoShiftEffect")]
+[assembly: ExportEffect(typeof(NoShiftEffectRenderer), "NoShiftEffect")]
 namespace battery.app.Droid
 {
-    public class NoShiftEffect : PlatformEffect
+    public class NoShiftEffectRenderer : PlatformEffect
     {
         protected override void OnAttached()
         {
