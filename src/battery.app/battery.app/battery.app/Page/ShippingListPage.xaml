@@ -5,12 +5,18 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              Title="Список отгрузок"
+             NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Page.ShippingListPage">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Welcome to Xamarin.Forms!"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Picker Title="Дилеры">
+                <Picker.Items>
+                    <x:String>Focus</x:String>
+                    <x:String>Tab pollar</x:String>
+                    <x:String>Main pollar</x:String>
+                    <x:String>Big M</x:String>
+                </Picker.Items>
+            </Picker>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

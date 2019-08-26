@@ -4,12 +4,12 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             Title="Сканирование"
-             NavigationPage.HasNavigationBar="False"
-             x:Class="battery.app.Page.ScanningPage">
+             x:Class="battery.app.Views.DetailDealer">
     <ContentPage.Content>
         <StackLayout>
-            <Button Text="Сканировать товар" Clicked="Button_Clicked"/>
+            <Label Text="Дилер"/>
+            <Image Source="xamarin_logo.png"/>
+            <Label Text="Характеристика"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

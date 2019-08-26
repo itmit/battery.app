@@ -7,19 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace battery.app.Page
+namespace battery.app.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ScanningPage : ContentPage
+    public partial class DetailDealer : ContentPage
     {
-        public ScanningPage()
+        public DetailDealer()
         {
             InitializeComponent();
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using battery.app.Services;
 using battery.app.Views;
 
 namespace battery.app
@@ -13,7 +12,6 @@ namespace battery.app
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
             MainPage = new MainPage();
         }
 

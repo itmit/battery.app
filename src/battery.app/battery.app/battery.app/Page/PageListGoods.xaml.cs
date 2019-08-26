@@ -10,16 +10,11 @@ using Xamarin.Forms.Xaml;
 namespace battery.app.Page
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ScanningPage : ContentPage
+    public partial class PageListGoods : ContentPage
     {
-        public ScanningPage()
+        public PageListGoods()
         {
             InitializeComponent();
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-
         }
     }
 }

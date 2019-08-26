@@ -4,10 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             Title="Отгрузка"
-             BackgroundImageSource="aaaa.jpg"
-             NavigationPage.HasNavigationBar="False"
-             x:Class="battery.app.Page.ShipmentPage">
+             x:Class="battery.app.Page.SalePage">
     <ContentPage.Content>
         <StackLayout>
             <Picker Title="Список лидеров">
@@ -18,7 +15,8 @@
                     <x:String>Big M</x:String>
                 </Picker.Items>
             </Picker>
-            <Button Text="Оформить продажу"/>
+            <Button Text="Подтвердить загрузку"/>
+            <Button Text="Изменить список"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
