@@ -34,7 +34,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <Page:ShipmentPage />
+                <Page:PageListGoods />
             </x:Arguments>
         </NavigationPage>
         <NavigationPage>

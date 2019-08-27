@@ -7,19 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace battery.app.Page
+namespace battery.app.Views
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class PageListGoods : ContentPage
+    public partial class DetailGoods : ContentPage
     {
-        public PageListGoods()
+        public DetailGoods()
         {
             InitializeComponent();
-        }
-
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushModalAsync(new ShipmentPage(), false);
         }
     }
 }

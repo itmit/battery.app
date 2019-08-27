@@ -4,11 +4,32 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="#ebebeb"
              x:Class="battery.app.Page.PageListGoods">
     <ContentPage.Content>
         <StackLayout>
-            <Image Source="xamarin_logo.png"/>
-            <Button Text="Оформить отгрузку"/>
+            <AbsoluteLayout VerticalOptions="FillAndExpand">
+                <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0">
+                    <Image Source="picture_600.png" HorizontalOptions="CenterAndExpand" Aspect="Fill" HeightRequest="300"/>
+                    <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
+                </StackLayout>
+                <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.1,AutoSize,AutoSize" Text="СКАНИРОВАНИЕ" TextColor="White" FontAttributes="Bold" FontSize="25"/>
+                <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="Наведите сканер на QR-код" TextColor="White" FontSize="Small"/>
+                <Frame AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.8,AutoSize,AutoSize" CornerRadius="10" BackgroundColor="#fff" Padding="35,25">
+                    <StackLayout>
+                        <Picker Title="Список лидеров">
+                            <Picker.Items>
+                                <x:String>Focus</x:String>
+                                <x:String>Tab pollar</x:String>
+                                <x:String>Main pollar</x:String>
+                                <x:String>Big M</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </StackLayout>
+                </Frame>
+            </AbsoluteLayout>
+            <Button Text="Оформить продажу" TextColor="White" CornerRadius="30" Padding="40,15" Margin="15" BackgroundColor="#e61e29" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

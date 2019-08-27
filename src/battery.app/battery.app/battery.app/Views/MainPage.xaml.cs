@@ -18,6 +18,7 @@ namespace battery.app.Views
             InitializeComponent();
             On<Android>()
                 .SetToolbarPlacement(ToolbarPlacement.Bottom);
+            On<Android>().SetIsSwipePagingEnabled(false);
         }
     }
 }

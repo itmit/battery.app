@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             BackgroundColor="#ebebeb"
+             x:Class="battery.app.Views.DetailGoods">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="White" Padding="10,5,10,30">
+                <Label Text="ДАННЫЕ ПРОДАЖИ" TextColor="Black" FontAttributes="Bold" FontSize="25"/>
+            </StackLayout>
+            <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
+            <ScrollView>
+                <StackLayout Padding="20">
+                    <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10">
+                        <StackLayout>
+                            <Label Text="TAB" TextColor="Black" HorizontalOptions="Center" FontSize="35" FontAttributes="Bold"/>
+                            <Label Text="23-07-2019" TextColor="Black" HorizontalOptions="Center" FontSize="25" Margin="0,0,0,30"/>
+                            <Image Source="tab_1.jpg" HorizontalOptions="Start"/>
+                            <Grid Margin="0,20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout Grid.Column="0" Grid.Row="0">
+                                    <Label Text="TAB POLAR" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Напряжение, В:12,0" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Емкость (А*ч): 45-110"  FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Пусковой ток,А: 400-1000" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Полярность: 0"  FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Технология сплава:Ca/Ca" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" Grid.Row="0">
+                                    <Label Text="Место продажи" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Москва" FontSize="Medium" HorizontalOptions="Start" TextColor="Black"/>
+                                </StackLayout>
+                            </Grid>
+                            <Label Text="Батареи TAB Polar предназанчены для автомобилей со стандартным уровнем электрооборудования, но с повышенными требованиями к пусковым характеристикам и надежности" HorizontalTextAlignment="Start" FontSize="Medium" TextColor="Black"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

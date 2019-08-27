@@ -5,18 +5,70 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              Title="Список отгрузок"
+             BackgroundColor="#ebebeb"
              NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Page.ShippingListPage">
     <ContentPage.Content>
         <StackLayout>
-            <Picker Title="Дилеры">
-                <Picker.Items>
-                    <x:String>Focus</x:String>
-                    <x:String>Tab pollar</x:String>
-                    <x:String>Main pollar</x:String>
-                    <x:String>Big M</x:String>
-                </Picker.Items>
-            </Picker>
+            <StackLayout BackgroundColor="White" Padding="10,5,10,30">
+                <Label Text="СПИСОК ОТГРУЗОК" TextColor="Black" FontAttributes="Bold" FontSize="25"/>
+            </StackLayout>
+            <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
+            <ScrollView>
+                <StackLayout>
+                    <StackLayout Margin="15,10,15,0">
+                        <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="logo_tab.png" VerticalOptions="Center" Margin="20"/>
+                                <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
+                                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
+                                    <Label Text="TAB" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
+                                    <Label Text="15-11-2018 г" TextColor="Black" FontSize="Small"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout  Margin="15,10,15,0">
+                        <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="logo_topla.png" VerticalOptions="Center" Margin="20"/>
+                                <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
+                                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
+                                    <Label Text="TOPLA" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
+                                    <Label Text="18-03-2019 г" TextColor="Black" FontSize="Small"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Margin="15,10">
+                        <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="logo_volthor.png" VerticalOptions="Center" Margin="20"/>
+                                <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
+                                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
+                                    <Label Text="VOLTHOR" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
+                                    <Label Text="03-05-2019 г" TextColor="Black" FontSize="Small"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

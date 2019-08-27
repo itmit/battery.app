@@ -1,4 +1,5 @@
-﻿using System;
+﻿using battery.app.Views;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +20,7 @@ namespace battery.app.Page
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushModalAsync(new DetailGoods(), false);
         }
     }
 }
