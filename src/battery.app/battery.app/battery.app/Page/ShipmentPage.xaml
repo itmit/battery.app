@@ -52,7 +52,7 @@
                         </Frame>
                     </Grid>
                 </ScrollView>
-                <Button Text="Оформить отгрузку" TextColor="White" CornerRadius="30" Padding="40,15" Margin="15" BackgroundColor="#e61e29" HorizontalOptions="Center" VerticalOptions="EndAndExpand"/>
+                <Button Text="Оформить отгрузку" TextColor="White" CornerRadius="30" Padding="40,15" Margin="15" BackgroundColor="#e61e29" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Clicked="Button_Clicked"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

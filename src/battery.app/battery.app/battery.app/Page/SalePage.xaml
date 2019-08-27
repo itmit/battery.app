@@ -4,19 +4,98 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             BackgroundColor="#ebebeb"
              x:Class="battery.app.Page.SalePage">
     <ContentPage.Content>
-        <StackLayout>
-            <Picker Title="Список лидеров">
-                <Picker.Items>
-                    <x:String>Focus</x:String>
-                    <x:String>Tab pollar</x:String>
-                    <x:String>Main pollar</x:String>
-                    <x:String>Big M</x:String>
-                </Picker.Items>
-            </Picker>
-            <Button Text="Подтвердить загрузку"/>
-            <Button Text="Изменить список"/>
+        <StackLayout VerticalOptions="FillAndExpand">
+            <StackLayout BackgroundColor="White" Padding="10,5,10,30">
+                <Label Text="ПРОДАЖА" TextColor="Black" FontAttributes="Bold" FontSize="25"/>
+            </StackLayout>
+            <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
+            <StackLayout Padding="20">
+                <Frame CornerRadius="10" BackgroundColor="#fff" Padding="35,25">
+                    <Picker Title="Список лидеров">
+                        <Picker.Items>
+                            <x:String>Focus</x:String>
+                            <x:String>Tab pollar</x:String>
+                            <x:String>Main pollar</x:String>
+                            <x:String>Big M</x:String>
+                        </Picker.Items>
+                    </Picker>
+                </Frame>
+            </StackLayout>
+            <ScrollView>
+                <StackLayout Padding="20">
+                    <Label Text="Аккамуляторы" FontSize="Large" TextColor="Black" FontAttributes="Bold"/>
+                    <StackLayout Margin="0,0,0,10">
+                        <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="15">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="tab_1.jpg" VerticalOptions="Center"/>
+                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="TAB Polar" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
+                                    <Label Text="Напряжение, В:12,0" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Емкость (А*ч): 45-110"  FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Пусковой ток,А: 400-1000" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Полярность: 0"  FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Технология сплава:Ca/Ca" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Margin="0,0,0,10">
+                        <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="15">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="tab_1.jpg" VerticalOptions="Center"/>
+                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="TAB Polar" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
+                                    <Label Text="Напряжение, В:12,0" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Емкость (А*ч): 45-110"  FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Пусковой ток,А: 400-1000" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Полярность: 0"  FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Технология сплава:Ca/Ca" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Margin="0,0,0,10">
+                        <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="15">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="tab_1.jpg" VerticalOptions="Center"/>
+                                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                                    <Label Text="TAB Polar" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
+                                    <Label Text="Напряжение, В:12,0" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Емкость (А*ч): 45-110"  FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Пусковой ток,А: 400-1000" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Полярность: 0"  FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="Технология сплава:Ca/Ca" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </ScrollView>
+            <StackLayout VerticalOptions="FillAndExpand" Margin="20">
+                <Grid VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <Button Grid.Column="0" Text="Подтвердить отгрузку" VerticalOptions="FillAndExpand" TextColor="White" BackgroundColor="#e61e29" CornerRadius="30" HeightRequest="120"/>
+                    <Button Grid.Column="1" Text="Изменить список" VerticalOptions="FillAndExpand" TextColor="White" BackgroundColor="#08407d" CornerRadius="30" HeightRequest="120"/>
+                </Grid>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

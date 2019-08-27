@@ -16,5 +16,10 @@ namespace battery.app.Page
         {
             InitializeComponent();
         }
+
+        private void Button_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushModalAsync(new SalePage(), false);
+        }
     }
 }
