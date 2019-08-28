@@ -16,5 +16,13 @@ namespace battery.app.Page
         {
             InitializeComponent();
         }
+        private void Close_modal(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync(false);
+        }
+        private void Retry_goods(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync(false);
+        }
     }
 }

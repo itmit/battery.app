@@ -21,5 +21,9 @@ namespace battery.app.Page
         {
             Navigation.PushModalAsync(new SalePage(), false);
         }
+        private void Close_modal(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync(false);
+        }
     }
 }

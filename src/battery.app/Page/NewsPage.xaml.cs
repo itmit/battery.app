@@ -20,7 +20,7 @@ namespace battery.app.Page
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new NewsDetail(), false);
+            Navigation.PushModalAsync(new NewsDetail());
         }
     }
 }

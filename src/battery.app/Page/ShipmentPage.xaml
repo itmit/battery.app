@@ -17,6 +17,7 @@
                         <Image Source="picture_600.png" HorizontalOptions="CenterAndExpand" Aspect="Fill" HeightRequest="300"/>
                         <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
                     </StackLayout>
+                    <ImageButton AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.07,0.05,AutoSize,AutoSize" Source="arrow_alt_left.png" BackgroundColor="Transparent" WidthRequest="30" HorizontalOptions="Start" Clicked="Close_modal"/>
                     <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="СПИСОК ТОВАРОВ" TextColor="White" FontAttributes="Bold" FontSize="25"/>
                     <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.4,AutoSize,AutoSize" Text=" Добавляйте выбранные для отгрузки товары" TextColor="White" FontSize="Small"/>
                 </AbsoluteLayout>

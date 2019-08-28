@@ -16,5 +16,10 @@ namespace battery.app.Views
         {
             InitializeComponent();
         }
+
+        private void Close_modal(object sender, EventArgs e)
+        {
+            Navigation.PopModalAsync(false);
+        }
     }
 }
