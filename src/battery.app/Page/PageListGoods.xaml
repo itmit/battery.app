@@ -14,8 +14,8 @@
                     <Image Source="picture_600.png" HorizontalOptions="CenterAndExpand" Aspect="Fill" HeightRequest="300"/>
                     <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
                 </StackLayout>
-                <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.1,AutoSize,AutoSize" Text="СКАНИРОВАНИЕ" TextColor="White" FontAttributes="Bold" FontSize="25"/>
-                <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="Наведите сканер на QR-код" TextColor="White" FontSize="Small"/>
+                <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.1,AutoSize,AutoSize" Text="ОТГРУЗКА" TextColor="White" FontAttributes="Bold" FontSize="25"/>
+                <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="Выберите из списка дилеров" TextColor="White" FontSize="Small"/>
                 <Frame AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.8,AutoSize,AutoSize" CornerRadius="10" BackgroundColor="#fff" Padding="35,25">
                     <StackLayout>
                         <Picker Title="Список лидеров">
