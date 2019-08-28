@@ -4,10 +4,21 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
+             BackgroundColor="#ebebeb"
              x:Class="battery.app.Views.NewsDetail">
     <ContentPage.Content>
         <StackLayout>
-            
+            <StackLayout BackgroundColor="White" Padding="10,5,10,30">
+                <ImageButton Source="arrow_alt_left.png" BackgroundColor="Transparent" WidthRequest="30" HorizontalOptions="Start"/>
+            </StackLayout>
+            <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
+            <ScrollView>
+                <StackLayout Padding="20">
+                    <Label Text="Баттарея с электролитом из стекла" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
+                    <Label Text="27/07/2019" TextColor="Gray" FontSize="Small" HorizontalOptions="EndAndExpand"/>
+                    <Label Text="Текст новости"/>
+                </StackLayout>
+            </ScrollView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

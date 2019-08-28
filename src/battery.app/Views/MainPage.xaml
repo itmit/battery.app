@@ -18,8 +18,8 @@
         <NavigationPage>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="Android" Value="qrcode_solid.png"/>
-                    <On Platform="iOS" Value="qrcode_solid.png"/>
+                    <On Platform="Android" Value="qrcode.png"/>
+                    <On Platform="iOS" Value="qrcode.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
@@ -29,8 +29,8 @@
         <NavigationPage>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="Android" Value="plus_solid.png"/>
-                    <On Platform="iOS" Value="plus_solid.png"/>
+                    <On Platform="Android" Value="plus.png"/>
+                    <On Platform="iOS" Value="plus.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
@@ -40,8 +40,8 @@
         <NavigationPage>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="Android" Value="list_ul_solid.png"/>
-                    <On Platform="iOS" Value="list_ul_solid.png"/>
+                    <On Platform="Android" Value="list_ul.png"/>
+                    <On Platform="iOS" Value="list_ul.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
@@ -51,8 +51,8 @@
         <NavigationPage>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
-                    <On Platform="Android" Value="arrow_right_solid.png"/>
-                    <On Platform="iOS" Value="arrow_right_solid.png"/>
+                    <On Platform="Android" Value="arrow_right.png"/>
+                    <On Platform="iOS" Value="arrow_right.png"/>
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
