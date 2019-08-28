@@ -56,7 +56,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <Page:ShippingListPage />
+                <Page:NewsPage />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>
