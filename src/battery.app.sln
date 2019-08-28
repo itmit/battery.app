@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "battery.app.Android", "battery.app\battery.app.Android\battery.app.Android.csproj", "{825B0B77-1B9C-4993-9BCF-FE55AF19BCB4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "battery.app.Android", "battery.app.Android\battery.app.Android.csproj", "{825B0B77-1B9C-4993-9BCF-FE55AF19BCB4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "battery.app.iOS", "battery.app\battery.app.iOS\battery.app.iOS.csproj", "{040A9C8E-631F-4EE9-9A62-2127A20988B6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "battery.app.iOS", "battery.app.iOS\battery.app.iOS.csproj", "{040A9C8E-631F-4EE9-9A62-2127A20988B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "battery.app", "battery.app\battery.app\battery.app.csproj", "{DF3C8B5C-CD2E-435D-B20D-CB4A81D4BD87}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "battery.app", "battery.app\battery.app.csproj", "{DF3C8B5C-CD2E-435D-B20D-CB4A81D4BD87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
