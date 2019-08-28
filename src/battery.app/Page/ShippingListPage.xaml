@@ -28,7 +28,7 @@
                                 <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
                                 <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
                                     <Label Text="TAB" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
-                                    <Label Text="15-11-2018 г" TextColor="Black" FontSize="Small"/>
+                                    <Label Text="15-11-2018 г" TextColor="Gray" FontSize="Small"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
@@ -45,7 +45,7 @@
                                 <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
                                 <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
                                     <Label Text="TOPLA" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
-                                    <Label Text="18-03-2019 г" TextColor="Black" FontSize="Small"/>
+                                    <Label Text="18-03-2019 г" TextColor="Gray" FontSize="Small"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
@@ -62,7 +62,7 @@
                                 <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
                                 <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
                                     <Label Text="VOLTHOR" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
-                                    <Label Text="03-05-2019 г" TextColor="Black" FontSize="Small"/>
+                                    <Label Text="03-05-2019 г" TextColor="Gray" FontSize="Small"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
