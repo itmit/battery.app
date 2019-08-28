@@ -2,6 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using battery.app.Views;
+using battery.app.Page;
 
 namespace battery.app
 {
@@ -12,7 +13,7 @@ namespace battery.app
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Authorization();
         }
 
         protected override void OnStart()
