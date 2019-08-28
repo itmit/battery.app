@@ -8,7 +8,7 @@
             xmlns:Page="clr-namespace:battery.app.Page"
             x:Class="battery.app.Views.MainPage"
             BarBackgroundColor="Transparent"
-            SelectedItem="Red"
+            SelectedTabColor="Red"
             UnselectedTabColor="Gray"
             >
     <TabbedPage.Effects>
