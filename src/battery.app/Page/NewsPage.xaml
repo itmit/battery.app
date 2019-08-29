@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">
             <StackLayout BackgroundColor="White" Padding="10,5,10,30">
-                <Label Text="НОВОСТИ" TextColor="Black" FontAttributes="Bold" FontSize="25"/>
+                <Label Text="НОВОСТИ" TextColor="Black" FontAttributes="Bold" FontSize="25" FontFamily="roboto_regular.ttf#roboto_regular"/>
             </StackLayout>
             <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
             <ScrollView>
@@ -29,8 +29,8 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="pict_2.png" VerticalOptions="Center" Aspect="AspectFill"/>
                                 <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                                    <Label Text="Баттарея с электролитом из стекла" TextColor="Black" Margin="0,0,0,10" FontSize="Medium"/>
-                                    <Label Text="27/07/2019" TextColor="Gray" FontSize="Small"/>
+                                    <Label Text="Батарея с электролитом из стекла" TextColor="Black" Margin="0,0,0,10" FontSize="Medium" FontFamily="roboto_regular.ttf#roboto_regular"/>
+                                    <Label Text="27/07/2019" TextColor="Gray" FontSize="Small" FontFamily="roboto_light.ttf#roboto_light"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
@@ -49,8 +49,8 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="pict_2.png" VerticalOptions="Center" Aspect="AspectFill"/>
                                 <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                                    <Label Text="Баттарея с электролитом из стекла" TextColor="Black" Margin="0,0,0,10" FontSize="Medium"/>
-                                    <Label Text="27/07/2019" TextColor="Gray" FontSize="Small"/>
+                                    <Label Text="Батарея с электролитом из стекла" TextColor="Black" Margin="0,0,0,10" FontSize="Medium" FontFamily="roboto_regular.ttf#roboto_regular"/>
+                                    <Label Text="27/07/2019" TextColor="Gray" FontSize="Small" FontFamily="roboto_light.ttf#roboto_light"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
@@ -69,8 +69,8 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="pict_2.png" VerticalOptions="Center" Aspect="AspectFill"/>
                                 <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                                    <Label Text="Баттарея с электролитом из стекла" TextColor="Black" Margin="0,0,0,10" FontSize="Medium"/>
-                                    <Label Text="27/07/2019" TextColor="Gray" FontSize="Small"/>
+                                    <Label Text="Батарея с электролитом из стекла" TextColor="Black" Margin="0,0,0,10" FontSize="Medium" FontFamily="roboto_regular.ttf#roboto_regular"/>
+                                    <Label Text="27/07/2019" TextColor="Gray" FontSize="Small" FontFamily="roboto_light.ttf#roboto_light"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
@@ -89,8 +89,8 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="pict_2.png" VerticalOptions="Center" Aspect="AspectFill"/>
                                 <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                                    <Label Text="Баттарея с электролитом из стекла" TextColor="Black" Margin="0,0,0,10" FontSize="Medium"/>
-                                    <Label Text="27/07/2019" TextColor="Gray" FontSize="Small"/>
+                                    <Label Text="Батарея с электролитом из стекла" TextColor="Black" Margin="0,0,0,10" FontSize="Medium" FontFamily="roboto_regular.ttf#roboto_regular"/>
+                                    <Label Text="27/07/2019" TextColor="Gray" FontSize="Small" FontFamily="roboto_light.ttf#roboto_light"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>

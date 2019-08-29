@@ -14,9 +14,9 @@
             <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
             <ScrollView>
                 <StackLayout Padding="20">
-                    <Label Text="Баттарея с электролитом из стекла" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
-                    <Label Text="27/07/2019" TextColor="Gray" FontSize="Small" HorizontalOptions="EndAndExpand"/>
-                    <Label Text="Текст новости"/>
+                    <Label Text="Батарея с электролитом из стекла" TextColor="Black" Margin="0,0,0,10" FontSize="Large" FontFamily="roboto_regular.ttf#roboto_regular"/>
+                    <Label Text="27/07/2019" TextColor="Gray" FontSize="Small" HorizontalOptions="EndAndExpand" FontFamily="roboto_light.ttf#roboto_light"/>
+                    <Label Text="Текст новости" FontFamily="roboto_light.ttf#roboto_light"/>
                 </StackLayout>
             </ScrollView>
         </StackLayout>

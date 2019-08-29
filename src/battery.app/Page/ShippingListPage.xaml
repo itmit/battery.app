@@ -11,7 +11,7 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout BackgroundColor="White" Padding="10,5,10,30">
-                <Label Text="СПИСОК ОТГРУЗОК" TextColor="Black" FontAttributes="Bold" FontSize="25"/>
+                <Label Text="СПИСОК ОТГРУЗОК" TextColor="Black" FontAttributes="Bold" FontSize="25" FontFamily="roboto_regular.ttf#roboto_regular"/>
             </StackLayout>
             <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
             <ScrollView>
@@ -27,8 +27,8 @@
                                 <Image Grid.Column="0" Source="logo_tab.png" VerticalOptions="Center" Margin="20"/>
                                 <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
                                 <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                                    <Label Text="TAB" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
-                                    <Label Text="15-11-2018 г" TextColor="Gray" FontSize="Small"/>
+                                    <Label Text="TAB" TextColor="Black" Margin="0,0,0,10" FontSize="Large" FontFamily="roboto_regular.ttf#roboto_regular"/>
+                                    <Label Text="15-11-2018 г" TextColor="Gray" FontSize="Small" FontFamily="roboto_light.ttf#roboto_light"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
@@ -44,8 +44,8 @@
                                 <Image Grid.Column="0" Source="logo_topla.png" VerticalOptions="Center" Margin="20"/>
                                 <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
                                 <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                                    <Label Text="TOPLA" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
-                                    <Label Text="18-03-2019 г" TextColor="Gray" FontSize="Small"/>
+                                    <Label Text="TOPLA" TextColor="Black" Margin="0,0,0,10" FontSize="Large" FontFamily="roboto_regular.ttf#roboto_regular"/>
+                                    <Label Text="18-03-2019 г" TextColor="Gray" FontSize="Small" FontFamily="roboto_light.ttf#roboto_light"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
@@ -61,8 +61,8 @@
                                 <Image Grid.Column="0" Source="logo_volthor.png" VerticalOptions="Center" Margin="20"/>
                                 <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
                                 <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                                    <Label Text="VOLTHOR" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
-                                    <Label Text="03-05-2019 г" TextColor="Gray" FontSize="Small"/>
+                                    <Label Text="VOLTHOR" TextColor="Black" Margin="0,0,0,10" FontSize="Large" FontFamily="roboto_regular.ttf#roboto_regular"/>
+                                    <Label Text="03-05-2019 г" TextColor="Gray" FontSize="Small" FontFamily="roboto_light.ttf#roboto_light"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>

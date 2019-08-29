@@ -18,8 +18,8 @@
                         <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
                     </StackLayout>
                     <ImageButton AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.07,0.05,AutoSize,AutoSize" Source="arrow_alt_left_white.png" BackgroundColor="Transparent" WidthRequest="30" HorizontalOptions="Start" Clicked="Close_modal"/>
-                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="СПИСОК ТОВАРОВ" TextColor="White" FontAttributes="Bold" FontSize="25"/>
-                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.4,AutoSize,AutoSize" Text=" Добавляйте выбранные для отгрузки товары" TextColor="White" FontSize="Small"/>
+                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="СПИСОК ТОВАРОВ" TextColor="White" FontAttributes="Bold" FontSize="25" FontFamily="roboto_regular.ttf#roboto_regular"/>
+                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.4,AutoSize,AutoSize" Text=" Добавляйте выбранные для отгрузки товары" TextColor="White" FontSize="Small" FontFamily="roboto_light.ttf#roboto_light"/>
                 </AbsoluteLayout>
                 <ScrollView>
                     <Grid Margin="10,0">
@@ -53,7 +53,7 @@
                         </Frame>
                     </Grid>
                 </ScrollView>
-                <Button Text="Оформить отгрузку" TextColor="White" CornerRadius="30" Padding="40,15" Margin="15" BackgroundColor="#e61e29" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Clicked="Button_Clicked"/>
+                <Button Text="Оформить отгрузку" TextColor="White" CornerRadius="30" Padding="40,15" Margin="15" BackgroundColor="#e61e29" HorizontalOptions="Center" VerticalOptions="EndAndExpand" FontFamily="roboto_light.ttf#roboto_light" Clicked="Button_Clicked"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

@@ -11,12 +11,12 @@
         <StackLayout VerticalOptions="FillAndExpand">
             <StackLayout BackgroundColor="White" Padding="10,5,10,30">
                 <ImageButton Source="arrow_alt_left.png" BackgroundColor="Transparent" WidthRequest="30" HorizontalOptions="Start" Clicked="Close_modal"/>
-                <Label Text="ПРОДАЖА" TextColor="Black" FontAttributes="Bold" FontSize="25"/>
+                <Label Text="ПРОДАЖА" TextColor="Black" FontAttributes="Bold" FontSize="25" FontFamily="roboto_regular.ttf#roboto_regular"/>
             </StackLayout>
             <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
             <StackLayout Padding="20">
                 <Frame CornerRadius="10" BackgroundColor="#fff" Padding="15,10">
-                    <ex:PickerListGoods Title="Список лидеров" Image="arrow_bottom" WidthRequest="300">
+                    <ex:PickerListGoods Title="Список лидеров" Image="arrow_bottom" WidthRequest="300" FontFamily="roboto_regular.ttf#roboto_regular">
                         <ex:PickerListGoods.Items>
                             <x:String>Focus</x:String>
                             <x:String>Tab pollar</x:String>
@@ -28,8 +28,12 @@
             </StackLayout>
             <ScrollView>
                 <StackLayout Padding="20">
-                    <Label Text="Аккамуляторы" FontSize="Large" TextColor="Black" FontAttributes="Bold"/>
+                    <Label Text="Аккамуляторы" FontSize="Large" TextColor="Black" FontAttributes="Bold" FontFamily="roboto_regular.ttf#roboto_regular"/>
                     <StackLayout Margin="0,0,0,10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                          NumberOfTapsRequired="1"/>
+                        </StackLayout.GestureRecognizers>
                         <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="15">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -38,17 +42,21 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="tab_1.jpg" VerticalOptions="Center"/>
                                 <StackLayout Grid.Column="1" VerticalOptions="Center">
-                                    <Label Text="TAB Polar" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
-                                    <Label Text="Напряжение, В:12,0" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
-                                    <Label Text="Емкость (А*ч): 45-110"  FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
-                                    <Label Text="Пусковой ток,А: 400-1000" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
-                                    <Label Text="Полярность: 0"  FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
-                                    <Label Text="Технология сплава:Ca/Ca" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="TAB Polar" TextColor="Black" Margin="0,0,0,10" FontSize="Large" FontFamily="roboto_regular.ttf#roboto_regular"/>
+                                    <Label Text="Напряжение, В:12,0" FontSize="Small" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
+                                    <Label Text="Емкость (А*ч): 45-110"  FontSize="Small" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
+                                    <Label Text="Пусковой ток,А: 400-1000" FontSize="Small" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
+                                    <Label Text="Полярность: 0"  FontSize="Small" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
+                                    <Label Text="Технология сплава:Ca/Ca" FontSize="Small" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
                     </StackLayout>
                     <StackLayout Margin="0,0,0,10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                          NumberOfTapsRequired="1"/>
+                        </StackLayout.GestureRecognizers>
                         <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="15">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -57,17 +65,21 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="tab_1.jpg" VerticalOptions="Center"/>
                                 <StackLayout Grid.Column="1" VerticalOptions="Center">
-                                    <Label Text="TAB Polar" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
-                                    <Label Text="Напряжение, В:12,0" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
-                                    <Label Text="Емкость (А*ч): 45-110"  FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
-                                    <Label Text="Пусковой ток,А: 400-1000" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
-                                    <Label Text="Полярность: 0"  FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
-                                    <Label Text="Технология сплава:Ca/Ca" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="TAB Polar" TextColor="Black" Margin="0,0,0,10" FontSize="Large" FontFamily="roboto_regular.ttf#roboto_regular"/>
+                                    <Label Text="Напряжение, В:12,0" FontSize="Small" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
+                                    <Label Text="Емкость (А*ч): 45-110"  FontSize="Small" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
+                                    <Label Text="Пусковой ток,А: 400-1000" FontSize="Small" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
+                                    <Label Text="Полярность: 0"  FontSize="Small" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
+                                    <Label Text="Технология сплава:Ca/Ca" FontSize="Small" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
                     </StackLayout>
                     <StackLayout Margin="0,0,0,10">
+                        <StackLayout.GestureRecognizers>
+                            <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
+                                          NumberOfTapsRequired="1"/>
+                        </StackLayout.GestureRecognizers>
                         <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="15">
                             <Grid>
                                 <Grid.ColumnDefinitions>
@@ -76,12 +88,12 @@
                                 </Grid.ColumnDefinitions>
                                 <Image Grid.Column="0" Source="tab_1.jpg" VerticalOptions="Center"/>
                                 <StackLayout Grid.Column="1" VerticalOptions="Center">
-                                    <Label Text="TAB Polar" TextColor="Black" Margin="0,0,0,10" FontSize="Large"/>
-                                    <Label Text="Напряжение, В:12,0" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
-                                    <Label Text="Емкость (А*ч): 45-110"  FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
-                                    <Label Text="Пусковой ток,А: 400-1000" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
-                                    <Label Text="Полярность: 0"  FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
-                                    <Label Text="Технология сплава:Ca/Ca" FontSize="Small" HorizontalOptions="Start" TextColor="Black"/>
+                                    <Label Text="TAB Polar" TextColor="Black" Margin="0,0,0,10" FontSize="Large" FontFamily="roboto_regular.ttf#roboto_regular"/>
+                                    <Label Text="Напряжение, В:12,0" FontSize="Small" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
+                                    <Label Text="Емкость (А*ч): 45-110"  FontSize="Small" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
+                                    <Label Text="Пусковой ток,А: 400-1000" FontSize="Small" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
+                                    <Label Text="Полярность: 0"  FontSize="Small" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
+                                    <Label Text="Технология сплава:Ca/Ca" FontSize="Small" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
@@ -94,8 +106,8 @@
                         <ColumnDefinition Width="1*"/>
                         <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Text="Подтвердить отгрузку" VerticalOptions="FillAndExpand" TextColor="White" BackgroundColor="#e61e29" CornerRadius="30" HeightRequest="130"/>
-                    <Button Grid.Column="1" Text="Изменить список" VerticalOptions="FillAndExpand" TextColor="White" BackgroundColor="#08407d" CornerRadius="30" HeightRequest="130" Clicked="Retry_goods"/>
+                    <Button Grid.Column="0" Text="Подтвердить отгрузку" VerticalOptions="FillAndExpand" TextColor="White" BackgroundColor="#e61e29" CornerRadius="30" HeightRequest="130" FontFamily="roboto_light.ttf#roboto_light"/>
+                    <Button Grid.Column="1" Text="Изменить список" VerticalOptions="FillAndExpand" TextColor="White" BackgroundColor="#08407d" CornerRadius="30" HeightRequest="130" FontFamily="roboto_light.ttf#roboto_light" Clicked="Retry_goods"/>
                 </Grid>
             </StackLayout>
         </StackLayout>
