@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ex="clr-namespace:battery.app.Controls"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#ebebeb"
@@ -16,16 +17,19 @@
                 </StackLayout>
                 <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.1,AutoSize,AutoSize" Text="ОТГРУЗКА" TextColor="White" FontAttributes="Bold" FontSize="25"/>
                 <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="Выберите из списка дилеров" TextColor="White" FontSize="Small"/>
-                <Frame AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.8,AutoSize,AutoSize" CornerRadius="10" BackgroundColor="#fff" Padding="35,25">
+                <Frame AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.8,AutoSize,AutoSize" CornerRadius="10" BackgroundColor="#fff" Padding="15,10">
                     <StackLayout>
-                        <Picker Title="Список лидеров">
-                            <Picker.Items>
-                                <x:String>Focus</x:String>
-                                <x:String>Tab pollar</x:String>
-                                <x:String>Main pollar</x:String>
-                                <x:String>Big M</x:String>
-                            </Picker.Items>
-                        </Picker>
+                        <FlexLayout WidthRequest="330">
+                            <Image Source="circle_entry.png" Margin="0,0,10,0"/>
+                            <ex:PickerListGoods Title="Список лидеров" Image="arrow_bottom" WidthRequest="300">
+                                <ex:PickerListGoods.Items>
+                                    <x:String>Focus</x:String>
+                                    <x:String>Tab pollar</x:String>
+                                    <x:String>Main pollar</x:String>
+                                    <x:String>Big M</x:String>
+                                </ex:PickerListGoods.Items>
+                            </ex:PickerListGoods>
+                        </FlexLayout>
                     </StackLayout>
                 </Frame>
             </AbsoluteLayout>
