@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ex="clr-namespace:battery.app.Controls"
              mc:Ignorable="d"
              BackgroundColor="#ebebeb"
              x:Class="battery.app.Page.SalePage">
@@ -14,15 +15,15 @@
             </StackLayout>
             <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
             <StackLayout Padding="20">
-                <Frame CornerRadius="10" BackgroundColor="#fff" Padding="35,25">
-                    <Picker Title="Список лидеров">
-                        <Picker.Items>
+                <Frame CornerRadius="10" BackgroundColor="#fff" Padding="15,10">
+                    <ex:PickerListGoods Title="Список лидеров" Image="arrow_bottom" WidthRequest="300">
+                        <ex:PickerListGoods.Items>
                             <x:String>Focus</x:String>
                             <x:String>Tab pollar</x:String>
                             <x:String>Main pollar</x:String>
                             <x:String>Big M</x:String>
-                        </Picker.Items>
-                    </Picker>
+                        </ex:PickerListGoods.Items>
+                    </ex:PickerListGoods>
                 </Frame>
             </StackLayout>
             <ScrollView>
