@@ -6,21 +6,36 @@
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#ebebeb" 
+             xmlns:ex="clr-namespace:battery.app.Controls"
              x:Class="battery.app.Page.Authorization">
     <ContentPage.Content>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout VerticalOptions="FillAndExpand" Margin="20">
                 <Image Source="icon.png" HorizontalOptions="Center" Margin="0,20"/>
-                <Label Text="ВОЙТИ" TextColor="#334b6f" FontSize="30" FontAttributes="Bold"/>
+                <Label Text="ВОЙТИ" TextColor="#334b6f" FontSize="30" FontAttributes="Bold" FontFamily="roboto_regular.ttf#roboto_regular"/>
                 <StackLayout Margin="0,20">
                     <Frame BackgroundColor="White" Padding="10" CornerRadius="15" Margin="0,0,0,15">
-                        <Entry Placeholder="логин" TextColor="#334b6f" PlaceholderColor="#334b6f"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="user.png" Margin="20,0,10,0" VerticalOptions="Center"/>
+                            <ex:AuthorizationEntry Grid.Column="1" Placeholder="логин" TextColor="#334b6f" PlaceholderColor="#334b6f" FontFamily="roboto_light.ttf#roboto_light"/>
+                        </Grid>
                     </Frame>
                     <Frame BackgroundColor="White" Padding="10" CornerRadius="15">
-                        <Entry Placeholder="пароль" TextColor="#334b6f" PlaceholderColor="#334b6f"/>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Grid.Column="0" Source="castle.png" Margin="20,0,10,0" VerticalOptions="Center"/>
+                            <ex:AuthorizationEntry Grid.Column="1" Placeholder="пароль" TextColor="#334b6f" PlaceholderColor="#334b6f" FontFamily="roboto_light.ttf#roboto_light"/>
+                        </Grid>
                     </Frame>
                 </StackLayout>
-                <Button Text="Вход" FontSize="Medium" TextColor="White" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Padding="20,15" WidthRequest="280" BackgroundColor="#e61e29" CornerRadius="30" Clicked="Button_Clicked"/>
+                <Button Text="Вход" FontSize="Medium" TextColor="White" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Padding="20,15" WidthRequest="280" BackgroundColor="#e61e29" CornerRadius="30" Clicked="Button_Clicked" FontFamily="roboto_light.ttf#roboto_light"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

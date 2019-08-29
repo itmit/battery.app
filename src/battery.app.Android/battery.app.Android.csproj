@@ -73,11 +73,15 @@
   <ItemGroup>
     <Compile Include="MainActivity.cs" />
     <Compile Include="NoShiftEffectRenderer.cs" />
+    <Compile Include="Renderers\AuthorizationEntryRenderer.cs" />
     <Compile Include="Renderers\PickerListGoodsRenderer.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <AndroidAsset Include="Assets\roboto_light.ttf" />
+    <AndroidAsset Include="Assets\roboto_medium.ttf" />
+    <AndroidAsset Include="Assets\roboto_regular.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -160,6 +164,12 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\circle_entry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\castle.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
