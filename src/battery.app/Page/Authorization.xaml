@@ -12,30 +12,30 @@
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout VerticalOptions="FillAndExpand" Margin="20">
                 <Image Source="icon.png" HorizontalOptions="Center" Margin="0,20"/>
-                <Label Text="ВОЙТИ" TextColor="#334b6f" FontSize="30" FontAttributes="Bold" FontFamily="roboto_regular.ttf#roboto_regular"/>
+                <Label Text="ВОЙТИ" Style="{StaticResource AuthLabel}"/>
                 <StackLayout Margin="0,20">
-                    <Frame BackgroundColor="White" Padding="10" CornerRadius="15" Margin="0,0,0,15">
+                    <Frame Style="{StaticResource AuthFrame}" Margin="0,0,0,15">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Source="user.png" Margin="20,0,10,0" VerticalOptions="Center"/>
-                            <ex:AuthorizationEntry Grid.Column="1" Placeholder="логин" TextColor="#334b6f" PlaceholderColor="#334b6f" FontFamily="roboto_light.ttf#roboto_light"/>
+                            <ex:AuthorizationEntry Grid.Column="1" Placeholder="логин" Style="{StaticResource AuthEntry}"/>
                         </Grid>
                     </Frame>
-                    <Frame BackgroundColor="White" Padding="10" CornerRadius="15">
+                    <Frame Style="{StaticResource AuthFrame}">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Source="castle.png" Margin="20,0,10,0" VerticalOptions="Center"/>
-                            <ex:AuthorizationEntry Grid.Column="1" Placeholder="пароль" TextColor="#334b6f" PlaceholderColor="#334b6f" FontFamily="roboto_light.ttf#roboto_light"/>
+                            <ex:AuthorizationEntry Grid.Column="1" Placeholder="пароль" Style="{StaticResource AuthEntry}"/>
                         </Grid>
                     </Frame>
                 </StackLayout>
-                <Button Text="Вход" FontSize="Medium" TextColor="White" HorizontalOptions="Center" VerticalOptions="EndAndExpand" Padding="20,15" WidthRequest="280" BackgroundColor="#e61e29" CornerRadius="30" Clicked="Button_Clicked" FontFamily="roboto_light.ttf#roboto_light"/>
+                <Button Text="Вход" Style="{StaticResource AuthButton}" Clicked="Button_Clicked"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

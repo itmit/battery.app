@@ -14,18 +14,18 @@
                 <AbsoluteLayout VerticalOptions="FillAndExpand">
                     <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0">
                         <Image Source="picture_600.png" HorizontalOptions="CenterAndExpand" Aspect="Fill" HeightRequest="300"/>
-                        <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
+                        <BoxView Style="{StaticResource MainBoxView}"/>
                     </StackLayout>
-                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.1,AutoSize,AutoSize" Text="СКАНИРОВАНИЕ" TextColor="White" FontAttributes="Bold" FontSize="25" FontFamily="roboto_regular.ttf#roboto_regular"/>
-                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="Наведите сканер на QR-код" TextColor="White" FontSize="Small" FontFamily="roboto_light.ttf#roboto_light"/>
+                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.1,AutoSize,AutoSize" Text="СКАНИРОВАНИЕ" Style="{StaticResource MainLabel}"/>
+                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="Наведите сканер на QR-код" Style="{StaticResource MainLabelSmall}"/>
                     <Frame AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.9,AutoSize,AutoSize" CornerRadius="10" BackgroundColor="#fff" Padding="35,25">
                         <StackLayout>
-                            <Label Text="QR BARCODE SCANNER" TextColor="#0001fc" FontAttributes="Bold" FontSize="20" HorizontalTextAlignment="Center" FontFamily="roboto_medium.ttf#roboto_medium"/>
+                            <Label Text="QR BARCODE SCANNER" Style="{StaticResource QrLabel}"/>
                             <Image Source="box_foto.png" Margin="5"/>
                         </StackLayout>
                     </Frame>
                 </AbsoluteLayout>
-                <Button Text="Сканировать товар" TextColor="White" CornerRadius="30" Padding="40,15" Margin="15" BackgroundColor="#e61e29" HorizontalOptions="Center" FontFamily="roboto_light.ttf#roboto_light" Clicked="Button_Clicked"/>
+                <Button Text="Сканировать товар" Style="{StaticResource ButtonDefOne}" Clicked="Button_Clicked"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

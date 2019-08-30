@@ -15,11 +15,11 @@
                 <AbsoluteLayout>
                     <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0">
                         <Image Source="picture_600.png" HorizontalOptions="CenterAndExpand" Aspect="Fill" HeightRequest="300"/>
-                        <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
+                        <BoxView Style="{StaticResource MainBoxView}"/>
                     </StackLayout>
-                    <ImageButton AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.07,0.05,AutoSize,AutoSize" Source="arrow_alt_left_white.png" BackgroundColor="Transparent" WidthRequest="30" HorizontalOptions="Start" Clicked="Close_modal"/>
-                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="СПИСОК ТОВАРОВ" TextColor="White" FontAttributes="Bold" FontSize="25" FontFamily="roboto_regular.ttf#roboto_regular"/>
-                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.4,AutoSize,AutoSize" Text=" Добавляйте выбранные для отгрузки товары" TextColor="White" FontSize="Small" FontFamily="roboto_light.ttf#roboto_light"/>
+                    <ImageButton AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.07,0.05,AutoSize,AutoSize" Source="arrow_alt_left_white.png" Style="{StaticResource ImageBack}" Clicked="Close_modal"/>
+                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="СПИСОК ТОВАРОВ" Style="{StaticResource MainLabel}"/>
+                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.4,AutoSize,AutoSize" Text=" Добавляйте выбранные для отгрузки товары" Style="{StaticResource MainLabelSmall}"/>
                 </AbsoluteLayout>
                 <ScrollView>
                     <Grid Margin="10,0">
@@ -33,27 +33,27 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <Frame Grid.Column="0" Grid.Row="0" CornerRadius="10" HasShadow="True" HorizontalOptions="Center" Margin="0,0,0,5">
-                            <Image Source="qrcode.png" WidthRequest="30" HeightRequest="30"/>
+                        <Frame Grid.Column="0" Grid.Row="0" Style="{StaticResource FrameShipment}">
+                            <Image Source="qrcode.png" Style="{StaticResource ImageShipment}"/>
                         </Frame>
-                        <Frame Grid.Column="1" Grid.Row="0" CornerRadius="10" HasShadow="True" HorizontalOptions="Center" Margin="0,0,0,5">
-                            <Image Source="qrcode.png" WidthRequest="30" HeightRequest="30"/>
+                        <Frame Grid.Column="1" Grid.Row="0" Style="{StaticResource FrameShipment}">
+                            <Image Source="qrcode.png" Style="{StaticResource ImageShipment}"/>
                         </Frame>
-                        <Frame Grid.Column="2" Grid.Row="0" CornerRadius="10" HasShadow="True" HorizontalOptions="Center" Margin="0,0,0,5">
-                            <Image Source="qrcode.png" WidthRequest="30" HeightRequest="30"/>
+                        <Frame Grid.Column="2" Grid.Row="0" Style="{StaticResource FrameShipment}">
+                            <Image Source="qrcode.png" Style="{StaticResource ImageShipment}"/>
                         </Frame>
-                        <Frame Grid.Column="3" Grid.Row="0" CornerRadius="10" HasShadow="True" HorizontalOptions="Center" Margin="0,0,0,5">
-                            <Image Source="qrcode.png" WidthRequest="30" HeightRequest="30"/>
+                        <Frame Grid.Column="3" Grid.Row="0" Style="{StaticResource FrameShipment}">
+                            <Image Source="qrcode.png" Style="{StaticResource ImageShipment}"/>
                         </Frame>
-                        <Frame Grid.Column="0" Grid.Row="1" CornerRadius="10" HasShadow="True" HorizontalOptions="Center" Margin="0,0,0,5">
-                            <Image Source="qrcode.png" WidthRequest="30" HeightRequest="30"/>
+                        <Frame Grid.Column="0" Grid.Row="1" Style="{StaticResource FrameShipment}">
+                            <Image Source="qrcode.png" Style="{StaticResource ImageShipment}"/>
                         </Frame>
-                        <Frame Grid.Column="1" Grid.Row="1" CornerRadius="10" HasShadow="True" HorizontalOptions="Center" Margin="0,0,0,5">
-                            <Image Source="plus.png" WidthRequest="30" HeightRequest="30"/>
+                        <Frame Grid.Column="1" Grid.Row="1" Style="{StaticResource FrameShipment}">
+                            <Image Source="plus.png" Style="{StaticResource ImageShipment}"/>
                         </Frame>
                     </Grid>
                 </ScrollView>
-                <Button Text="Оформить отгрузку" TextColor="White" CornerRadius="30" Padding="40,15" Margin="15" BackgroundColor="#e61e29" HorizontalOptions="Center" VerticalOptions="EndAndExpand" FontFamily="roboto_light.ttf#roboto_light" Clicked="Button_Clicked"/>
+                <Button Text="Оформить отгрузку" Style="{StaticResource ButtonDefOne}" Clicked="Button_Clicked"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

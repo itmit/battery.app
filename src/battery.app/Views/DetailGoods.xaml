@@ -9,16 +9,16 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout BackgroundColor="White" Padding="10,5,10,30">
-                <ImageButton Source="arrow_alt_left.png" BackgroundColor="Transparent" WidthRequest="30" HorizontalOptions="Start" Clicked="Close_modal"/>
-                <Label Text="ДАННЫЕ ПРОДАЖИ" TextColor="Black" FontAttributes="Bold" FontSize="25" FontFamily="roboto_regular.ttf#roboto_regular"/>
+                <ImageButton Source="arrow_alt_left.png" Style="{StaticResource ImageBack}" Clicked="Close_modal"/>
+                <Label Text="ДАННЫЕ ПРОДАЖИ" Style="{StaticResource MainLabelBlack}"/>
             </StackLayout>
-            <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
+            <BoxView Style="{StaticResource MainBoxView}"/>
             <ScrollView>
                 <StackLayout Padding="20">
                     <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10">
                         <StackLayout>
-                            <Label Text="TAB" TextColor="Black" HorizontalOptions="Center" FontSize="35" FontAttributes="Bold" FontFamily="roboto_regular.ttf#roboto_regular"/>
-                            <Label Text="23-07-2019" TextColor="Black" HorizontalOptions="Center" FontSize="25" Margin="0,0,0,30" FontFamily="roboto_light.ttf#roboto_light"/>
+                            <Label Text="TAB" Style="{StaticResource TitleDetail}"/>
+                            <Label Text="23-07-2019" Style="{StaticResource DateDetail}"/>
                             <Image Source="tab_1.jpg" HorizontalOptions="Start"/>
                             <Grid Margin="0,20">
                                 <Grid.ColumnDefinitions>
@@ -29,19 +29,19 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <StackLayout Grid.Column="0" Grid.Row="0">
-                                    <Label Text="TAB POLAR" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_regular.ttf#roboto_regular"/>
-                                    <Label Text="Напряжение, В:12,0" FontSize="Medium" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
-                                    <Label Text="Емкость (А*ч): 45-110"  FontSize="Medium" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
-                                    <Label Text="Пусковой ток,А: 400-1000" FontSize="Medium" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
-                                    <Label Text="Полярность: 0"  FontSize="Medium" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
-                                    <Label Text="Технология сплава:Ca/Ca" FontSize="Medium" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
+                                    <Label Text="TAB POLAR" Style="{StaticResource TitleCompany}"/>
+                                    <Label Text="Напряжение, В:12,0" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="Емкость (А*ч): 45-110" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="Пусковой ток,А: 400-1000" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="Полярность: 0" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="Технология сплава:Ca/Ca" Style="{StaticResource TextDetailGoods}"/>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" Grid.Row="0">
-                                    <Label Text="Место продажи" FontSize="Large" FontAttributes="Bold" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_regular.ttf#roboto_regular"/>
-                                    <Label Text="Москва" FontSize="Medium" HorizontalOptions="Start" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
+                                    <Label Text="Место продажи" Style="{StaticResource TitleTwoGoods}"/>
+                                    <Label Text="Москва" Style="{StaticResource NameCity}"/>
                                 </StackLayout>
                             </Grid>
-                            <Label Text="Батареи TAB Polar предназанчены для автомобилей со стандартным уровнем электрооборудования, но с повышенными требованиями к пусковым характеристикам и надежности" HorizontalTextAlignment="Start" FontSize="Medium" TextColor="Black" FontFamily="roboto_light.ttf#roboto_light"/>
+                            <Label Text="Батареи TAB Polar предназанчены для автомобилей со стандартным уровнем электрооборудования, но с повышенными требованиями к пусковым характеристикам и надежности" Style="{StaticResource DescLabel}"/>
                         </StackLayout>
                     </Frame>
                 </StackLayout>

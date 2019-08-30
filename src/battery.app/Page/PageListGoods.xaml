@@ -13,10 +13,10 @@
             <AbsoluteLayout VerticalOptions="FillAndExpand">
                 <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0">
                     <Image Source="picture_600.png" HorizontalOptions="CenterAndExpand" Aspect="Fill" HeightRequest="300"/>
-                    <BoxView HeightRequest="4" BackgroundColor="Red" HorizontalOptions="FillAndExpand" Margin="0,-7,0,0"/>
+                    <BoxView Style="{StaticResource MainBoxView}"/>
                 </StackLayout>
-                <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.1,AutoSize,AutoSize" Text="ОТГРУЗКА" TextColor="White" FontAttributes="Bold" FontSize="25" FontFamily="roboto_regular.ttf#roboto_regular"/>
-                <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="Выберите из списка дилеров" TextColor="White" FontSize="Small" FontFamily="roboto_light.ttf#roboto_light"/>
+                <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.1,AutoSize,AutoSize" Text="ОТГРУЗКА" Style="{StaticResource MainLabel}"/>
+                <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="Выберите из списка дилеров" Style="{StaticResource MainLabelSmall}"/>
                 <Frame AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.8,AutoSize,AutoSize" CornerRadius="10" BackgroundColor="#fff" Padding="15,10">
                     <StackLayout>
                         <FlexLayout WidthRequest="330">
@@ -33,7 +33,7 @@
                     </StackLayout>
                 </Frame>
             </AbsoluteLayout>
-            <Button Text="Оформить продажу" TextColor="White" CornerRadius="30" Padding="40,15" Margin="15" BackgroundColor="#e61e29" HorizontalOptions="Center" VerticalOptions="EndAndExpand" FontFamily="roboto_light.ttf#roboto_light" Clicked="Button_Clicked"/>
+            <Button Text="Оформить продажу" Style="{StaticResource ButtonListGoods}" Clicked="Button_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
