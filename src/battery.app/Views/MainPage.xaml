@@ -51,6 +51,17 @@
         <NavigationPage>
             <NavigationPage.Icon>
                 <OnPlatform x:TypeArguments="FileImageSource">
+                    <On Platform="Android" Value="newspaper.png"/>
+                    <On Platform="iOS" Value="newspaper.png"/>
+                </OnPlatform>
+            </NavigationPage.Icon>
+            <x:Arguments>
+                <Page:NewsPage />
+            </x:Arguments>
+        </NavigationPage>
+        <NavigationPage>
+            <NavigationPage.Icon>
+                <OnPlatform x:TypeArguments="FileImageSource">
                     <On Platform="Android" Value="arrow_right.png"/>
                     <On Platform="iOS" Value="arrow_right.png"/>
                 </OnPlatform>
