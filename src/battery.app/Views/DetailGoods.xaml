@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              BackgroundColor="#ebebeb"
+             NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Views.DetailGoods">
     <ContentPage.Content>
         <StackLayout>

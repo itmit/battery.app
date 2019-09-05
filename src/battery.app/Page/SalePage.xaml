@@ -6,6 +6,7 @@
              xmlns:ex="clr-namespace:battery.app.Controls"
              mc:Ignorable="d"
              BackgroundColor="#ebebeb"
+             NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Page.SalePage">
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">
@@ -16,7 +17,7 @@
             <BoxView Style="{StaticResource MainBoxView}"/>
             <StackLayout Padding="20">
                 <Frame CornerRadius="10" BackgroundColor="#fff" Padding="15,10">
-                    <ex:PickerListGoods Title="Список лидеров" Image="arrow_bottom" WidthRequest="300" FontFamily="roboto_regular.ttf#roboto_regular">
+                    <ex:PickerListGoods Title="Список дилеров" Image="arrow_bottom" WidthRequest="300" FontFamily="roboto_regular.ttf#roboto_regular">
                         <ex:PickerListGoods.Items>
                             <x:String>Focus</x:String>
                             <x:String>Tab pollar</x:String>
@@ -28,7 +29,7 @@
             </StackLayout>
             <ScrollView>
                 <StackLayout Padding="20">
-                    <Label Text="Аккамуляторы" Style="{StaticResource BattaryLabel}"/>
+                    <Label Text="Аккумуляторы" Style="{StaticResource BattaryLabel}"/>
                     <StackLayout Margin="0,0,0,10">
                         <StackLayout.GestureRecognizers>
                             <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"

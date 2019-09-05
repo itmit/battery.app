@@ -19,11 +19,11 @@ namespace battery.app.Page
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new SalePage(), false);
+            Navigation.PushAsync(new SalePage(), false);
         }
         private void Close_modal(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync(false);
+            Navigation.PopAsync(false);
         }
     }
 }

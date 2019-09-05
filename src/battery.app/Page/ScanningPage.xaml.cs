@@ -20,7 +20,7 @@ namespace battery.app.Page
 
         private void Button_Clicked(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new DetailGoods(), false);
+            Navigation.PushAsync(new DetailGoods(), false);
         }
     }
 }

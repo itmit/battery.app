@@ -19,16 +19,16 @@ namespace battery.app.Page
         }
         private void Close_modal(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync(false);
+            Navigation.PopAsync(false);
         }
         private void Retry_goods(object sender, EventArgs e)
         {
-            Navigation.PopModalAsync(false);
+            Navigation.PopAsync(false);
         }
 
         private void TapGestureRecognizer_Tapped(object sender, EventArgs e)
         {
-            Navigation.PushModalAsync(new DetailGoods(), false);
+            Navigation.PushAsync(new DetailGoods(), false);
         }
     }
 }

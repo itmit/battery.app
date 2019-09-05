@@ -112,7 +112,7 @@
                 <Setter Property="VerticalOptions" Value="FillAndExpand"/>
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="CornerRadius" Value="30"/>
-                <Setter Property="HeightRequest" Value="130"/>
+                <Setter Property="HeightRequest" Value="140"/>
                 <Setter Property="FontFamily" Value="roboto_light.ttf#roboto_light"/>
             </Style>
             <Style x:Key="MainLabel" TargetType="Label">
