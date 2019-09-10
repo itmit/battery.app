@@ -44,7 +44,7 @@
                                 <Image Grid.Column="0" Source="logo_topla.png" VerticalOptions="Center" Margin="20"/>
                                 <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
                                 <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                                    <Label Text="TOPLA" Style="{StaticResource Title}"/>
+                                    <Label x:Name="TitleCompanyShip" Text="TOPLA" Style="{StaticResource Title}"/>
                                     <Label Text="18-03-2019 г" Style="{StaticResource Date}"/>
                                 </StackLayout>
                             </Grid>
@@ -63,6 +63,23 @@
                                 <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
                                     <Label Text="VOLTHOR" Style="{StaticResource Title}"/>
                                     <Label Text="03-05-2019 г" Style="{StaticResource Date}"/>
+                                </StackLayout>
+                            </Grid>
+                        </Frame>
+                    </StackLayout>
+                    <StackLayout Margin="15,10">
+                        <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0">
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="200"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Grid.Column="0" Source="logo_vesna.png" VerticalOptions="Center" Margin="20"/>
+                                <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
+                                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
+                                    <Label Text="VESNA" Style="{StaticResource Title}"/>
+                                    <Label Text="09-06-2019 г" Style="{StaticResource Date}"/>
                                 </StackLayout>
                             </Grid>
                         </Frame>
