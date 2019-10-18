@@ -7,7 +7,7 @@
              Title="Список отгрузок"
              BackgroundColor="#ebebeb"
              NavigationPage.HasNavigationBar="False"
-             x:Class="battery.app.Page.ShippingListPage">
+             x:Class="battery.app.Pages.ShippingListPage">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout BackgroundColor="White" Padding="10,5,10,30">

@@ -1,14 +1,9 @@
-﻿using battery.app.Views;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using System;
+using battery.app.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace battery.app.Page
+namespace battery.app.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ScanningPage : ContentPage

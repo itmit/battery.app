@@ -2,10 +2,15 @@
 
 namespace battery.app.Controls
 {
+	/// <summary>
+	/// Представляет эффект для главной страницы.
+	/// </summary>
     public class NoShiftEffect : RoutingEffect
     {
-        public NoShiftEffect() : base("itmit.NoShiftEffect")
-        {
-        }
+		/// <summary>
+		/// Инициализирует новый экземпляр <see cref="NoShiftEffect" />.
+		/// </summary>
+		public NoShiftEffect() : base("itmit.NoShiftEffect")
+        { }
     }
 }

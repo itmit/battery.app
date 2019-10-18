@@ -7,7 +7,7 @@
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#ebebeb"
-             x:Class="battery.app.Page.PageListGoods">
+             x:Class="battery.app.Pages.ListGoodsPage">
     <ContentPage.Content>
         <StackLayout>
             <AbsoluteLayout VerticalOptions="FillAndExpand">

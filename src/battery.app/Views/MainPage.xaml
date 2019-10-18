@@ -5,7 +5,7 @@
             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
             mc:Ignorable="d"
             xmlns:local="clr-namespace:battery.app.Controls"
-            xmlns:Page="clr-namespace:battery.app.Page"
+            xmlns:pages="clr-namespace:battery.app.Pages;assembly=battery.app"
             x:Class="battery.app.Views.MainPage"
             BarBackgroundColor="Transparent"
             SelectedTabColor="Red"
@@ -23,7 +23,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <Page:ScanningPage />
+                <pages:ScanningPage />
             </x:Arguments>
         </NavigationPage>
         <NavigationPage>
@@ -34,7 +34,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <Page:PageListGoods />
+                <pages:ListGoodsPage />
             </x:Arguments>
         </NavigationPage>
         <NavigationPage>
@@ -45,7 +45,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <Page:ShippingListPage />
+                <pages:ShippingListPage />
             </x:Arguments>
         </NavigationPage>
         <NavigationPage>
@@ -56,7 +56,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <Page:NewsPage />
+                <pages:NewsPage />
             </x:Arguments>
         </NavigationPage>
         <NavigationPage>
@@ -67,7 +67,7 @@
                 </OnPlatform>
             </NavigationPage.Icon>
             <x:Arguments>
-                <Page:NewsPage />
+                <pages:NewsPage />
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>

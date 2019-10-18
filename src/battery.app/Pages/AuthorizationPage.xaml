@@ -7,7 +7,7 @@
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#ebebeb" 
              xmlns:ex="clr-namespace:battery.app.Controls"
-             x:Class="battery.app.Page.Authorization">
+             x:Class="battery.app.Pages.AuthorizationPage">
     <ContentPage.Content>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout VerticalOptions="FillAndExpand" Margin="20">
@@ -20,8 +20,8 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" Source="user.png" Margin="20,0,10,0" VerticalOptions="Center"/>
-                            <ex:AuthorizationEntry Grid.Column="1" Placeholder="логин" Style="{StaticResource AuthEntry}"/>
+                            <Image Grid.Column="0" Source="user" Margin="20,0,10,0" VerticalOptions="Center"/>
+                            <ex:AuthorizationEntry Text="{Binding Login}" Grid.Column="1" Placeholder="логин" Style="{StaticResource AuthEntry}"/>
                         </Grid>
                     </Frame>
                     <Frame Style="{StaticResource AuthFrame}">
@@ -30,12 +30,12 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" Source="castle.png" Margin="20,0,10,0" VerticalOptions="Center"/>
-                            <ex:AuthorizationEntry Grid.Column="1" Placeholder="пароль" Style="{StaticResource AuthEntry}"/>
+                            <Image Grid.Column="0" Source="castle" Margin="20,0,10,0" VerticalOptions="Center"/>
+                            <ex:AuthorizationEntry Text="{Binding Password}" IsPassword="True" Grid.Column="1" Placeholder="пароль" Style="{StaticResource AuthEntry}"/>
                         </Grid>
                     </Frame>
                 </StackLayout>
-                <Button Text="Вход" Style="{StaticResource AuthButton}" Clicked="Button_Clicked"/>
+                <Button Text="Вход" Style="{StaticResource AuthButton}" Command="{Binding AuthCommand}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

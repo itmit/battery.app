@@ -1,9 +1,7 @@
-﻿using System;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace battery.app.Page
+namespace battery.app.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ShippingListPage : ContentPage
