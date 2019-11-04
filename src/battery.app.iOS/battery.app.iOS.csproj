@@ -133,8 +133,11 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FreshMvvm">
-      <Version>3.0.0</Version>
+    <PackageReference Include="MvvmCross">
+      <Version>6.4.1</Version>
+    </PackageReference>
+    <PackageReference Include="MvvmCross.Forms">
+      <Version>6.4.1</Version>
     </PackageReference>
     <PackageReference Include="Realm">
       <Version>4.2.0</Version>
@@ -144,9 +147,9 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
-    <ProjectReference Include="..\battery.app\battery.app.csproj">
-      <Project>{1FD5F850-BE30-4E9B-8E40-5153357DB418}</Project>
-      <Name>battery.app</Name>
+    <ProjectReference Include="..\battery.app.Core\battery.app.Core.csproj">
+      <Project>{DF3C8B5C-CD2E-435D-B20D-CB4A81D4BD87}</Project>
+      <Name>battery.Core</Name>
     </ProjectReference>
   </ItemGroup>
 </Project>

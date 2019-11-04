@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "battery.app.Android", "batt
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "battery.app.iOS", "battery.app.iOS\battery.app.iOS.csproj", "{040A9C8E-631F-4EE9-9A62-2127A20988B6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "battery.app", "battery.app\battery.app.csproj", "{DF3C8B5C-CD2E-435D-B20D-CB4A81D4BD87}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "battery.app.Core", "battery.app.Core\battery.app.Core.csproj", "{DF3C8B5C-CD2E-435D-B20D-CB4A81D4BD87}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
