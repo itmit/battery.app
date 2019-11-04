@@ -5,7 +5,7 @@ using MvvmCross.Forms.Platforms.Android.Views;
 
 namespace battery.app.Droid
 {
-	[Activity(Label = "MvxForms.Droid"
+	[Activity(Label = "Батарейки"
 		, Icon = "@drawable/icon"
 		, Theme = "@style/MainTheme"
 		, ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]

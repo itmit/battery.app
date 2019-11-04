@@ -28,7 +28,7 @@
                 <pages:ListGoodsPage />
             </x:Arguments>
         </NavigationPage>
-        <NavigationPage IconImageSource="list_ui">
+        <NavigationPage IconImageSource="list_ul">
             <x:Arguments>
                 <pages:ShippingListPage />
             </x:Arguments>
@@ -40,7 +40,7 @@
         </NavigationPage>
         <NavigationPage IconImageSource="arrow_right">
             <x:Arguments>
-                <pages:NewsPage />
+                <pages:NewsPage/>
             </x:Arguments>
         </NavigationPage>
     </TabbedPage.Children>

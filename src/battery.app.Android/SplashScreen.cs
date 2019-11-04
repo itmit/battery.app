@@ -9,7 +9,7 @@ using MvvmCross.Platforms.Android.Views;
 namespace battery.app.Droid
 {
 	[Activity(
-		Label = "MvxForms"
+		Label = "Батарейки"
 		, MainLauncher = true
 		, Icon = "@drawable/icon"
 		, Theme = "@style/Theme.Splash"

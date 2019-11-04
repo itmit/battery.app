@@ -5,6 +5,7 @@ using battery.app.Core.ViewModels;
 using battery.app.Models;
 using MvvmCross.IoC;
 using MvvmCross.ViewModels;
+using Realms;
 
 namespace battery.app.Core
 {
@@ -14,6 +15,13 @@ namespace battery.app.Core
 		{
 			CreatableTypes()
 				.EndingWith("Service")
+				.AsInterfaces()
+				.RegisterAsLazySingleton();
+
+			CreatableTypes()
+				.EndingWith("Repository")
+				.InNamespace("battery.app.Core.Repositories")
+				.WithAttribute(typeof(RealmConfiguration))
 				.AsInterfaces()
 				.RegisterAsLazySingleton();
 

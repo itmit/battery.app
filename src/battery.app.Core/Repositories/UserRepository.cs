@@ -6,7 +6,7 @@ using Realms;
 
 namespace battery.app.Core.Repositories
 {
-	public class UserRepository
+	public class UserRepository : IUserRepository
 	{
 		#region Data
 		#region Fields

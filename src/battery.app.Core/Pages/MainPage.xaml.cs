@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
+using battery.app.Controls;
 using battery.app.Core.ViewModels;
 using MvvmCross.Forms.Views;
 using Xamarin.Forms.PlatformConfiguration;
@@ -16,6 +17,8 @@ namespace battery.app.Core.Pages
         public MainPage()
         {
 			InitializeComponent();
-        }
+			Effects.Add(new NoShiftEffect());
+			On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
+		}
     }
 }
