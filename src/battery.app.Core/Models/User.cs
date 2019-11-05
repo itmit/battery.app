@@ -1,8 +1,7 @@
 ﻿using System;
-using Newtonsoft.Json;
 using PropertyChanged;
 
-namespace battery.app.Models
+namespace battery.app.Core.Models
 {
 	/// <summary>
 	/// Представляет пользователя.

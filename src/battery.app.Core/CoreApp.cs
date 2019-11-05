@@ -1,8 +1,8 @@
 ﻿using System.Linq;
+using battery.app.Core.Models;
 using battery.app.Core.Pages;
 using battery.app.Core.Repositories;
 using battery.app.Core.ViewModels;
-using battery.app.Models;
 using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 using Realms;

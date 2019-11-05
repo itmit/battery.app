@@ -1,7 +1,6 @@
 ﻿using System;
-using Newtonsoft.Json;
 
-namespace battery.app.Models
+namespace battery.app.Core.Models
 {
 	/// <summary>
 	/// Представляет token доступа к api.

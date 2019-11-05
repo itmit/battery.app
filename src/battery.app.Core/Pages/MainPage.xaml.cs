@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Diagnostics;
-using battery.app.Controls;
+using battery.app.Core.Controls;
 using battery.app.Core.ViewModels;
 using MvvmCross.Forms.Views;
 using Xamarin.Forms.PlatformConfiguration;

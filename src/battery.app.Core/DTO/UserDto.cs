@@ -1,8 +1,8 @@
 ﻿using System;
-using battery.app.Models;
+using battery.app.Core.Models;
 using Newtonsoft.Json;
 
-namespace battery.app.DTO
+namespace battery.app.Core.DTO
 {
 	/// <summary>
 	/// Представляет ДТО для сущности пользователя, с token.

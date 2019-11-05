@@ -8,7 +8,7 @@
              BackgroundColor="#ebebeb"
              BackgroundImageSource="aaaa.jpg"
              NavigationPage.HasNavigationBar="False"
-             x:Class="battery.app.Pages.ShipmentPage">
+             x:Class="battery.app.Core.Pages.ShipmentPage">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>

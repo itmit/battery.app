@@ -3,9 +3,9 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:controls="clr-namespace:battery.app.Controls;assembly=battery.app.Core"
+             xmlns:controls="clr-namespace:battery.app.Core.Controls;assembly=battery.app.Core"
              mc:Ignorable="d"
-             x:Class="battery.app.Pages.ListSalePage">
+             x:Class="battery.app.Core.Pages.ListSalePage">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout BackgroundColor="White" Padding="10,5,10,30">

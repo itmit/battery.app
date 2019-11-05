@@ -2,7 +2,7 @@
 using Android.Graphics;
 using Android.Graphics.Drawables;
 using Android.Support.V4.Content;
-using battery.app.Controls;
+using battery.app.Core.Controls;
 using battery.app.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;

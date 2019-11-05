@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
-using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using AutoMapper;
-using battery.app.DTO;
-using battery.app.Models;
+using battery.app.Core.DTO;
+using battery.app.Core.Models;
 using Newtonsoft.Json;
 
-namespace battery.app.Services
+namespace battery.app.Core.Services
 {
 	/// <summary>
 	/// Представляет 

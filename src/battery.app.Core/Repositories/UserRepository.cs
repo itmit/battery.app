@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using AutoMapper;
-using battery.app.Models;
-using battery.app.RealmObjects;
+using battery.app.Core.Models;
+using battery.app.Core.RealmObjects;
 using Realms;
 
 namespace battery.app.Core.Repositories

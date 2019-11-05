@@ -3,11 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:ex="clr-namespace:battery.app.Controls"
+             xmlns:controls="clr-namespace:battery.app.Core.Controls;assembly=battery.app.Core"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#ebebeb"
-             x:Class="battery.app.Pages.ListGoodsPage">
+             x:Class="battery.app.Core.Pages.ListGoodsPage">
     <ContentPage.Content>
         <StackLayout>
             <AbsoluteLayout VerticalOptions="FillAndExpand">
@@ -21,14 +21,14 @@
                     <StackLayout>
                         <FlexLayout WidthRequest="330">
                             <Image Source="circle_entry.png" Margin="0,0,10,0"/>
-                            <ex:PickerListGoods Title="Список дилеров" Image="arrow_bottom" WidthRequest="300" FontFamily="roboto_regular.ttf#roboto_regular">
-                                <ex:PickerListGoods.Items>
+                            <controls:PickerListGoods Title="Список дилеров" Image="arrow_bottom" WidthRequest="300" FontFamily="roboto_regular.ttf#roboto_regular">
+                                <controls:PickerListGoods.Items>
                                     <x:String>Focus</x:String>
                                     <x:String>Tab pollar</x:String>
                                     <x:String>Main pollar</x:String>
                                     <x:String>Big M</x:String>
-                                </ex:PickerListGoods.Items>
-                            </ex:PickerListGoods>
+                                </controls:PickerListGoods.Items>
+                            </controls:PickerListGoods>
                         </FlexLayout>
                     </StackLayout>
                 </Frame>

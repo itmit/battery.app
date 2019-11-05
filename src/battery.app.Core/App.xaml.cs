@@ -2,7 +2,6 @@
 using battery.app.Core.Pages;
 using battery.app.Core.Repositories;
 using battery.app.Core.ViewModels;
-using battery.app.Models;
 using MvvmCross.Forms.Core;
 using Application = Xamarin.Forms.Application;
 

@@ -1,4 +1,4 @@
-﻿namespace battery.app.DTO
+﻿namespace battery.app.Core.DTO
 {
 	/// <summary>
 	/// Представляет общую реализацию DTO для api.

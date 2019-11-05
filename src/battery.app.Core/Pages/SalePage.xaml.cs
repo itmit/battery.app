@@ -1,9 +1,9 @@
 ﻿using System;
-using battery.app.Views;
+using battery.app.Core.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace battery.app.Pages
+namespace battery.app.Core.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class SalePage : ContentPage

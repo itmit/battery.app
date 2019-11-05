@@ -2,10 +2,10 @@
 using System.Net.Http;
 using System.Threading.Tasks;
 using battery.app.Core;
+using battery.app.Core.Models;
 using battery.app.Core.Pages;
 using battery.app.Core.Repositories;
-using battery.app.Models;
-using battery.app.Services;
+using battery.app.Core.Services;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;

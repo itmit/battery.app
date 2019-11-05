@@ -2,7 +2,7 @@
 
 using Xamarin.Forms;
 
-namespace battery.app.Controls
+namespace battery.app.Core.Controls
 {
 	/// <summary>
 	/// Представляет <see cref="Picker"/> для выбора товаров.

@@ -7,7 +7,7 @@
              Title="Сканирование"
              BackgroundColor="#ebebeb"
              NavigationPage.HasNavigationBar="False"
-             x:Class="battery.app.Pages.ScanningPage">
+             x:Class="battery.app.Core.Pages.ScanningPage">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout VerticalOptions="FillAndExpand">

@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
-using battery.app.Models;
-using battery.app.RealmObjects;
+using battery.app.Core.Models;
 
 namespace battery.app.Core.Repositories
 {

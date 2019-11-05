@@ -1,6 +1,6 @@
 ﻿using System.Net.Http;
 
-namespace battery.app.Services
+namespace battery.app.Core.Services
 {
 	/// <summary>
 	/// Представляет базовый сервис.

@@ -1,7 +1,6 @@
 ﻿using Android.Support.Design.BottomNavigation;
 using Android.Support.Design.Widget;
 using Android.Views;
-using battery.app.Controls;
 using battery.app.Droid;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;

@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using battery.app.Models;
+using battery.app.Core.Models;
 
-namespace battery.app.Services
+namespace battery.app.Core.Services
 {
 	/// <summary>
 	/// Представляет интерфейс для авторизации.

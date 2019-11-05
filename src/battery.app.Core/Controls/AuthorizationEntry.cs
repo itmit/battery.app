@@ -1,6 +1,6 @@
 ﻿using Xamarin.Forms;
 
-namespace battery.app.Controls
+namespace battery.app.Core.Controls
 {
 	/// <summary>
 	/// Представляет <see cref="Entry"/>, для авторизации.

@@ -1,4 +1,4 @@
-﻿namespace battery.app.Models
+﻿namespace battery.app.Core.Models
 {
 	/// <summary>
 	/// Представляет возможные роли пользователя.

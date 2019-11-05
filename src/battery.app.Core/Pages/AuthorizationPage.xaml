@@ -5,10 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
-             BackgroundColor="#ebebeb" 
-             xmlns:ex="clr-namespace:battery.app.Controls"
+             BackgroundColor="#ebebeb"
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
+             xmlns:controls="clr-namespace:battery.app.Core.Controls;assembly=battery.app.Core"
              x:Class="battery.app.Core.Pages.AuthorizationPage">
     <ContentPage.Content>
         <ScrollView VerticalOptions="FillAndExpand">
@@ -23,7 +23,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Source="user" Margin="20,0,10,0" VerticalOptions="Center"/>
-                            <ex:AuthorizationEntry Text="{Binding Login}" Grid.Column="1" Placeholder="логин" Style="{StaticResource AuthEntry}"/>
+                            <controls:AuthorizationEntry Text="{Binding Login}" Grid.Column="1" Placeholder="логин" Style="{StaticResource AuthEntry}"/>
                         </Grid>
                     </Frame>
                     <Frame Style="{StaticResource AuthFrame}">
@@ -33,7 +33,7 @@
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Image Grid.Column="0" Source="castle" Margin="20,0,10,0" VerticalOptions="Center"/>
-                            <ex:AuthorizationEntry Text="{Binding Password}" IsPassword="True" Grid.Column="1" Placeholder="пароль" Style="{StaticResource AuthEntry}"/>
+                            <controls:AuthorizationEntry Text="{Binding Password}" IsPassword="True" Grid.Column="1" Placeholder="пароль" Style="{StaticResource AuthEntry}"/>
                         </Grid>
                     </Frame>
                 </StackLayout>

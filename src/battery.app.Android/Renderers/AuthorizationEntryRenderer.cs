@@ -1,5 +1,5 @@
 ﻿using Android.Content;
-using battery.app.Controls;
+using battery.app.Core.Controls;
 using battery.app.Droid.Renderers;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;

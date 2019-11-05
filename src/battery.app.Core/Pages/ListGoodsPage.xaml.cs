@@ -2,7 +2,7 @@
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace battery.app.Pages
+namespace battery.app.Core.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ListGoodsPage : ContentPage

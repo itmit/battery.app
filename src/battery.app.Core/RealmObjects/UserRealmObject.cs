@@ -1,8 +1,6 @@
-﻿using System;
-using battery.app.Models;
-using Realms;
+﻿using Realms;
 
-namespace battery.app.RealmObjects
+namespace battery.app.Core.RealmObjects
 {
 	public class UserRealmObject : RealmObject
 	{

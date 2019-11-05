@@ -1,7 +1,7 @@
 ﻿using System;
 using Realms;
 
-namespace battery.app.RealmObjects
+namespace battery.app.Core.RealmObjects
 {
 	public class AccessTokenRealmObject : RealmObject
 	{

@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              BackgroundImageSource="picture_600.png"
              NavigationPage.HasNavigationBar="False"
-             x:Class="battery.app.Pages.NewsPage">
+             x:Class="battery.app.Core.Pages.NewsPage">
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">
             <StackLayout BackgroundColor="White" Padding="10,5,10,30">

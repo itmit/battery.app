@@ -6,7 +6,7 @@
              mc:Ignorable="d"
              BackgroundColor="#ebebeb"
              NavigationPage.HasNavigationBar="False"
-             x:Class="battery.app.Views.DetailGoods">
+             x:Class="battery.app.Core.Views.DetailGoods">
     <ContentPage.Content>
         <StackLayout>
             <StackLayout BackgroundColor="White" Padding="10,5,10,30">

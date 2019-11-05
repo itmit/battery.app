@@ -1,9 +1,7 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Xamarin.Forms;
 
-namespace battery.app.Views
+namespace battery.app.Core.Views
 {
 	public class MainNavigationPage : TabbedPage
 	{
