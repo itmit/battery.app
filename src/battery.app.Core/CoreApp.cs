@@ -2,7 +2,9 @@
 using battery.app.Core.Models;
 using battery.app.Core.Pages;
 using battery.app.Core.Repositories;
+using battery.app.Core.Services;
 using battery.app.Core.ViewModels;
+using MvvmCross;
 using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 using Realms;
@@ -19,13 +21,14 @@ namespace battery.app.Core
 				.RegisterAsLazySingleton();
 
 			CreatableTypes()
-				.EndingWith("Repository")
 				.InNamespace("battery.app.Core.Repositories")
-				.WithAttribute(typeof(RealmConfiguration))
+				.EndingWith("Repository")
 				.AsInterfaces()
-				.RegisterAsLazySingleton();
+				.RegisterAsDynamic();
 
-			UserRepository userRepository = new UserRepository(RealmModel.RealmDefaultConfiguration);
+			Mvx.IoCProvider.RegisterSingleton<IQrScanningService>(new QrScanningService());
+
+			var userRepository = Mvx.IoCProvider.Resolve<IUserRepository>();
 
 			User user = userRepository.All().SingleOrDefault();
 

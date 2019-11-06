@@ -1,11 +1,13 @@
 ﻿using System;
+using battery.app.Core.ViewModels;
+using MvvmCross.Forms.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace battery.app.Core.Pages
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ShipmentPage : ContentPage
+    public partial class ShipmentPage : MvxContentPage<ShipmentViewModel>
     {
         public ShipmentPage()
         {

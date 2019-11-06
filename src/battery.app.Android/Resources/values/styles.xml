@@ -24,7 +24,7 @@
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
   </style>
 
-  <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
+  <style name="AppCompatDialogStyle" parent="MainTheme.Base">
     <item name="colorAccent">#000000</item>
   </style>
 

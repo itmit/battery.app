@@ -5,7 +5,7 @@ namespace battery.app.Core
 {
 	public static class RealmModel
 	{
-		public static RealmConfiguration RealmDefaultConfiguration
+		public static RealmConfiguration Configuration
 		{
 			get
 			{

@@ -11,15 +11,12 @@ namespace battery.app.Core.Repositories
 		#region Data
 		#region Fields
 		private readonly IMapper _mapper;
-		private RealmConfiguration _config;
 		#endregion
 		#endregion
 
 		#region .ctor
-		public UserRepository(RealmConfiguration config)
+		public UserRepository()
 		{
-			_config = config;
-
 			_mapper = new Mapper(new MapperConfiguration(cfg =>
 			{
 				cfg.CreateMap<AccessToken, AccessTokenRealmObject>();
@@ -41,7 +38,7 @@ namespace battery.app.Core.Repositories
 		#region Public
 		public void Add(User user)
 		{
-			using (var realm = RealmModel.GetInstance(_config))
+			using (var realm = RealmModel.GetInstance(RealmModel.Configuration))
 			{
 				var userRealm = _mapper.Map<UserRealmObject>(user);
 				using (var transaction = realm.BeginWrite())
@@ -54,7 +51,7 @@ namespace battery.app.Core.Repositories
 
 		public IEnumerable<User> All()
 		{
-			using (var realm = Realm.GetInstance(_config))
+			using (var realm = Realm.GetInstance(RealmModel.Configuration))
 			{
 				var users = realm.All<UserRealmObject>();
 				var userList = new List<User>();
@@ -69,7 +66,7 @@ namespace battery.app.Core.Repositories
 
 		public void Remove(User user)
 		{
-			using (var realm = Realm.GetInstance(_config))
+			using (var realm = Realm.GetInstance(RealmModel.Configuration))
 			{
 				using (var transaction = realm.BeginWrite())
 				{

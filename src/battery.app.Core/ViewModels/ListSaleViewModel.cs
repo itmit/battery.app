@@ -2,7 +2,7 @@
 
 namespace battery.app.Core.ViewModels
 {
-	public class ListSalePageModel : MvxViewModel
+	public class ListSaleViewModel : MvxViewModel
 	{
 		
 	}

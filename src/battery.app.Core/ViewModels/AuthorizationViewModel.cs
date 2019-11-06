@@ -6,6 +6,7 @@ using battery.app.Core.Models;
 using battery.app.Core.Pages;
 using battery.app.Core.Repositories;
 using battery.app.Core.Services;
+using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
@@ -21,7 +22,7 @@ namespace battery.app.Core.ViewModels
 		/// <summary>
 		/// Репозиторий для работы с базой пользователей.
 		/// </summary>
-		private readonly UserRepository _userRepository = new UserRepository(RealmModel.RealmDefaultConfiguration);
+		private readonly IUserRepository _userRepository = Mvx.IoCProvider.Resolve<IUserRepository>();
 
 		public override Task Initialize()
 		{

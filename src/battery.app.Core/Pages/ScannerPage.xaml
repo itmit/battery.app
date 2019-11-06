@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage x:TypeArguments="viewModels:ScannerViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
+             xmlns:forms="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
+             mc:Ignorable="d"
+             BackgroundColor="Red"
+             x:Class="battery.app.Core.Pages.ScannerPage">
+    <ContentPage.Content >
+        <forms:ZXingScannerView x:Name="ZXingScannerView1" IsScanning="True"
+                                    OnScanResult="BarcodeScanView_OnOnScanResult" 
+                                    HorizontalOptions="CenterAndExpand" 
+                                    VerticalOptions="CenterAndExpand"
+                                    BackgroundColor="Aqua"
+                                    AutomationId = "zxingScannerView"
+                                    IsAnalyzing="True" IsTorchOn="True" IsVisible="True">
+        </forms:ZXingScannerView>
+    </ContentPage.Content>
+</views:MvxContentPage>

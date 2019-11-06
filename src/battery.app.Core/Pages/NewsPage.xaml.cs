@@ -1,12 +1,16 @@
 ﻿using System;
+using battery.app.Core.ViewModels;
 using battery.app.Core.Views;
+using MvvmCross.Forms.Presenters.Attributes;
+using MvvmCross.Forms.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
 namespace battery.app.Core.Pages
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class NewsPage : ContentPage
+	[MvxTabbedPagePresentation(WrapInNavigationPage = false)]
+	[XamlCompilation(XamlCompilationOptions.Compile)]
+    public partial class NewsPage : MvxContentPage<NewsViewModel>
     {
         public NewsPage()
         {

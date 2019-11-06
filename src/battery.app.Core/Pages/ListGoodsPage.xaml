@@ -1,10 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+<views:MvxContentPage x:TypeArguments="viewModels:ListGoodsViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:battery.app.Core.Controls;assembly=battery.app.Core"
+             xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
              mc:Ignorable="d"
+             IconImageSource="plus"
              NavigationPage.HasNavigationBar="False"
              BackgroundColor="#ebebeb"
              x:Class="battery.app.Core.Pages.ListGoodsPage">
@@ -33,7 +36,7 @@
                     </StackLayout>
                 </Frame>
             </AbsoluteLayout>
-            <Button Text="Оформить продажу" Style="{StaticResource ButtonListGoods}" Clicked="Button_Clicked"/>
+            <Button Text="Оформить продажу" Style="{StaticResource ButtonListGoods}" Command="{Binding OpenCreateGoodsCommand}"/>
         </StackLayout>
     </ContentPage.Content>
-</ContentPage>
+</views:MvxContentPage>
