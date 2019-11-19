@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage x:TypeArguments="viewModels:DetailGoodsViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
+             mc:Ignorable="d"
+             x:Class="battery.app.Core.Pages.DetailGoodsPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <StackLayout BackgroundColor="White" Padding="10,5,10,30">
+                <ImageButton Source="arrow_alt_left.png" Style="{StaticResource ImageBack}" Command="{Binding ClosePage}"/>
+                <Label Text="ДАННЫЕ ПРОДАЖИ" Style="{StaticResource MainLabelBlack}"/>
+            </StackLayout>
+            <BoxView Style="{StaticResource MainBoxView}"/>
+            <ScrollView>
+                <StackLayout Padding="20">
+                    <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10">
+                        <StackLayout>
+                            <Label Text="TAB" Style="{StaticResource TitleDetail}"/>
+                            <Label Text="23-07-2019" Style="{StaticResource DateDetail}"/>
+                            <Image Source="tab_1.jpg" HorizontalOptions="Start"/>
+                            <Grid Margin="0,20">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <StackLayout Grid.Column="0" Grid.Row="0">
+                                    <Label Text="TAB POLAR" Style="{StaticResource TitleCompany}"/>
+                                    <Label Text="Напряжение, В:12,0" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="Емкость (А*ч): 45-110" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="Пусковой ток,А: 400-1000" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="Полярность: 0" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="Технология сплава:Ca/Ca" Style="{StaticResource TextDetailGoods}"/>
+                                </StackLayout>
+                                <StackLayout Grid.Column="1" Grid.Row="0">
+                                    <Label Text="Место продажи" Style="{StaticResource TitleTwoGoods}"/>
+                                    <Label Text="Москва" Style="{StaticResource NameCity}"/>
+                                </StackLayout>
+                            </Grid>
+                            <Label Text="Батареи TAB Polar предназанчены для автомобилей со стандартным уровнем электрооборудования, но с повышенными требованиями к пусковым характеристикам и надежности" Style="{StaticResource DescLabel}"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
+            </ScrollView>
+        </StackLayout>
+    </ContentPage.Content>
+</views:MvxContentPage>

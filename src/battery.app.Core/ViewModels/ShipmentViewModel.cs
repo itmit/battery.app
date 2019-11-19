@@ -1,6 +1,4 @@
 ﻿using System.Windows.Input;
-using battery.app.Core.Pages;
-using battery.app.Core.Services;
 using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
@@ -15,11 +13,10 @@ namespace battery.app.Core.ViewModels
 		private ICommand _addGoodsCommand;
 		private IMvxNavigationService _navigationService;
 		private ICommand _scanGoodsCommand;
+		private MvxObservableCollection<string> _goodsCodes = new MvxObservableCollection<string>();
+		private App _app = App.Current;
 
-		public ShipmentViewModel(IMvxNavigationService navigationService)
-		{
-			_navigationService = navigationService;
-		}
+		public ShipmentViewModel(IMvxNavigationService navigationService) => _navigationService = navigationService;
 
 		public ICommand ScanGoodsCommand
 		{
@@ -43,27 +40,40 @@ namespace battery.app.Core.ViewModels
 		{
 			if (obj is string code)
 			{
-
-				GoodCodes.Add(code);
+				GoodsCodes.Add(code);
 			} 
 		}
 
-		public override void ViewAppeared()
+		private void ScanGoods()
 		{
-			base.ViewAppeared();
+			var page = new ZXingScannerPage();
+			page.OnScanResult += PageOnOnScanResult;
+			
+			_app.MainPage.Navigation.PushModalAsync(page);
 		}
 
-		private void ScanGoods() 
-		{ 
-			var vm = new ScannerViewModel(Mvx.IoCProvider.Resolve<IMvxNavigationService>());
-			_navigationService.Navigate(vm);
+		private void PageOnOnScanResult(Result result)
+		{
+			if (result == null || string.IsNullOrEmpty(result.Text))
+			{
+				return;
+			}
+
+			var newCollection = new MvxObservableCollection<string>();
+			foreach (var goodsCode in GoodsCodes)
+			{
+				newCollection.Add(goodsCode);
+			}
+			newCollection.Add(result.Text);
+			GoodsCodes = newCollection;
+
+			_app.MainPage.Navigation.PopModalAsync();
 		}
 
-		public MvxObservableCollection<string> GoodCodes
+		public MvxObservableCollection<string> GoodsCodes
 		{
-			get;
-			set;
-		} = new MvxObservableCollection<string>();
-
+			get => _goodsCodes;
+			set => SetProperty(ref _goodsCodes, value);
+		}
 	}
 }

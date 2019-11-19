@@ -5,6 +5,7 @@ using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using ZXing;
 
 namespace battery.app.Core.Pages
 {
@@ -18,9 +19,9 @@ namespace battery.app.Core.Pages
             InitializeComponent();
         }
 
-        private void Button_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new DetailGoods(), false);
-        }
-    }
+		private void ZXingScannerView_OnOnScanResult(Result result)
+		{
+			ViewModel.OnResultScan(result.Text);
+		}
+	}
 }

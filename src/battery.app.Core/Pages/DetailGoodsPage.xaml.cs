@@ -7,21 +7,15 @@ using battery.app.Core.ViewModels;
 using MvvmCross.Forms.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ZXing;
 
 namespace battery.app.Core.Pages
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ScannerPage : MvxContentPage<ScannerViewModel>
+	public partial class DetailGoodsPage : MvxContentPage<DetailGoodsViewModel>
 	{
-		public ScannerPage()
+		public DetailGoodsPage()
 		{
 			InitializeComponent();
-		}
-
-		private void BarcodeScanView_OnOnScanResult(Result result)
-		{
-			ViewModel.Handle_OnScanResult(result);
 		}
 	}
 }

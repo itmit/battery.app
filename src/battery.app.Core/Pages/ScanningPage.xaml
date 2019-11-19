@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
+             xmlns:forms="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              mc:Ignorable="d"
              Title="Сканирование"
              IconImageSource="qrcode"
@@ -24,11 +25,12 @@
                     <Frame AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.9,AutoSize,AutoSize" CornerRadius="10" BackgroundColor="#fff" Padding="35,25">
                         <StackLayout>
                             <Label Text="QR BARCODE SCANNER" Style="{StaticResource QrLabel}"/>
-                            <Image Source="box_foto.png" Margin="5"/>
+                            <Image Source="box_foto.png" Margin="5" IsVisible="{Binding IsNotScanning}"/>
+                            <forms:ZXingScannerView HeightRequest="300" WidthRequest="300" OnScanResult="ZXingScannerView_OnOnScanResult" IsScanning="{Binding IsScanning}" IsVisible="{Binding IsScanning}" />
                         </StackLayout>
                     </Frame>
                 </AbsoluteLayout>
-                <Button Text="Сканировать товар" Style="{StaticResource ButtonDefOne}" Clicked="Button_Clicked"/>
+                <Button Text="Сканировать товар" Style="{StaticResource ButtonDefOne}" Command="{Binding ScanCommand}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
