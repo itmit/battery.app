@@ -27,7 +27,7 @@ namespace battery.app.Core.ViewModels
 		private void DoExit()
 		{
 			var userRepository = Mvx.IoCProvider.Create<IUserRepository>();
-			userRepository.Remove(userRepository.All().SingleOrDefault());
+			userRepository.Remove(userRepository.GetUsers().SingleOrDefault());
 			App.Current.MainPage = new AuthorizationPage();
 		}
 	}

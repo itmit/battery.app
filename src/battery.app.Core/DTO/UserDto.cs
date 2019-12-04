@@ -9,7 +9,6 @@ namespace battery.app.Core.DTO
 	/// </summary>
 	public class UserDto
 	{
-
 		/// <summary>
 		/// Возвращает или устанавливает ид пользователя.
 		/// </summary>

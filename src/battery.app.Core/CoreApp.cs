@@ -26,17 +26,16 @@ namespace battery.app.Core
 				.AsInterfaces()
 				.RegisterAsDynamic();
 
-			Mvx.IoCProvider.RegisterSingleton<IQrScanningService>(new QrScanningService());
-
 			var userRepository = Mvx.IoCProvider.Resolve<IUserRepository>();
 
-			User user = userRepository.All().SingleOrDefault();
-
-			if (user == null)
+			User user = userRepository.GetUsers().SingleOrDefault();
+			
+			if (user?.AccessToken == null)
 			{
 				RegisterAppStart<AuthorizationViewModel>();
 				return;
 			}
+			Mvx.IoCProvider.RegisterSingleton<IDealerService>(new DealerService(user.AccessToken));
 
 			RegisterAppStart<MainViewModel>();
 		}

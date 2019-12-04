@@ -49,7 +49,7 @@ namespace battery.app.Core.Repositories
 			}
 		}
 
-		public IEnumerable<User> All()
+		public IEnumerable<User> GetUsers()
 		{
 			using (var realm = Realm.GetInstance(RealmModel.Configuration))
 			{

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
+using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
 using battery.app.Core.DTO;
@@ -12,7 +14,7 @@ namespace battery.app.Core.Services
 	/// <summary>
 	/// Представляет 
 	/// </summary>
-	public class AuthService : BaseService, IAuthService
+	public class AuthService : IAuthService
 	{
 		/// <summary>
 		/// Адрес для авторизации.
@@ -27,9 +29,7 @@ namespace battery.app.Core.Services
 		/// <summary>
 		/// Инициализирует новый экземпляр <see cref="AuthService" />.
 		/// </summary>
-		/// <param name="httpClientHandler">Обработчик сообщения по умолчанию, для <see cref="HttpClient"/>.</param>
-		public AuthService(HttpClientHandler httpClientHandler)
-			: base(httpClientHandler)
+		public AuthService()
 		{
 			_mapper = new Mapper(new MapperConfiguration(cfg =>
 			{
@@ -54,19 +54,20 @@ namespace battery.app.Core.Services
 		/// <returns>Авторизованный пользователь.</returns>
 		public async Task<User> Login(string login, string password)
 		{
-			using (var client = new HttpClient(HttpClientHandler))
+			using (var client = new HttpClient())
 			{
-				var encodedContent = new FormUrlEncodedContent(new Dictionary<string, string>
+				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+				var requestBody = JsonConvert.SerializeObject(new AuthDto
 				{
-					{
-						"login", login
-					},
-					{
-						"password", password
-					}
+					Login = login,
+					Password = password
 				});
 
-				var response = await client.PostAsync(LoginUri, encodedContent);
+				Debug.WriteLine(requestBody);
+
+				var response = await client.PostAsync(LoginUri, 
+													  new StringContent(requestBody, Encoding.UTF8, "application/json"));
 
 				var jsonString = await response.Content.ReadAsStringAsync();
 				Debug.WriteLine(jsonString);

@@ -7,7 +7,7 @@ namespace battery.app.Core.Repositories
 	{
 		void Add(User user);
 
-		IEnumerable<User> All();
+		IEnumerable<User> GetUsers();
 
 		void Remove(User user);
 

@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Net.Http;
-using System.Threading.Tasks;
-using battery.app.Core;
 using battery.app.Core.Models;
 using battery.app.Core.Pages;
+using battery.app.Core.Properties;
 using battery.app.Core.Repositories;
 using battery.app.Core.Services;
 using MvvmCross;
 using MvvmCross.Commands;
-using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using Realms;
+using PommaLabs.Thrower;
 
 namespace battery.app.Core.ViewModels
 {
@@ -19,47 +16,63 @@ namespace battery.app.Core.ViewModels
 	/// </summary>
 	public class AuthorizationViewModel : MvxViewModel
 	{
+		#region Data
+		#region Fields
 		/// <summary>
-		/// Репозиторий для работы с базой пользователей.
-		/// </summary>
-		private readonly IUserRepository _userRepository = Mvx.IoCProvider.Resolve<IUserRepository>();
-
-		public override Task Initialize()
-		{
-			return base.Initialize();
-		}
-
-		/// <summary>
-		/// Текущее приложение.
+		/// Текущее xamarin приложение.
 		/// </summary>
 		private readonly App _app = App.Current;
-		private string _password;
+
+		/// <summary>
+		/// Сервис для авторизации.
+		/// </summary>
+		private readonly IAuthService _authService;
+
+		/// <summary>
+		/// Введенный пользователем логин.
+		/// </summary>
 		private string _login;
 
 		/// <summary>
+		/// Введенный пользователем пароль.
+		/// </summary>
+		private string _password;
+		/// <summary>
+		/// Репозиторий для работы с базой пользователей.
+		/// </summary>
+		private readonly IUserRepository _userRepository;
+		#endregion
+		#endregion
+
+		#region .ctor
+		/// <summary>
+		/// Инициализирует AuthorizationViewModel с параметрами.
+		/// </summary>
+		/// <param name="userRepository">Репозиторий для сохранения пользователей после входа.</param>
+		/// <param name="authService">Сервис для авторизации пользователей.</param>
+		/// <exception cref="ArgumentNullException">Вызывается, если переданные репозиторий или сервис являются <c>null</c>.</exception>
+		public AuthorizationViewModel(IUserRepository userRepository, IAuthService authService)
+		{
+			Raise.ArgumentNullException.IfIsNull(authService, nameof(authService));
+			Raise.ArgumentNullException.IfIsNull(userRepository, nameof(userRepository));
+			_userRepository = userRepository;
+			_authService = authService;
+		}
+		#endregion
+
+		#region Properties
+		/// <summary>
 		/// Представляет команду для авторизации.
 		/// </summary>
-		public IMvxCommand AuthCommand => new MvxCommand(Authorizate);
+		public IMvxCommand AuthCommand => new MvxCommand(SignIn);
 
-		private async void Authorizate()
+		/// <summary>
+		/// Возвращает или устанавливает логин для авторизации.
+		/// </summary>
+		public string Login
 		{
-			if (string.IsNullOrEmpty(Login) || string.IsNullOrEmpty(Password))
-			{
-				await _app.MainPage.DisplayAlert(Properties.Strings.Alert, Properties.Strings.EmptyFieldsMessage, Properties.Strings.Ok);
-				return;
-			}
-
-			IAuthService authService = new AuthService(new HttpClientHandler());
-			User user = await authService.Login(Login, Password);
-			if (user == null)
-			{
-				await _app.MainPage.DisplayAlert(Properties.Strings.Alert, Properties.Strings.AuthorizationError, Properties.Strings.Ok);
-				return;
-			}
-
-			_userRepository.Add(user);
-
-			_app.MainPage = new MainPage();
+			get => _login;
+			set => SetProperty(ref _login, value);
 		}
 
 		/// <summary>
@@ -70,14 +83,44 @@ namespace battery.app.Core.ViewModels
 			get => _password;
 			set => SetProperty(ref _password, value);
 		}
+		#endregion
 
+		#region Private
 		/// <summary>
-		/// Возвращает или устанавливает логин для авторизации.
+		/// Авторизует пользователя для входа в приложение.
 		/// </summary>
-		public string Login
+		private async void SignIn()
 		{
-			get => _login;
-			set => SetProperty(ref _login, value);
+			if (string.IsNullOrEmpty(Login) || string.IsNullOrEmpty(Password))
+			{
+				await _app.MainPage.DisplayAlert(Strings.Alert, Strings.EmptyFieldsMessage, Strings.Ok);
+				return;
+			}
+
+			User user;
+			try
+			{
+				user = await _authService.Login(Login, Password);
+			}
+			catch (Exception e)
+			{
+				await _app.MainPage.DisplayAlert(Strings.Alert, Strings.AuthorizationError, Strings.Ok);
+				Console.WriteLine(e);
+				return;
+			}
+
+			if (user?.AccessToken == null)
+			{
+				await _app.MainPage.DisplayAlert(Strings.Alert, Strings.AuthorizationError, Strings.Ok);
+				return;
+			}
+
+			Mvx.IoCProvider.RegisterSingleton<IDealerService>(new DealerService(user.AccessToken));
+
+			_userRepository.Add(user);
+
+			_app.MainPage = new MainPage();
 		}
+		#endregion
 	}
 }
