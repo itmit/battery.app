@@ -37,19 +37,22 @@
     <EmbeddedResource Update="Pages\NewsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\ListGoodsPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="Pages\SalePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\ScanningPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\ShipmentPage.xaml">
+    <EmbeddedResource Update="Pages\ShippingListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\ShippingListPage.xaml">
+    <EmbeddedResource Update="Pages\Shipping\ShippingConfirmPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Shipping\ShippingCreatePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="Pages\Shipping\ShippingPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Properties\Strings.resx">
@@ -67,9 +70,6 @@
   <ItemGroup>
     <Compile Update="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Update="Pages\ListGoodsPage.xaml.cs">
-      <DependentUpon>ListGoodsPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Properties\Strings.Designer.cs">
       <DesignTime>True</DesignTime>

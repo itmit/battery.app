@@ -11,17 +11,11 @@ using ZXing.Net.Mobile.Forms;
 
 namespace battery.app.Core.ViewModels
 {
-	public class ScanningViewModel : MvxViewModel
+	public class ScanningViewModel : MvxNavigationViewModel
 	{
 		private MvxCommand _scanCommand;
 		private bool _isScanning;
-		private IMvxNavigationService _navigationService;
 		private App _app = App.Current;
-
-		public ScanningViewModel(IMvxNavigationService navigationService)
-		{
-			_navigationService = navigationService;
-		}
 
 		public ICommand ScanCommand
 		{
@@ -49,7 +43,7 @@ namespace battery.app.Core.ViewModels
 
 			_app.MainPage.Navigation.PopModalAsync();
 			Task.Delay(1000);
-			_navigationService.Navigate<DetailGoodsViewModel>(result.Text);
+			NavigationService.Navigate<DetailGoodsViewModel>(result.Text);
 		}
 
 		public bool IsScanning
@@ -71,7 +65,12 @@ namespace battery.app.Core.ViewModels
 
 		public void OnResultScan(string resultText)
 		{
-			_navigationService.Navigate<DetailGoodsViewModel>(resultText);
+			NavigationService.Navigate<DetailGoodsViewModel>(resultText);
+		}
+
+		public ScanningViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
+			: base(logProvider, navigationService)
+		{
 		}
 	}
 }

@@ -11,10 +11,19 @@ using MvvmCross.ViewModels;
 
 namespace battery.app.Core.ViewModels
 {
+	/// <summary>
+	/// Представляет модель представления для страницы выхода.
+	/// </summary>
 	public class ExitViewModel : MvxViewModel
 	{
+		/// <summary>
+		/// Команда для выхода.
+		/// </summary>
 		private ICommand _exitCommand;
 
+		/// <summary>
+		/// Возвращает команду для выхода.
+		/// </summary>
 		public ICommand ExitCommand
 		{
 			get
@@ -24,6 +33,9 @@ namespace battery.app.Core.ViewModels
 			}
 		}
 
+		/// <summary>
+		/// Выполняет выход из приложения и открывает авторизацию.
+		/// </summary>
 		private void DoExit()
 		{
 			var userRepository = Mvx.IoCProvider.Create<IUserRepository>();

@@ -12,6 +12,7 @@
             BarBackgroundColor="Transparent"
             SelectedTabColor="Red"
             UnselectedTabColor="Gray"
+            NavigationPage.HasNavigationBar="False"
             >
     <TabbedPage.Effects>
         <controls:NoShiftEffect/>

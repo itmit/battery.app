@@ -1,17 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<views:MvxContentPage x:TypeArguments="viewModels:ShipmentViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
+<views:MvxContentPage x:TypeArguments="shipping:ShippingCreateViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-             xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
+             xmlns:shipping="clr-namespace:battery.app.Core.ViewModels.Shipping;assembly=battery.app.Core"
              xmlns:controls="clr-namespace:battery.app.Core.Controls;assembly=battery.app.Core"
              mc:Ignorable="d"
-             Title="Список товаров"
-             BackgroundColor="#ebebeb"
-             BackgroundImageSource="aaaa.jpg"
-             NavigationPage.HasNavigationBar="False"
-             x:Class="battery.app.Core.Pages.ShipmentPage">
+             x:Class="battery.app.Core.Pages.Shipping.ShippingCreatePage">
     <ContentPage.Content>
         <ScrollView>
             <StackLayout>
@@ -20,7 +16,7 @@
                         <Image Source="picture_600.png" HorizontalOptions="CenterAndExpand" Aspect="Fill" HeightRequest="300"/>
                         <BoxView Style="{StaticResource MainBoxView}"/>
                     </StackLayout>
-                    <ImageButton AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.07,0.05,AutoSize,AutoSize" Source="arrow_alt_left_white.png" Style="{StaticResource ImageBack}" Clicked="Close_modal"/>
+                    <ImageButton AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.07,0.05,AutoSize,AutoSize" Source="arrow_alt_left_white.png" Style="{StaticResource ImageBack}" Command="{Binding ClosePageCommand}"/>
                     <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="СПИСОК ТОВАРОВ" Style="{StaticResource MainLabel}"/>
                     <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.4,AutoSize,AutoSize" Text=" Добавляйте выбранные для отгрузки товары" Style="{StaticResource MainLabelSmall}"/>
                 </AbsoluteLayout>
@@ -43,7 +39,7 @@
                     </Frame.GestureRecognizers>
                     <Image Source="plus.png" Style="{StaticResource ImageShipment}"/>
                 </Frame>
-                <Button Text="Оформить отгрузку" Style="{StaticResource ButtonDefOne}" Clicked="Button_Clicked"/>
+                <Button Text="Оформить отгрузку" Style="{StaticResource ButtonDefOne}" Command="{Binding OpenShippingConfirmPage}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
