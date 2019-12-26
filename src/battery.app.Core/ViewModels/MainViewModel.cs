@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using battery.app.Core.Models;
 using battery.app.Core.Pages;
 using battery.app.Core.Repositories;
-using battery.app.Core.ViewModels.Shipping;
+using battery.app.Core.ViewModels.ShipmentViewModels;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
@@ -37,7 +37,7 @@ namespace battery.app.Core.ViewModels
 
 			if (_user.Role == UserRole.Stockman)
 			{
-				tasks.Add(NavigationService.Navigate<ShippingViewModel>());
+				tasks.Add(NavigationService.Navigate<ShipmentViewModel>());
 				tasks.Add(NavigationService.Navigate<ShippingListViewModel>());
 			}
 			tasks.Add(NavigationService.Navigate<NewsViewModel>());

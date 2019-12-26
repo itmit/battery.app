@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="battery.app.Core.Views.ViewCell.ShipmentViewCell">
+    <ViewCell.View>
+        <StackLayout Margin="0,0,0,10">
+            <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="15">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Image Grid.Column="0" Source="tab_1.jpg" VerticalOptions="Center"/>
+                    <StackLayout Grid.Column="1" VerticalOptions="Center">
+                        <Label Text="{Binding P0}" Style="{StaticResource TitleSaleLabel}"/>
+                        <Label Text="{Binding P1}" Style="{StaticResource TextSaleLabel}"/>
+                        <Label Text="{Binding P2}" Style="{StaticResource TextSaleLabel}"/>
+                        <Label Text="{Binding P3}" Style="{StaticResource TextSaleLabel}"/>
+                        <Label Text="{Binding P4}" Style="{StaticResource TextSaleLabel}"/>
+                        <Label Text="{Binding P5}" Style="{StaticResource TextSaleLabel}"/>
+                    </StackLayout>
+                </Grid>
+            </Frame>
+        </StackLayout>
+    </ViewCell.View>
+</ViewCell>

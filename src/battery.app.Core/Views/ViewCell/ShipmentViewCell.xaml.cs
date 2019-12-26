@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace battery.app.Core.Pages.Shipping
+namespace battery.app.Core.Views.ViewCell
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ShippingConfirmPage : ContentPage
+	public partial class ShipmentViewCell : Xamarin.Forms.ViewCell
 	{
-		public ShippingConfirmPage()
+		public ShipmentViewCell()
 		{
 			InitializeComponent();
 		}

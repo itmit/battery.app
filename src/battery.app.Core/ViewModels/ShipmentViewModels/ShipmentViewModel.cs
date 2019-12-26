@@ -8,12 +8,12 @@ using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 
-namespace battery.app.Core.ViewModels.Shipping
+namespace battery.app.Core.ViewModels.ShipmentViewModels
 {
 	/// <summary>
 	/// Представляет модель для страницы отгрузки.
 	/// </summary>
-	public class ShippingViewModel : MvxNavigationViewModel
+	public class ShipmentViewModel : MvxNavigationViewModel
 	{
 		/// <summary>
 		/// Команда для перехода на страницу создания отгрузки.
@@ -31,12 +31,17 @@ namespace battery.app.Core.ViewModels.Shipping
 		private MvxObservableCollection<Dealer> _dealers;
 
 		/// <summary>
-		/// Инициализирует новый экземпляр <see cref="ShippingViewModel" />.
+		/// Выбранной дилер.
+		/// </summary>
+		private Dealer _selectedDealer;
+
+		/// <summary>
+		/// Инициализирует новый экземпляр <see cref="ShipmentViewModel" />.
 		/// </summary>
 		/// <param name="logProvider">Провайдер логов.</param>
 		/// <param name="navigationService">Сервис для навигации.</param>
 		/// <param name="dealerService">Сервис для получения дилеров.</param>
-		public ShippingViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IDealerService dealerService)
+		public ShipmentViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IDealerService dealerService)
 			: base(logProvider, navigationService) =>
 			_dealerService = dealerService;
 
@@ -49,7 +54,7 @@ namespace battery.app.Core.ViewModels.Shipping
 			await base.Initialize();
 			try
 			{
-				Dealers = new MvxObservableCollection<Dealer>(await _dealerService.GetDealers());
+				Dealers = new MvxObservableCollection<Dealer>(await _dealerService.GetAll());
 			}
 			catch (Exception e)
 			{
@@ -74,8 +79,8 @@ namespace battery.app.Core.ViewModels.Shipping
 		/// </summary>
 		public Dealer SelectedDealer
 		{
-			get;
-			set;
+			get => _selectedDealer;
+			set => SetProperty(ref _selectedDealer, value);
 		}
 
 		/// <summary>
@@ -90,9 +95,9 @@ namespace battery.app.Core.ViewModels.Shipping
 		/// <summary>
 		/// Открывает страницу создания отгрузки.
 		/// </summary>
-		private void OpenShippingCreatePage()
+		private async void OpenShippingCreatePage()
 		{
-			NavigationService.Navigate<ShippingCreateViewModel, Dealer>(SelectedDealer);
+			bool result = await NavigationService.Navigate<ShippingCreateViewModel, Dealer, bool>(SelectedDealer);
 		}
 	}
 }

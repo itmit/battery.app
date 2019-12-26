@@ -4,8 +4,15 @@ using battery.app.Core.Models;
 
 namespace battery.app.Core.Services
 {
+	/// <summary>
+	/// Представляет сервис для получения дилеров.
+	/// </summary>
 	public interface IDealerService
 	{
-		Task<IEnumerable<Dealer>> GetDealers();
+		/// <summary>
+		/// Получает список дилеров.
+		/// </summary>
+		/// <returns>Список дилеров.</returns>
+		Task<List<Dealer>> GetAll();
 	}
 }

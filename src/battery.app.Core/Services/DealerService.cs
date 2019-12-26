@@ -11,13 +11,30 @@ using PommaLabs.Thrower;
 
 namespace battery.app.Core.Services
 {
+	/// <summary>
+	/// Представляет сервис для получения дилеров.
+	/// </summary>
 	public class DealerService : IDealerService
 	{
+		/// <summary>
+		/// Маппер.
+		/// </summary>
 		private readonly Mapper _mapper;
-		private AccessToken _accessToken;
+		
+		/// <summary>
+		/// Токен для доступа к api.
+		/// </summary>
+		private readonly AccessToken _accessToken;
 
+		/// <summary>
+		/// Адрес для получения дилеров.
+		/// </summary>
 		private const string GetDealersUri = "http://battery.itmit-studio.ru/api/delivery/listOfDealers";
 
+		/// <summary>
+		/// Инициализирует новый экземпляр <see cref="DealerService" />.
+		/// </summary>
+		/// <param name="accessToken">Токен для доступа к api.</param>
 		public DealerService(AccessToken accessToken)
 		{
 			Raise.ArgumentNullException.IfIsNull(accessToken, nameof(accessToken));
@@ -30,7 +47,11 @@ namespace battery.app.Core.Services
 			}));
 		}
 
-		public async Task<IEnumerable<Dealer>> GetDealers()
+		/// <summary>
+		/// Получает список дилеров.
+		/// </summary>
+		/// <returns>Список дилеров.</returns>
+		public async Task<List<Dealer>> GetAll()
 		{
 			using (var client = new HttpClient())
 			{
@@ -47,7 +68,7 @@ namespace battery.app.Core.Services
 					if (!string.IsNullOrEmpty(jsonString))
 					{
 						var jsonData = JsonConvert.DeserializeObject<GeneralDto<List<DealerDto>>>(jsonString);
-						return await Task.FromResult(_mapper.Map<IEnumerable<Dealer>>(jsonData.Data));
+						return await Task.FromResult(_mapper.Map<List<Dealer>>(jsonData.Data));
 					}
 				}
 

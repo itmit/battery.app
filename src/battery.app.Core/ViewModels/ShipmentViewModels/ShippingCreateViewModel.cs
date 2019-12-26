@@ -1,24 +1,24 @@
-﻿using System.Windows.Input;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Windows.Input;
 using battery.app.Core.Models;
+using battery.app.Core.Properties;
+using battery.app.Core.Services;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
+using MvvmCross.Navigation.EventArguments;
 using MvvmCross.ViewModels;
 using Xamarin.Forms;
 using ZXing;
 using ZXing.Net.Mobile.Forms;
 
-namespace battery.app.Core.ViewModels.Shipping
+namespace battery.app.Core.ViewModels.ShipmentViewModels
 {
 	/// <summary>
 	/// Представляет модель страницы создания отгрузки.
 	/// </summary>
-	public class ShippingCreateViewModel : MvxViewModel<Dealer>
+	public class ShippingCreateViewModel : MvxViewModel<Dealer, bool>
 	{
-		/// <summary>
-		/// Команда для добавления товара в отгрузку.
-		/// </summary>
-		private ICommand _addGoodsCommand;
-
 		/// <summary>
 		/// Сервис для навигации.
 		/// </summary>
@@ -32,7 +32,7 @@ namespace battery.app.Core.ViewModels.Shipping
 		/// <summary>
 		/// Коды отсканированных товаров.
 		/// </summary>
-		private MvxObservableCollection<string> _goodsCodes = new MvxObservableCollection<string>();
+		private MvxObservableCollection<Goods> _goods = new MvxObservableCollection<Goods>();
 
 		/// <summary>
 		/// Текущее приложение.
@@ -53,12 +53,17 @@ namespace battery.app.Core.ViewModels.Shipping
 		/// Дилер.
 		/// </summary>
 		private Dealer _dealer;
+		private IShipmentService _shipmentService;
 
 		/// <summary>
 		/// Инициализирует новый экземпляр <see cref="ShippingCreateViewModel" />.
 		/// </summary>
 		/// <param name="navigationService">Сервис для навигации.</param>
-		public ShippingCreateViewModel(IMvxNavigationService navigationService) => _navigationService = navigationService;
+		public ShippingCreateViewModel(IMvxNavigationService navigationService, IShipmentService shipmentService)
+		{
+			_navigationService = navigationService;
+			_shipmentService = shipmentService;
+		}
 
 		/// <summary>
 		/// Возвращает команду для открытия сканера товаров.
@@ -99,9 +104,17 @@ namespace battery.app.Core.ViewModels.Shipping
 		/// <summary>
 		/// Открывает страницу подтверждения отгрузки.
 		/// </summary>
-		private void OpenShippingConfirm()
+		private async void OpenShippingConfirm()
 		{
-			_navigationService.Navigate<ShippingConfirmViewModel, Shipment>(new Shipment(_goodsCodes, _dealer));
+			bool result = await _navigationService.Navigate<ShippingConfirmViewModel, Shipment, bool>(new Shipment(_goods, _dealer));
+
+			if (result)
+			{
+				await Task.Run(() =>
+				{
+					_navigationService.Close(this, true);
+				});
+			}
 		}
 
 		/// <summary>
@@ -110,27 +123,6 @@ namespace battery.app.Core.ViewModels.Shipping
 		private void ClosePage()
 		{
 			_navigationService.Close(this);
-		}
-
-		/// <summary>
-		/// Возвращает команду для добавления товаров в отгрузку.
-		/// </summary>
-		public ICommand AddGoodsCommand
-		{
-			get
-			{
-				_addGoodsCommand = _addGoodsCommand ?? new MvxCommand<string>(AddGoods);
-				return _addGoodsCommand;
-			}
-		}
-
-		/// <summary>
-		/// Добавляет код товара в отгрузку.
-		/// </summary>
-		/// <param name="code">Код товара.</param>
-		private void AddGoods(string code)
-		{
-			GoodsCodes.Add(code);
 		}
 
 		/// <summary>
@@ -148,31 +140,42 @@ namespace battery.app.Core.ViewModels.Shipping
 		/// Вызывает при успешном сканировании товара и добавляет код товара в отгрузку.
 		/// </summary>
 		/// <param name="result">Результат сканирования.</param>
-		private void PageOnOnScanResult(Result result)
+		private async void PageOnOnScanResult(Result result)
 		{
 			if (result == null || string.IsNullOrEmpty(result.Text))
 			{
 				return;
 			}
 
-			var newCollection = new MvxObservableCollection<string>();
-			foreach (var goodsCode in GoodsCodes)
+			var goods = await _shipmentService.CheckGoods(result.Text);
+
+			if (goods == null)
+			{
+				await Application.Current.MainPage.Navigation.PopModalAsync();
+				Device.BeginInvokeOnMainThread(async () => {
+					await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Батарея не найдена.", Strings.Ok);
+				});
+				return;
+			}
+
+			var newCollection = new MvxObservableCollection<Goods>();
+			foreach (var goodsCode in Goods)
 			{
 				newCollection.Add(goodsCode);
 			}
-			newCollection.Add(result.Text);
-			GoodsCodes = newCollection;
+			newCollection.Add(goods);
+			Goods = newCollection;
 
-			_app.MainPage.Navigation.PopModalAsync();
+			await Application.Current.MainPage.Navigation.PopModalAsync();
 		}
 
 		/// <summary>
 		/// Возвращает коды товаров в отгрузке.
 		/// </summary>
-		public MvxObservableCollection<string> GoodsCodes
+		public MvxObservableCollection<Goods> Goods
 		{
-			get => _goodsCodes;
-			private set => SetProperty(ref _goodsCodes, value);
+			get => _goods;
+			private set => SetProperty(ref _goods, value);
 		}
 
 		/// <summary>
