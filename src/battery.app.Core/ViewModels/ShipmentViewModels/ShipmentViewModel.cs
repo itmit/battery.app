@@ -15,26 +15,30 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 	/// </summary>
 	public class ShipmentViewModel : MvxNavigationViewModel
 	{
-		/// <summary>
-		/// Команда для перехода на страницу создания отгрузки.
-		/// </summary>
-		private MvxCommand _openShippingCreatePageCommand;
-
-		/// <summary>
-		/// Сервис для работы с дилерами.
-		/// </summary>
-		private readonly IDealerService _dealerService;
-
+		#region Data
+		#region Fields
 		/// <summary>
 		/// Дилеры.
 		/// </summary>
 		private MvxObservableCollection<Dealer> _dealers;
 
 		/// <summary>
+		/// Сервис для работы с дилерами.
+		/// </summary>
+		private readonly IDealerService _dealerService;
+		/// <summary>
+		/// Команда для перехода на страницу создания отгрузки.
+		/// </summary>
+		private MvxCommand _openShippingCreatePageCommand;
+
+		/// <summary>
 		/// Выбранной дилер.
 		/// </summary>
 		private Dealer _selectedDealer;
+		#endregion
+		#endregion
 
+		#region .ctor
 		/// <summary>
 		/// Инициализирует новый экземпляр <see cref="ShipmentViewModel" />.
 		/// </summary>
@@ -44,22 +48,16 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		public ShipmentViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IDealerService dealerService)
 			: base(logProvider, navigationService) =>
 			_dealerService = dealerService;
+		#endregion
 
+		#region Properties
 		/// <summary>
-		/// Инициализирует данные модели.
+		/// Возвращает коллекцию дилеров.
 		/// </summary>
-		/// <returns></returns>
-		public override async Task Initialize()
+		public MvxObservableCollection<Dealer> Dealers
 		{
-			await base.Initialize();
-			try
-			{
-				Dealers = new MvxObservableCollection<Dealer>(await _dealerService.GetAll());
-			}
-			catch (Exception e)
-			{
-				Console.WriteLine(e);
-			}
+			get => _dealers;
+			private set => SetProperty(ref _dealers, value);
 		}
 
 		/// <summary>
@@ -82,22 +80,35 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 			get => _selectedDealer;
 			set => SetProperty(ref _selectedDealer, value);
 		}
+		#endregion
 
+		#region Overrided
 		/// <summary>
-		/// Возвращает коллекцию дилеров.
+		/// Инициализирует данные модели.
 		/// </summary>
-		public MvxObservableCollection<Dealer> Dealers
+		/// <returns></returns>
+		public override async Task Initialize()
 		{
-			get => _dealers;
-			private set => SetProperty(ref _dealers, value);
+			await base.Initialize();
+			try
+			{
+				Dealers = new MvxObservableCollection<Dealer>(await _dealerService.GetAll());
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+			}
 		}
+		#endregion
 
+		#region Private
 		/// <summary>
 		/// Открывает страницу создания отгрузки.
 		/// </summary>
 		private async void OpenShippingCreatePage()
 		{
-			bool result = await NavigationService.Navigate<ShippingCreateViewModel, Dealer, bool>(SelectedDealer);
+			var result = await NavigationService.Navigate<ShippingCreateViewModel, Dealer, bool>(SelectedDealer);
 		}
+		#endregion
 	}
 }

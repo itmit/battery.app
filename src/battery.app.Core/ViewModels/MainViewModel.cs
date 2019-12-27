@@ -25,7 +25,7 @@ namespace battery.app.Core.ViewModels
 		public IMvxAsyncCommand ShowInitialViewModelsCommand { get; private set; }
 
 		private IMvxViewModel _exitViewModel;
-		private User _user;
+		private readonly User _user;
 
 		private Task ShowInitialViewModels()
 		{

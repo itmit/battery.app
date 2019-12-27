@@ -1,11 +1,15 @@
 ﻿
 using System.Threading.Tasks;
 using System.Windows.Input;
+using battery.app.Core.Models;
+using battery.app.Core.Properties;
+using battery.app.Core.Services;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using MvvmCross.Presenters.Hints;
 using MvvmCross.ViewModels;
+using Xamarin.Forms;
 using ZXing;
 using ZXing.Net.Mobile.Forms;
 
@@ -15,7 +19,7 @@ namespace battery.app.Core.ViewModels
 	{
 		private MvxCommand _scanCommand;
 		private bool _isScanning;
-		private App _app = App.Current;
+		private IShipmentService _shipmentService;
 
 		public ICommand ScanCommand
 		{
@@ -31,19 +35,34 @@ namespace battery.app.Core.ViewModels
 			var page = new ZXingScannerPage();
 			page.OnScanResult += PageOnOnScanResult;
 
-			_app.MainPage.Navigation.PushModalAsync(page);
+			Application.Current.MainPage.Navigation.PushModalAsync(page);
 		}
 
-		private void PageOnOnScanResult(Result result)
+		private async void PageOnOnScanResult(Result result)
 		{
 			if (result == null || string.IsNullOrEmpty(result.Text))
 			{
 				return;
 			}
 
-			_app.MainPage.Navigation.PopModalAsync();
+			var goods = await _shipmentService.CheckGoods(result.Text);
+
+			if (goods == null)
+			{
+				await Application.Current.MainPage.Navigation.PopModalAsync();
+				Device.BeginInvokeOnMainThread(async () =>
+				{
+					await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Батарея не найдена.", Strings.Ok);
+				});
+				return;
+			}
+
+
+			/*
+			Application.Current.MainPage.Navigation.PopModalAsync();
 			Task.Delay(1000);
-			NavigationService.Navigate<DetailGoodsViewModel>(result.Text);
+			*/
+			await NavigationService.Navigate<DetailGoodsViewModel, Goods>(goods);
 		}
 
 		public bool IsScanning
@@ -63,14 +82,32 @@ namespace battery.app.Core.ViewModels
 			get => !IsScanning;
 		}
 
-		public void OnResultScan(string resultText)
+		public async void OnResultScan(string resultText)
 		{
-			NavigationService.Navigate<DetailGoodsViewModel>(resultText);
+			if (string.IsNullOrEmpty(resultText))
+			{
+				return;
+			}
+
+			var goods = await _shipmentService.CheckGoods(resultText);
+
+			if (goods == null)
+			{
+				await Application.Current.MainPage.Navigation.PopModalAsync();
+				Device.BeginInvokeOnMainThread(async () =>
+				{
+					await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Батарея не найдена.", Strings.Ok);
+				});
+				return;
+			}
+
+			await NavigationService.Navigate<DetailGoodsViewModel, Goods>(goods);
 		}
 
-		public ScanningViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
+		public ScanningViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IShipmentService shipmentService)
 			: base(logProvider, navigationService)
 		{
+			_shipmentService = shipmentService;
 		}
 	}
 }
