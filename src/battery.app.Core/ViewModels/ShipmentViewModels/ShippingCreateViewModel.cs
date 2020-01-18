@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using battery.app.Core.Models;
 using battery.app.Core.Properties;
@@ -6,6 +7,8 @@ using battery.app.Core.Services;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
+using Plugin.Permissions;
+using Plugin.Permissions.Abstractions;
 using Xamarin.Forms;
 using ZXing;
 using ZXing.Net.Mobile.Forms;
@@ -19,11 +22,6 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 	{
 		#region Data
 		#region Fields
-		/// <summary>
-		/// Текущее приложение.
-		/// </summary>
-		private readonly Application _app = Application.Current;
-
 		/// <summary>
 		/// Команда для закрытия страницы.
 		/// </summary>
@@ -58,6 +56,8 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		/// Сервис для получения информации о батареях.
 		/// </summary>
 		private readonly IShipmentService _shipmentService;
+		private ISettingsHelper _settingsHelper;
+		private Shipment _shipment;
 		#endregion
 		#endregion
 
@@ -67,10 +67,11 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		/// </summary>
 		/// <param name="navigationService">Сервис для навигации.</param>
 		/// <param name="shipmentService">Сервис для получения информации о товарах.</param>
-		public ShippingCreateViewModel(IMvxNavigationService navigationService, IShipmentService shipmentService)
+		public ShippingCreateViewModel(IMvxNavigationService navigationService, IShipmentService shipmentService, ISettingsHelper settingsHelper)
 		{
 			_navigationService = navigationService;
 			_shipmentService = shipmentService;
+			_settingsHelper = settingsHelper;
 		}
 		#endregion
 
@@ -146,7 +147,20 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		/// </summary>
 		private async void OpenShippingConfirm()
 		{
-			var result = await _navigationService.Navigate<ShippingConfirmViewModel, Shipment, bool>(new Shipment(_goods, _dealer));
+			if (_goods.Count == 0)
+			{
+				Device.BeginInvokeOnMainThread(async () =>
+				{
+					await Application.Current.MainPage.DisplayAlert(Strings.Alert,
+																	"Для создания отгрузки добавите хотя бы одну батарею",
+																	Strings.Ok);
+				});
+				return;
+			}
+
+			_shipment = _shipment == null ? new Shipment(_goods, _dealer) : new Shipment(_goods, _shipment.Dealer);
+
+			var result = await _navigationService.Navigate<ShippingConfirmViewModel, Shipment, bool>(_shipment);
 
 			if (result)
 			{
@@ -155,6 +169,43 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 					_navigationService.Close(this, true);
 				});
 			}
+		}
+
+		private async Task<bool> CheckStoragePermission()
+		{
+			try
+			{
+				var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+				if (status == PermissionStatus.Granted)
+				{
+					return true;
+				}
+
+				if (!await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Camera))
+				{
+					Device.BeginInvokeOnMainThread(async () =>
+					{
+						var answer = await Application.Current.MainPage.DisplayAlert(Strings.Alert,
+																					 "Для сканирования батарей необходимо разрешение на использование камеры.",
+																					 Strings.Ok,
+																					 Strings.Cancel);
+
+						if (answer)
+						{
+							_settingsHelper.OpenAppSettings();
+						}
+					});
+				}
+
+				status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+				return status == PermissionStatus.Granted;
+			}
+			catch (Exception ex)
+			{
+				Console.WriteLine(ex);
+			}
+
+			return false;
 		}
 
 		/// <summary>
@@ -168,7 +219,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 				return;
 			}
 
-			var goods = await _shipmentService.CheckGoods(result.Text);
+			var goods = await _shipmentService.CheckGoods("23403");
 
 			if (goods == null)
 			{
@@ -195,12 +246,15 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		/// <summary>
 		/// Открывает сканирование товара.
 		/// </summary>
-		private void ScanGoods()
+		private async void ScanGoods()
 		{
 			var page = new ZXingScannerPage();
 			page.OnScanResult += PageOnOnScanResult;
 
-			_app.MainPage.Navigation.PushModalAsync(page);
+			if (await CheckStoragePermission())
+			{
+				await Application.Current.MainPage.Navigation.PushModalAsync(page);
+			}
 		}
 		#endregion
 	}

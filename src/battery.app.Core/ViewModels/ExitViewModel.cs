@@ -8,6 +8,7 @@ using MvvmCross.Binding.BindingContext;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
+using Xamarin.Forms;
 
 namespace battery.app.Core.ViewModels
 {
@@ -40,7 +41,7 @@ namespace battery.app.Core.ViewModels
 		{
 			var userRepository = Mvx.IoCProvider.Create<IUserRepository>();
 			userRepository.Remove(userRepository.GetUsers().SingleOrDefault());
-			App.Current.MainPage = new AuthorizationPage();
+			Application.Current.MainPage = new AuthorizationPage();
 		}
 	}
 }

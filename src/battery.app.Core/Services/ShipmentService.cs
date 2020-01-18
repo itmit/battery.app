@@ -27,6 +27,7 @@ namespace battery.app.Core.Services
 		private readonly AccessToken _accessToken;
 
 		private const string CheckBatteryUri = "http://battery.itmit-studio.ru/api/delivery/checkBattery";
+		private const string GetDeliveriesAndShipmentsUri = "http://battery.itmit-studio.ru/api/delivery/listOfDeliveries";
 
 		/// <summary>
 		/// Адрес для получения дилеров.
@@ -43,6 +44,7 @@ namespace battery.app.Core.Services
 			_accessToken = accessToken;
 			_mapper = new Mapper(new MapperConfiguration(cfg =>
 			{
+				cfg.AllowNullCollections = false;
 				cfg.CreateMap<Shipment, ShipmentDto>()
 				   .ForMember(dto => dto.Dealer, m => m.MapFrom(ship => ship.Dealer.Guid))
 				   .ForMember(dto => dto.GoodsCodes, m => m.MapFrom(ship => ship.Goods.Select(i => i.SerialNumber)));
@@ -50,9 +52,9 @@ namespace battery.app.Core.Services
 				cfg.CreateMap<ShipmentDto, Shipment>();
 
 				cfg.CreateMap<GoodsDto, Goods>()
+				   .ForMember(g => g.TabParams, m => m.MapFrom(dto => dto.TabDescription.Split(' ')))
 				   .ForMember(g => g.ProductionDate, m => m.MapFrom(dto => dto.ProductionDate ?? DateTime.MinValue))
 				   .ForMember(g => g.DeliveryDate, m => m.MapFrom(dto => dto.DeliveryDate ?? DateTime.MinValue));
-
 			}));
 		}
 
@@ -104,6 +106,33 @@ namespace battery.app.Core.Services
 
 				return null;
 			}
+		}
+
+		public async Task<List<Shipment>> GetDeliveriesAndShipments(User user)
+		{
+			using (var client = new HttpClient())
+			{
+				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse($"{_accessToken.Type} {_accessToken.Body}");
+				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+				var response = await client.GetAsync(GetDeliveriesAndShipmentsUri);
+
+				var jsonString = await response.Content.ReadAsStringAsync();
+				Debug.WriteLine(jsonString);
+
+				if (response.IsSuccessStatusCode)
+				{
+					if (!string.IsNullOrEmpty(jsonString))
+					{
+						var jsonData = JsonConvert.DeserializeObject<GeneralDto<GoodsDto>>(jsonString);
+						//return await Task.FromResult(_mapper.Map<Goods>(jsonData.Data));
+					}
+				}
+
+				return null;
+			}
+
+			throw new NotImplementedException();
 		}
 	}
 }

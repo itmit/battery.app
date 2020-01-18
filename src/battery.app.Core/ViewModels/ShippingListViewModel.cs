@@ -1,4 +1,5 @@
-﻿using MvvmCross.Logging;
+﻿using System.Threading.Tasks;
+using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 
@@ -12,6 +13,11 @@ namespace battery.app.Core.ViewModels
 		public ShippingListViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
 			: base(logProvider, navigationService)
 		{
+		}
+
+		public async override Task Initialize()
+		{
+			await base.Initialize();
 		}
 	}
 }

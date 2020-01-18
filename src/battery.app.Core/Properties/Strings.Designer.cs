@@ -79,6 +79,15 @@ namespace battery.app.Core.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Отмена.
+        /// </summary>
+        internal static string Cancel {
+            get {
+                return ResourceManager.GetString("Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Не все поля заполнены.
         /// </summary>
         internal static string EmptyFieldsMessage {

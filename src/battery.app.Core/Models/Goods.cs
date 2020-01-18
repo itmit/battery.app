@@ -9,19 +9,7 @@ namespace battery.app.Core.Models
 			get;
 			set;
 		}
-
-		public string DeliveryNote
-		{
-			get;
-			set;
-		}
-
-		public string Sscc
-		{
-			get;
-			set;
-		}
-
+		
 		public DateTime ProductionDate
 		{
 			get;
@@ -34,25 +22,7 @@ namespace battery.app.Core.Models
 			set;
 		}
 
-		public string TabDescription
-		{
-			get;
-			set;
-		}
-
-		public string CustomerOrderNumber
-		{
-			get;
-			set;
-		}
-
-		public string CustomerBuyer
-		{
-			get;
-			set;
-		}
-
-		public string CustomerReceiver
+		public string[] TabParams
 		{
 			get;
 			set;

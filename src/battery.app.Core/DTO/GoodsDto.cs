@@ -12,20 +12,6 @@ namespace battery.app.Core.DTO
 			set;
 		}
 
-		[JsonProperty("delivery_note")]
-		public string DeliveryNote
-		{
-			get;
-			set;
-		}
-
-		[JsonProperty("SSCC")]
-		public string Sscc
-		{
-			get;
-			set;
-		}
-
 		[JsonProperty("production_date")]
 		public DateTime? ProductionDate
 		{
@@ -42,27 +28,6 @@ namespace battery.app.Core.DTO
 
 		[JsonProperty("TAB_description")]
 		public string TabDescription
-		{
-			get;
-			set;
-		}
-
-		[JsonProperty("CustomerOrderNumber")]
-		public string CustomerOrderNumber
-		{
-			get;
-			set;
-		}
-
-		[JsonProperty("Customer_Buyer")]
-		public string CustomerBuyer
-		{
-			get;
-			set;
-		}
-
-		[JsonProperty("Customer_Receiver")]
-		public string CustomerReceiver
 		{
 			get;
 			set;

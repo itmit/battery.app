@@ -114,7 +114,11 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		public Dealer SelectedDealer
 		{
 			get => _selectedDealer;
-			set => SetProperty(ref _selectedDealer, value);
+			set
+			{
+				SetProperty(ref _selectedDealer, value);
+				_shipment.Dealer = _selectedDealer;
+			}
 		}
 
 		/// <summary>
@@ -180,8 +184,6 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		private async void SendShipment()
 		{
 			var result = false;
-
-			_shipment.Dealer = SelectedDealer;
 
 			if (_shipment.Dealer == null)
 			{

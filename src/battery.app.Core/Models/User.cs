@@ -1,12 +1,10 @@
 ﻿using System;
-using PropertyChanged;
 
 namespace battery.app.Core.Models
 {
 	/// <summary>
 	/// Представляет пользователя.
 	/// </summary>
-	[AddINotifyPropertyChangedInterface]
 	public class User
 	{
 		/// <summary>

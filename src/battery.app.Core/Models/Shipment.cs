@@ -24,6 +24,7 @@ namespace battery.app.Core.Models
 		public List<Goods> Goods
 		{
 			get;
+			set;
 		}
 
 		/// <summary>

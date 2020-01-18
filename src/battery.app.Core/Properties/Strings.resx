@@ -123,6 +123,9 @@
   <data name="AuthorizationError" xml:space="preserve">
     <value>Ошибка авторизации</value>
   </data>
+  <data name="Cancel" xml:space="preserve">
+    <value>Отмена</value>
+  </data>
   <data name="EmptyFieldsMessage" xml:space="preserve">
     <value>Не все поля заполнены</value>
   </data>

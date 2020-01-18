@@ -8,6 +8,7 @@ using MvvmCross;
 using MvvmCross.Commands;
 using MvvmCross.ViewModels;
 using PommaLabs.Thrower;
+using Xamarin.Forms;
 
 namespace battery.app.Core.ViewModels
 {
@@ -18,11 +19,6 @@ namespace battery.app.Core.ViewModels
 	{
 		#region Data
 		#region Fields
-		/// <summary>
-		/// Текущее xamarin приложение.
-		/// </summary>
-		private readonly App _app = App.Current;
-
 		/// <summary>
 		/// Сервис для авторизации.
 		/// </summary>
@@ -93,7 +89,7 @@ namespace battery.app.Core.ViewModels
 		{
 			if (string.IsNullOrEmpty(Login) || string.IsNullOrEmpty(Password))
 			{
-				await _app.MainPage.DisplayAlert(Strings.Alert, Strings.EmptyFieldsMessage, Strings.Ok);
+				await Application.Current.MainPage.DisplayAlert(Strings.Alert, Strings.EmptyFieldsMessage, Strings.Ok);
 				return;
 			}
 
@@ -104,14 +100,14 @@ namespace battery.app.Core.ViewModels
 			}
 			catch (Exception e)
 			{
-				await _app.MainPage.DisplayAlert(Strings.Alert, Strings.AuthorizationError, Strings.Ok);
+				await Application.Current.MainPage.DisplayAlert(Strings.Alert, Strings.AuthorizationError, Strings.Ok);
 				Console.WriteLine(e);
 				return;
 			}
 
 			if (user?.AccessToken == null)
 			{
-				await _app.MainPage.DisplayAlert(Strings.Alert, Strings.AuthorizationError, Strings.Ok);
+				await Application.Current.MainPage.DisplayAlert(Strings.Alert, Strings.AuthorizationError, Strings.Ok);
 				return;
 			}
 
@@ -119,7 +115,7 @@ namespace battery.app.Core.ViewModels
 
 			_userRepository.Add(user);
 
-			_app.MainPage = new MainPage();
+			Application.Current.MainPage = new MainPage();
 		}
 		#endregion
 	}

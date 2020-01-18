@@ -9,5 +9,7 @@ namespace battery.app.Core.Services
 		Task<bool> Store(Shipment shipment);
 
 		Task<Goods> CheckGoods(string code);
+
+		Task<List<Shipment>> GetDeliveriesAndShipments(User user);
 	}
 }

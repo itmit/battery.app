@@ -16,11 +16,11 @@
                     <Image Grid.Column="0" Source="tab_1.jpg" VerticalOptions="Center"/>
                     <StackLayout Grid.Column="1" VerticalOptions="Center">
                         <Label Text="{Binding P0}" Style="{StaticResource TitleSaleLabel}"/>
-                        <Label Text="{Binding P1}" Style="{StaticResource TextSaleLabel}"/>
-                        <Label Text="{Binding P2}" Style="{StaticResource TextSaleLabel}"/>
-                        <Label Text="{Binding P3}" Style="{StaticResource TextSaleLabel}"/>
-                        <Label Text="{Binding P4}" Style="{StaticResource TextSaleLabel}"/>
-                        <Label Text="{Binding P5}" Style="{StaticResource TextSaleLabel}"/>
+                        <Label Text="{Binding TabParams[6], StringFormat='Напряжение, В: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                        <Label Text="{Binding TabParams[0], StringFormat='Емкость (А*ч): {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                        <Label Text="{Binding TabParams[3], StringFormat='Пусковой ток, А: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                        <Label Text="{Binding P4, StringFormat='Полярность: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                        <Label Text="{Binding P5, StringFormat='Технология сплава: {0}'}" Style="{StaticResource TextSaleLabel}"/>
                     </StackLayout>
                 </Grid>
             </Frame>

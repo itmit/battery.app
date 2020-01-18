@@ -14,5 +14,12 @@ namespace battery.app.Droid
 		protected override IMvxApplication CreateApp() => new CoreApp();
 
 		protected override Application CreateFormsApplication() => new App();
+
+		protected override IMvxIoCProvider InitializeIoC()
+		{
+			var provider = base.InitializeIoC();
+			provider.RegisterSingleton<ISettingsHelper>(new SettingsHelperDroid());
+			return provider;
+		}
 	}
 }
