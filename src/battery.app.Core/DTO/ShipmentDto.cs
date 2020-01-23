@@ -13,8 +13,15 @@ namespace battery.app.Core.DTO
 			set;
 		}
 
-		[JsonProperty("dealer_uuid")]
-		public Guid Dealer
+		[JsonProperty("uuid")]
+		public Guid Guid
+		{
+			get;
+			set;
+		}
+
+		[JsonProperty("created_at")]
+		public DateTime? CreatedAt
 		{
 			get;
 			set;

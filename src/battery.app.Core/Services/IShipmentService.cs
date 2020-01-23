@@ -10,6 +10,10 @@ namespace battery.app.Core.Services
 
 		Task<Goods> CheckGoods(string code);
 
-		Task<List<Shipment>> GetDeliveriesAndShipments(User user);
+		Task<List<Shipment>> GetDeliveriesAndShipments();
+
+		Task<List<Goods>> GetBatteryInShipments(Shipment shipment);
+
+		Task<List<Goods>> GetBatteryInDelivery(Delivery delivery);
 	}
 }

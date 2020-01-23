@@ -11,16 +11,16 @@ using Xamarin.Forms.Xaml;
 namespace battery.app.Core.Pages.Shipment
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ShipmentConfirmPage : MvxContentPage<ShippingConfirmViewModel>
+	public partial class ShipmentDetailPage : MvxContentPage<ShipmentDetailViewModel>
 	{
-		public ShipmentConfirmPage()
+		public ShipmentDetailPage()
 		{
 			InitializeComponent();
 		}
 
 		private void ListView_OnItemSelected(object sender, SelectedItemChangedEventArgs e)
 		{
-			((ListView)sender).SelectedItem = null;
+			((ListView) sender).SelectedItem = null;
 		}
 	}
 }

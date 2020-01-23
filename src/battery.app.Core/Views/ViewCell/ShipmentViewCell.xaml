@@ -6,21 +6,19 @@
              mc:Ignorable="d"
              x:Class="battery.app.Core.Views.ViewCell.ShipmentViewCell">
     <ViewCell.View>
-        <StackLayout Margin="0,0,0,10">
-            <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="15">
+        <StackLayout Margin="15,10,15,0">
+            <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0">
                 <Grid>
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"/>
+                        <ColumnDefinition Width="130"/>
+                        <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Source="tab_1.jpg" VerticalOptions="Center"/>
-                    <StackLayout Grid.Column="1" VerticalOptions="Center">
-                        <Label Text="{Binding P0}" Style="{StaticResource TitleSaleLabel}"/>
-                        <Label Text="{Binding TabParams[6], StringFormat='Напряжение, В: {0}'}" Style="{StaticResource TextSaleLabel}"/>
-                        <Label Text="{Binding TabParams[0], StringFormat='Емкость (А*ч): {0}'}" Style="{StaticResource TextSaleLabel}"/>
-                        <Label Text="{Binding TabParams[3], StringFormat='Пусковой ток, А: {0}'}" Style="{StaticResource TextSaleLabel}"/>
-                        <Label Text="{Binding P4, StringFormat='Полярность: {0}'}" Style="{StaticResource TextSaleLabel}"/>
-                        <Label Text="{Binding P5, StringFormat='Технология сплава: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                    <Image Grid.Column="0" Source="logo_tab.png" VerticalOptions="Center" Margin="20"/>
+                    <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
+                    <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
+                        <Label Text="TAB" Style="{StaticResource Title}"/>
+                        <Label Text="{Binding CreatedAt, StringFormat='{0:dd-MM-yyyy} г'}" Style="{StaticResource Date}"/>
                     </StackLayout>
                 </Grid>
             </Frame>

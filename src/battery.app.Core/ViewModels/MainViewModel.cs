@@ -18,7 +18,7 @@ namespace battery.app.Core.ViewModels
 			: base(logProvider, navigationService)
 		{
 			ShowInitialViewModelsCommand = new MvxAsyncCommand(ShowInitialViewModels);
-			_user = repository.GetUsers()
+			_user = repository.GetAll()
 							  .Single();
 		}
 

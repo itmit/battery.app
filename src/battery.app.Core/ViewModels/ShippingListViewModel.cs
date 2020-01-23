@@ -1,4 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+using battery.app.Core.Models;
+using battery.app.Core.Repositories;
+using battery.app.Core.Services;
+using battery.app.Core.ViewModels.ShipmentViewModels;
+using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
@@ -10,14 +17,43 @@ namespace battery.app.Core.ViewModels
 	/// </summary>
 	public class ShippingListViewModel : MvxNavigationViewModel
 	{
-		public ShippingListViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService)
+		private IShipmentService _shipmentService;
+		private MvxObservableCollection<Shipment> _shipments;
+		private Shipment _selectedShipment;
+		private IMvxNavigationService _navigationService;
+		private IMvxCommand _check;
+
+		public ShippingListViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IShipmentService shipmentService)
 			: base(logProvider, navigationService)
 		{
+			_navigationService = navigationService;
+			_shipmentService = shipmentService;
 		}
 
-		public async override Task Initialize()
+		public override async Task Initialize()
 		{
 			await base.Initialize();
+
+			Shipments = new MvxObservableCollection<Shipment>(
+				await _shipmentService.GetDeliveriesAndShipments());
+		}
+
+		public MvxObservableCollection<Shipment> Shipments
+		{
+			get => _shipments;
+			set => SetProperty(ref _shipments, value);
+		}
+
+		public Shipment SelectedShipment
+		{
+			get => _selectedShipment;
+			set
+			{
+				if(value != null && SetProperty(ref _selectedShipment, value))
+				{
+					_navigationService.Navigate<ShipmentDetailViewModel, Shipment>(value);
+				}
+			}
 		}
 	}
 }

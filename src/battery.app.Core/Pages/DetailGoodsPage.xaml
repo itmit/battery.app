@@ -20,7 +20,7 @@
                     <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10">
                         <StackLayout>
                             <Label Text="TAB" Style="{StaticResource TitleDetail}"/>
-                            <Label Text="23-07-2019" Style="{StaticResource DateDetail}"/>
+                            <Label Text="{Binding Goods.DeliveryDate}" Style="{StaticResource DateDetail}"/>
                             <Image Source="tab_1.jpg" HorizontalOptions="Start"/>
                             <Grid Margin="0,20">
                                 <Grid.ColumnDefinitions>
@@ -32,15 +32,15 @@
                                 </Grid.RowDefinitions>
                                 <StackLayout Grid.Column="0" Grid.Row="0">
                                     <Label Text="TAB POLAR" Style="{StaticResource TitleCompany}"/>
-                                    <Label Text="Напряжение, В:12,0" Style="{StaticResource TextDetailGoods}"/>
-                                    <Label Text="Емкость (А*ч): 45-110" Style="{StaticResource TextDetailGoods}"/>
-                                    <Label Text="Пусковой ток,А: 400-1000" Style="{StaticResource TextDetailGoods}"/>
-                                    <Label Text="Полярность: 0" Style="{StaticResource TextDetailGoods}"/>
-                                    <Label Text="Технология сплава:Ca/Ca" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="{Binding Goods.TabParams[6], StringFormat='Напряжение, В: {0}'}" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="{Binding Goods.TabParams[0], StringFormat='Емкость (А*ч): {0}'}" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="{Binding Goods.TabParams[3], StringFormat='Пусковой ток, А: {0}'}" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="{Binding P4, StringFormat='Полярность: {0}'}" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="{Binding P5, StringFormat='Технология сплава: {0}'}" Style="{StaticResource TextDetailGoods}"/>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" Grid.Row="0">
                                     <Label Text="Место продажи" Style="{StaticResource TitleTwoGoods}"/>
-                                    <Label Text="Москва" Style="{StaticResource NameCity}"/>
+                                    <Label Text="{Binding Goods.CustomerReceiver, StringFormat='{0:dd-MM-yyyy}'}" Style="{StaticResource NameCity}"/>
                                 </StackLayout>
                             </Grid>
                             <Label Text="Батареи TAB Polar предназанчены для автомобилей со стандартным уровнем электрооборудования, но с повышенными требованиями к пусковым характеристикам и надежности" Style="{StaticResource DescLabel}"/>

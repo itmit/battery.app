@@ -21,5 +21,7 @@ namespace battery.app.Core.ViewModels
 		{
 			_goods = parameter;
 		}
+
+		public Goods Goods => _goods;
 	}
 }

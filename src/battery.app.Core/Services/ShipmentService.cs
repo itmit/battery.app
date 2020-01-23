@@ -27,12 +27,12 @@ namespace battery.app.Core.Services
 		private readonly AccessToken _accessToken;
 
 		private const string CheckBatteryUri = "http://battery.itmit-studio.ru/api/delivery/checkBattery";
-		private const string GetDeliveriesAndShipmentsUri = "http://battery.itmit-studio.ru/api/delivery/listOfDeliveries";
+		private const string GetDeliveriesAndShipmentsUri = "http://battery.itmit-studio.ru/api/checkDeliveryAndShipment/listOfDeliveriesAndShipments";
 
 		/// <summary>
 		/// Адрес для получения дилеров.
 		/// </summary>
-		private const string StoreUri = "http://battery.itmit-studio.ru/api/delivery/store";
+		private const string StoreUri = "http://battery.itmit-studio.ru/api/shipment/store";
 
 		/// <summary>
 		/// Инициализирует новый экземпляр <see cref="DealerService" />.
@@ -46,10 +46,14 @@ namespace battery.app.Core.Services
 			{
 				cfg.AllowNullCollections = false;
 				cfg.CreateMap<Shipment, ShipmentDto>()
-				   .ForMember(dto => dto.Dealer, m => m.MapFrom(ship => ship.Dealer.Guid))
 				   .ForMember(dto => dto.GoodsCodes, m => m.MapFrom(ship => ship.Goods.Select(i => i.SerialNumber)));
-
-				cfg.CreateMap<ShipmentDto, Shipment>();
+				cfg.CreateMap<ShipmentDto, Shipment>()
+				   .ForMember(ship => ship.CreatedAt, m => m.MapFrom(dto => dto.CreatedAt ?? DateTime.MinValue));
+				
+				cfg.CreateMap<Delivery, DeliveryDto>()
+				   .ForMember(dto => dto.GoodsCodes, m => m.MapFrom(ship => ship.Goods.Select(i => i.SerialNumber)));
+				cfg.CreateMap<DeliveryDto, Delivery>()
+				   .ForMember(ship => ship.CreatedAt, m => m.MapFrom(dto => dto.CreatedAt ?? DateTime.MinValue));
 
 				cfg.CreateMap<GoodsDto, Goods>()
 				   .ForMember(g => g.TabParams, m => m.MapFrom(dto => dto.TabDescription.Split(' ')))
@@ -108,7 +112,7 @@ namespace battery.app.Core.Services
 			}
 		}
 
-		public async Task<List<Shipment>> GetDeliveriesAndShipments(User user)
+		public async Task<List<Shipment>> GetDeliveriesAndShipments()
 		{
 			using (var client = new HttpClient())
 			{
@@ -124,15 +128,75 @@ namespace battery.app.Core.Services
 				{
 					if (!string.IsNullOrEmpty(jsonString))
 					{
-						var jsonData = JsonConvert.DeserializeObject<GeneralDto<GoodsDto>>(jsonString);
-						//return await Task.FromResult(_mapper.Map<Goods>(jsonData.Data));
+						var jsonData = JsonConvert.DeserializeObject<GeneralDto<DeliveriesShipmentsDto>>(jsonString);
+						var list = _mapper.Map<List<Shipment>>(jsonData.Data.Shipments);
+						list.AddRange(_mapper.Map<List<Delivery>>(jsonData.Data.Deliveries));
+						return list;
 					}
 				}
 
 				return null;
 			}
-
-			throw new NotImplementedException();
 		}
+
+		private const string GetBatteryInShipmentsUri = "http://battery.itmit-studio.ru/api/checkDeliveryAndShipment/getBatteriesFromShipment";
+		public async Task<List<Goods>> GetBatteryInShipments(Shipment shipment)
+		{
+			using (var client = new HttpClient())
+			{
+				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse($"{_accessToken.Type} {_accessToken.Body}");
+				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+				var response = await client.PostAsync(GetBatteryInShipmentsUri, new FormUrlEncodedContent(new Dictionary<string, string>
+				{
+					{"shipment_uuid", shipment.Guid.ToString() }
+				}));
+
+				var jsonString = await response.Content.ReadAsStringAsync();
+				Debug.WriteLine(jsonString);
+
+				if (response.IsSuccessStatusCode)
+				{
+					if (!string.IsNullOrEmpty(jsonString))
+					{
+						var jsonData = JsonConvert.DeserializeObject<GeneralDto<List<GoodsDto>>>(jsonString);
+						return await Task.FromResult(_mapper.Map<List<Goods>>(jsonData.Data));
+					}
+				}
+
+				return null;
+			}
+		}
+
+		private const string GetBatteryInDeliveryUri = "http://battery.itmit-studio.ru/api/checkDeliveryAndShipment/getBatteriesFromDelivery";
+		public async Task<List<Goods>> GetBatteryInDelivery(Delivery delivery)
+		{
+			using (var client = new HttpClient())
+			{
+				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse($"{_accessToken.Type} {_accessToken.Body}");
+				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+				var response = await client.PostAsync(GetDeliveriesAndShipmentsUri, new FormUrlEncodedContent(new Dictionary<string, string>
+				{
+					{"delivery_uuid", delivery.Guid.ToString() }
+				}));
+
+				var jsonString = await response.Content.ReadAsStringAsync();
+				Debug.WriteLine(jsonString);
+
+				if (response.IsSuccessStatusCode)
+				{
+					if (!string.IsNullOrEmpty(jsonString))
+					{
+						var jsonData = JsonConvert.DeserializeObject<GeneralDto<List<GoodsDto>>>(jsonString);
+						return await Task.FromResult(_mapper.Map<List<Goods>>(jsonData.Data));
+					}
+				}
+
+				return null;
+			}
+		}
+
+
 	}
 }

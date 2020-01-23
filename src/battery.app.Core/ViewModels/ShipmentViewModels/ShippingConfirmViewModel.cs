@@ -59,6 +59,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		private Shipment _shipment;
 
 		private readonly IShipmentService _shipmentService;
+		private Goods _selectedGoods;
 		#endregion
 		#endregion
 
@@ -108,6 +109,18 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 			private set => SetProperty(ref _goods, value);
 		}
 
+		public Goods SelectedGoods
+		{
+			get => _selectedGoods;
+			set
+			{
+				if (value != null && SetProperty(ref _selectedGoods, value))
+				{
+					_navigationService.Navigate<DetailGoodsViewModel, Goods>(value);
+				}
+			}
+		}
+
 		/// <summary>
 		/// Возвращает или устанавливает выбранного дилера.
 		/// </summary>
@@ -116,8 +129,10 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 			get => _selectedDealer;
 			set
 			{
-				SetProperty(ref _selectedDealer, value);
-				_shipment.Dealer = _selectedDealer;
+				if (SetProperty(ref _selectedDealer, value))
+				{
+					_shipment.Dealer = value;
+				}
 			}
 		}
 

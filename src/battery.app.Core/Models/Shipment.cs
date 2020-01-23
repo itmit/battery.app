@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace battery.app.Core.Models
 {
@@ -18,6 +19,14 @@ namespace battery.app.Core.Models
 			Dealer = dealer;
 		}
 
+		public Shipment() { }
+
+		public Guid Guid
+		{
+			get;
+			set;
+		}
+
 		/// <summary>
 		/// Возвращает коды товаров отгрузки.
 		/// </summary>
@@ -31,6 +40,12 @@ namespace battery.app.Core.Models
 		/// Возвращает дилера.
 		/// </summary>
 		public Dealer Dealer
+		{
+			get;
+			set;
+		}
+
+		public DateTime CreatedAt
 		{
 			get;
 			set;

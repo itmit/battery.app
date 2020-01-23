@@ -27,5 +27,11 @@ namespace battery.app.Core.Models
 			get;
 			set;
 		}
+
+		public string CustomerReceiver
+		{
+			get;
+			set;
+		}
 	}
 }

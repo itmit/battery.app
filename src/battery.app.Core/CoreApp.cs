@@ -28,7 +28,7 @@ namespace battery.app.Core
 
 			var userRepository = Mvx.IoCProvider.Resolve<IUserRepository>();
 
-			User user = userRepository.GetUsers().SingleOrDefault();
+			User user = userRepository.GetAll().SingleOrDefault();
 			
 			if (user?.AccessToken == null)
 			{
@@ -38,6 +38,7 @@ namespace battery.app.Core
 
 			Mvx.IoCProvider.RegisterSingleton<IDealerService>(new DealerService(user.AccessToken));
 			Mvx.IoCProvider.RegisterSingleton<IShipmentService>(new ShipmentService(user.AccessToken));
+			Mvx.IoCProvider.RegisterSingleton<INewsService>(new NewsService(user.AccessToken));
 
 			RegisterAppStart<MainViewModel>();
 		}

@@ -32,5 +32,12 @@ namespace battery.app.Core.DTO
 			get;
 			set;
 		}
+
+		[JsonProperty("Customer_Receiver")]
+		public string CustomerReceiver
+		{
+			get;
+			set;
+		}
 	}
 }

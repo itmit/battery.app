@@ -5,8 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
+             xmlns:viewCell="clr-namespace:battery.app.Core.Views.ViewCell;assembly=battery.app.Core"
              mc:Ignorable="d"
-             Title="Список отгрузок"
              BackgroundColor="#ebebeb"
              IconImageSource="list_ul"
              NavigationPage.HasNavigationBar="False"
@@ -14,81 +14,23 @@
     <ContentPage.Content>
         <StackLayout>
             <StackLayout BackgroundColor="White" Padding="10,5,10,30">
-                <Label Text="СПИСОК ОТГРУЗОК" Style="{StaticResource MainLabelBlack}"/>
+                <Label Text="СПИСОК ОТГРУЗОК" Style="{StaticResource MainLabelBlack}">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding Check}"/>
+                    </Label.GestureRecognizers>
+                </Label>
             </StackLayout>
             <BoxView Style="{StaticResource MainBoxView}"/>
-            <ScrollView>
-                <StackLayout>
-                    <StackLayout Margin="15,10,15,0">
-                        <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="130"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="logo_tab.png" VerticalOptions="Center" Margin="20"/>
-                                <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
-                                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                                    <Label Text="TAB" Style="{StaticResource Title}"/>
-                                    <Label Text="15-11-2018 г" Style="{StaticResource Date}"/>
-                                </StackLayout>
-                            </Grid>
-                        </Frame>
-                    </StackLayout>
-                    <StackLayout  Margin="15,10,15,0">
-                        <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="130"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="logo_topla.png" VerticalOptions="Center" Margin="20"/>
-                                <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
-                                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                                    <Label x:Name="TitleCompanyShip" Text="TOPLA" Style="{StaticResource Title}"/>
-                                    <Label Text="18-03-2019 г" Style="{StaticResource Date}"/>
-                                </StackLayout>
-                            </Grid>
-                        </Frame>
-                    </StackLayout>
-                    <StackLayout Margin="15,10">
-                        <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="130"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="logo_volthor.png" VerticalOptions="Center" Margin="20"/>
-                                <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
-                                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                                    <Label Text="VOLTHOR" Style="{StaticResource Title}"/>
-                                    <Label Text="03-05-2019 г" Style="{StaticResource Date}"/>
-                                </StackLayout>
-                            </Grid>
-                        </Frame>
-                    </StackLayout>
-                    <StackLayout Margin="15,10">
-                        <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0">
-                            <Grid>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="130"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="logo_vesna.png" VerticalOptions="Center" Margin="20"/>
-                                <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
-                                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                                    <Label Text="VESNA" Style="{StaticResource Title}"/>
-                                    <Label Text="09-06-2019 г" Style="{StaticResource Date}"/>
-                                </StackLayout>
-                            </Grid>
-                        </Frame>
-                    </StackLayout>
-                </StackLayout>
-            </ScrollView>
+            <ListView ItemsSource="{Binding Shipments}"
+                      SelectedItem="{Binding SelectedShipment}"
+                      ItemSelected="ListView_OnItemSelected"
+                      HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <viewCell:ShipmentViewCell/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </views:MvxContentPage>
