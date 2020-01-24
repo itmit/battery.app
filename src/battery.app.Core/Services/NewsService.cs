@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Net.Http;
 using System.Net.Http.Headers;
@@ -28,6 +29,7 @@ namespace battery.app.Core.Services
 			_mapper = new Mapper(new MapperConfiguration(cfg =>
 			{
 				cfg.CreateMap<NewsDto, News>()
+				   .ForMember(news => news.CreatedAt, m => m.MapFrom(dto => dto.CreatedAt ?? DateTime.MinValue))
 				   .ForMember(news => news.ImageSource, m => m.MapFrom(dto => dto.Picture == null ? "about:blank" : StorageUri + dto.Picture));
 			}));
 		}
@@ -39,8 +41,9 @@ namespace battery.app.Core.Services
 			{
 				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse($"{_accessToken.Type} {_accessToken.Body}");
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-				var response = await client.GetAsync(GetAllNewsUri + $"${limit}/${offset}");
+				var uri = GetAllNewsUri + $"{limit}/{offset}";
+				Debug.WriteLine(uri);
+				var response = await client.GetAsync(uri);
 
 				var jsonString = await response.Content.ReadAsStringAsync();
 				Debug.WriteLine(jsonString);

@@ -5,6 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
+             xmlns:viewCell="clr-namespace:battery.app.Core.Views.ViewCell;assembly=battery.app.Core"
              mc:Ignorable="d"
              IconImageSource="newspaper"
              BackgroundImageSource="picture_600.png"
@@ -16,90 +17,18 @@
                 <Label Text="НОВОСТИ" Style="{StaticResource MainLabelBlack}"/>
             </StackLayout>
             <BoxView Style="{StaticResource MainBoxView}"/>
-            <ScrollView>
-                <StackLayout Padding="0,20">
-                    <StackLayout Margin="15,10,15,0">
-                        <Frame Style="{StaticResource MainFrame}">
-                            <Grid>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
-                                                          NumberOfTapsRequired="1"/>
-                                </Grid.GestureRecognizers>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="pict_2.png" VerticalOptions="Center" Aspect="AspectFill"/>
-                                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                                    <Label Text="Батарея с электролитом из стекла" Style="{StaticResource Title}"/>
-                                    <Label Text="27/07/2019" Style="{StaticResource Date}"/>
-                                </StackLayout>
-                            </Grid>
-                        </Frame>
-                    </StackLayout>
-                    <StackLayout Margin="15,10,15,0">
-                        <Frame Style="{StaticResource MainFrame}">
-                            <Grid>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
-                                                          NumberOfTapsRequired="1"/>
-                                </Grid.GestureRecognizers>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="pict_2.png" VerticalOptions="Center" Aspect="AspectFill"/>
-                                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                                    <Label Text="Батарея с электролитом из стекла" Style="{StaticResource Title}"/>
-                                    <Label Text="27/07/2019" Style="{StaticResource Date}"/>
-                                </StackLayout>
-                            </Grid>
-                        </Frame>
-                    </StackLayout>
-                    <StackLayout Margin="15,10,15,0">
-                        <Frame Style="{StaticResource MainFrame}">
-                            <Grid>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
-                                                          NumberOfTapsRequired="1"/>
-                                </Grid.GestureRecognizers>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="pict_2.png" VerticalOptions="Center" Aspect="AspectFill"/>
-                                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                                    <Label Text="Батарея с электролитом из стекла" Style="{StaticResource Title}"/>
-                                    <Label Text="27/07/2019" Style="{StaticResource Date}"/>
-                                </StackLayout>
-                            </Grid>
-                        </Frame>
-                    </StackLayout>
-                    <StackLayout Margin="15,10,15,0">
-                        <Frame Style="{StaticResource MainFrame}">
-                            <Grid>
-                                <Grid.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped"
-                                                          NumberOfTapsRequired="1"/>
-                                </Grid.GestureRecognizers>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="150"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-                                <Image Grid.Column="0" Source="pict_2.png" VerticalOptions="Center" Aspect="AspectFill"/>
-                                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                                    <Label Text="Батарея с электролитом из стекла" Style="{StaticResource Title}"/>
-                                    <Label Text="27/07/2019" Style="{StaticResource Date}"/>
-                                </StackLayout>
-                            </Grid>
-                        </Frame>
-                    </StackLayout>
-                </StackLayout>
-            </ScrollView>
+            <StackLayout Padding="0,20">
+                <ListView ItemsSource="{Binding News}"
+                          SelectedItem="{Binding SelectedNews}"
+                          ItemSelected="ListView_OnItemSelected"
+                          HasUnevenRows="True">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <viewCell:NewsViewCell/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </views:MvxContentPage>

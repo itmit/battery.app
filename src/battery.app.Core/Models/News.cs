@@ -1,4 +1,6 @@
-﻿namespace battery.app.Core.Models
+﻿using System;
+
+namespace battery.app.Core.Models
 {
 	public class News
 	{
@@ -10,6 +12,12 @@
 		}
 
 		public string Body
+		{
+			get;
+			set;
+		}
+
+		public DateTime CreatedAt
 		{
 			get;
 			set;

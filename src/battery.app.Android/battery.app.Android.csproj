@@ -102,6 +102,7 @@
     <AndroidAsset Include="Assets\roboto_light.ttf" />
     <AndroidAsset Include="Assets\roboto_medium.ttf" />
     <AndroidAsset Include="Assets\roboto_regular.ttf" />
+    <ProguardConfiguration Include="proguard.cfg" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
