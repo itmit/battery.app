@@ -16,7 +16,7 @@
                 <Image Source="icon.png" HorizontalOptions="Center" Margin="0,20"/>
                 <Label Text="ВОЙТИ" Style="{StaticResource AuthLabel}"/>
                 <StackLayout Margin="0,20">
-                    <Frame Style="{StaticResource AuthFrame}" Margin="0,0,0,15">
+                    <Frame Style="{StaticResource AuthFrame}" Margin="0,0,0,15" HasShadow="False">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>
@@ -26,7 +26,7 @@
                             <controls:AuthorizationEntry Text="{Binding Login}" Grid.Column="1" Placeholder="логин" Style="{StaticResource AuthEntry}"/>
                         </Grid>
                     </Frame>
-                    <Frame Style="{StaticResource AuthFrame}">
+                    <Frame Style="{StaticResource AuthFrame}" HasShadow="False">
                         <Grid>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto"/>

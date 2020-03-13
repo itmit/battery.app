@@ -20,10 +20,10 @@
                 </StackLayout>
                 <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.1,AutoSize,AutoSize" Text="ОТГРУЗКА" Style="{StaticResource MainLabel}"/>
                 <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="Выберите из списка дилеров" Style="{StaticResource MainLabelSmall}"/>
-                <Frame AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.8,AutoSize,AutoSize" CornerRadius="10" BackgroundColor="#fff" Padding="15,10">
+                <Frame AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.8,AutoSize,AutoSize" CornerRadius="10" BackgroundColor="#fff" Padding="15,10" Margin="10,0">
                     <StackLayout>
-                        <FlexLayout WidthRequest="330">
-                            <Image Source="circle_entry.png" Margin="0,0,10,0"/>
+                        <FlexLayout>
+                            <Image Source="circle_entry.png" Margin="0,0,10,0" VerticalOptions="Center"/>
                             <controls:PickerListGoods
                                 ItemsSource="{Binding Dealers}"
                                 ItemDisplayBinding="{Binding Login}"
@@ -31,7 +31,8 @@
                                 Title="Список дилеров"
                                 Image="arrow_bottom"
                                 WidthRequest="300"
-                                FontFamily="roboto_regular.ttf#roboto_regular"/>
+                                FontFamily="roboto_regular.ttf#roboto_regular"
+                                VerticalOptions="Center"/>
                         </FlexLayout>
                     </StackLayout>
                 </Frame>

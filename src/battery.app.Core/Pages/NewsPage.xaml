@@ -17,18 +17,17 @@
                 <Label Text="НОВОСТИ" Style="{StaticResource MainLabelBlack}"/>
             </StackLayout>
             <BoxView Style="{StaticResource MainBoxView}"/>
-            <StackLayout Padding="0,20">
-                <ListView ItemsSource="{Binding News}"
+            <ListView ItemsSource="{Binding News}"
                           SelectedItem="{Binding SelectedNews}"
                           ItemSelected="ListView_OnItemSelected"
-                          HasUnevenRows="True">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <viewCell:NewsViewCell/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
+                          HasUnevenRows="True"
+                          Margin="15,0">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <viewCell:NewsViewCell/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </views:MvxContentPage>

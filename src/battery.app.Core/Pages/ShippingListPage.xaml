@@ -24,7 +24,8 @@
             <ListView ItemsSource="{Binding Shipments}"
                       SelectedItem="{Binding SelectedShipment}"
                       ItemSelected="ListView_OnItemSelected"
-                      HasUnevenRows="True">
+                      HasUnevenRows="True"
+                      SeparatorVisibility="None">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <viewCell:ShipmentViewCell/>

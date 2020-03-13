@@ -6,8 +6,7 @@
              mc:Ignorable="d"
              x:Class="battery.app.Core.Views.ViewCell.NewsViewCell">
     <ViewCell.View>
-        <StackLayout Margin="15,10,15,0">
-            <Frame Style="{StaticResource MainFrame}">
+        <Frame Style="{StaticResource MainFrame}" Margin="0,5">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="150"/>
@@ -21,6 +20,5 @@
                     </StackLayout>
                 </Grid>
             </Frame>
-        </StackLayout>
     </ViewCell.View>
 </ViewCell>
