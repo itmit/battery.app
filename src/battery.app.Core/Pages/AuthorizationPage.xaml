@@ -9,12 +9,20 @@
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
              xmlns:controls="clr-namespace:battery.app.Core.Controls;assembly=battery.app.Core"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
              x:Class="battery.app.Core.Pages.AuthorizationPage">
     <ContentPage.Content>
         <ScrollView VerticalOptions="FillAndExpand">
             <StackLayout VerticalOptions="FillAndExpand" Margin="20">
                 <Image Source="icon.png" HorizontalOptions="Center" Margin="0,20"/>
-                <Label Text="ВОЙТИ" Style="{StaticResource AuthLabel}"/>
+                <Label Text="ВОЙТИ" Style="{StaticResource AuthLabel}">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="system:String">
+                            <On Platform="iOS" Value="roboto_regular"/>
+                            <On Platform="Android" Value="roboto_regular.ttf#roboto_regular"/>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
                 <StackLayout Margin="0,20">
                     <Frame Style="{StaticResource AuthFrame}" Margin="0,0,0,15" HasShadow="False">
                         <Grid>
@@ -37,7 +45,14 @@
                         </Grid>
                     </Frame>
                 </StackLayout>
-                <Button Text="Вход" Style="{StaticResource AuthButton}" Command="{Binding AuthCommand}"/>
+                <Button Text="Вход" Style="{StaticResource AuthButton}" Command="{Binding AuthCommand}">
+                    <Button.FontFamily>
+                        <OnPlatform x:TypeArguments="system:String">
+                            <On Platform="iOS" Value="roboto_light"/>
+                            <On Platform="Android" Value="roboto_light.ttf#roboto_light"/>
+                        </OnPlatform>
+                    </Button.FontFamily>
+                </Button>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

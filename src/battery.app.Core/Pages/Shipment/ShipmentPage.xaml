@@ -6,6 +6,7 @@
                       xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
                       xmlns:controls="clr-namespace:battery.app.Core.Controls;assembly=battery.app.Core"
                       xmlns:shipment="clr-namespace:battery.app.Core.ViewModels.ShipmentViewModels;assembly=battery.app.Core"
+                      xmlns:system="clr-namespace:System;assembly=netstandard"
                       mc:Ignorable="d"
                       IconImageSource="plus"
                       BackgroundColor="#ebebeb"
@@ -18,8 +19,22 @@
                     <Image Source="picture_600.png" HorizontalOptions="CenterAndExpand" Aspect="Fill" HeightRequest="300"/>
                     <BoxView Style="{StaticResource MainBoxView}"/>
                 </StackLayout>
-                <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.1,AutoSize,AutoSize" Text="ОТГРУЗКА" Style="{StaticResource MainLabel}"/>
-                <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="Выберите из списка дилеров" Style="{StaticResource MainLabelSmall}"/>
+                <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.1,AutoSize,AutoSize" Text="ОТГРУЗКА" Style="{StaticResource MainLabel}">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="system:String">
+                            <On Platform="Android" Value="roboto_regular.ttf#roboto_regular"/>
+                            <On Platform="iOS" Value="roboto_regular"/>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
+                <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="Выберите из списка дилеров" Style="{StaticResource MainLabelSmall}">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="system:String">
+                            <On Platform="Android" Value="roboto_light.ttf#roboto_light"/>
+                            <On Platform="iOS" Value="roboto_light"/>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
                 <Frame AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.8,AutoSize,AutoSize" CornerRadius="10" BackgroundColor="#fff" Padding="15,10" Margin="10,0">
                     <StackLayout>
                         <FlexLayout>
@@ -31,13 +46,26 @@
                                 Title="Список дилеров"
                                 Image="arrow_bottom"
                                 WidthRequest="300"
-                                FontFamily="roboto_regular.ttf#roboto_regular"
-                                VerticalOptions="Center"/>
+                                VerticalOptions="Center">
+                                <controls:PickerListGoods.FontFamily>
+                                    <OnPlatform x:TypeArguments="system:String">
+                                        <On Platform="Android" Value="roboto_regular.ttf#roboto_regular"/>
+                                        <On Platform="iOS" Value="roboto_regular"/>
+                                    </OnPlatform>
+                                </controls:PickerListGoods.FontFamily>
+                            </controls:PickerListGoods>
                         </FlexLayout>
                     </StackLayout>
                 </Frame>
             </AbsoluteLayout>
-            <Button Text="Оформить продажу" Style="{StaticResource ButtonListGoods}" Command="{Binding OpenShippingCreatePageCommand}"/>
+            <Button Text="Оформить продажу" Style="{StaticResource ButtonListGoods}" Command="{Binding OpenShippingCreatePageCommand}">
+                <Button.FontFamily>
+                    <OnPlatform x:TypeArguments="system:String">
+                        <On Platform="iOS" Value="roboto_light"/>
+                        <On Platform="Android" Value="roboto_light.ttf#roboto_light"/>
+                    </OnPlatform>
+                </Button.FontFamily>
+            </Button>
         </StackLayout>
     </ContentPage.Content>
 </views:MvxContentPage>

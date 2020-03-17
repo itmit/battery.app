@@ -19,7 +19,6 @@
                 <Setter Property="TextColor" Value="#334b6f"/>
                 <Setter Property="FontSize" Value="30"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
-                <Setter Property="FontFamily" Value="roboto_regular.ttf#roboto_regular"/>
             </Style>
             <Style x:Key="AuthFrame" TargetType="Frame">
                 <Setter Property="BackgroundColor" Value="White"/>
@@ -40,13 +39,12 @@
                 <Setter Property="WidthRequest" Value="280"/>
                 <Setter Property="BackgroundColor" Value="#e61e29"/>
                 <Setter Property="CornerRadius" Value="30"/>
-                <Setter Property="FontFamily" Value="roboto_light.ttf#roboto_light"/>
             </Style>
             <Style x:Key="MainLabelBlack" TargetType="Label">
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="FontSize" Value="25"/>
-                <Setter Property="FontFamily" Value="roboto_regular.ttf#roboto_regular"/>
+                <Setter Property="FontFamily" Value=""/>
             </Style>
             <Style x:Key="MainBoxView" TargetType="BoxView">
                 <Setter Property="HeightRequest" Value="4"/>
@@ -74,7 +72,6 @@
             <Style x:Key="MainLabelSmall" TargetType="Label">
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="FontSize" Value="Small"/>
-                <Setter Property="FontFamily" Value="roboto_light.ttf#roboto_light"/>
             </Style>
             <Style x:Key="ButtonListGoods" TargetType="Button">
                 <Setter Property="TextColor" Value="White"/>
@@ -84,7 +81,6 @@
                 <Setter Property="BackgroundColor" Value="#e61e29"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="EndAndExpand"/>
-                <Setter Property="FontFamily" Value="roboto_light.ttf#roboto_light"/>
             </Style>
             <Style x:Key="ImageBack" TargetType="ImageButton">
                 <Setter Property="BackgroundColor" Value="Transparent"/>
