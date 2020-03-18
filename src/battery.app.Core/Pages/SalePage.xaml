@@ -4,15 +4,24 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:controls="clr-namespace:battery.app.Core.Controls;assembly=battery.app.Core"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
              mc:Ignorable="d"
              BackgroundColor="#ebebeb"
              NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Core.Pages.SalePage">
+    <!--Продажа-->
     <ContentPage.Content>
         <StackLayout VerticalOptions="FillAndExpand">
             <StackLayout BackgroundColor="White" Padding="10,5,10,30">
-                <ImageButton Source="arrow_alt_left.png" Style="{StaticResource ImageBack}" Clicked="Close_modal"/>
-                <Label Text="ПРОДАЖА" Style="{StaticResource MainLabelBlack}"/>
+                <ImageButton Source="arrow_alt_left.png" Style="{StaticResource ImageBack}" WidthRequest="24" Clicked="Close_modal"/>
+                <Label Text="ПРОДАЖА" Style="{StaticResource MainLabelBlack}">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="system:String">
+                            <On Platform="iOS" Value="Roboto-Bold"/>
+                            <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold"/>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
             </StackLayout>
             <BoxView Style="{StaticResource MainBoxView}"/>
             <StackLayout Padding="20">

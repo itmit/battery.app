@@ -6,24 +6,22 @@
              mc:Ignorable="d"
              x:Class="battery.app.Core.Views.ViewCell.GoodsViewCell">
     <ViewCell.View>
-        <StackLayout Margin="0,0,0,10">
-            <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="15">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="100"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Source="tab_1.jpg" VerticalOptions="Center"/>
-                    <StackLayout Grid.Column="1" VerticalOptions="Center">
-                        <Label Text="{Binding TabName}" Style="{StaticResource TitleSaleLabel}"/>
-                        <Label Text="{Binding TabParams[6], StringFormat='Напряжение, В: {0}'}" Style="{StaticResource TextSaleLabel}"/>
-                        <Label Text="{Binding TabParams[0], StringFormat='Емкость (А*ч): {0}'}" Style="{StaticResource TextSaleLabel}"/>
-                        <Label Text="{Binding TabParams[3], StringFormat='Пусковой ток, А: {0}'}" Style="{StaticResource TextSaleLabel}"/>
-                        <Label Text="{Binding P4, StringFormat='Полярность: {0}'}" Style="{StaticResource TextSaleLabel}"/>
-                        <Label Text="{Binding P5, StringFormat='Технология сплава: {0}'}" Style="{StaticResource TextSaleLabel}"/>
-                    </StackLayout>
-                </Grid>
-            </Frame>
-        </StackLayout>
+        <Frame BackgroundColor="White" CornerRadius="10" Padding="5" Margin="1,1,1,10">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="tab_1.jpg" VerticalOptions="Center"/>
+                <StackLayout Grid.Column="1" VerticalOptions="Center">
+                    <Label Text="{Binding TabName}" Style="{StaticResource TitleSaleLabel}"/>
+                    <Label Text="{Binding TabParams[6], StringFormat='Напряжение, В: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                    <Label Text="{Binding TabParams[0], StringFormat='Емкость (А*ч): {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                    <Label Text="{Binding TabParams[3], StringFormat='Пусковой ток, А: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                    <Label Text="{Binding P4, StringFormat='Полярность: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                    <Label Text="{Binding P5, StringFormat='Технология сплава: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
     </ViewCell.View>
 </ViewCell>

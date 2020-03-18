@@ -6,7 +6,8 @@
              mc:Ignorable="d"
              x:Class="battery.app.Core.Views.ViewCell.NewsViewCell">
     <ViewCell.View>
-        <Frame Style="{StaticResource MainFrame}" Margin="0,5">
+        <!--Ячейка для списка новостей-->
+        <Frame Style="{StaticResource MainFrame}" Margin="0,5" HasShadow="False">
                 <Grid>
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="150"/>

@@ -14897,35 +14897,38 @@ namespace battery.app.Droid
 			// aapt resource value: 0x7F070147
 			public const int notify_panel_notification_icon_bg = 2131165511;
 			
-			// aapt resource value: 0x7F070149
-			public const int picture_600 = 2131165513;
-			
 			// aapt resource value: 0x7F070148
-			public const int pict_2 = 2131165512;
+			public const int outline_camera_48dp = 2131165512;
 			
 			// aapt resource value: 0x7F07014A
-			public const int plus = 2131165514;
+			public const int picture_600 = 2131165514;
+			
+			// aapt resource value: 0x7F070149
+			public const int pict_2 = 2131165513;
 			
 			// aapt resource value: 0x7F07014B
-			public const int qrcode = 2131165515;
+			public const int plus = 2131165515;
 			
 			// aapt resource value: 0x7F07014C
-			public const int splash = 2131165516;
+			public const int qrcode = 2131165516;
 			
 			// aapt resource value: 0x7F07014D
-			public const int tab_1 = 2131165517;
+			public const int splash = 2131165517;
 			
 			// aapt resource value: 0x7F07014E
-			public const int tooltip_frame_dark = 2131165518;
+			public const int tab_1 = 2131165518;
 			
 			// aapt resource value: 0x7F07014F
-			public const int tooltip_frame_light = 2131165519;
+			public const int tooltip_frame_dark = 2131165519;
 			
 			// aapt resource value: 0x7F070150
-			public const int user = 2131165520;
+			public const int tooltip_frame_light = 2131165520;
 			
 			// aapt resource value: 0x7F070151
-			public const int xamarin_logo = 2131165521;
+			public const int user = 2131165521;
+			
+			// aapt resource value: 0x7F070152
+			public const int xamarin_logo = 2131165522;
 			
 			static Drawable()
 			{

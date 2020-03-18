@@ -5,22 +5,46 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
              mc:Ignorable="d"
+             BackgroundColor="#ebebeb"
              NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Core.Pages.DetailGoodsPage">
+    <!--Данные продажи-->
     <ContentPage.Content>
         <StackLayout>
             <StackLayout BackgroundColor="White" Padding="10,5,10,30">
-                <ImageButton Source="arrow_alt_left.png" Style="{StaticResource ImageBack}" Command="{Binding ClosePage}"/>
-                <Label Text="ДАННЫЕ ПРОДАЖИ" Style="{StaticResource MainLabelBlack}"/>
+                <ImageButton Source="arrow_alt_left.png" Style="{StaticResource ImageBack}" WidthRequest="24" Command="{Binding ClosePage}"/>
+                <Label Text="ДАННЫЕ ПРОДАЖИ" Style="{StaticResource MainLabelBlack}">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="system:String">
+                            <On Platform="iOS" Value="Roboto-Bold"/>
+                            <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold"/>
+                        </OnPlatform>
+                    </Label.FontFamily>
+                </Label>
             </StackLayout>
             <BoxView Style="{StaticResource MainBoxView}"/>
             <ScrollView>
                 <StackLayout Padding="20">
                     <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10">
                         <StackLayout>
-                            <Label Text="TAB" Style="{StaticResource TitleDetail}"/>
-                            <Label Text="{Binding Goods.DeliveryDate}" Style="{StaticResource DateDetail}"/>
+                            <Label Text="TAB" Style="{StaticResource TitleDetail}">
+                                <Label.FontFamily>
+                                    <OnPlatform x:TypeArguments="system:String">
+                                        <On Platform="iOS" Value="Roboto-Bold"/>
+                                        <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold"/>
+                                    </OnPlatform>
+                                </Label.FontFamily>
+                            </Label>
+                            <Label Text="{Binding Goods.DeliveryDate}" Style="{StaticResource DateDetail}">
+                                <Label.FontFamily>
+                                    <OnPlatform x:TypeArguments="system:String">
+                                        <On Platform="iOS" Value="roboto_regular"/>
+                                        <On Platform="Android" Value="roboto_regular.ttf#roboto_regular"/>
+                                    </OnPlatform>
+                                </Label.FontFamily>
+                            </Label>
                             <Image Source="tab_1.jpg" HorizontalOptions="Start"/>
                             <Grid Margin="0,20">
                                 <Grid.ColumnDefinitions>
@@ -31,7 +55,14 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <StackLayout Grid.Column="0" Grid.Row="0">
-                                    <Label Text="TAB POLAR" Style="{StaticResource TitleCompany}"/>
+                                    <Label Text="TAB POLAR" Style="{StaticResource TitleCompany}">
+                                        <Label.FontFamily>
+                                            <OnPlatform x:TypeArguments="system:String">
+                                                <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold"/>
+                                                <On Platform="iOS" Value="Roboto-Bold"/>
+                                            </OnPlatform>
+                                        </Label.FontFamily>
+                                    </Label>
                                     <Label Text="{Binding Goods.TabParams[6], StringFormat='Напряжение, В: {0}'}" Style="{StaticResource TextDetailGoods}"/>
                                     <Label Text="{Binding Goods.TabParams[0], StringFormat='Емкость (А*ч): {0}'}" Style="{StaticResource TextDetailGoods}"/>
                                     <Label Text="{Binding Goods.TabParams[3], StringFormat='Пусковой ток, А: {0}'}" Style="{StaticResource TextDetailGoods}"/>
@@ -39,7 +70,14 @@
                                     <Label Text="{Binding P5, StringFormat='Технология сплава: {0}'}" Style="{StaticResource TextDetailGoods}"/>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" Grid.Row="0">
-                                    <Label Text="Место продажи" Style="{StaticResource TitleTwoGoods}"/>
+                                    <Label Text="Место продажи" Style="{StaticResource TitleTwoGoods}">
+                                        <Label.FontFamily>
+                                            <OnPlatform x:TypeArguments="system:String">
+                                                <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold"/>
+                                                <On Platform="iOS" Value="Roboto-Bold"/>
+                                            </OnPlatform>
+                                        </Label.FontFamily>
+                                    </Label>
                                     <Label Text="{Binding Goods.CustomerReceiver, StringFormat='{0:dd-MM-yyyy}'}" Style="{StaticResource NameCity}"/>
                                 </StackLayout>
                             </Grid>

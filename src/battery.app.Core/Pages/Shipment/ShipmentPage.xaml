@@ -12,6 +12,7 @@
                       BackgroundColor="#ebebeb"
                       NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Core.Pages.Shipment.ShipmentPage">
+    <!---->
     <ContentPage.Content>
         <StackLayout>
             <AbsoluteLayout VerticalOptions="FillAndExpand">
@@ -22,8 +23,8 @@
                 <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.1,AutoSize,AutoSize" Text="ОТГРУЗКА" Style="{StaticResource MainLabel}">
                     <Label.FontFamily>
                         <OnPlatform x:TypeArguments="system:String">
-                            <On Platform="Android" Value="roboto_regular.ttf#roboto_regular"/>
-                            <On Platform="iOS" Value="roboto_regular"/>
+                            <On Platform="iOS" Value="Roboto-Bold"/>
+                            <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold"/>
                         </OnPlatform>
                     </Label.FontFamily>
                 </Label>

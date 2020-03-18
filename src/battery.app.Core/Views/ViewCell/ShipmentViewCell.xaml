@@ -3,25 +3,45 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
              mc:Ignorable="d"
              x:Class="battery.app.Core.Views.ViewCell.ShipmentViewCell">
     <ViewCell.View>
-        <StackLayout Margin="15,10,15,0">
-            <Frame BackgroundColor="White" CornerRadius="10" HasShadow="True" Padding="0">
-                <Grid>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="130"/>
-                        <ColumnDefinition Width="Auto"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Source="logo_tab.png" VerticalOptions="Center" Margin="20"/>
-                    <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
-                    <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                        <Label Text="TAB" Style="{StaticResource Title}"/>
-                        <Label Text="{Binding CreatedAt, StringFormat='{0:dd-MM-yyyy} г'}" Style="{StaticResource Date}"/>
-                    </StackLayout>
-                </Grid>
-            </Frame>
-        </StackLayout>
+        <!--Ячейка для списка отгрузок-->
+        <Frame BackgroundColor="White" CornerRadius="10" Padding="0" Margin="15,10,15,1">
+            <Frame.HasShadow>
+                <OnPlatform x:TypeArguments="system:Boolean">
+                    <On Platform="Android" Value="True"/>
+                    <On Platform="iOS" Value="False"/>
+                </OnPlatform>
+            </Frame.HasShadow>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="logo_tab.png" VerticalOptions="Center" Margin="20"/>
+                <BoxView Grid.Column="1" WidthRequest="1" BackgroundColor="#ebebeb"/>
+                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
+                    <Label Text="TAB" Style="{StaticResource Title}">
+                        <Label.FontFamily>
+                            <OnPlatform x:TypeArguments="system:String">
+                                <On Platform="iOS" Value="roboto_regular"/>
+                                <On Platform="Android" Value="roboto_regular.ttf#roboto_regular"/>
+                            </OnPlatform>
+                        </Label.FontFamily>
+                    </Label>
+                    <Label Text="{Binding CreatedAt, StringFormat='{0:dd-MM-yyyy} г'}" Style="{StaticResource Date}">
+                        <Label.FontFamily>
+                            <OnPlatform x:TypeArguments="system:String">
+                                <On Platform="iOS" Value="roboto_light"/>
+                                <On Platform="Android" Value="roboto_light.ttf#roboto_light"/>
+                            </OnPlatform>
+                        </Label.FontFamily>
+                    </Label>
+                </StackLayout>
+            </Grid>
+        </Frame>
     </ViewCell.View>
 </ViewCell>

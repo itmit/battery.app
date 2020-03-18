@@ -6,15 +6,28 @@
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
              xmlns:viewCell="clr-namespace:battery.app.Core.Views.ViewCell;assembly=battery.app.Core"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
              mc:Ignorable="d"
              BackgroundColor="#ebebeb"
-             IconImageSource="list_ul"
              NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Core.Pages.ShippingListPage">
+    <views:MvxContentPage.IconImageSource>
+        <OnPlatform x:TypeArguments="ImageSource">
+            <On Platform="Android" Value="list_ul"/>
+            <On Platform="iOS"/>
+        </OnPlatform>
+    </views:MvxContentPage.IconImageSource>
+    <!--Список отгрузок-->
     <ContentPage.Content>
         <StackLayout>
             <StackLayout BackgroundColor="White" Padding="10,5,10,30">
                 <Label Text="СПИСОК ОТГРУЗОК" Style="{StaticResource MainLabelBlack}">
+                    <Label.FontFamily>
+                        <OnPlatform x:TypeArguments="system:String">
+                            <On Platform="iOS" Value="Roboto-Bold"/>
+                            <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold"/>
+                        </OnPlatform>
+                    </Label.FontFamily>
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Check}"/>
                     </Label.GestureRecognizers>

@@ -103,6 +103,7 @@
     <AndroidAsset Include="Assets\roboto_medium.ttf" />
     <AndroidAsset Include="Assets\roboto_regular.ttf" />
     <ProguardConfiguration Include="proguard.cfg" />
+    <AndroidAsset Include="Assets\Roboto-Bold.ttf" />
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
     <None Include="Properties\AndroidManifest.xml" />
@@ -208,6 +209,9 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\ic_arrow_drop_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\outline_camera_48dp.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

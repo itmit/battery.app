@@ -158,4 +158,7 @@
       <Name>battery.Core</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\baseline_add_black_24pt_1x.png" />
+  </ItemGroup>
 </Project>

@@ -14,7 +14,11 @@ namespace battery.app.Core.Pages
 	{
 		public ExitPage()
 		{
-			IconImageSource = "arrow_right";
+			if(Device.Android==Device.RuntimePlatform)
+			{
+				IconImageSource = "arrow_right";
+			}
+			
 
 			Content = new StackLayout
 			{
