@@ -57,7 +57,6 @@
                                 <Image Source="box_foto.png" Margin="5" IsVisible="{Binding IsNotScanning}"/>
                                 <Image Source="outline_camera_48dp.png" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" Opacity="0.6"/>
                             </Grid>
-                            <forms:ZXingScannerView HeightRequest="300" WidthRequest="300" OnScanResult="ZXingScannerView_OnOnScanResult" IsScanning="{Binding IsScanning}" IsVisible="{Binding IsScanning}" />
                         </StackLayout>
                     </Frame>
                 </AbsoluteLayout>

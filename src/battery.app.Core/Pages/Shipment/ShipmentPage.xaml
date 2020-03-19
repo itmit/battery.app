@@ -8,11 +8,16 @@
                       xmlns:shipment="clr-namespace:battery.app.Core.ViewModels.ShipmentViewModels;assembly=battery.app.Core"
                       xmlns:system="clr-namespace:System;assembly=netstandard"
                       mc:Ignorable="d"
-                      IconImageSource="plus"
                       BackgroundColor="#ebebeb"
                       NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Core.Pages.Shipment.ShipmentPage">
-    <!---->
+    <views:MvxContentPage.IconImageSource>
+        <OnPlatform x:TypeArguments="ImageSource">
+            <On Platform="iOS" Value="baseline_add_black_24pt_1x.png"/>
+            <On Platform="Android" Value="plus"/>
+        </OnPlatform>
+    </views:MvxContentPage.IconImageSource>
+    <!--Отгрузка-->
     <ContentPage.Content>
         <StackLayout>
             <AbsoluteLayout VerticalOptions="FillAndExpand">

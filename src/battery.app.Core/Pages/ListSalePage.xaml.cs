@@ -14,7 +14,7 @@ namespace battery.app.Core.Pages
 
 		private void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
 		{
-			Navigation.PushAsync(new SalePage(), false);
+			
 		}
 
 		private void ImageButton_OnClicked(object sender, EventArgs e)

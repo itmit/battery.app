@@ -14,7 +14,7 @@
     <views:MvxContentPage.IconImageSource>
         <OnPlatform x:TypeArguments="ImageSource">
             <On Platform="Android" Value="list_ul"/>
-            <On Platform="iOS"/>
+            <On Platform="iOS" Value="baseline_format_list_bulleted_black_24pt_1x.png"/>
         </OnPlatform>
     </views:MvxContentPage.IconImageSource>
     <!--Список отгрузок-->

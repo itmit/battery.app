@@ -161,4 +161,58 @@
   <ItemGroup>
     <BundleResource Include="Resources\baseline_add_black_24pt_1x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\baseline_format_list_bulleted_black_24pt_1x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\baseline_arrow_forward_black_24pt_1x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrow_alt_left_white.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrow_alt_left.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\arrow_bottom.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\box_foto.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\castle.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\circle_entry.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo_tab.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo_topla.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo_vesna.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo_volthor.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\outline_camera_48dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\pict_2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\picture_600.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\tab_1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\user.png" />
+  </ItemGroup>
 </Project>
