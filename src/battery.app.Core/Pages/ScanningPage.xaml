@@ -5,7 +5,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
-             xmlns:forms="clr-namespace:ZXing.Net.Mobile.Forms;assembly=ZXing.Net.Mobile.Forms"
              xmlns:system="clr-namespace:System;assembly=netstandard"
              mc:Ignorable="d"
              BackgroundColor="#ebebeb"
@@ -60,7 +59,7 @@
                         </StackLayout>
                     </Frame>
                 </AbsoluteLayout>
-                <Button Text="Сканировать товар" Style="{StaticResource ButtonDefOne}" Command="{Binding ScanCommand}">
+                <Button Text="Сканировать товар" Style="{StaticResource AppButton}" Command="{Binding ScanCommand}">
                     <Button.FontFamily>
                         <OnPlatform x:TypeArguments="system:String">
                             <On Platform="iOS" Value="roboto_light"/>

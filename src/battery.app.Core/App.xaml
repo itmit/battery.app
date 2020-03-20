@@ -30,15 +30,15 @@
                 <Setter Property="PlaceholderColor" Value="#334b6f"/>
                 <Setter Property="FontFamily" Value="roboto_light.ttf#roboto_light"/>
             </Style>
-            <Style x:Key="AuthButton" TargetType="Button">
+            <Style x:Key="AppButton" TargetType="Button">
                 <Setter Property="FontSize" Value="Medium"/>
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
+                <Setter Property="VerticalOptions" Value="End"/>
                 <Setter Property="Padding" Value="20,15"/>
                 <Setter Property="WidthRequest" Value="280"/>
                 <Setter Property="BackgroundColor" Value="#e61e29"/>
-                <Setter Property="CornerRadius" Value="30"/>
+                <Setter Property="CornerRadius" Value="24"/>
             </Style>
             <Style x:Key="MainLabelBlack" TargetType="Label">
                 <Setter Property="TextColor" Value="Black"/>
@@ -70,15 +70,6 @@
             <Style x:Key="MainLabelSmall" TargetType="Label">
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="FontSize" Value="Small"/>
-            </Style>
-            <Style x:Key="ButtonListGoods" TargetType="Button">
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="CornerRadius" Value="30"/>
-                <Setter Property="Padding" Value="40,15"/>
-                <Setter Property="Margin" Value="15"/>
-                <Setter Property="BackgroundColor" Value="#e61e29"/>
-                <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
             </Style>
             <Style x:Key="ImageBack" TargetType="ImageButton">
                 <Setter Property="BackgroundColor" Value="Transparent"/>
@@ -117,14 +108,6 @@
                 <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
-            </Style>
-            <Style x:Key="ButtonDefOne" TargetType="Button">
-                <Setter Property="TextColor" Value="White"/>
-                <Setter Property="CornerRadius" Value="30"/>
-                <Setter Property="Padding" Value="40,15"/>
-                <Setter Property="Margin" Value="15"/>
-                <Setter Property="BackgroundColor" Value="#e61e29"/>
-                <Setter Property="HorizontalOptions" Value="Center"/>
             </Style>
             <Style x:Key="FrameShipment" TargetType="Frame">
                 <Setter Property="CornerRadius" Value="10"/>

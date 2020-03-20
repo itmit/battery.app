@@ -64,7 +64,7 @@
                     </StackLayout>
                 </Frame>
             </AbsoluteLayout>
-            <Button Text="Оформить продажу" Style="{StaticResource ButtonListGoods}" Command="{Binding OpenShippingCreatePageCommand}">
+            <Button Text="Оформить продажу" Style="{StaticResource AppButton}" Command="{Binding OpenShippingCreatePageCommand}">
                 <Button.FontFamily>
                     <OnPlatform x:TypeArguments="system:String">
                         <On Platform="iOS" Value="roboto_light"/>

@@ -45,7 +45,7 @@
                         </Grid>
                     </Frame>
                 </StackLayout>
-                <Button Text="Вход" Style="{StaticResource AuthButton}" Command="{Binding AuthCommand}">
+                <Button Text="Вход" Style="{StaticResource AppButton}" Command="{Binding AuthCommand}">
                     <Button.FontFamily>
                         <OnPlatform x:TypeArguments="system:String">
                             <On Platform="iOS" Value="roboto_light"/>

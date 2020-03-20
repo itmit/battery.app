@@ -66,9 +66,14 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Setup.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <BundleResource Include="Resources\Roboto-Bold.ttf" />
+    <BundleResource Include="Resources\roboto_light.ttf" />
+    <BundleResource Include="Resources\roboto_medium.ttf" />
+    <BundleResource Include="Resources\roboto_regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -214,5 +219,11 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\qrcode.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\newspaper_24pt_1x.png" />
   </ItemGroup>
 </Project>

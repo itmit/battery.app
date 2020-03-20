@@ -35,7 +35,8 @@
                           ItemSelected="ListView_OnItemSelected"
                           HasUnevenRows="True"
                           Margin="15,0"
-                          SeparatorVisibility="None">
+                          SeparatorVisibility="None"
+                          BackgroundColor="Transparent">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <viewCell:NewsViewCell/>

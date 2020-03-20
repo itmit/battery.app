@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using battery.app.Core;
 using Foundation;
+using MvvmCross;
+using MvvmCross.Forms.Platforms.Ios.Core;
 using UIKit;
 
 namespace battery.app.iOS
@@ -11,7 +13,7 @@ namespace battery.app.iOS
     // User Interface of the application, as well as listening (and optionally responding) to 
     // application events from iOS.
     [Register("AppDelegate")]
-    public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
+    public partial class AppDelegate : MvxFormsApplicationDelegate
     {
         //
         // This method is invoked when the application has loaded and is ready to run. In this 
