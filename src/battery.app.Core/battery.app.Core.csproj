@@ -91,4 +91,8 @@
       <DependentUpon>GoodsViewCell.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Design\" />
+  </ItemGroup>
 </Project>

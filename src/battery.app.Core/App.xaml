@@ -30,15 +30,16 @@
                 <Setter Property="PlaceholderColor" Value="#334b6f"/>
                 <Setter Property="FontFamily" Value="roboto_light.ttf#roboto_light"/>
             </Style>
+            <!--Стиль для кнопок-->
             <Style x:Key="AppButton" TargetType="Button">
                 <Setter Property="FontSize" Value="Medium"/>
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
                 <Setter Property="VerticalOptions" Value="End"/>
-                <Setter Property="Padding" Value="20,15"/>
+                <Setter Property="Margin" Value="0,0,0,10"/>
                 <Setter Property="WidthRequest" Value="280"/>
                 <Setter Property="BackgroundColor" Value="#e61e29"/>
-                <Setter Property="CornerRadius" Value="24"/>
+                <Setter Property="CornerRadius" Value="23"/>
             </Style>
             <Style x:Key="MainLabelBlack" TargetType="Label">
                 <Setter Property="TextColor" Value="Black"/>
@@ -48,7 +49,7 @@
                 <Setter Property="HeightRequest" Value="4"/>
                 <Setter Property="BackgroundColor" Value="Red"/>
                 <Setter Property="HorizontalOptions" Value="FillAndExpand"/>
-                <Setter Property="Margin" Value="0,-7,0,0"/>
+                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
             </Style>
             <Style x:Key="MainFrame" TargetType="Frame">
                 <Setter Property="BackgroundColor" Value="White"/>

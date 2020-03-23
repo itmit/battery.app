@@ -6,16 +6,16 @@
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
              xmlns:system="clr-namespace:System;assembly=netstandard"
+             xmlns:design="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
              mc:Ignorable="d"
-             BackgroundColor="#ebebeb"
              NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Core.Pages.DetailGoodsPage">
     <!--Данные продажи-->
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout BackgroundColor="White" Padding="10,5,10,30">
-                <ImageButton Source="arrow_alt_left.png" Style="{StaticResource ImageBack}" WidthRequest="24" Command="{Binding ClosePage}"/>
-                <Label Text="ДАННЫЕ ПРОДАЖИ" Style="{StaticResource MainLabelBlack}">
+        <StackLayout Spacing="0">
+            <StackLayout BackgroundColor="White" Margin="{x:Static design:DesignClass.LayoutThickness}">
+                <ImageButton Source="arrow_alt_left.png" Style="{StaticResource ImageBack}" WidthRequest="24" Command="{Binding ClosePageCommand}" Margin="10,5,0,0"/>
+                <Label Text="ДАННЫЕ ПРОДАЖИ" Style="{StaticResource MainLabelBlack}" Padding="10,0,10,30">
                     <Label.FontFamily>
                         <OnPlatform x:TypeArguments="system:String">
                             <On Platform="iOS" Value="Roboto-Bold"/>
@@ -23,29 +23,18 @@
                         </OnPlatform>
                     </Label.FontFamily>
                 </Label>
+                <BoxView Style="{StaticResource MainBoxView}" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
-            <BoxView Style="{StaticResource MainBoxView}"/>
-            <ScrollView>
+            <ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="Fill" BackgroundColor="{x:Static design:DesignClass.Color}">
                 <StackLayout Padding="20">
-                    <Frame BackgroundColor="White" HasShadow="True" CornerRadius="10">
+                    <Frame BackgroundColor="White"
+                           HasShadow="{x:Static design:DesignClass.HasShadow}"
+                           CornerRadius="10"
+                           BorderColor="{x:Static design:DesignClass.Color}">
                         <StackLayout>
-                            <Label Text="TAB" Style="{StaticResource TitleDetail}">
-                                <Label.FontFamily>
-                                    <OnPlatform x:TypeArguments="system:String">
-                                        <On Platform="iOS" Value="Roboto-Bold"/>
-                                        <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold"/>
-                                    </OnPlatform>
-                                </Label.FontFamily>
-                            </Label>
-                            <Label Text="{Binding Goods.DeliveryDate}" Style="{StaticResource DateDetail}">
-                                <Label.FontFamily>
-                                    <OnPlatform x:TypeArguments="system:String">
-                                        <On Platform="iOS" Value="roboto_regular"/>
-                                        <On Platform="Android" Value="roboto_regular.ttf#roboto_regular"/>
-                                    </OnPlatform>
-                                </Label.FontFamily>
-                            </Label>
-                            <Image Source="tab_1.jpg" HorizontalOptions="Start"/>
+                            <Label Text="TAB" Style="{StaticResource TitleDetail}" FontFamily="{x:Static design:DesignClass.FontBold}"/>
+                            <Label Text="{Binding Goods.DeliveryDate}" Style="{StaticResource DateDetail}" FontFamily="{x:Static design:DesignClass.FontRegular}"/>
+                                <Image Source="tab_1.jpg" HorizontalOptions="Start"/>
                             <Grid Margin="0,20">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>

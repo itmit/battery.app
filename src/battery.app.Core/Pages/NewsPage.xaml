@@ -7,20 +7,20 @@
              xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
              xmlns:viewCell="clr-namespace:battery.app.Core.Views.ViewCell;assembly=battery.app.Core"
              xmlns:system="clr-namespace:System;assembly=netstandard"
+             xmlns:design="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Core.Pages.NewsPage">
     <views:MvxContentPage.IconImageSource>
         <OnPlatform x:TypeArguments="ImageSource">
-            <On Platform="Android" Value="newspaper"/>
-            <On Platform="iOS"/>
+            <On Platform="Android" Value="baseline_list_alt_black_48.png"/>
+            <On Platform="iOS" Value="baseline_list_alt_black_24pt_1x.png"/>
         </OnPlatform>
     </views:MvxContentPage.IconImageSource>
     <!--Список новостей-->
     <ContentPage.Content>
-        <Grid>
-            <Image Source="picture_600.png" Aspect="AspectFill"/>
-            <StackLayout VerticalOptions="FillAndExpand">
+        <StackLayout BackgroundColor="White">
+            <StackLayout Margin="{x:Static design:DesignClass.LayoutThickness}">
                 <Label Text="НОВОСТИ" Style="{StaticResource MainLabelBlack}" BackgroundColor="White" Padding="10,5,10,30">
                     <Label.FontFamily>
                         <OnPlatform x:TypeArguments="system:String">
@@ -29,21 +29,26 @@
                         </OnPlatform>
                     </Label.FontFamily>
                 </Label>
-                <BoxView Style="{StaticResource MainBoxView}"/>
-                <ListView ItemsSource="{Binding News}"
-                          SelectedItem="{Binding SelectedNews}"
-                          ItemSelected="ListView_OnItemSelected"
-                          HasUnevenRows="True"
-                          Margin="15,0"
-                          SeparatorVisibility="None"
-                          BackgroundColor="Transparent">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <viewCell:NewsViewCell/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
             </StackLayout>
-        </Grid>
+            <Grid>
+                <Image Source="picture_600.png" Aspect="AspectFill"/>
+                <StackLayout>
+                    <BoxView Style="{StaticResource MainBoxView}"/>
+                    <ListView ItemsSource="{Binding News}"
+                              SelectedItem="{Binding SelectedNews}"
+                              ItemSelected="ListView_OnItemSelected"
+                              HasUnevenRows="True"
+                              Margin="15,0"
+                              SeparatorVisibility="None"
+                              BackgroundColor="Transparent">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <viewCell:NewsViewCell/>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
     </ContentPage.Content>
 </views:MvxContentPage>

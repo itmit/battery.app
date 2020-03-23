@@ -6,6 +6,7 @@
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
              xmlns:system="clr-namespace:System;assembly=netstandard"
+             xmlns:desing="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
              mc:Ignorable="d"
              BackgroundColor="#ebebeb"
              NavigationPage.HasNavigationBar="False"
@@ -22,51 +23,23 @@
         <ScrollView>
             <StackLayout VerticalOptions="FillAndExpand">
                 <AbsoluteLayout VerticalOptions="FillAndExpand">
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0">
-                        <Image Source="picture_600.png" HorizontalOptions="CenterAndExpand" Aspect="Fill" HeightRequest="300"/>
+                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0" Spacing="0">
+                        <Image Source="picture_600.png" HorizontalOptions="CenterAndExpand"/>
                         <BoxView Style="{StaticResource MainBoxView}"/>
                     </StackLayout>
-                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.1,AutoSize,AutoSize" Text="СКАНИРОВАНИЕ" Style="{StaticResource MainLabel}">
-                        <Label.FontFamily>
-                            <OnPlatform x:TypeArguments="system:String">
-                                <On Platform="iOS" Value="Roboto-Bold"/>
-                                <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold"/>
-                            </OnPlatform>
-                        </Label.FontFamily>
-                    </Label>
-                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="Наведите сканер на QR-код" Style="{StaticResource MainLabelSmall}">
-                        <Label.FontFamily>
-                            <OnPlatform x:TypeArguments="system:String">
-                                <On Platform="Android" Value="roboto_light.ttf#roboto_light"/>
-                                <On Platform="iOS" Value="roboto_light"/>
-                            </OnPlatform>
-                        </Label.FontFamily>
-                    </Label>
-                    <Frame AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.9,AutoSize,AutoSize" CornerRadius="10" BackgroundColor="#fff" Padding="35,25" Margin="35,0">
+                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.1,AutoSize,AutoSize" Text="СКАНИРОВАНИЕ" Style="{StaticResource MainLabel}" FontFamily="{x:Static desing:DesignClass.FontBold}"/>
+                        <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.18,AutoSize,AutoSize" Text="Наведите сканер на QR-код" Style="{StaticResource MainLabelSmall}" FontFamily="{x:Static desing:DesignClass.FontLight}"/>
+                        <Frame AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.9,AutoSize,AutoSize" CornerRadius="10" BackgroundColor="#fff" Padding="35,25" Margin="35,0">
                         <StackLayout>
-                            <Label Text="QR BARCODE SCANNER" Style="{StaticResource QrLabel}">
-                                <Label.FontFamily>
-                                    <OnPlatform x:TypeArguments="system:String">
-                                        <On Platform="iOS" Value="roboto_medium"/>
-                                        <On Platform="Android" Value="roboto_medium.ttf#roboto_medium"/>
-                                    </OnPlatform>
-                                </Label.FontFamily>
-                            </Label>
-                            <Grid>
+                            <Label Text="QR BARCODE SCANNER" Style="{StaticResource QrLabel}" FontFamily="{x:Static desing:DesignClass.FontMedium}"/>
+                                <Grid>
                                 <Image Source="box_foto.png" Margin="5" IsVisible="{Binding IsNotScanning}"/>
                                 <Image Source="outline_camera_48dp.png" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" Opacity="0.6"/>
                             </Grid>
                         </StackLayout>
                     </Frame>
                 </AbsoluteLayout>
-                <Button Text="Сканировать товар" Style="{StaticResource AppButton}" Command="{Binding ScanCommand}">
-                    <Button.FontFamily>
-                        <OnPlatform x:TypeArguments="system:String">
-                            <On Platform="iOS" Value="roboto_light"/>
-                            <On Platform="Android" Value="roboto_light.ttf#roboto_light"/>
-                        </OnPlatform>
-                    </Button.FontFamily>
-                </Button>
+                <Button Text="Сканировать товар" Style="{StaticResource AppButton}" Command="{Binding ScanCommand}" FontFamily="{x:Static desing:DesignClass.FontLight}"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>

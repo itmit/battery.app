@@ -7,8 +7,8 @@
              xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
              xmlns:viewCell="clr-namespace:battery.app.Core.Views.ViewCell;assembly=battery.app.Core"
              xmlns:system="clr-namespace:System;assembly=netstandard"
+             xmlns:design="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
              mc:Ignorable="d"
-             BackgroundColor="#ebebeb"
              NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Core.Pages.ShippingListPage">
     <views:MvxContentPage.IconImageSource>
@@ -19,9 +19,9 @@
     </views:MvxContentPage.IconImageSource>
     <!--Список отгрузок-->
     <ContentPage.Content>
-        <StackLayout>
-            <StackLayout BackgroundColor="White" Padding="10,5,10,30">
-                <Label Text="СПИСОК ОТГРУЗОК" Style="{StaticResource MainLabelBlack}">
+        <StackLayout BackgroundColor="White">
+            <StackLayout BackgroundColor="White" Margin="{x:Static design:DesignClass.LayoutThickness}">
+                <Label Text="СПИСОК ОТГРУЗОК" Style="{StaticResource MainLabelBlack}" Padding="10,5,10,30">
                     <Label.FontFamily>
                         <OnPlatform x:TypeArguments="system:String">
                             <On Platform="iOS" Value="Roboto-Bold"/>
@@ -33,18 +33,21 @@
                     </Label.GestureRecognizers>
                 </Label>
             </StackLayout>
-            <BoxView Style="{StaticResource MainBoxView}"/>
-            <ListView ItemsSource="{Binding Shipments}"
-                      SelectedItem="{Binding SelectedShipment}"
-                      ItemSelected="ListView_OnItemSelected"
-                      HasUnevenRows="True"
-                      SeparatorVisibility="None">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <viewCell:ShipmentViewCell/>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+            <StackLayout BackgroundColor="{x:Static design:DesignClass.Color}">
+                <BoxView Style="{StaticResource MainBoxView}"/>
+                <ListView ItemsSource="{Binding Shipments}"
+                          SelectedItem="{Binding SelectedShipment}"
+                          ItemSelected="ListView_OnItemSelected"
+                          HasUnevenRows="True"
+                          SeparatorVisibility="None"
+                          BackgroundColor="Transparent">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <viewCell:ShipmentViewCell/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </views:MvxContentPage>

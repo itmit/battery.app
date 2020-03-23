@@ -86,7 +86,10 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		{
 			get
 			{
-				_closePageCommand = _closePageCommand ?? new MvxCommand(ClosePage);
+				_closePageCommand = _closePageCommand ?? new MvxCommand(() =>
+				{
+					_navigationService.Close(this);
+				});
 				return _closePageCommand;
 			}
 		}

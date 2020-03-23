@@ -3,10 +3,22 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
              mc:Ignorable="d"
              x:Class="battery.app.Core.Views.ViewCell.GoodsViewCell">
     <ViewCell.View>
-        <Frame BackgroundColor="White" CornerRadius="10" Padding="5" Margin="1,1,1,10">
+        <Frame BackgroundColor="White" CornerRadius="10" Padding="5" Margin="2,2,2,10">
+            <Frame.HasShadow>
+                <OnPlatform x:TypeArguments="system:Boolean">
+                    <On Platform="Android" Value="True"/>
+                    <On Platform="iOS" Value="False"/>
+                </OnPlatform>
+            </Frame.HasShadow>
+            <Frame.BorderColor>
+                <OnPlatform x:TypeArguments="Color">
+                    <On Platform="iOS" Value="LightGray"/>
+                </OnPlatform>
+            </Frame.BorderColor>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>

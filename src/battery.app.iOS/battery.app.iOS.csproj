@@ -226,4 +226,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\newspaper_24pt_1x.png" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\baseline_list_alt_black_24pt_1x.png" />
+  </ItemGroup>
 </Project>

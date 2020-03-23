@@ -16,7 +16,7 @@
                     </Grid.ColumnDefinitions>
                     <Image Grid.Column="0" Source="{Binding ImageSource}" VerticalOptions="Center" Aspect="AspectFill"/>
                     <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                        <Label Text="{Binding Head}" Style="{StaticResource Title}"/>
+                        <Label Text="{Binding Head}" Style="{StaticResource Title}" LineBreakMode="TailTruncation" MaxLines="4"/>
                         <Label Text="{Binding CreatedAt}" Style="{StaticResource Date}"/>
                     </StackLayout>
                 </Grid>

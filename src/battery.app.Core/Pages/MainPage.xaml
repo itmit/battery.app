@@ -9,7 +9,7 @@
             xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
             xmlns:controls="clr-namespace:battery.app.Core.Controls;assembly=battery.app.Core"
             x:Class="battery.app.Core.Pages.MainPage"
-            BarBackgroundColor="Transparent"
+            BarBackgroundColor="White"
             SelectedTabColor="Red"
             UnselectedTabColor="Gray"
             NavigationPage.HasNavigationBar="False"
