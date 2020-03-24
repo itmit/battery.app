@@ -20,43 +20,48 @@
     </views:MvxContentPage.IconImageSource>
     <!--Отгрузка-->
     <ContentPage.Content>
-        <StackLayout Spacing="0" BackgroundColor="{x:Static design:DesignClass.Color}">
-            <AbsoluteLayout VerticalOptions="FillAndExpand">
-                <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0" Spacing="0">
-                    <Image Source="picture_600.png" HorizontalOptions="CenterAndExpand"/>
-                    <BoxView Style="{StaticResource MainBoxView}"/>
-                </StackLayout>
-                <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.075,0.1,AutoSize,AutoSize"
-                       Text="ОТГРУЗКА"
-                       Style="{StaticResource MainLabel}"
-                       FontFamily="{x:Static design:DesignClass.FontBold}"/>
-                <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.18,AutoSize,AutoSize" Text="Выберите из списка дилеров" Style="{StaticResource MainLabelSmall}" FontFamily="{x:Static design:DesignClass.FontLight}"/>
-                  
-                        <Frame AbsoluteLayout.LayoutFlags="PositionProportional"
-                       AbsoluteLayout.LayoutBounds="0.5,0.515,AutoSize,AutoSize"
+        <Grid BackgroundColor="{x:Static design:DesignClass.Color}" RowSpacing="0">
+            <Grid VerticalOptions="Start">
+                <Image Source="picture_600.png" HeightRequest="300" Aspect="Fill"/>
+                <Label Margin="{x:Static design:DesignClass.Margin}"
+                    Text="ОТГРУЗКА"
+                    Style="{StaticResource MainLabel}"
+                    FontFamily="{x:Static design:DesignClass.FontBold}"/>
+                <Label Text="Выберите из списка дилеров" Style="{StaticResource MainLabelSmall}"
+                       FontFamily="{x:Static design:DesignClass.FontLight}"
+                       Margin="{x:Static design:DesignClass.MarginLabel}"/>
+                <BoxView Style="{StaticResource MainBoxView}" VerticalOptions="EndAndExpand"/>
+            </Grid>
+            <Grid VerticalOptions="Center">
+                <Frame VerticalOptions="Center"
                        CornerRadius="10"
                        BackgroundColor="#fff"
-                       Padding="15,10"
-                       Margin="10,0"
+                       Margin="15,0"
                        HasShadow="{x:Static design:DesignClass.HasShadow}">
-                    <StackLayout>
-                        <FlexLayout>
-                            <Image Source="circle_entry.png" Margin="0,0,10,0" VerticalOptions="Center"/>
-                            <controls:PickerListGoods
-                                ItemsSource="{Binding Dealers}"
-                                ItemDisplayBinding="{Binding Login}"
-                                SelectedItem="{Binding SelectedDealer}"
-                                Title="Список дилеров"
-                                Image="arrow_bottom"
-                                WidthRequest="300"
-                                TextColor="Black"
-                                VerticalOptions="Center"
-                                FontFamily="{x:Static design:DesignClass.FontRegular}"/>
-                        </FlexLayout>
-                    </StackLayout>
+                    <FlexLayout>
+                        <Image Source="circle_entry.png" Margin="0,0,10,0" VerticalOptions="Center"/>
+                        <controls:PickerListGoods
+                            ItemsSource="{Binding Dealers}"
+                            ItemDisplayBinding="{Binding Login}"
+                            SelectedItem="{Binding SelectedDealer}"
+                            Title="Список дилеров"
+                            Image="arrow_bottom"
+                            WidthRequest="300"
+                            TextColor="Black"
+                            VerticalOptions="Center"
+                            FontFamily="{x:Static design:DesignClass.FontRegular}"/>
+                        <Image Source="arrow_bottom.png">
+                            <Image.IsVisible>
+                                <OnPlatform x:TypeArguments="system:Boolean">
+                                    <On Platform="Android" Value="False"/>
+                                    <On Platform="iOS" Value="True"/>
+                                </OnPlatform>
+                            </Image.IsVisible>
+                        </Image>
+                    </FlexLayout>
                 </Frame>
-                <Button AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,1,AutoSize,AutoSize" Text="Оформить продажу" Style="{StaticResource AppButton}" Command="{Binding OpenShippingCreatePageCommand}" FontFamily="{x:Static design:DesignClass.FontLight}"/>
-            </AbsoluteLayout>
-        </StackLayout>
+            </Grid>
+            <Button Text="Оформить продажу" Style="{StaticResource AppButton}" Command="{Binding OpenShippingCreatePageCommand}" FontFamily="{x:Static design:DesignClass.FontLight}" VerticalOptions="EndAndExpand"/>
+        </Grid>
     </ContentPage.Content>
 </views:MvxContentPage>

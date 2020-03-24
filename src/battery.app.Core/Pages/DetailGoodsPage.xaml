@@ -15,15 +15,8 @@
         <StackLayout Spacing="0">
             <StackLayout BackgroundColor="White" Margin="{x:Static design:DesignClass.LayoutThickness}">
                 <ImageButton Source="arrow_alt_left.png" Style="{StaticResource ImageBack}" WidthRequest="24" Command="{Binding ClosePageCommand}" Margin="10,5,0,0"/>
-                <Label Text="ДАННЫЕ ПРОДАЖИ" Style="{StaticResource MainLabelBlack}" Padding="10,0,10,30">
-                    <Label.FontFamily>
-                        <OnPlatform x:TypeArguments="system:String">
-                            <On Platform="iOS" Value="Roboto-Bold"/>
-                            <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold"/>
-                        </OnPlatform>
-                    </Label.FontFamily>
-                </Label>
-                <BoxView Style="{StaticResource MainBoxView}" HorizontalOptions="FillAndExpand"/>
+                <Label Text="ДАННЫЕ ПРОДАЖИ" Style="{StaticResource MainLabelBlack}" Padding="10,0,10,30" FontFamily="{x:Static design:DesignClass.FontBold}"/>
+                    <BoxView Style="{StaticResource MainBoxView}" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
             <ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="Fill" BackgroundColor="{x:Static design:DesignClass.Color}">
                 <StackLayout Padding="20">
@@ -44,14 +37,7 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <StackLayout Grid.Column="0" Grid.Row="0">
-                                    <Label Text="TAB POLAR" Style="{StaticResource TitleCompany}">
-                                        <Label.FontFamily>
-                                            <OnPlatform x:TypeArguments="system:String">
-                                                <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold"/>
-                                                <On Platform="iOS" Value="Roboto-Bold"/>
-                                            </OnPlatform>
-                                        </Label.FontFamily>
-                                    </Label>
+                                    <Label Text="TAB POLAR" Style="{StaticResource TitleCompany}" FontFamily="{x:Static design:DesignClass.FontBold}"/>
                                     <Label Text="{Binding Goods.TabParams[6], StringFormat='Напряжение, В: {0}'}" Style="{StaticResource TextDetailGoods}"/>
                                     <Label Text="{Binding Goods.TabParams[0], StringFormat='Емкость (А*ч): {0}'}" Style="{StaticResource TextDetailGoods}"/>
                                     <Label Text="{Binding Goods.TabParams[3], StringFormat='Пусковой ток, А: {0}'}" Style="{StaticResource TextDetailGoods}"/>
@@ -59,14 +45,7 @@
                                     <Label Text="{Binding P5, StringFormat='Технология сплава: {0}'}" Style="{StaticResource TextDetailGoods}"/>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" Grid.Row="0">
-                                    <Label Text="Место продажи" Style="{StaticResource TitleTwoGoods}">
-                                        <Label.FontFamily>
-                                            <OnPlatform x:TypeArguments="system:String">
-                                                <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold"/>
-                                                <On Platform="iOS" Value="Roboto-Bold"/>
-                                            </OnPlatform>
-                                        </Label.FontFamily>
-                                    </Label>
+                                    <Label Text="Место продажи" Style="{StaticResource TitleTwoGoods}" FontFamily="{x:Static design:DesignClass.FontBold}"/>
                                     <Label Text="{Binding Goods.CustomerReceiver, StringFormat='{0:dd-MM-yyyy}'}" Style="{StaticResource NameCity}"/>
                                 </StackLayout>
                             </Grid>

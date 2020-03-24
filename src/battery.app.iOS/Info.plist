@@ -46,5 +46,7 @@
 		<string>roboto_medium.ttf</string>
 		<string>roboto_regular.ttf</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera usage description</string>
 </dict>
 </plist>

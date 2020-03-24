@@ -8,39 +8,33 @@
              xmlns:system="clr-namespace:System;assembly=netstandard"
              xmlns:desing="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
              mc:Ignorable="d"
-             BackgroundColor="#ebebeb"
              NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Core.Pages.ScanningPage">
     <views:MvxContentPage.IconImageSource>
-            <OnPlatform x:TypeArguments="ImageSource">
-                <On Platform="Android" Value="qrcode"/>
-                <On Platform="iOS"/>
-            </OnPlatform>
+        <OnPlatform x:TypeArguments="ImageSource">
+            <On Platform="Android" Value="qrcode"/>
+            <On Platform="iOS" Value="baseline_add_black_24pt_1x.png"/>
+        </OnPlatform>
     </views:MvxContentPage.IconImageSource>
-
     <!--Сканирование-->
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout VerticalOptions="FillAndExpand">
-                <AbsoluteLayout VerticalOptions="FillAndExpand">
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0" Spacing="0">
-                        <Image Source="picture_600.png" HorizontalOptions="CenterAndExpand"/>
-                        <BoxView Style="{StaticResource MainBoxView}"/>
-                    </StackLayout>
-                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.1,AutoSize,AutoSize" Text="СКАНИРОВАНИЕ" Style="{StaticResource MainLabel}" FontFamily="{x:Static desing:DesignClass.FontBold}"/>
-                        <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.18,AutoSize,AutoSize" Text="Наведите сканер на QR-код" Style="{StaticResource MainLabelSmall}" FontFamily="{x:Static desing:DesignClass.FontLight}"/>
-                        <Frame AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.9,AutoSize,AutoSize" CornerRadius="10" BackgroundColor="#fff" Padding="35,25" Margin="35,0">
-                        <StackLayout>
-                            <Label Text="QR BARCODE SCANNER" Style="{StaticResource QrLabel}" FontFamily="{x:Static desing:DesignClass.FontMedium}"/>
-                                <Grid>
-                                <Image Source="box_foto.png" Margin="5" IsVisible="{Binding IsNotScanning}"/>
-                                <Image Source="outline_camera_48dp.png" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" Opacity="0.6"/>
-                            </Grid>
-                        </StackLayout>
-                    </Frame>
-                </AbsoluteLayout>
-                <Button Text="Сканировать товар" Style="{StaticResource AppButton}" Command="{Binding ScanCommand}" FontFamily="{x:Static desing:DesignClass.FontLight}"/>
-            </StackLayout>
-        </ScrollView>
+        <Grid BackgroundColor="{x:Static desing:DesignClass.Color}">
+            <Grid VerticalOptions="Start">
+                <Image Source="picture_600.png" HeightRequest="300" Aspect="Fill"/>
+                <Label Text="СКАНИРОВАНИЕ" Style="{StaticResource MainLabel}" FontFamily="{x:Static desing:DesignClass.FontBold}" Margin="{x:Static desing:DesignClass.Margin}"/>
+                <Label Text="Наведите сканер на QR-код" Style="{StaticResource MainLabelSmall}" FontFamily="{x:Static desing:DesignClass.FontLight}" Margin="{x:Static desing:DesignClass.MarginLabel}"/>
+                <BoxView Style="{StaticResource MainBoxView}"/>
+            </Grid>
+            <Frame CornerRadius="10" BackgroundColor="#fff" Padding="35,25" Margin="35,0" VerticalOptions="Center" HasShadow="{x:Static desing:DesignClass.HasShadow}">
+                <StackLayout>
+                    <Label Text="QR BARCODE SCANNER" Style="{StaticResource QrLabel}" FontFamily="{x:Static desing:DesignClass.FontMedium}"/>
+                    <Grid>
+                        <Image Source="box_foto.png" Margin="5" IsVisible="{Binding IsNotScanning}"/>
+                        <Image Source="outline_camera_48dp.png" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="40" Opacity="0.6"/>
+                    </Grid>
+                </StackLayout>
+            </Frame>
+            <Button Text="Сканировать товар" Style="{StaticResource AppButton}" Command="{Binding ScanCommand}" FontFamily="{x:Static desing:DesignClass.FontLight}"/>
+        </Grid>
     </ContentPage.Content>
 </views:MvxContentPage>

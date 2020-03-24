@@ -14,7 +14,7 @@
              x:Class="battery.app.Core.Pages.Shipment.ShipmentDetailPage">
     <!--Продажа-->
     <ContentPage.Content>
-        <StackLayout BackgroundColor="#eaeaea" Spacing="0">
+        <StackLayout BackgroundColor="White" Spacing="0">
             <StackLayout BackgroundColor="White" Padding="10,5,10,30" Margin="{x:Static design:DesignClass.LayoutThickness}">
                 <ImageButton Source="arrow_alt_left.png" Style="{StaticResource ImageBack}" WidthRequest="24" Command="{Binding ClosePageCommand}"/>
                 <Label Text="ПРОДАЖА" Style="{StaticResource MainLabelBlack}">
@@ -30,26 +30,13 @@
             <StackLayout BackgroundColor="{x:Static design:DesignClass.Color}">
                 <Frame CornerRadius="10" BackgroundColor="#fff" Margin="20,10,20,5" HasShadow="{x:Static design:DesignClass.HasShadow}">
                     <Label Text="{Binding Dealer}"
-                           WidthRequest="300">
-                        <Label.FontFamily>
-                            <OnPlatform x:TypeArguments="system:String">
-                                <On Platform="Android" Value="roboto_regular.ttf#roboto_regular"/>
-                                <On Platform="iOS" Value="roboto_regular"/>
-                            </OnPlatform>
-                        </Label.FontFamily>
-                    </Label>
+                           WidthRequest="300"
+                           FontFamily="{x:Static design:DesignClass.FontRegular}"/>
                 </Frame>
             </StackLayout>
             <StackLayout Padding="20,0" BackgroundColor="{x:Static design:DesignClass.Color}">
-                <Label Text="Аккумуляторы" Style="{StaticResource BattaryLabel}">
-                    <Label.FontFamily>
-                        <OnPlatform x:TypeArguments="system:String">
-                            <On Platform="iOS" Value="Roboto-Bold"/>
-                            <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold"/>
-                        </OnPlatform>
-                    </Label.FontFamily>
-                </Label>
-                <ListView ItemsSource="{Binding Goods}"
+                <Label Text="Аккумуляторы" Style="{StaticResource BattaryLabel}" FontFamily="{x:Static design:DesignClass.FontBold}"/>
+                    <ListView ItemsSource="{Binding Goods}"
                           SelectedItem="{Binding SelectedGoods}"
                           ItemSelected="ListView_OnItemSelected"
                           HasUnevenRows="True"

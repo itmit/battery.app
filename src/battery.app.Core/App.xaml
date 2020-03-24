@@ -4,6 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:core="clr-namespace:MvvmCross.Forms.Core;assembly=MvvmCross.Forms"
+             xmlns:design="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
              mc:Ignorable="d"
              x:Class="battery.app.Core.App">
 
@@ -28,14 +29,14 @@
             <Style x:Key="AuthEntry" TargetType="Entry">
                 <Setter Property="TextColor" Value="#334b6f"/>
                 <Setter Property="PlaceholderColor" Value="#334b6f"/>
-                <Setter Property="FontFamily" Value="roboto_light.ttf#roboto_light"/>
+                <Setter Property="FontFamily" Value="{x:Static design:DesignClass.FontLight}"/>
             </Style>
             <!--Стиль для кнопок-->
             <Style x:Key="AppButton" TargetType="Button">
                 <Setter Property="FontSize" Value="Medium"/>
                 <Setter Property="TextColor" Value="White"/>
                 <Setter Property="HorizontalOptions" Value="Center"/>
-                <Setter Property="VerticalOptions" Value="End"/>
+                <Setter Property="VerticalOptions" Value="EndAndExpand"/>
                 <Setter Property="Margin" Value="0,0,0,10"/>
                 <Setter Property="WidthRequest" Value="280"/>
                 <Setter Property="BackgroundColor" Value="#e61e29"/>
@@ -85,13 +86,13 @@
             <Style x:Key="TitleSaleLabel" TargetType="Label">
                 <Setter Property="TextColor" Value="Black"/>
                 <Setter Property="FontSize" Value="Large"/>
-                <Setter Property="FontFamily" Value="roboto_regular.ttf#roboto_regular"/>
+                <Setter Property="FontFamily" Value="{x:Static design:DesignClass.FontRegular}"/>
             </Style>
             <Style x:Key="TextSaleLabel" TargetType="Label">
                 <Setter Property="FontSize" Value="Small"/>
                 <Setter Property="HorizontalOptions" Value="Start"/>
                 <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="FontFamily" Value="roboto_light.ttf#roboto_light"/>
+                <Setter Property="FontFamily" Value="{x:Static design:DesignClass.FontLight}"/>
             </Style>
             <Style x:Key="ButtonSale" TargetType="Button">
                 <Setter Property="VerticalOptions" Value="FillAndExpand"/>
@@ -106,7 +107,6 @@
             </Style>
             <Style x:Key="QrLabel" TargetType="Label">
                 <Setter Property="TextColor" Value="#0001fc"/>
-                <Setter Property="FontAttributes" Value="Bold"/>
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>
@@ -143,7 +143,7 @@
                 <Setter Property="FontSize" Value="Medium"/>
                 <Setter Property="HorizontalOptions" Value="Start"/>
                 <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="FontFamily" Value="roboto_light.ttf#roboto_light"/>
+                <Setter Property="FontFamily" Value="{x:Static design:DesignClass.FontLight}"/>
             </Style>
             <Style x:Key="TitleTwoGoods" TargetType="Label">
                 <Setter Property="FontSize" Value="Large"/>
@@ -160,7 +160,7 @@
                 <Setter Property="HorizontalTextAlignment" Value="Start"/>
                 <Setter Property="FontSize" Value="Medium"/>
                 <Setter Property="TextColor" Value="Black"/>
-                <Setter Property="FontFamily" Value="roboto_light.ttf#roboto_light"/>
+                <Setter Property="FontFamily" Value="{x:Static design:DesignClass.FontLight}"/>
             </Style>
             <Style x:Key="TitleDetailNews" TargetType="Label">
                 <Setter Property="TextColor" Value="Black"/>

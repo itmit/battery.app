@@ -16075,22 +16075,19 @@ namespace battery.app.Droid
 			public const int ShellContent = 2131427409;
 			
 			// aapt resource value: 0x7F0B0052
-			public const int SplashScreen = 2131427410;
+			public const int support_simple_spinner_dropdown_item = 2131427410;
 			
 			// aapt resource value: 0x7F0B0053
-			public const int support_simple_spinner_dropdown_item = 2131427411;
+			public const int Tabbar = 2131427411;
 			
 			// aapt resource value: 0x7F0B0054
-			public const int Tabbar = 2131427412;
+			public const int Toolbar = 2131427412;
 			
 			// aapt resource value: 0x7F0B0055
-			public const int Toolbar = 2131427413;
+			public const int zxingscanneractivitylayout = 2131427413;
 			
 			// aapt resource value: 0x7F0B0056
-			public const int zxingscanneractivitylayout = 2131427414;
-			
-			// aapt resource value: 0x7F0B0057
-			public const int zxingscannerfragmentlayout = 2131427415;
+			public const int zxingscannerfragmentlayout = 2131427414;
 			
 			static Layout()
 			{
