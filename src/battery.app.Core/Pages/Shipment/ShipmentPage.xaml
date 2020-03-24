@@ -22,7 +22,7 @@
     <ContentPage.Content>
         <Grid BackgroundColor="{x:Static design:DesignClass.Color}" RowSpacing="0">
             <Grid VerticalOptions="Start">
-                <Image Source="picture_600.png" HeightRequest="300" Aspect="Fill"/>
+                <Image Source="picture_600.png"/>
                 <Label Margin="{x:Static design:DesignClass.Margin}"
                     Text="ОТГРУЗКА"
                     Style="{StaticResource MainLabel}"

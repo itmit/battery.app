@@ -20,7 +20,7 @@
     <ContentPage.Content>
         <Grid BackgroundColor="{x:Static desing:DesignClass.Color}">
             <Grid VerticalOptions="Start">
-                <Image Source="picture_600.png" HeightRequest="300" Aspect="Fill"/>
+                <Image Source="picture_600.png"/>
                 <Label Text="СКАНИРОВАНИЕ" Style="{StaticResource MainLabel}" FontFamily="{x:Static desing:DesignClass.FontBold}" Margin="{x:Static desing:DesignClass.Margin}"/>
                 <Label Text="Наведите сканер на QR-код" Style="{StaticResource MainLabelSmall}" FontFamily="{x:Static desing:DesignClass.FontLight}" Margin="{x:Static desing:DesignClass.MarginLabel}"/>
                 <BoxView Style="{StaticResource MainBoxView}"/>
