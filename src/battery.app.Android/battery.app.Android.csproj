@@ -207,5 +207,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\baseline_list_alt_black_48.png" />
   </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\drawable\ic_add.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

@@ -20,26 +20,26 @@
     </views:MvxContentPage.IconImageSource>
     <!--Отгрузка-->
     <ContentPage.Content>
-        <Grid BackgroundColor="{x:Static design:DesignClass.Color}" RowSpacing="0">
-            <Grid VerticalOptions="Start">
+        <AbsoluteLayout BackgroundColor="{x:Static design:DesignClass.Color}">
+            <Grid AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0,AutoSize,AutoSize">
                 <Image Source="picture_600.png"/>
-                <Label Margin="{x:Static design:DesignClass.Margin}"
-                    Text="ОТГРУЗКА"
-                    Style="{StaticResource MainLabel}"
-                    FontFamily="{x:Static design:DesignClass.FontBold}"/>
-                <Label Text="Выберите из списка дилеров" Style="{StaticResource MainLabelSmall}"
-                       FontFamily="{x:Static design:DesignClass.FontLight}"
-                       Margin="{x:Static design:DesignClass.MarginLabel}"/>
+                <StackLayout Margin="{x:Static design:DesignClass.Margin}">
+                    <Label Text="ОТГРУЗКА"
+                           Style="{StaticResource MainLabel}"
+                           FontFamily="{x:Static design:DesignClass.FontBold}"/>
+                    <Label Text="Выберите из списка дилеров" Style="{StaticResource MainLabelSmall}"
+                           FontFamily="{x:Static design:DesignClass.FontLight}"/>
+                </StackLayout>
                 <BoxView Style="{StaticResource MainBoxView}" VerticalOptions="EndAndExpand"/>
             </Grid>
-            <Grid VerticalOptions="Center">
+            <Grid AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,AutoSize,AutoSize">
                 <Frame VerticalOptions="Center"
                        CornerRadius="10"
                        BackgroundColor="#fff"
                        Margin="15,0"
                        HasShadow="{x:Static design:DesignClass.HasShadow}">
                     <FlexLayout>
-                        <Image Source="circle_entry.png" Margin="0,0,10,0" VerticalOptions="Center"/>
+                        <Image Source="circle_entry.png" WidthRequest="{x:Static design:DesignClass.Width}" VerticalOptions="Center"/>
                         <controls:PickerListGoods
                             ItemsSource="{Binding Dealers}"
                             ItemDisplayBinding="{Binding Login}"
@@ -48,7 +48,6 @@
                             Image="arrow_bottom"
                             WidthRequest="300"
                             TextColor="Black"
-                            VerticalOptions="Center"
                             FontFamily="{x:Static design:DesignClass.FontRegular}"/>
                         <Image Source="arrow_bottom.png">
                             <Image.IsVisible>
@@ -61,7 +60,7 @@
                     </FlexLayout>
                 </Frame>
             </Grid>
-            <Button Text="Оформить продажу" Style="{StaticResource AppButton}" Command="{Binding OpenShippingCreatePageCommand}" FontFamily="{x:Static design:DesignClass.FontLight}" VerticalOptions="EndAndExpand"/>
-        </Grid>
+            <Button AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,1,AutoSize,AutoSize" Text="Оформить продажу" Style="{StaticResource AppButton}" Command="{Binding OpenShippingCreatePageCommand}" FontFamily="{x:Static design:DesignClass.FontLight}" VerticalOptions="EndAndExpand"/>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </views:MvxContentPage>

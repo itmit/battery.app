@@ -6,42 +6,44 @@
              xmlns:controls="clr-namespace:battery.app.Core.Controls;assembly=battery.app.Core"
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:shipmentViewModels="clr-namespace:battery.app.Core.ViewModels.ShipmentViewModels;assembly=battery.app.Core"
+             xmlns:design="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Core.Pages.Shipment.ShipmentCreatePage">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout>
-                <AbsoluteLayout>
-                    <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0,0">
-                        <Image Source="picture_600.png" HorizontalOptions="CenterAndExpand" Aspect="Fill" HeightRequest="300"/>
-                        <BoxView Style="{StaticResource MainBoxView}"/>
-                    </StackLayout>
-                    <ImageButton AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.07,0.05,AutoSize,AutoSize" Source="arrow_alt_left_white.png" Style="{StaticResource ImageBack}" Command="{Binding ClosePageCommand}"/>
-                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.2,AutoSize,AutoSize" Text="СПИСОК ТОВАРОВ" Style="{StaticResource MainLabel}"/>
-                    <Label AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.1,0.4,AutoSize,AutoSize" Text=" Добавляйте выбранные для отгрузки товары" Style="{StaticResource MainLabelSmall}"/>
-                </AbsoluteLayout>
+        <AbsoluteLayout BackgroundColor="{x:Static design:DesignClass.Color}">
+            <Grid AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0">
+                <Image Source="picture_600.png"/>
+                <StackLayout Margin="{x:Static design:DesignClass.Margin}">
+                    <ImageButton Source="arrow_alt_left_white.png" VerticalOptions="Start" Style="{StaticResource ImageBack}" WidthRequest="24" Command="{Binding ClosePageCommand}"/>
+                    <Label Text="СПИСОК ТОВАРОВ" Style="{StaticResource MainLabel}" FontFamily="{x:Static design:DesignClass.FontBold}"/>
+                    <Label Text=" Добавляйте выбранные для отгрузки товары" Style="{StaticResource MainLabelSmall}" FontFamily="{x:Static design:DesignClass.FontLight}"/>
+                </StackLayout>
+                <BoxView Style="{StaticResource MainBoxView}"/>
+            </Grid>
+            <StackLayout HeightRequest="225" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.05,0.725,AutoSize,100">
                 <ScrollView>
-                    <controls:FlexRepeaterView Margin="10" ItemsSource="{Binding Goods}">
-                        <controls:FlexRepeaterView.ItemTemplate>
+                    <FlexLayout Wrap="Wrap">
+                        <BindableLayout.ItemsSource>
+                            <x:String>00000000000000000000000000000000000000000000000000000000000000000000000000000000</x:String>
+                        </BindableLayout.ItemsSource>
+                        <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell>
-                                    <Frame Margin="5" Style="{StaticResource FrameShipment}">
-                                        <Image Source="qrcode.png" Style="{StaticResource ImageShipment}"/>
-                                    </Frame>
-                                </ViewCell>
+                                <Frame Margin="5" Style="{StaticResource FrameShipment}" Padding="10" HeightRequest="50" IsClippedToBounds="True" VerticalOptions="Center" HasShadow="{x:Static design:DesignClass.HasShadow}">
+                                    <Image Source="qrcode.png" Style="{StaticResource ImageShipment}"/>
+                                </Frame>
                             </DataTemplate>
-                        </controls:FlexRepeaterView.ItemTemplate>
-                    </controls:FlexRepeaterView>
+                        </BindableLayout.ItemTemplate>
+                        <Frame Style="{StaticResource FrameShipment}" Margin="5" Padding="10" HeightRequest="50" IsClippedToBounds="True" VerticalOptions="Center" HasShadow="{x:Static design:DesignClass.HasShadow}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding ScanGoodsCommand}"/>
+                            </Frame.GestureRecognizers>
+                            <Image Source="ic_add.png" Style="{StaticResource ImageShipment}"/>
+                        </Frame>
+                    </FlexLayout>
                 </ScrollView>
-                <Frame Style="{StaticResource FrameShipment}">
-                    <Frame.GestureRecognizers>
-                        <TapGestureRecognizer Command="{Binding ScanGoodsCommand}"/>
-                    </Frame.GestureRecognizers>
-                    <Image Source="plus.png" Style="{StaticResource ImageShipment}"/>
-                </Frame>
-                <Button Text="Оформить отгрузку" Style="{StaticResource ButtonDefOne}" Command="{Binding OpenShippingConfirmPage}"/>
             </StackLayout>
-        </ScrollView>
+            <Button AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,1,AutoSize,AutoSize" Text="Оформить отгрузку" Style="{StaticResource AppButton}" Command="{Binding OpenShippingConfirmPage}"/>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </views:MvxContentPage>

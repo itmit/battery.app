@@ -21,13 +21,7 @@
     <ContentPage.Content>
         <StackLayout BackgroundColor="White">
             <StackLayout BackgroundColor="White" Margin="{x:Static design:DesignClass.LayoutThickness}">
-                <Label Text="СПИСОК ОТГРУЗОК" Style="{StaticResource MainLabelBlack}" Padding="10,5,10,30">
-                    <Label.FontFamily>
-                        <OnPlatform x:TypeArguments="system:String">
-                            <On Platform="iOS" Value="Roboto-Bold"/>
-                            <On Platform="Android" Value="Roboto-Bold.ttf#Roboto-Bold"/>
-                        </OnPlatform>
-                    </Label.FontFamily>
+                <Label Text="СПИСОК ОТГРУЗОК" Style="{StaticResource MainLabelBlack}" Padding="10,5,10,30" FontFamily="{x:Static design:DesignClass.FontBold}">
                     <Label.GestureRecognizers>
                         <TapGestureRecognizer Command="{Binding Check}"/>
                     </Label.GestureRecognizers>

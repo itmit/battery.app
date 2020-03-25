@@ -16,7 +16,7 @@
             <StackLayout BackgroundColor="White" Margin="{x:Static design:DesignClass.LayoutThickness}">
                 <ImageButton Source="arrow_alt_left.png" Style="{StaticResource ImageBack}" WidthRequest="24" Command="{Binding ClosePageCommand}" Margin="10,5,0,0"/>
                 <Label Text="ДАННЫЕ ПРОДАЖИ" Style="{StaticResource MainLabelBlack}" Padding="10,0,10,30" FontFamily="{x:Static design:DesignClass.FontBold}"/>
-                    <BoxView Style="{StaticResource MainBoxView}" HorizontalOptions="FillAndExpand"/>
+                <BoxView Style="{StaticResource MainBoxView}" HorizontalOptions="FillAndExpand"/>
             </StackLayout>
             <ScrollView VerticalOptions="FillAndExpand" HorizontalOptions="Fill" BackgroundColor="{x:Static design:DesignClass.Color}">
                 <StackLayout Padding="20">
