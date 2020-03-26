@@ -39,7 +39,7 @@
                        Margin="15,0"
                        HasShadow="{x:Static design:DesignClass.HasShadow}">
                     <FlexLayout>
-                        <Image Source="circle_entry.png" WidthRequest="{x:Static design:DesignClass.Width}" VerticalOptions="Center"/>
+                        <Image Source="ic_panorama_fish_eye.png" WidthRequest="{x:Static design:DesignClass.Width}" VerticalOptions="Center"/>
                         <controls:PickerListGoods
                             ItemsSource="{Binding Dealers}"
                             ItemDisplayBinding="{Binding Login}"

@@ -4,26 +4,31 @@ namespace battery.app.Core.Design
 {
 	static class DesignClass
 	{
+		#region Fields
+		#region Fields Margin
 		public static Thickness LayoutThickness;
 		public static Thickness Margin;
-		public static Thickness MarginLabel;
-		public static Color Color;
-		public static bool HasShadow;
-		public static double Number, Width;
+		#endregion
 
 		#region Fields Font
 		public static string FontRegular, FontLight, FontMedium, FontBold;
 		#endregion
 
+		#region Fields Other
+		public static Color Color;
+		public static bool HasShadow;
+		public static double Number, Width;
+		#endregion
+		#endregion
 
 
+		#region Ctor
 		static DesignClass()
 		{
 			if (Device.iOS == Device.RuntimePlatform)
 			{
 				LayoutThickness = new Thickness(0, 50, 0, 0);
 				Margin = new Thickness(10, 50, 0, 10);
-				MarginLabel = new Thickness(10,85,0,0);
 				Color = Color.LightGray;
 				HasShadow = false;
 				FontRegular = "roboto_regular";
@@ -41,9 +46,10 @@ namespace battery.app.Core.Design
 				FontLight = "roboto_light.ttf#roboto_light";
 				FontMedium = "roboto_medium.ttf#roboto_medium";
 				Margin = new Thickness(10, 30, 0, 10);
-				MarginLabel = new Thickness(10, 65, 0, 0);
 				Width = 25;
 			}
 		}
+		#endregion
+
 	}
 }

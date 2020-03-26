@@ -24,7 +24,7 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" Source="user" Margin="20,0,10,0" VerticalOptions="Center"/>
+                            <Image Grid.Column="0" Source="ic_person_outline.png" WidthRequest="18" HeightRequest="18" Margin="20,0,10,0" VerticalOptions="Center"/>
                             <controls:AuthorizationEntry Text="{Binding Login}" Grid.Column="1" Placeholder="логин" Style="{StaticResource AuthEntry}"/>
                         </Grid>
                     </Frame>
@@ -34,7 +34,7 @@
                                 <ColumnDefinition Width="Auto"/>
                                 <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
-                            <Image Grid.Column="0" Source="castle" Margin="20,0,10,0" VerticalOptions="Center"/>
+                            <Image Grid.Column="0" Source="ic_lock_outline.png" WidthRequest="18" HeightRequest="18" Margin="20,0,10,0" VerticalOptions="Center"/>
                             <controls:AuthorizationEntry Text="{Binding Password}" IsPassword="True" Grid.Column="1" Placeholder="пароль" Style="{StaticResource AuthEntry}"/>
                         </Grid>
                     </Frame>
