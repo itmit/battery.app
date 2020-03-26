@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentView xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             mc:Ignorable="d"
+             x:Class="battery.app.Core.Views.ViewCell.GoodsContentView">
+  <ContentView.Content>
+      <Frame BackgroundColor="White" CornerRadius="10" Padding="5" Margin="2,2,2,10">
+          <Frame.HasShadow>
+              <OnPlatform x:TypeArguments="system:Boolean">
+                  <On Platform="Android" Value="True"/>
+                  <On Platform="iOS" Value="False"/>
+              </OnPlatform>
+          </Frame.HasShadow>
+          <Frame.BorderColor>
+              <OnPlatform x:TypeArguments="Color">
+                  <On Platform="iOS" Value="LightGray"/>
+              </OnPlatform>
+          </Frame.BorderColor>
+          <Grid>
+              <Grid.ColumnDefinitions>
+                  <ColumnDefinition Width="100"/>
+                  <ColumnDefinition Width="*"/>
+              </Grid.ColumnDefinitions>
+              <Image Grid.Column="0" Source="tab_1.jpg" VerticalOptions="Center"/>
+              <StackLayout Grid.Column="1" VerticalOptions="Center">
+                  <Label Text="{Binding TabName}" Style="{StaticResource TitleSaleLabel}"/>
+                  <Label Text="{Binding TabParams[6], StringFormat='Напряжение, В: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                  <Label Text="{Binding TabParams[0], StringFormat='Емкость (А*ч): {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                  <Label Text="{Binding TabParams[3], StringFormat='Пусковой ток, А: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                  <Label Text="{Binding P4, StringFormat='Полярность: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                  <Label Text="{Binding P5, StringFormat='Технология сплава: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+              </StackLayout>
+          </Grid>
+      </Frame>
+    </ContentView.Content>
+</ContentView>

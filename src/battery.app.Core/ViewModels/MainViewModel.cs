@@ -41,8 +41,8 @@ namespace battery.app.Core.ViewModels
 				tasks.Add(NavigationService.Navigate<ShipmentViewModel>());
 				tasks.Add(NavigationService.Navigate<ShippingListViewModel>());
 			}
-			//tasks.Add(NavigationService.Navigate<NewsViewModel>());
-			tasks.Add(NavigationService.Navigate<TestViewModel>());
+			tasks.Add(NavigationService.Navigate<NewsViewModel>());
+			//tasks.Add(NavigationService.Navigate<TestViewModel>());
 			tasks.Add(NavigationService.Navigate(_exitViewModel));
 
 			return Task.WhenAll(tasks);

@@ -11,44 +11,6 @@
              mc:Ignorable="d"
              x:Class="battery.app.Core.Pages.TestPage">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="White" Spacing="0">
-            <StackLayout BackgroundColor="White" Margin="{x:Static design:DesignClass.LayoutThickness}">
-                <ImageButton Source="arrow_alt_left.png" WidthRequest="24" Style="{StaticResource ImageBack}" Command="{Binding ClosePageCommand}" Margin="10,5,0,0"/>
-                <Label Text="ПРОДАЖА" Style="{StaticResource MainLabelBlack}" FontFamily="{x:Static design:DesignClass.FontBold}" Padding="10,0,10,30"/>
-                <BoxView Style="{StaticResource MainBoxView}"/>
-            </StackLayout>
-            <StackLayout BackgroundColor="{x:Static design:DesignClass.Color}">
-                <Frame CornerRadius="10" BackgroundColor="#fff" Padding="15,10" Margin="20,10" HasShadow="{x:Static design:DesignClass.HasShadow}">
-                    <controls:PickerListGoods
-                        ItemsSource="{Binding Dealers}"
-                        ItemDisplayBinding="{Binding Login}"
-                        SelectedItem="{Binding SelectedDealer}"
-                        Title="Список дилеров"
-                        Image="arrow_bottom"
-                        WidthRequest="300"
-                        FontFamily="{x:Static design:DesignClass.FontRegular}"/>
-                </Frame>
-                <Label Text="Аккумуляторы" Style="{StaticResource BattaryLabel}" Margin="20,0,0,0" FontFamily="{x:Static design:DesignClass.FontBold}"/>
-                <ListView ItemsSource="{Binding Goods}"
-                          SelectedItem="{Binding SelectedGoods}"
-                          HasUnevenRows="True"
-                          BackgroundColor="LightGray"
-                          HeightRequest="465">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <viewCell:GoodsViewCell/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <Grid BackgroundColor="LightGray">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="*"/>
-                    </Grid.ColumnDefinitions>
-                    <Button Grid.Column="0" Text="Подтвердить отгрузку" Style="{StaticResource ButtonSale}" VerticalOptions="Center" BackgroundColor="#e61e29" Margin="10,10" Command="{Binding SendShipmentCommand}"/>
-                    <Button Grid.Column="1" Text="Изменить список" Style="{StaticResource ButtonSale}" VerticalOptions="Center" BackgroundColor="#08407d" Margin="10,10" Command="{Binding ClosePageCommand}"/>
-                </Grid>
-            </StackLayout>
-        </StackLayout>
+        
     </ContentPage.Content>
 </views:MvxContentPage>
