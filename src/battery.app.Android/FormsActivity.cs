@@ -18,14 +18,12 @@ namespace battery.app.Droid
 			base.OnCreate(bundle);
 			TabLayoutResource = Resource.Layout.Tabbar;
 			ToolbarResource = Resource.Layout.Toolbar;
-
-			Plugin.CurrentActivity.CrossCurrentActivity.Current.Init(this, bundle);
+			Xamarin.Essentials.Platform.Init(this, bundle);
 			ZXing.Net.Mobile.Forms.Android.Platform.Init();
 		}
 
 		public override void OnRequestPermissionsResult(int requestCode, string[] permissions, Permission[] grantResults)
 		{
-			global::ZXing.Net.Mobile.Android.PermissionsHandler.OnRequestPermissionsResult(requestCode, permissions, grantResults); 
 			PermissionsImplementation.Current.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 			base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
 		}

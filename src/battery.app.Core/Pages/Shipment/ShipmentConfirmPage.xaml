@@ -31,8 +31,8 @@
                 </Frame>
                 <Label Text="Аккумуляторы" Style="{StaticResource BattaryLabel}" Margin="20,0,0,0" FontFamily="{x:Static design:DesignClass.FontBold}"/>
                 <Grid>
-                    <ScrollView VerticalOptions="Start">
-                        <StackLayout BackgroundColor="{x:Static design:DesignClass.Color}" BindableLayout.ItemsSource ="{Binding Goods}">
+                    <ScrollView>
+                        <StackLayout BackgroundColor="{x:Static design:DesignClass.Color}" BindableLayout.ItemsSource ="{Binding Goods}" Margin="20,0">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
                                     <viewCell:GoodsContentView/>

@@ -3,7 +3,6 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:controls="clr-namespace:battery.app.Core.Controls;assembly=battery.app.Core"
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:shipmentViewModels="clr-namespace:battery.app.Core.ViewModels.ShipmentViewModels;assembly=battery.app.Core"
              xmlns:design="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
@@ -23,27 +22,26 @@
             </Grid>
             <StackLayout HeightRequest="225" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.05,0.725,AutoSize,100">
                 <ScrollView>
-                    <FlexLayout Wrap="Wrap">
-                        <BindableLayout.ItemsSource>
-                            <x:String>00000000000000000000000000000000000000000000000000000000000000000000000000000000</x:String>
-                        </BindableLayout.ItemsSource>
-                        <BindableLayout.ItemTemplate>
-                            <DataTemplate>
-                                <Frame Margin="5" Style="{StaticResource FrameShipment}" Padding="10" HeightRequest="50" IsClippedToBounds="True" VerticalOptions="Center" HasShadow="{x:Static design:DesignClass.HasShadow}">
-                                    <Image Source="qrcode.png" Style="{StaticResource ImageShipment}"/>
-                                </Frame>
-                            </DataTemplate>
-                        </BindableLayout.ItemTemplate>
-                        <Frame Style="{StaticResource FrameShipment}" Margin="5" Padding="10" HeightRequest="50" IsClippedToBounds="True" VerticalOptions="Center" HasShadow="{x:Static design:DesignClass.HasShadow}">
+                    <StackLayout>
+                        <FlexLayout Wrap="Wrap" BindableLayout.ItemsSource="{Binding Goods}" AbsoluteLayout.LayoutFlags="PositionProportional">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Frame Margin="5" Style="{StaticResource FrameShipment}" Padding="10" HeightRequest="50" IsClippedToBounds="True" VerticalOptions="Center" HasShadow="{x:Static design:DesignClass.HasShadow}">
+                                        <Image Source="qrcode.png" Style="{StaticResource ImageShipment}"/>
+                                    </Frame>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </FlexLayout>
+                        <Frame Style="{StaticResource FrameShipment}" Margin="5" Padding="10" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="Start" IsClippedToBounds="True" HasShadow="{x:Static design:DesignClass.HasShadow}">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding ScanGoodsCommand}"/>
                             </Frame.GestureRecognizers>
                             <Image Source="ic_add.png" Style="{StaticResource ImageShipment}"/>
                         </Frame>
-                    </FlexLayout>
+                    </StackLayout>
                 </ScrollView>
             </StackLayout>
-            <Button AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,1,AutoSize,AutoSize" Text="Оформить отгрузку" Style="{StaticResource AppButton}" Command="{Binding OpenShippingConfirmPage}"/>
+            <Button AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,1,AutoSize,AutoSize" Text="Оформить отгрузку" Style="{StaticResource AppButton}" Command="{Binding OpenShippingConfirmPage}" FontFamily="{x:Static design:DesignClass.FontLight}"/>
         </AbsoluteLayout>
     </ContentPage.Content>
 </views:MvxContentPage>
