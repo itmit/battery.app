@@ -20,25 +20,28 @@
                 </StackLayout>
                 <BoxView Style="{StaticResource MainBoxView}"/>
             </Grid>
+            <Frame Style="{StaticResource FrameShipment}" Margin="5" Padding="10" HeightRequest="50" WidthRequest="50"
+                   VerticalOptions="Start" HorizontalOptions="EndAndExpand" IsClippedToBounds="True"
+                   HasShadow="{x:Static design:DesignClass.HasShadow}"
+                   AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.25,AutoSize,AutoSize">
+                <Frame.GestureRecognizers>
+                    <TapGestureRecognizer Command="{Binding ScanGoodsCommand}" />
+                </Frame.GestureRecognizers>
+                <Image Source="ic_add.png" Style="{StaticResource ImageShipment}" />
+            </Frame>
             <StackLayout HeightRequest="225" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.05,0.725,AutoSize,100">
                 <ScrollView>
-                    <StackLayout>
-                        <FlexLayout Wrap="Wrap" BindableLayout.ItemsSource="{Binding Goods}" AbsoluteLayout.LayoutFlags="PositionProportional">
-                            <BindableLayout.ItemTemplate>
-                                <DataTemplate>
-                                    <Frame Margin="5" Style="{StaticResource FrameShipment}" Padding="10" HeightRequest="50" IsClippedToBounds="True" VerticalOptions="Center" HasShadow="{x:Static design:DesignClass.HasShadow}">
-                                        <Image Source="qrcode.png" Style="{StaticResource ImageShipment}"/>
-                                    </Frame>
-                                </DataTemplate>
-                            </BindableLayout.ItemTemplate>
-                        </FlexLayout>
-                        <Frame Style="{StaticResource FrameShipment}" Margin="5" Padding="10" HeightRequest="50" VerticalOptions="Start" HorizontalOptions="Start" IsClippedToBounds="True" HasShadow="{x:Static design:DesignClass.HasShadow}">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ScanGoodsCommand}"/>
-                            </Frame.GestureRecognizers>
-                            <Image Source="ic_add.png" Style="{StaticResource ImageShipment}"/>
-                        </Frame>
-                    </StackLayout>
+                    <FlexLayout Wrap="Wrap" BindableLayout.ItemsSource="{Binding Goods}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate>
+                                <Frame Margin="5" Style="{StaticResource FrameShipment}" Padding="10"
+                                           HeightRequest="50" IsClippedToBounds="True" VerticalOptions="Center"
+                                           HasShadow="{x:Static design:DesignClass.HasShadow}">
+                                    <Image Source="qrcode.png" Style="{StaticResource ImageShipment}" />
+                                </Frame>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
                 </ScrollView>
             </StackLayout>
             <Button AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,1,AutoSize,AutoSize" Text="Оформить отгрузку" Style="{StaticResource AppButton}" Command="{Binding OpenShippingConfirmPage}" FontFamily="{x:Static design:DesignClass.FontLight}"/>

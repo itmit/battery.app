@@ -30,8 +30,12 @@
                         FontFamily="{x:Static design:DesignClass.FontRegular}"/>
                 </Frame>
                 <Label Text="Аккумуляторы" Style="{StaticResource BattaryLabel}" Margin="20,0,0,0" FontFamily="{x:Static design:DesignClass.FontBold}"/>
-                <Grid>
-                    <ScrollView>
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3.5*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ScrollView Grid.Row="0">
                         <StackLayout BackgroundColor="{x:Static design:DesignClass.Color}" BindableLayout.ItemsSource ="{Binding Goods}" Margin="20,0">
                             <BindableLayout.ItemTemplate>
                                 <DataTemplate>
@@ -40,13 +44,13 @@
                             </BindableLayout.ItemTemplate>
                         </StackLayout>
                     </ScrollView>
-                    <Grid BackgroundColor="{x:Static design:DesignClass.Color}" VerticalOptions="EndAndExpand" Padding="10">
+                    <Grid Grid.Row="1" BackgroundColor="{x:Static design:DesignClass.Color}" VerticalOptions="EndAndExpand" Padding="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Button Grid.Column="0" Text="Подтвердить отгрузку" Style="{StaticResource ButtonSale}" HeightRequest="55" VerticalOptions="Center" BackgroundColor="#e61e29" Command="{Binding SendShipmentCommand}"/>
-                        <Button Grid.Column="1" Text="Изменить список" Style="{StaticResource ButtonSale}" HeightRequest="55" VerticalOptions="Center" BackgroundColor="#08407d" Command="{Binding ClosePageCommand}"/>
+                        <Button Grid.Column="1" Text="Изменить&#10;список" Style="{StaticResource ButtonSale}" HeightRequest="55" VerticalOptions="Center" BackgroundColor="#08407d" Command="{Binding ClosePageCommand}"/>
                     </Grid>
                 </Grid>
             </StackLayout>

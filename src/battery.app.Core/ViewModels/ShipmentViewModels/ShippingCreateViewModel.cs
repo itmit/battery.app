@@ -152,7 +152,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 				Device.BeginInvokeOnMainThread(async () =>
 				{
 					await Application.Current.MainPage.DisplayAlert(Strings.Alert,
-																	"Для создания отгрузки добавите хотя бы одну батарею",
+																	"Для создания отгрузки добавьте хотя бы одну батарею",
 																	Strings.Ok);
 				});
 				return;

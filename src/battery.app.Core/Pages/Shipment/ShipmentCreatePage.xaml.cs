@@ -16,6 +16,8 @@ namespace battery.app.Core.Pages.Shipment
 		public ShipmentCreatePage()
 		{
 			InitializeComponent();
+
+
 		}
 	}
 }
