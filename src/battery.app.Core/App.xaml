@@ -102,7 +102,7 @@
                 <Setter Property="FontSize" Value="25"/>
             </Style>
             <Style x:Key="QrLabel" TargetType="Label">
-                <Setter Property="TextColor" Value="#0001fc"/>
+                <Setter Property="TextColor" Value="#1100fc"/>
                 <Setter Property="FontSize" Value="20"/>
                 <Setter Property="HorizontalTextAlignment" Value="Center"/>
             </Style>

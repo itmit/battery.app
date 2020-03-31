@@ -11,6 +11,60 @@
              mc:Ignorable="d"
              x:Class="battery.app.Core.Pages.TestPage">
     <ContentPage.Content>
-        
+        <StackLayout Spacing="0">
+            <StackLayout BackgroundColor="White" Margin="{x:Static design:DesignClass.LayoutThickness}">
+                <ImageButton Source="arrow_alt_left.png" WidthRequest="24" Style="{StaticResource ImageBack}" Command="{Binding ClosePageCommand}" Margin="10,5,0,0"/>
+                <Label Text="ПРОДАЖА" Style="{StaticResource MainLabelBlack}" FontFamily="{x:Static design:DesignClass.FontBold}" Padding="10,0,10,30"/>
+                <BoxView Style="{StaticResource MainBoxView}"/>
+            </StackLayout>
+        <AbsoluteLayout VerticalOptions="FillAndExpand" BackgroundColor="{x:Static design:DesignClass.Color}">
+            <StackLayout BackgroundColor="{x:Static design:DesignClass.Color}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0,AutoSize,AutoSize">
+                <Frame CornerRadius="10" BackgroundColor="#fff" Padding="15,10" Margin="20,10" HasShadow="{x:Static design:DesignClass.HasShadow}">
+                    <controls:PickerListGoods
+                        ItemsSource="{Binding Dealers}"
+                        ItemDisplayBinding="{Binding Login}"
+                        SelectedItem="{Binding SelectedDealer}"
+                        Title="Список дилеров"
+                        Image="arrow_bottom"
+                        WidthRequest="300"
+                        FontFamily="{x:Static design:DesignClass.FontRegular}"/>
+                </Frame>
+                <Label Text="Аккумуляторы" Style="{StaticResource BattaryLabel}" Margin="20,0,0,0" FontFamily="{x:Static design:DesignClass.FontBold}"/>
+                <Grid RowSpacing="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="3.5*"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <ScrollView Grid.Row="0">
+                        <StackLayout BackgroundColor="{x:Static design:DesignClass.Color}" BindableLayout.ItemsSource ="{Binding Goods}" Margin="20,0">
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <viewCell:GoodsContentView/>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </StackLayout>
+                    </ScrollView>
+                </Grid>
+            </StackLayout>
+            <Grid ColumnSpacing="20" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,1,AutoSize,AutoSize" Grid.Row="1" BackgroundColor="{x:Static design:DesignClass.Color}" VerticalOptions="EndAndExpand" Padding="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+                    <Frame Grid.Column="0" Padding="5" HasShadow="False" CornerRadius="24" BackgroundColor="#e61e29" WidthRequest="200">
+                        <Label Text="Подтвердить&#10;отгрузку" TextColor="White" FontFamily="{x:Static design:DesignClass.FontLight}" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding SendShipmentCommand}"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+                    <Frame Grid.Column="1" Padding="5" HasShadow="False" CornerRadius="24" BackgroundColor="#08407d" WidthRequest="200">
+                        <Label Text="Изменить&#10;список" TextColor="White" FontFamily="{x:Static design:DesignClass.FontLight}" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
+                        <Frame.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding ClosePageCommand}"/>
+                        </Frame.GestureRecognizers>
+                    </Frame>
+            </Grid>
+            </AbsoluteLayout>
+        </StackLayout>
     </ContentPage.Content>
 </views:MvxContentPage>
