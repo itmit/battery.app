@@ -90,7 +90,7 @@ namespace battery.app.Core.ViewModels
 		{
 			try
 			{
-				var status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+				var status = await CrossPermissions.Current.CheckPermissionStatusAsync<CameraPermission>();
 				if (status == PermissionStatus.Granted)
 				{
 					return true;
@@ -112,7 +112,7 @@ namespace battery.app.Core.ViewModels
 					});
 				}
 
-				status = await CrossPermissions.Current.CheckPermissionStatusAsync(Permission.Camera);
+				status = await CrossPermissions.Current.CheckPermissionStatusAsync<CameraPermission>();
 				return status == PermissionStatus.Granted;
 			}
 			catch (Exception ex)

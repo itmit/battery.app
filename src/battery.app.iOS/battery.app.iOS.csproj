@@ -27,6 +27,9 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <MtouchNoSymbolStrip>true</MtouchNoSymbolStrip>
+    <MtouchSdkVersion>13.2</MtouchSdkVersion>
+    <CodesignKey>iPhone Developer</CodesignKey>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -182,7 +185,7 @@
   <ItemGroup>
     <ProjectReference Include="..\battery.app.Core\battery.app.Core.csproj">
       <Project>{DF3C8B5C-CD2E-435D-B20D-CB4A81D4BD87}</Project>
-      <Name>battery.Core</Name>
+      <Name>battery.app.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -12,13 +12,13 @@
              NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Core.Pages.Shipment.ShipmentConfirmPage">
     <ContentPage.Content>
-        <StackLayout BackgroundColor="White" Spacing="0">
-            <StackLayout BackgroundColor="White" Margin="{x:Static design:DesignClass.LayoutThickness}">
+        <AbsoluteLayout BackgroundColor="{x:Static design:DesignClass.Color}">
+            <StackLayout AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0,AutoSize,AutoSize" BackgroundColor="White" Margin="{x:Static design:DesignClass.LayoutThickness}">
                 <ImageButton Source="arrow_alt_left.png" WidthRequest="24" Style="{StaticResource ImageBack}" Command="{Binding ClosePageCommand}" Margin="10,5,0,0"/>
                 <Label Text="ПРОДАЖА" Style="{StaticResource MainLabelBlack}" FontFamily="{x:Static design:DesignClass.FontBold}" Padding="10,0,10,30"/>
                 <BoxView Style="{StaticResource MainBoxView}"/>
             </StackLayout>
-            <StackLayout BackgroundColor="{x:Static design:DesignClass.Color}">
+            <StackLayout BackgroundColor="{x:Static design:DesignClass.Color}" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.25,AutoSize,AutoSize">
                 <Frame CornerRadius="10" BackgroundColor="#fff" Padding="15,10" Margin="20,10" HasShadow="{x:Static design:DesignClass.HasShadow}">
                     <controls:PickerListGoods
                         ItemsSource="{Binding Dealers}"
@@ -44,16 +44,16 @@
                             </BindableLayout.ItemTemplate>
                         </StackLayout>
                     </ScrollView>
-                    <Grid Grid.Row="1" BackgroundColor="{x:Static design:DesignClass.Color}" VerticalOptions="EndAndExpand" Padding="10">
+                </Grid>
+            </StackLayout>
+             <Grid ColumnSpacing="20" AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,1,AutoSize,AutoSize" Grid.Row="1" BackgroundColor="{x:Static design:DesignClass.Color}" VerticalOptions="EndAndExpand" Padding="10">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
-                        <Button Grid.Column="0" Text="Подтвердить отгрузку" Style="{StaticResource ButtonSale}" HeightRequest="55" VerticalOptions="Center" BackgroundColor="#e61e29" Command="{Binding SendShipmentCommand}"/>
-                        <Button Grid.Column="1" Text="Изменить&#10;список" Style="{StaticResource ButtonSale}" HeightRequest="55" VerticalOptions="Center" BackgroundColor="#08407d" Command="{Binding ClosePageCommand}"/>
+                        <Button Grid.Column="0" Text="Подтвердить отгрузку" Style="{StaticResource ButtonSale}" WidthRequest="200" HeightRequest="55" BackgroundColor="#e61e29" Command="{Binding SendShipmentCommand}"/>
+                        <Button Grid.Column="1" Text="Изменить список" Style="{StaticResource ButtonSale}" HeightRequest="55" BackgroundColor="#08407d" Command="{Binding ClosePageCommand}"/>
                     </Grid>
-                </Grid>
-            </StackLayout>
-        </StackLayout>
+        </AbsoluteLayout>
     </ContentPage.Content>
 </views:MvxContentPage>
