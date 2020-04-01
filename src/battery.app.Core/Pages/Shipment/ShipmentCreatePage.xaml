@@ -16,7 +16,7 @@
                 <StackLayout Margin="{x:Static design:DesignClass.Margin}">
                     <ImageButton Source="arrow_alt_left_white.png" VerticalOptions="Start" Style="{StaticResource ImageBack}" WidthRequest="24" Command="{Binding ClosePageCommand}"/>
                     <Label Text="СПИСОК ТОВАРОВ" Style="{StaticResource MainLabel}" FontFamily="{x:Static design:DesignClass.FontBold}"/>
-                    <Label Text=" Добавляйте выбранные для отгрузки товары" Style="{StaticResource MainLabelSmall}" FontFamily="{x:Static design:DesignClass.FontLight}"/>
+                    <Label Text="Добавляйте выбранные для отгрузки товары" Style="{StaticResource MainLabelSmall}" FontFamily="{x:Static design:DesignClass.FontLight}"/>
                 </StackLayout>
                 <BoxView Style="{StaticResource MainBoxView}"/>
             </Grid>
