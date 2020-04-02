@@ -25,20 +25,16 @@ namespace battery.app.Core
 				.EndingWith("Repository")
 				.AsInterfaces()
 				.RegisterAsDynamic();
-
-			var userRepository = Mvx.IoCProvider.Resolve<IUserRepository>();
-
-			User user = userRepository.GetAll().SingleOrDefault();
 			
-			if (user?.AccessToken == null)
+			RealmConfiguration.DefaultConfiguration.SchemaVersion = 1;
+
+			var authService = Mvx.IoCProvider.Resolve<IAuthService>();
+
+			if (authService.UserToken == null)
 			{
 				RegisterAppStart<AuthorizationViewModel>();
 				return;
 			}
-
-			Mvx.IoCProvider.RegisterSingleton<IDealerService>(new DealerService(user.AccessToken));
-			Mvx.IoCProvider.RegisterSingleton<IShipmentService>(new ShipmentService(user.AccessToken));
-			Mvx.IoCProvider.RegisterSingleton<INewsService>(new NewsService(user.AccessToken));
 
 			RegisterAppStart<MainViewModel>();
 		}

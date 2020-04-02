@@ -3,6 +3,7 @@ using Android.Content.PM;
 using Android.OS;
 using MvvmCross.Forms.Platforms.Android.Views;
 using Plugin.Permissions;
+using Realms;
 
 namespace battery.app.Droid
 {

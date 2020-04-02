@@ -6,8 +6,8 @@ using battery.app.Core.Repositories;
 using battery.app.Core.Services;
 using MvvmCross;
 using MvvmCross.Commands;
+using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using PommaLabs.Thrower;
 using Xamarin.Forms;
 
 namespace battery.app.Core.ViewModels
@@ -33,10 +33,12 @@ namespace battery.app.Core.ViewModels
 		/// Введенный пользователем пароль.
 		/// </summary>
 		private string _password;
+
 		/// <summary>
 		/// Репозиторий для работы с базой пользователей.
 		/// </summary>
 		private readonly IUserRepository _userRepository;
+		private readonly IMvxNavigationService _navigationService;
 		#endregion
 		#endregion
 
@@ -47,12 +49,11 @@ namespace battery.app.Core.ViewModels
 		/// <param name="userRepository">Репозиторий для сохранения пользователей после входа.</param>
 		/// <param name="authService">Сервис для авторизации пользователей.</param>
 		/// <exception cref="ArgumentNullException">Вызывается, если переданные репозиторий или сервис являются <c>null</c>.</exception>
-		public AuthorizationViewModel(IUserRepository userRepository, IAuthService authService)
+		public AuthorizationViewModel(IUserRepository userRepository, IAuthService authService, IMvxNavigationService navigationService)
 		{
-			Raise.ArgumentNullException.IfIsNull(authService, nameof(authService));
-			Raise.ArgumentNullException.IfIsNull(userRepository, nameof(userRepository));
 			_userRepository = userRepository;
 			_authService = authService;
+			_navigationService = navigationService;
 		}
 		#endregion
 
@@ -111,11 +112,7 @@ namespace battery.app.Core.ViewModels
 				return;
 			}
 
-			Mvx.IoCProvider.RegisterSingleton<IDealerService>(new DealerService(user.AccessToken));
-
-			_userRepository.Add(user);
-
-			Application.Current.MainPage = new MainPage();
+			await _navigationService.Navigate<MainViewModel>();
 		}
 		#endregion
 	}

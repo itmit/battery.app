@@ -17,5 +17,16 @@ namespace battery.app.Core.Services
 		Task<User> Login(string login, string password);
 
 
+		User User
+		{
+			get;
+		}
+
+		AccessToken UserToken
+		{
+			get;
+		}
+
+		Task<bool> Logout(User user);
 	}
 }

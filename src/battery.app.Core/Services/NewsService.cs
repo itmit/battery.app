@@ -8,24 +8,30 @@ using AutoMapper;
 using battery.app.Core.DTO;
 using battery.app.Core.Models;
 using Newtonsoft.Json;
-using PommaLabs.Thrower;
 
 namespace battery.app.Core.Services
 {
 	public class NewsService : INewsService
 	{
-		private AccessToken _accessToken;
+		/// <summary>
+		/// Маппер.
+		/// </summary>
 		private Mapper _mapper;
+
+		/// <summary>
+		/// Сервис авторизации, для получения токена доступа пользователя.
+		/// </summary>
+		private readonly IAuthService _authService;
+
 		public const string StorageUri = "http://battery.itmit-studio.ru/storage/";
 
 		/// <summary>
 		/// Инициализирует новый экземпляр <see cref="DealerService" />.
 		/// </summary>
-		/// <param name="accessToken">Токен для доступа к api.</param>
-		public NewsService(AccessToken accessToken)
+		/// <param name="authService">Сервис авторизации, для получения токена доступа пользователя.</param>
+		public NewsService(IAuthService authService)
 		{
-			Raise.ArgumentNullException.IfIsNull(accessToken, nameof(accessToken));
-			_accessToken = accessToken;
+			_authService = authService;
 			_mapper = new Mapper(new MapperConfiguration(cfg =>
 			{
 				cfg.CreateMap<NewsDto, News>()
@@ -39,7 +45,7 @@ namespace battery.app.Core.Services
 		{
 			using (var client = new HttpClient())
 			{
-				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse($"{_accessToken.Type} {_accessToken.Body}");
+				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(_authService.UserToken.ToString());
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 				var uri = GetAllNewsUri + $"{limit}/{offset}";
 				Debug.WriteLine(uri);

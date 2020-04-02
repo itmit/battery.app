@@ -56,8 +56,8 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		/// Сервис для получения информации о батареях.
 		/// </summary>
 		private readonly IShipmentService _shipmentService;
-		private ISettingsHelper _settingsHelper;
 		private Shipment _shipment;
+		private readonly IPermissionsService _permissionsService;
 		#endregion
 		#endregion
 
@@ -67,11 +67,11 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		/// </summary>
 		/// <param name="navigationService">Сервис для навигации.</param>
 		/// <param name="shipmentService">Сервис для получения информации о товарах.</param>
-		public ShippingCreateViewModel(IMvxNavigationService navigationService, IShipmentService shipmentService, ISettingsHelper settingsHelper)
+		public ShippingCreateViewModel(IMvxNavigationService navigationService, IShipmentService shipmentService, IPermissionsService permissionsService)
 		{
 			_navigationService = navigationService;
 			_shipmentService = shipmentService;
-			_settingsHelper = settingsHelper;
+			_permissionsService = permissionsService;
 		}
 		#endregion
 
@@ -116,7 +116,34 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		{
 			get
 			{
-				_scanGoodsCommand = _scanGoodsCommand ?? new MvxCommand(ScanGoods);
+				_scanGoodsCommand = _scanGoodsCommand ?? new MvxCommand(async () =>
+				{
+					if (await _permissionsService.CheckPermission(Permission.Camera, "Для сканирования QR-кода необходимо разрешение на использование камеры."))
+					{
+						string result = await _navigationService.Navigate<ScannerViewModel, object, string>(null);
+
+						var goods = await _shipmentService.CheckGoods(result);
+
+						if (goods == null)
+						{
+							await Application.Current.MainPage.Navigation.PopModalAsync();
+							Device.BeginInvokeOnMainThread(async () =>
+							{
+								await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Батарея не найдена.", Strings.Ok);
+							});
+							return;
+						}
+
+						var newCollection = new MvxObservableCollection<Goods>();
+						foreach (var goodsCode in Goods)
+						{
+							newCollection.Add(goodsCode);
+						}
+
+						newCollection.Add(goods);
+						Goods = newCollection;
+					}
+				});
 				return _scanGoodsCommand;
 			}
 		}
@@ -171,43 +198,6 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 			}
 		}
 
-		private async Task<bool> CheckStoragePermission()
-		{
-			try
-			{
-				var status = await CrossPermissions.Current.CheckPermissionStatusAsync<CameraPermission>();
-				if (status == PermissionStatus.Granted)
-				{
-					return true;
-				}
-
-				if (!await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Camera))
-				{
-					Device.BeginInvokeOnMainThread(async () =>
-					{
-						var answer = await Application.Current.MainPage.DisplayAlert(Strings.Alert,
-																					 "Для сканирования батарей необходимо разрешение на использование камеры.",
-																					 Strings.Ok,
-																					 Strings.Cancel);
-
-						if (answer)
-						{
-							_settingsHelper.OpenAppSettings();
-						}
-					});
-				}
-
-				status = await CrossPermissions.Current.CheckPermissionStatusAsync<CameraPermission>();
-				return status == PermissionStatus.Granted;
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex);
-			}
-
-			return false;
-		}
-
 		/// <summary>
 		/// Вызывает при успешном сканировании товара и добавляет код товара в отгрузку.
 		/// </summary>
@@ -219,43 +209,11 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 				return;
 			}
 
-			var goods = await _shipmentService.CheckGoods("23403");
-
-			if (goods == null)
-			{
-				await Application.Current.MainPage.Navigation.PopModalAsync();
-				Device.BeginInvokeOnMainThread(async () =>
-				{
-					await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Батарея не найдена.", Strings.Ok);
-				});
-				return;
-			}
-
-			var newCollection = new MvxObservableCollection<Goods>();
-			foreach (var goodsCode in Goods)
-			{
-				newCollection.Add(goodsCode);
-			}
-
-			newCollection.Add(goods);
-			Goods = newCollection;
+			
 
 			await Application.Current.MainPage.Navigation.PopModalAsync();
 		}
 
-		/// <summary>
-		/// Открывает сканирование товара.
-		/// </summary>
-		private async void ScanGoods()
-		{
-			var page = new ZXingScannerPage();
-			page.OnScanResult += PageOnOnScanResult;
-
-			if (await CheckStoragePermission())
-			{
-				await Application.Current.MainPage.Navigation.PushModalAsync(page);
-			}
-		}
 		#endregion
 	}
 }

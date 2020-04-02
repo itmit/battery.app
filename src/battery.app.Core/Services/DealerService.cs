@@ -7,7 +7,6 @@ using AutoMapper;
 using battery.app.Core.DTO;
 using battery.app.Core.Models;
 using Newtonsoft.Json;
-using PommaLabs.Thrower;
 
 namespace battery.app.Core.Services
 {
@@ -20,11 +19,11 @@ namespace battery.app.Core.Services
 		/// Маппер.
 		/// </summary>
 		private readonly Mapper _mapper;
-		
+
 		/// <summary>
-		/// Токен для доступа к api.
+		/// Сервис авторизации, для получения токена доступа пользователя.
 		/// </summary>
-		private readonly AccessToken _accessToken;
+		private readonly IAuthService _authService;
 
 		/// <summary>
 		/// Адрес для получения дилеров.
@@ -34,11 +33,10 @@ namespace battery.app.Core.Services
 		/// <summary>
 		/// Инициализирует новый экземпляр <see cref="DealerService" />.
 		/// </summary>
-		/// <param name="accessToken">Токен для доступа к api.</param>
-		public DealerService(AccessToken accessToken)
+		/// <param name="authService">Сервис авторизации, для получения токена доступа пользователя.</param>
+		public DealerService(IAuthService authService)
 		{
-			Raise.ArgumentNullException.IfIsNull(accessToken, nameof(accessToken));
-			_accessToken = accessToken;
+			_authService = authService;
 			_mapper = new Mapper(new MapperConfiguration(cfg =>
 			{
 				cfg.CreateMap<Dealer, DealerDto>();
@@ -55,7 +53,7 @@ namespace battery.app.Core.Services
 		{
 			using (var client = new HttpClient())
 			{
-				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse($"{_accessToken.Type} {_accessToken.Body}");
+				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(_authService.UserToken.ToString());
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 				var response = await client.GetAsync(GetDealersUri);

@@ -3,6 +3,7 @@ using battery.app.Core.Services;
 using battery.app.Droid.Services;
 using MvvmCross;
 using MvvmCross.Forms.Platforms.Android.Core;
+using MvvmCross.Forms.Presenters;
 using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 using Xamarin.Forms;
@@ -15,11 +16,12 @@ namespace battery.app.Droid
 
 		protected override Application CreateFormsApplication() => new App();
 
-		protected override IMvxIoCProvider InitializeIoC()
+		protected override IMvxFormsPagePresenter CreateFormsPagePresenter(IMvxFormsViewPresenter viewPresenter)
 		{
-			var provider = base.InitializeIoC();
-			provider.RegisterSingleton<ISettingsHelper>(new SettingsHelperDroid());
-			return provider;
+			var formsPagePresenter = new CustomMvxFormsPagePresenter(viewPresenter);
+			Mvx.IoCProvider.RegisterSingleton<IMvxFormsPagePresenter>(formsPagePresenter);
+			Mvx.IoCProvider.RegisterSingleton<ISettingsHelper>(new SettingsHelperDroid());
+			return formsPagePresenter;
 		}
 	}
 }

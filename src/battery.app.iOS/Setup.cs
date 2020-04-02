@@ -6,7 +6,9 @@ using battery.app.Core;
 using battery.app.Core.Services;
 using battery.app.iOS.Services;
 using Foundation;
+using MvvmCross;
 using MvvmCross.Forms.Platforms.Ios.Core;
+using MvvmCross.Forms.Presenters;
 using MvvmCross.IoC;
 using MvvmCross.ViewModels;
 using UIKit;
@@ -19,11 +21,12 @@ namespace battery.app.iOS
 
 		protected override Xamarin.Forms.Application CreateFormsApplication() => new App();
 
-		protected override IMvxIoCProvider InitializeIoC()
+		protected override IMvxFormsPagePresenter CreateFormsPagePresenter(IMvxFormsViewPresenter viewPresenter)
 		{
-			var provider = base.InitializeIoC();
-			provider.RegisterSingleton<ISettingsHelper>(new SettingsHelperIos());
-			return provider;
+			var formsPagePresenter = new CustomMvxFormsPagePresenter(viewPresenter);
+			Mvx.IoCProvider.RegisterSingleton<IMvxFormsPagePresenter>(formsPagePresenter);
+			Mvx.IoCProvider.RegisterSingleton<ISettingsHelper>(new SettingsHelperIos());
+			return formsPagePresenter;
 		}
 	}
 }

@@ -14,10 +14,10 @@ namespace battery.app.Core.Pages
 {
 	// Learn more about making custom code visible in the Xamarin.Forms previewer
 	// by visiting https://aka.ms/xamarinforms-previewer
-	[MvxTabbedPagePresentation(TabbedPosition.Root, NoHistory = true)]
 	[DesignTimeVisible(false)]
+	[MvxTabbedPagePresentation(TabbedPosition.Root, NoHistory = true, WrapInNavigationPage = true)]
     public partial class MainPage : MvxTabbedPage<MainViewModel>
-    {
+	{
         public MainPage()
         {
 			InitializeComponent();
@@ -25,17 +25,6 @@ namespace battery.app.Core.Pages
 			On<Android>().SetToolbarPlacement(ToolbarPlacement.Bottom);
 			On<Android>()
 				.DisableSwipePaging();
-		}
-		private bool _firstTime = true;
-
-		protected override void OnAppearing()
-		{
-			base.OnAppearing();
-			if (_firstTime)
-			{
-				ViewModel.ShowInitialViewModelsCommand.ExecuteAsync(null);
-				_firstTime = false;
-			}
 		}
 
 		/// <summary>Raises the <see cref="E:Xamarin.Forms.MultiPage`1.CurrentPageChanged" /> event.</summary>
@@ -45,7 +34,7 @@ namespace battery.app.Core.Pages
 			base.OnCurrentPageChanged();
 			if (CurrentPage is ExitPage exitPage)
 			{
-				exitPage.ViewModel.ExitCommand.Execute(null);
+				exitPage.ViewModel.DoExit();
 			}
 		}
 	}

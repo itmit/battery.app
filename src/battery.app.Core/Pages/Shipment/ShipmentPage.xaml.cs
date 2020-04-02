@@ -11,8 +11,8 @@ using Xamarin.Forms.Xaml;
 
 namespace battery.app.Core.Pages.Shipment
 {
-	[MvxTabbedPagePresentation(WrapInNavigationPage = false)]
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+	[MvxTabbedPagePresentation(WrapInNavigationPage = false, Position = TabbedPosition.Tab, Title = "ОТГРУЗКА")]
 	public partial class ShipmentPage : MvxContentPage<ShipmentViewModel>
 	{
 		public ShipmentPage()

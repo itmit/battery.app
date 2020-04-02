@@ -9,7 +9,7 @@ using Xamarin.Forms;
 
 namespace battery.app.Core.Pages
 {
-	[MvxTabbedPagePresentation]
+	[MvxTabbedPagePresentation(Position = TabbedPosition.Tab, WrapInNavigationPage = false, Title = "Выход", Icon = "arrow_right")]
 	public class ExitPage : MvxContentPage<ExitViewModel>
 	{
 		public ExitPage()
@@ -20,10 +20,15 @@ namespace battery.app.Core.Pages
 				IconImageSource = "baseline_arrow_forward_black_24pt_1x.png";
 			}
 
+			var b = new Button
+			{
+				Text = "Welcome to Xamarin.Forms!"
+			};
+			b.SetBinding(Button.CommandProperty, new Binding("ExitCommand"));
 			Content = new StackLayout
 			{
 				Children = {
-					new Label { Text = "Welcome to Xamarin.Forms!" }
+					b
 				}
 			};
 		}

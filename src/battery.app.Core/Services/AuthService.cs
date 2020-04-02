@@ -1,5 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Text;
@@ -7,6 +9,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using battery.app.Core.DTO;
 using battery.app.Core.Models;
+using battery.app.Core.Repositories;
 using Newtonsoft.Json;
 
 namespace battery.app.Core.Services
@@ -25,12 +28,15 @@ namespace battery.app.Core.Services
 		/// <see cref="IMapper"/> для преобразования ДТО в модели.
 		/// </summary>
 		private readonly IMapper _mapper;
+		private readonly IUserRepository _userRepository;
+		private Guid _userUuid = Guid.Empty;
 
 		/// <summary>
 		/// Инициализирует новый экземпляр <see cref="AuthService" />.
 		/// </summary>
-		public AuthService()
+		public AuthService(IUserRepository userRepository)
 		{
+			_userRepository = userRepository;
 			_mapper = new Mapper(new MapperConfiguration(cfg =>
 			{
 				cfg.CreateMap<AccessToken, UserDto>();
@@ -44,6 +50,35 @@ namespace battery.app.Core.Services
 				   .ForPath(m => m.AccessToken.Type, o => o.MapFrom(q => q.Type))
 				   .ForPath(m => m.AccessToken.ExpiresAt, o => o.MapFrom(q => q.ExpiresAt));
 			}));
+		}
+
+
+		public User User
+		{
+			get
+			{
+				if (_userUuid == Guid.Empty)
+				{
+					var u = _userRepository.GetAll()
+										   .SingleOrDefault();
+					if (u != null)
+					{
+						_userUuid = u.Guid;
+						return u;
+					}
+				}
+
+				return _userRepository.Find(_userUuid);
+			}
+		}
+
+		public AccessToken UserToken => User?.AccessToken;
+
+		public Task<bool> Logout(User user)
+		{
+			_userUuid = Guid.Empty;
+			_userRepository.Remove(user);
+			return Task.FromResult(true);
 		}
 
 		/// <summary>
@@ -77,7 +112,10 @@ namespace battery.app.Core.Services
 					if (!string.IsNullOrEmpty(jsonString))
 					{
 						var jsonData = JsonConvert.DeserializeObject<GeneralDto<UserDto>>(jsonString);
-						return await Task.FromResult(_mapper.Map<User>(jsonData.Data));
+						var user = _mapper.Map<User>(jsonData.Data);
+						_userUuid = user.Guid;
+						_userRepository.Add(user);
+						return user;
 					}
 				}
 

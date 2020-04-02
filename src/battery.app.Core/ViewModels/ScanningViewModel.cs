@@ -22,20 +22,20 @@ namespace battery.app.Core.ViewModels
 		#region Fields
 		private bool _isScanning;
 		private MvxCommand _scanCommand;
-		private readonly ISettingsHelper _settingsHelper;
 		private readonly IShipmentService _shipmentService;
+		private readonly IPermissionsService _permissionsService;
 		#endregion
 		#endregion
 
 		#region .ctor
-		public ScanningViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IShipmentService shipmentService, ISettingsHelper settingsHelper)
+		public ScanningViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IShipmentService shipmentService, ISettingsHelper settingsHelper, IPermissionsService permissionsService)
 			: base(logProvider, navigationService)
 		{
 			_shipmentService = shipmentService;
-			_settingsHelper = settingsHelper;
+			_permissionsService = permissionsService;
 		}
 		#endregion
-
+		
 		#region Properties
 		public bool IsNotScanning => !IsScanning;
 
@@ -55,105 +55,33 @@ namespace battery.app.Core.ViewModels
 		{
 			get
 			{
-				_scanCommand = _scanCommand ?? new MvxCommand(EnableScan);
+				_scanCommand = _scanCommand ?? new MvxCommand(async () =>
+				{											  
+					if (await _permissionsService.CheckPermission(Permission.Camera, "Для сканирования батарей необходимо разрешение на использование камеры."))
+					{
+						string result = await NavigationService.Navigate<ScannerViewModel, object, string>(null);
+						if (string.IsNullOrEmpty(result))
+						{
+							return;
+						}
+
+						var goods = await _shipmentService.CheckGoods(result);
+
+						if (goods == null)
+						{
+							await Application.Current.MainPage.Navigation.PopModalAsync();
+							Device.BeginInvokeOnMainThread(async () =>
+							{
+								await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Батарея не найдена.", Strings.Ok);
+							});
+							return;
+						}
+
+						await NavigationService.Navigate<DetailGoodsViewModel, Goods>(goods);
+					}
+				});
 				return _scanCommand;
 			}
-		}
-		#endregion
-
-		#region Public
-		public async void OnResultScan(string resultText)
-		{
-			if (string.IsNullOrEmpty(resultText))
-			{
-				return;
-			}
-
-			var goods = await _shipmentService.CheckGoods(resultText);
-
-			if (goods == null)
-			{
-				await Application.Current.MainPage.Navigation.PopModalAsync();
-				Device.BeginInvokeOnMainThread(async () =>
-				{
-					await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Батарея не найдена.", Strings.Ok);
-				});
-				return;
-			}
-
-			await NavigationService.Navigate<DetailGoodsViewModel, Goods>(goods);
-		}
-		#endregion
-
-		#region Private
-		private async Task<bool> CheckStoragePermission()
-		{
-			try
-			{
-				var status = await CrossPermissions.Current.CheckPermissionStatusAsync<CameraPermission>();
-				if (status == PermissionStatus.Granted)
-				{
-					return true;
-				}
-
-				if (!await CrossPermissions.Current.ShouldShowRequestPermissionRationaleAsync(Permission.Camera))
-				{
-					Device.BeginInvokeOnMainThread(async () =>
-					{
-						var answer = await Application.Current.MainPage.DisplayAlert(Strings.Alert,
-																					 "Для сканирования батарей необходимо разрешение на использование камеры.",
-																					 Strings.Ok,
-																					 Strings.Cancel);
-
-						if (answer)
-						{
-							_settingsHelper.OpenAppSettings();
-						}
-					});
-				}
-
-				status = await CrossPermissions.Current.CheckPermissionStatusAsync<CameraPermission>();
-				return status == PermissionStatus.Granted;
-			}
-			catch (Exception ex)
-			{
-				Console.WriteLine(ex);
-			}
-
-			return false;
-		}
-
-		private async void EnableScan()
-		{
-			var page = new ZXingScannerPage();
-			page.OnScanResult += PageOnOnScanResult;
-
-			if (await CheckStoragePermission())
-			{
-				await Application.Current.MainPage.Navigation.PushModalAsync(page);
-			}
-		}
-
-		private async void PageOnOnScanResult(Result result)
-		{
-			if (result == null || string.IsNullOrEmpty(result.Text))
-			{
-				return;
-			}
-
-			var goods = await _shipmentService.CheckGoods("23403");
-
-			if (goods == null)
-			{
-				await Application.Current.MainPage.Navigation.PopModalAsync();
-				Device.BeginInvokeOnMainThread(async () =>
-				{
-					await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Батарея не найдена.", Strings.Ok);
-				});
-				return;
-			}
-
-			await NavigationService.Navigate<DetailGoodsViewModel, Goods>(goods);
 		}
 		#endregion
 	}

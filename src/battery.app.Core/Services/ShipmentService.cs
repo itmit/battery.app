@@ -10,7 +10,6 @@ using AutoMapper;
 using battery.app.Core.DTO;
 using battery.app.Core.Models;
 using Newtonsoft.Json;
-using PommaLabs.Thrower;
 
 namespace battery.app.Core.Services
 {
@@ -22,9 +21,9 @@ namespace battery.app.Core.Services
 		private readonly Mapper _mapper;
 
 		/// <summary>
-		/// Токен для доступа к api.
+		/// Сервис авторизации, для получения токена доступа пользователя.
 		/// </summary>
-		private readonly AccessToken _accessToken;
+		private readonly IAuthService _authService;
 
 		private const string CheckBatteryUri = "http://battery.itmit-studio.ru/api/delivery/checkBattery";
 		private const string GetDeliveriesAndShipmentsUri = "http://battery.itmit-studio.ru/api/checkDeliveryAndShipment/listOfDeliveriesAndShipments";
@@ -37,11 +36,10 @@ namespace battery.app.Core.Services
 		/// <summary>
 		/// Инициализирует новый экземпляр <see cref="DealerService" />.
 		/// </summary>
-		/// <param name="accessToken">Токен для доступа к api.</param>
-		public ShipmentService(AccessToken accessToken)
+		/// <param name="authService">Сервис авторизации, для получения токена доступа пользователя.</param>
+		public ShipmentService(IAuthService authService)
 		{
-			Raise.ArgumentNullException.IfIsNull(accessToken, nameof(accessToken));
-			_accessToken = accessToken;
+			_authService = authService;
 			_mapper = new Mapper(new MapperConfiguration(cfg =>
 			{
 				cfg.AllowNullCollections = false;
@@ -66,7 +64,7 @@ namespace battery.app.Core.Services
 		{
 			using (var client = new HttpClient())
 			{
-				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse($"{_accessToken.Type} {_accessToken.Body}");
+				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(_authService.UserToken.ToString());
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 				var requestBody = JsonConvert.SerializeObject(_mapper.Map<ShipmentDto>(shipment));
@@ -87,7 +85,7 @@ namespace battery.app.Core.Services
 		{
 			using (var client = new HttpClient())
 			{
-				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse($"{_accessToken.Type} {_accessToken.Body}");
+				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(_authService.UserToken.ToString());
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 				var response = await client.PostAsync(CheckBatteryUri,
@@ -116,7 +114,7 @@ namespace battery.app.Core.Services
 		{
 			using (var client = new HttpClient())
 			{
-				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse($"{_accessToken.Type} {_accessToken.Body}");
+				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(_authService.UserToken.ToString());
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 				var response = await client.GetAsync(GetDeliveriesAndShipmentsUri);
@@ -144,7 +142,7 @@ namespace battery.app.Core.Services
 		{
 			using (var client = new HttpClient())
 			{
-				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse($"{_accessToken.Type} {_accessToken.Body}");
+				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(_authService.UserToken.ToString());
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 				var response = await client.PostAsync(GetBatteryInShipmentsUri, new FormUrlEncodedContent(new Dictionary<string, string>
@@ -173,7 +171,7 @@ namespace battery.app.Core.Services
 		{
 			using (var client = new HttpClient())
 			{
-				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse($"{_accessToken.Type} {_accessToken.Body}");
+				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(_authService.UserToken.ToString());
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 				var response = await client.PostAsync(GetDeliveriesAndShipmentsUri, new FormUrlEncodedContent(new Dictionary<string, string>

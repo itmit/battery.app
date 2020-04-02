@@ -10,18 +10,13 @@ using ZXing;
 namespace battery.app.Core.Pages
 {
 
-	[MvxTabbedPagePresentation(WrapInNavigationPage = false)]
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+	[MvxTabbedPagePresentation(Position = TabbedPosition.Tab, WrapInNavigationPage = false, Title = "СКАНИРОВАНИЕ")]
     public partial class ScanningPage : MvxContentPage<ScanningViewModel>
     {
         public ScanningPage()
         {
             InitializeComponent();
         }
-
-		private void ZXingScannerView_OnOnScanResult(Result result)
-		{
-			ViewModel.OnResultScan(result.Text);
-		}
 	}
 }

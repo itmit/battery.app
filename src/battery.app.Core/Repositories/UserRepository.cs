@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using AutoMapper;
 using battery.app.Core.Models;
 using battery.app.Core.RealmObjects;
@@ -24,12 +25,10 @@ namespace battery.app.Core.Repositories
 
 				cfg.CreateMap<User, UserRealmObject>()
 				   .ForPath(m => m.AccessToken.Body, o => o.MapFrom(q => q.AccessToken.Body))
-				   .ForPath(m => m.AccessToken.Type, o => o.MapFrom(q => q.AccessToken.Type))
-				   .ForPath(m => m.AccessToken.ExpiresAt, o => o.MapFrom(q => q.AccessToken.ExpiresAt));
+				   .ForPath(m => m.AccessToken.Type, o => o.MapFrom(q => q.AccessToken.Type));
 				cfg.CreateMap<UserRealmObject, User>()
 				   .ForPath(m => m.AccessToken.Body, o => o.MapFrom(q => q.AccessToken.Body))
-				   .ForPath(m => m.AccessToken.Type, o => o.MapFrom(q => q.AccessToken.Type))
-				   .ForPath(m => m.AccessToken.ExpiresAt, o => o.MapFrom(q => q.AccessToken.ExpiresAt.DateTime));
+				   .ForPath(m => m.AccessToken.Type, o => o.MapFrom(q => q.AccessToken.Type));
 
 			}));
 		}
@@ -38,7 +37,7 @@ namespace battery.app.Core.Repositories
 		#region Public
 		public void Add(User user)
 		{
-			using (var realm = RealmModel.GetInstance(RealmModel.Configuration))
+			using (var realm = Realm.GetInstance())
 			{
 				var userRealm = _mapper.Map<UserRealmObject>(user);
 				using (var transaction = realm.BeginWrite())
@@ -51,7 +50,7 @@ namespace battery.app.Core.Repositories
 
 		public IEnumerable<User> GetAll()
 		{
-			using (var realm = Realm.GetInstance(RealmModel.Configuration))
+			using (var realm = Realm.GetInstance())
 			{
 				var users = realm.All<UserRealmObject>();
 				var userList = new List<User>();
@@ -66,7 +65,7 @@ namespace battery.app.Core.Repositories
 
 		public void Remove(User user)
 		{
-			using (var realm = Realm.GetInstance(RealmModel.Configuration))
+			using (var realm = Realm.GetInstance())
 			{
 				using (var transaction = realm.BeginWrite())
 				{
@@ -74,6 +73,15 @@ namespace battery.app.Core.Repositories
 					realm.Remove(userRealm);
 					transaction.Commit();
 				}
+			}
+		}
+
+		public User Find(Guid uuid)
+		{
+			using (var realm = Realm.GetInstance())
+			{
+				var user = realm.Find<UserRealmObject>(uuid.ToString());
+				return _mapper.Map<User>(user);
 			}
 		}
 

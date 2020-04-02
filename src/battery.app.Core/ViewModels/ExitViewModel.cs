@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using System.Windows.Input;
 using battery.app.Core.Pages;
 using battery.app.Core.Repositories;
+using battery.app.Core.Services;
 using MvvmCross;
 using MvvmCross.Binding.BindingContext;
 using MvvmCross.Commands;
@@ -17,10 +18,19 @@ namespace battery.app.Core.ViewModels
 	/// </summary>
 	public class ExitViewModel : MvxViewModel
 	{
+		private readonly IMvxNavigationService _navigationService;
+
 		/// <summary>
 		/// Команда для выхода.
 		/// </summary>
 		private ICommand _exitCommand;
+		private readonly IAuthService _authService;
+
+		public ExitViewModel(IMvxNavigationService navigationService, IAuthService authService)
+		{
+			_authService = authService;
+			_navigationService = navigationService;
+		}
 
 		/// <summary>
 		/// Возвращает команду для выхода.
@@ -37,11 +47,12 @@ namespace battery.app.Core.ViewModels
 		/// <summary>
 		/// Выполняет выход из приложения и открывает авторизацию.
 		/// </summary>
-		private void DoExit()
+		public async void DoExit()
 		{
-			var userRepository = Mvx.IoCProvider.Create<IUserRepository>();
-			userRepository.Remove(userRepository.GetAll().SingleOrDefault());
-			Application.Current.MainPage = new AuthorizationPage();
+			if (await _authService.Logout(_authService.User))
+			{
+				await _navigationService.Navigate<AuthorizationViewModel>();
+			}
 		}
 	}
 }
