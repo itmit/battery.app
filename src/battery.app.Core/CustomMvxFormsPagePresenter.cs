@@ -37,6 +37,14 @@ namespace battery.app.Core
 				return currentPage;
 			}
 
+			if (rootPage is NavigationPage navigationRootPage)
+			{
+				if (navigationRootPage.RootPage is TabbedPage tabbedNestedPage)
+				{
+					return GetPageOfType<TPage>(tabbedNestedPage);
+				}
+			}
+
 			return base.GetPageOfType<TPage>(rootPage);
 		}
 
@@ -71,12 +79,15 @@ namespace battery.app.Core
 			return base.TopNavigationPage(rootPage);
 		}
 
+		public override Task<bool> CloseTabbedPage(IMvxViewModel viewModel, MvxTabbedPagePresentationAttribute attribute) => base.CloseTabbedPage(viewModel, attribute);
+
 		public override async Task<bool> ShowTabbedPage(Type view, MvxTabbedPagePresentationAttribute attribute, MvxViewModelRequest request)
 		{
 			if (attribute.Position == TabbedPosition.Tab)
 			{
 				var page = await CloseAndCreatePage(view, request, attribute);
 				var tabHost = GetPageOfType<TabbedPage>();
+
 				if (tabHost == null)
 				{
 					tabHost = new TabbedPage();

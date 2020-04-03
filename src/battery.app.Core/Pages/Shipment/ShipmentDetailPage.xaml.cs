@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using battery.app.Core.ViewModels.ShipmentViewModels;
+using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,6 +12,7 @@ using Xamarin.Forms.Xaml;
 namespace battery.app.Core.Pages.Shipment
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
+	[MvxContentPagePresentation]
 	public partial class ShipmentDetailPage : MvxContentPage<ShipmentDetailViewModel>
 	{
 		public ShipmentDetailPage()
