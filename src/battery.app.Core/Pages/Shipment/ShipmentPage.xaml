@@ -11,13 +11,8 @@
                       mc:Ignorable="d"
                       BackgroundColor="#ebebeb"
                       NavigationPage.HasNavigationBar="False"
+                      IconImageSource="plus.png"
              x:Class="battery.app.Core.Pages.Shipment.ShipmentPage">
-    <views:MvxContentPage.IconImageSource>
-        <OnPlatform x:TypeArguments="ImageSource">
-            <On Platform="iOS" Value="baseline_add_black_24pt_1x.png"/>
-            <On Platform="Android" Value="plus"/>
-        </OnPlatform>
-    </views:MvxContentPage.IconImageSource>
     <!--Отгрузка-->
     <ContentPage.Content>
         <AbsoluteLayout BackgroundColor="{x:Static design:DesignClass.Color}">

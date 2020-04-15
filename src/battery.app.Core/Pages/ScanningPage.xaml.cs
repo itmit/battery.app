@@ -11,7 +11,7 @@ namespace battery.app.Core.Pages
 {
 
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	[MvxTabbedPagePresentation(Position = TabbedPosition.Tab, WrapInNavigationPage = false, Title = "СКАНИРОВАНИЕ")]
+	[MvxTabbedPagePresentation(Position = TabbedPosition.Tab, WrapInNavigationPage = false)]
     public partial class ScanningPage : MvxContentPage<ScanningViewModel>
     {
         public ScanningPage()

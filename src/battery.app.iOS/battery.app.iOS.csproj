@@ -78,6 +78,11 @@
     <BundleResource Include="Resources\roboto_light.ttf" />
     <BundleResource Include="Resources\roboto_medium.ttf" />
     <BundleResource Include="Resources\roboto_regular.ttf" />
+    <BundleResource Include="Resources\arrow_right%403x.png" />
+    <BundleResource Include="Resources\list_ul%403x.png" />
+    <BundleResource Include="Resources\newspaper%403x.png" />
+    <BundleResource Include="Resources\plus%403x.png" />
+    <BundleResource Include="Resources\qrcode%403x.png" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -190,9 +195,6 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\baseline_add_black_24pt_1x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\baseline_format_list_bulleted_black_24pt_1x.png" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\baseline_arrow_forward_black_24pt_1x.png" />

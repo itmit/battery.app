@@ -9,17 +9,11 @@ using Xamarin.Forms;
 
 namespace battery.app.Core.Pages
 {
-	[MvxTabbedPagePresentation(Position = TabbedPosition.Tab, WrapInNavigationPage = false, Title = "Выход", Icon = "arrow_right")]
+	[MvxTabbedPagePresentation(Position = TabbedPosition.Tab, WrapInNavigationPage = false, Icon = "arrow_right")]
 	public class ExitPage : MvxContentPage<ExitViewModel>
 	{
 		public ExitPage()
 		{
-			IconImageSource = "arrow_right";
-			if (Device.iOS==Device.RuntimePlatform)
-			{
-				IconImageSource = "baseline_arrow_forward_black_24pt_1x.png";
-			}
-
 			var b = new Button
 			{
 				Text = "Welcome to Xamarin.Forms!"
