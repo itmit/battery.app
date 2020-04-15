@@ -1,20 +1,15 @@
 ﻿using System;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using battery.app.Core.Models;
 using battery.app.Core.Properties;
 using battery.app.Core.Services;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
-using Plugin.Permissions;
 using Plugin.Permissions.Abstractions;
 using Xamarin.Forms;
-using ZXing;
-using ZXing.Net.Mobile.Forms;
 
-namespace battery.app.Core.ViewModels
+namespace battery.app.Core.ViewModels.Battery
 {
 	public class ScanningViewModel : MvxNavigationViewModel
 	{
@@ -65,11 +60,19 @@ namespace battery.app.Core.ViewModels
 							return;
 						}
 
-						var goods = await _shipmentService.CheckGoods(result);
+						Models.Battery battery = null;
 
-						if (goods == null)
+						try
 						{
-							await Application.Current.MainPage.Navigation.PopModalAsync();
+							battery = await _shipmentService.CheckGoods(result);
+						}
+						catch (Exception e)
+						{
+							Console.WriteLine(e);
+						}
+
+						if (battery == null)
+						{
 							Device.BeginInvokeOnMainThread(async () =>
 							{
 								await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Батарея не найдена.", Strings.Ok);
@@ -77,7 +80,7 @@ namespace battery.app.Core.ViewModels
 							return;
 						}
 
-						await NavigationService.Navigate<DetailGoodsViewModel, Goods>(goods);
+						await NavigationService.Navigate<BatteryDetailViewModel, Models.Battery>(battery);
 					}
 				});
 				return _scanCommand;

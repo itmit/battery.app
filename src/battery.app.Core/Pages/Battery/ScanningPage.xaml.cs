@@ -1,13 +1,9 @@
-﻿using System;
-using battery.app.Core.ViewModels;
-using battery.app.Core.Views;
+﻿using battery.app.Core.ViewModels.Battery;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;
-using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using ZXing;
 
-namespace battery.app.Core.Pages
+namespace battery.app.Core.Pages.Battery
 {
 
 	[XamlCompilation(XamlCompilationOptions.Compile)]

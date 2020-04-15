@@ -35,7 +35,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		/// <summary>
 		/// Отсканированные товаров.
 		/// </summary>
-		private MvxObservableCollection<Goods> _goods = new MvxObservableCollection<Goods>();
+		private MvxObservableCollection<Models.Battery> _goods = new MvxObservableCollection<Models.Battery>();
 
 		/// <summary>
 		/// Сервис для навигации.
@@ -91,7 +91,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		/// <summary>
 		/// Возвращает товары в отгрузке.
 		/// </summary>
-		public MvxObservableCollection<Goods> Goods
+		public MvxObservableCollection<Models.Battery> Goods
 		{
 			get => _goods;
 			private set => SetProperty(ref _goods, value);
@@ -134,7 +134,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 							return;
 						}
 
-						var newCollection = new MvxObservableCollection<Goods>();
+						var newCollection = new MvxObservableCollection<Models.Battery>();
 						foreach (var goodsCode in Goods)
 						{
 							newCollection.Add(goodsCode);

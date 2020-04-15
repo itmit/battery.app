@@ -25,7 +25,7 @@ namespace battery.app.Core.Services
 		/// </summary>
 		private readonly IAuthService _authService;
 
-		private const string CheckBatteryUri = "http://battery.itmit-studio.ru/api/delivery/checkBattery";
+		private const string CheckBatteryUri = "http://battery.itmit-studio.ru/api/delivery/getBatteryByCode";
 		private const string GetDeliveriesAndShipmentsUri = "http://battery.itmit-studio.ru/api/checkDeliveryAndShipment/listOfDeliveriesAndShipments";
 
 		/// <summary>
@@ -53,10 +53,11 @@ namespace battery.app.Core.Services
 				cfg.CreateMap<DeliveryDto, Delivery>()
 				   .ForMember(ship => ship.CreatedAt, m => m.MapFrom(dto => dto.CreatedAt ?? DateTime.MinValue));
 
-				cfg.CreateMap<GoodsDto, Goods>()
-				   .ForMember(g => g.TabParams, m => m.MapFrom(dto => dto.TabDescription.Split(' ')))
-				   .ForMember(g => g.ProductionDate, m => m.MapFrom(dto => dto.ProductionDate ?? DateTime.MinValue))
-				   .ForMember(g => g.DeliveryDate, m => m.MapFrom(dto => dto.DeliveryDate ?? DateTime.MinValue));
+				cfg.CreateMap<GoodsDto, Battery>()
+				   .ForMember(batter => batter.Delivery, m => m.MapFrom(dto => dto))
+				   .ForMember(batter => batter.SerialNumber, m => m.MapFrom(dto => dto.Serial));
+
+				cfg.CreateMap<GoodsDto, Delivery>();
 			}));
 		}
 
@@ -81,7 +82,7 @@ namespace battery.app.Core.Services
 			}
 		}
 
-		public async Task<Goods> CheckGoods(string code)
+		public async Task<Battery> CheckGoods(string code)
 		{
 			using (var client = new HttpClient())
 			{
@@ -91,7 +92,7 @@ namespace battery.app.Core.Services
 				var response = await client.PostAsync(CheckBatteryUri,
 								   new FormUrlEncodedContent(new Dictionary<string, string>
 								   {
-									   { "serial_number", code }
+									   { "code", code }
 								   }));
 
 				var jsonString = await response.Content.ReadAsStringAsync();
@@ -102,7 +103,7 @@ namespace battery.app.Core.Services
 					if (!string.IsNullOrEmpty(jsonString))
 					{
 						var jsonData = JsonConvert.DeserializeObject<GeneralDto<GoodsDto>>(jsonString);
-						return await Task.FromResult(_mapper.Map<Goods>(jsonData.Data));
+						return await Task.FromResult(_mapper.Map<Battery>(jsonData.Data));
 					}
 				}
 
@@ -138,7 +139,7 @@ namespace battery.app.Core.Services
 		}
 
 		private const string GetBatteryInShipmentsUri = "http://battery.itmit-studio.ru/api/checkDeliveryAndShipment/getBatteriesFromShipment";
-		public async Task<List<Goods>> GetBatteryInShipments(Shipment shipment)
+		public async Task<List<Battery>> GetBatteryInShipments(Shipment shipment)
 		{
 			using (var client = new HttpClient())
 			{
@@ -158,7 +159,7 @@ namespace battery.app.Core.Services
 					if (!string.IsNullOrEmpty(jsonString))
 					{
 						var jsonData = JsonConvert.DeserializeObject<GeneralDto<List<GoodsDto>>>(jsonString);
-						return await Task.FromResult(_mapper.Map<List<Goods>>(jsonData.Data));
+						return await Task.FromResult(_mapper.Map<List<Battery>>(jsonData.Data));
 					}
 				}
 
@@ -167,7 +168,7 @@ namespace battery.app.Core.Services
 		}
 
 		private const string GetBatteryInDeliveryUri = "http://battery.itmit-studio.ru/api/checkDeliveryAndShipment/getBatteriesFromDelivery";
-		public async Task<List<Goods>> GetBatteryInDelivery(Delivery delivery)
+		public async Task<List<Battery>> GetBatteryInDelivery(Delivery delivery)
 		{
 			using (var client = new HttpClient())
 			{
@@ -187,7 +188,7 @@ namespace battery.app.Core.Services
 					if (!string.IsNullOrEmpty(jsonString))
 					{
 						var jsonData = JsonConvert.DeserializeObject<GeneralDto<List<GoodsDto>>>(jsonString);
-						return await Task.FromResult(_mapper.Map<List<Goods>>(jsonData.Data));
+						return await Task.FromResult(_mapper.Map<List<Battery>>(jsonData.Data));
 					}
 				}
 

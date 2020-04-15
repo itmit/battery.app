@@ -26,12 +26,18 @@
               </Grid.ColumnDefinitions>
               <Image Grid.Column="0" Source="tab_1.jpg" VerticalOptions="Center"/>
               <StackLayout Grid.Column="1" VerticalOptions="Center">
-                  <Label Text="{Binding TabName}" Style="{StaticResource TitleSaleLabel}"/>
-                  <Label Text="{Binding TabParams[6], StringFormat='Напряжение, В: {0}'}" Style="{StaticResource TextSaleLabel}"/>
-                  <Label Text="{Binding TabParams[0], StringFormat='Емкость (А*ч): {0}'}" Style="{StaticResource TextSaleLabel}"/>
-                  <Label Text="{Binding TabParams[3], StringFormat='Пусковой ток, А: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                  <Label Text="{Binding Name}" Style="{StaticResource TitleSaleLabel}"/>
+                  <!--  
+                  <Label Text="{Binding Battery.TabParams[6], StringFormat='Напряжение, В: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                  -->
+                  <Label Text="{Binding Battery.Ah, StringFormat='Емкость (А*ч): {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                  <Label Text="{Binding Battery.En, StringFormat='Пусковой ток, А: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                  <!--
                   <Label Text="{Binding P4, StringFormat='Полярность: {0}'}" Style="{StaticResource TextSaleLabel}"/>
-                  <Label Text="{Binding P5, StringFormat='Технология сплава: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                  -->
+                  <Label Text="{Binding Battery.Lwh, StringFormat='ДxВxШ (mm): {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                  <Label Text="{Binding Battery.WeightWet, StringFormat='Вес (kg): {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                  <Label Text="{Binding Battery.Rc, StringFormat='Резервная емкость (m): {0}'}" Style="{StaticResource TextSaleLabel}"/>
               </StackLayout>
           </Grid>
       </Frame>

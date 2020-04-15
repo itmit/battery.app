@@ -1,15 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<views:MvxContentPage x:TypeArguments="viewModels:DetailGoodsViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
+<views:MvxContentPage x:TypeArguments="battery:BatteryDetailViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
-             xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
-             xmlns:system="clr-namespace:System;assembly=netstandard"
              xmlns:design="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
+             xmlns:battery="clr-namespace:battery.app.Core.ViewModels.Battery;assembly=battery.app.Core"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
-             x:Class="battery.app.Core.Pages.DetailGoodsPage">
+             x:Class="battery.app.Core.Pages.Battery.BatteryDetailPage">
     <!--Данные продажи-->
     <ContentPage.Content>
         <StackLayout Spacing="0">
@@ -26,7 +25,7 @@
                            BorderColor="{x:Static design:DesignClass.Color}">
                         <StackLayout>
                             <Label Text="TAB" Style="{StaticResource TitleDetail}" FontFamily="{x:Static design:DesignClass.FontBold}"/>
-                            <Label Text="{Binding Goods.DeliveryDate}" Style="{StaticResource DateDetail}" FontFamily="{x:Static design:DesignClass.FontRegular}"/>
+                            <Label Text="{Binding Battery.Delivery.PackingDate, StringFormat='{0:dd.MM.yyyy}'}" Style="{StaticResource DateDetail}" FontFamily="{x:Static design:DesignClass.FontRegular}"/>
                                 <Image Source="tab_1.jpg" HorizontalOptions="Start"/>
                             <Grid Margin="0,20">
                                 <Grid.ColumnDefinitions>
@@ -37,19 +36,25 @@
                                     <RowDefinition Height="Auto"/>
                                 </Grid.RowDefinitions>
                                 <StackLayout Grid.Column="0" Grid.Row="0">
-                                    <Label Text="TAB POLAR" Style="{StaticResource TitleCompany}" FontFamily="{x:Static design:DesignClass.FontBold}"/>
-                                    <Label Text="{Binding Goods.TabParams[6], StringFormat='Напряжение, В: {0}'}" Style="{StaticResource TextDetailGoods}"/>
-                                    <Label Text="{Binding Goods.TabParams[0], StringFormat='Емкость (А*ч): {0}'}" Style="{StaticResource TextDetailGoods}"/>
-                                    <Label Text="{Binding Goods.TabParams[3], StringFormat='Пусковой ток, А: {0}'}" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="{Binding Battery.Name}" Style="{StaticResource TitleCompany}" FontFamily="{x:Static design:DesignClass.FontBold}"/>
+                                    <!--
+                                    <Label Text="{Binding Battery.TabParams[6], StringFormat='Напряжение, В: {0}'}" Style="{StaticResource TextDetailGoods}"/>
+                                    -->
+                                    <Label Text="{Binding Battery.Ah, StringFormat='Емкость (А*ч): {0}'}" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="{Binding Battery.En, StringFormat='Пусковой ток, А: {0}'}" Style="{StaticResource TextDetailGoods}"/>
+                                    <!--
                                     <Label Text="{Binding P4, StringFormat='Полярность: {0}'}" Style="{StaticResource TextDetailGoods}"/>
-                                    <Label Text="{Binding P5, StringFormat='Технология сплава: {0}'}" Style="{StaticResource TextDetailGoods}"/>
+                                    -->
+                                    <Label Text="{Binding Battery.Lwh, StringFormat='ДxВxШ (mm): {0}'}" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="{Binding Battery.WeightWet, StringFormat='Вес (kg): {0}'}" Style="{StaticResource TextDetailGoods}"/>
+                                    <Label Text="{Binding Battery.Rc, StringFormat='Резервная емкость (m): {0}'}" Style="{StaticResource TextDetailGoods}"/>
                                 </StackLayout>
                                 <StackLayout Grid.Column="1" Grid.Row="0">
                                     <Label Text="Место продажи" Style="{StaticResource TitleTwoGoods}" FontFamily="{x:Static design:DesignClass.FontBold}"/>
-                                    <Label Text="{Binding Goods.CustomerReceiver, StringFormat='{0:dd-MM-yyyy}'}" Style="{StaticResource NameCity}"/>
+                                    <Label Text="{Binding Battery.Delivery.PayerDescription, StringFormat='{0:dd-MM-yyyy}'}" Style="{StaticResource NameCity}"/>
                                 </StackLayout>
                             </Grid>
-                            <Label Text="Батареи TAB Polar предназанчены для автомобилей со стандартным уровнем электрооборудования, но с повышенными требованиями к пусковым характеристикам и надежности" Style="{StaticResource DescLabel}"/>
+                            <Label Text="{Binding Battery.Delivery.Description2}" Style="{StaticResource DescLabel}"/>
                         </StackLayout>
                     </Frame>
                 </StackLayout>

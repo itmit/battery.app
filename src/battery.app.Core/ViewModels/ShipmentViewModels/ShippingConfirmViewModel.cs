@@ -5,6 +5,7 @@ using System.Windows.Input;
 using battery.app.Core.Models;
 using battery.app.Core.Properties;
 using battery.app.Core.Services;
+using battery.app.Core.ViewModels.Battery;
 using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
@@ -36,7 +37,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		/// <summary>
 		/// Товары в отгрузке.
 		/// </summary>
-		private MvxObservableCollection<Goods> _goods;
+		private MvxObservableCollection<Models.Battery> _batteries;
 
 		/// <summary>
 		/// Сервис для навигации.
@@ -59,7 +60,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		private Shipment _shipment;
 
 		private readonly IShipmentService _shipmentService;
-		private Goods _selectedGoods;
+		private Models.Battery _selectedBattery;
 		#endregion
 		#endregion
 
@@ -106,20 +107,20 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		/// <summary>
 		/// Возвращает товары в отгрузке.
 		/// </summary>
-		public MvxObservableCollection<Goods> Goods
+		public MvxObservableCollection<Models.Battery> Batteries
 		{
-			get => _goods;
-			private set => SetProperty(ref _goods, value);
+			get => _batteries;
+			private set => SetProperty(ref _batteries, value);
 		}
 
-		public Goods SelectedGoods
+		public Models.Battery SelectedBattery
 		{
-			get => _selectedGoods;
+			get => _selectedBattery;
 			set
 			{
-				if (value != null && SetProperty(ref _selectedGoods, value))
+				if (value != null && SetProperty(ref _selectedBattery, value))
 				{
-					_navigationService.Navigate<DetailGoodsViewModel, Goods>(value);
+					_navigationService.Navigate<BatteryDetailViewModel, Models.Battery>(value);
 				}
 			}
 		}
@@ -161,7 +162,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		{
 			await base.Initialize();
 			Dealers = new MvxObservableCollection<Dealer>();
-			Goods = new MvxObservableCollection<Goods>(_shipment.Goods);
+			Batteries = new MvxObservableCollection<Models.Battery>(_shipment.Goods);
 			try
 			{
 				Dealers = new MvxObservableCollection<Dealer>(await _dealerService.GetAll());

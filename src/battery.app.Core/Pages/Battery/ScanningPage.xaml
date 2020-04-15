@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<views:MvxContentPage x:TypeArguments="viewModels:ScanningViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
+<views:MvxContentPage x:TypeArguments="battery:ScanningViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -7,9 +7,10 @@
              xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
              xmlns:system="clr-namespace:System;assembly=netstandard"
              xmlns:desing="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
+             xmlns:battery="clr-namespace:battery.app.Core.ViewModels.Battery;assembly=battery.app.Core"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
-             x:Class="battery.app.Core.Pages.ScanningPage">
+             x:Class="battery.app.Core.Pages.Battery.ScanningPage">
     <views:MvxContentPage.IconImageSource>
         <OnPlatform x:TypeArguments="ImageSource">
             <On Platform="Android" Value="qrcode"/>

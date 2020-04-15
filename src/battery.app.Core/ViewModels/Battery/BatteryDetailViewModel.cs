@@ -1,23 +1,22 @@
-﻿using battery.app.Core.Models;
-using MvvmCross.Commands;
+﻿using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 
-namespace battery.app.Core.ViewModels
+namespace battery.app.Core.ViewModels.Battery
 {
 	/// <summary>
 	/// Представляет модель представления детальную страницу товара.
 	/// </summary>
-	public class DetailGoodsViewModel : MvxViewModel<Goods>
+	public class BatteryDetailViewModel : MvxViewModel<Models.Battery>
 	{
 		/// <summary>
 		/// Код товара.
 		/// </summary>
-		private Goods _goods;
+		private Models.Battery _battary;
 		private MvxCommand _closePageCommand;
 		private IMvxNavigationService _mvxNavigationService;
 
-		public DetailGoodsViewModel(IMvxNavigationService mvxNavigationService)
+		public BatteryDetailViewModel(IMvxNavigationService mvxNavigationService)
 		{
 			_mvxNavigationService = mvxNavigationService;
 		}
@@ -39,11 +38,11 @@ namespace battery.app.Core.ViewModels
 		/// Подготавливает параметры.
 		/// </summary>
 		/// <param name="parameter">Код товара.</param>
-		public override void Prepare(Goods parameter)
+		public override void Prepare(Models.Battery parameter)
 		{
-			_goods = parameter;
+			_battary = parameter;
 		}
 
-		public Goods Goods => _goods;
+		public Models.Battery Battery => _battary;
 	}
 }
