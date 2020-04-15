@@ -8,12 +8,12 @@ namespace battery.app.Core.Services
 	{
 		Task<bool> Store(Shipment shipment);
 
-		Task<Goods> CheckGoods(string code);
+		Task<Battery> CheckGoods(string code);
 
 		Task<List<Shipment>> GetDeliveriesAndShipments();
 
-		Task<List<Goods>> GetBatteryInShipments(Shipment shipment);
+		Task<List<Battery>> GetBatteryInShipments(Shipment shipment);
 
-		Task<List<Goods>> GetBatteryInDelivery(Delivery delivery);
+		Task<List<Battery>> GetBatteryInDelivery(Delivery delivery);
 	}
 }

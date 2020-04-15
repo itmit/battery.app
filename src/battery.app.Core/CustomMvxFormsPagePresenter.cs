@@ -79,8 +79,6 @@ namespace battery.app.Core
 			return base.TopNavigationPage(rootPage);
 		}
 
-		public override Task<bool> CloseTabbedPage(IMvxViewModel viewModel, MvxTabbedPagePresentationAttribute attribute) => base.CloseTabbedPage(viewModel, attribute);
-
 		public override async Task<bool> ShowTabbedPage(Type view, MvxTabbedPagePresentationAttribute attribute, MvxViewModelRequest request)
 		{
 			if (attribute.Position == TabbedPosition.Tab)

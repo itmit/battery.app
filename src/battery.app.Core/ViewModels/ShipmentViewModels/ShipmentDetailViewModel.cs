@@ -2,6 +2,8 @@
 using battery.app.Core.Models;
 using battery.app.Core.Repositories;
 using battery.app.Core.Services;
+using battery.app.Core.ViewModels.Battery;
+using MvvmCross.Commands;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 
@@ -12,9 +14,10 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		private IMvxNavigationService _navigationService;
 		private Shipment _shipment;
 		private Dealer _dealer;
-		private MvxObservableCollection<Goods> _goods;
+		private MvxObservableCollection<Models.Battery> _batteries;
 		private IShipmentService _shipmentService;
-		private Goods _selectedGoods;
+		private Models.Battery _selectedBattery;
+		private MvxCommand _closePageCommand;
 
 		public ShipmentDetailViewModel(IMvxNavigationService navigationService, IShipmentService shipmentService)
 		{
@@ -28,22 +31,22 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 
 			if (_shipment is Delivery delivery)
 			{
-				Goods = new MvxObservableCollection<Goods>(await _shipmentService.GetBatteryInDelivery(delivery));
+				Batteries = new MvxObservableCollection<Models.Battery>(await _shipmentService.GetBatteryInDelivery(delivery));
 			}
 			else
 			{
-				Goods = new MvxObservableCollection<Goods>(await _shipmentService.GetBatteryInShipments(_shipment));
+				Batteries = new MvxObservableCollection<Models.Battery>(await _shipmentService.GetBatteryInShipments(_shipment));
 			}
 		}
 
-		public Goods SelectedGoods
+		public Models.Battery SelectedBattery
 		{
-			get => _selectedGoods;
+			get => _selectedBattery;
 			set
 			{
-				if (value != null && SetProperty(ref _selectedGoods, value))
+				if (value != null && SetProperty(ref _selectedBattery, value))
 				{
-					_navigationService.Navigate<DetailGoodsViewModel, Goods>(value);
+					_navigationService.Navigate<BatteryDetailViewModel, Models.Battery>(value);
 				}
 			}
 		}
@@ -53,10 +56,22 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 			_shipment = parameter;
 		}
 
-		public MvxObservableCollection<Goods> Goods
+		public MvxCommand ClosePageCommand
 		{
-			get => _goods;
-			set => SetProperty(ref _goods, value);
+			get
+			{
+				_closePageCommand = _closePageCommand ?? new MvxCommand(() =>
+				{
+					_navigationService.Close(this);
+				});
+				return _closePageCommand;
+			}
+		}
+
+		public MvxObservableCollection<Models.Battery> Batteries
+		{
+			get => _batteries;
+			set => SetProperty(ref _batteries, value);
 		}
 
 		public Dealer Dealer

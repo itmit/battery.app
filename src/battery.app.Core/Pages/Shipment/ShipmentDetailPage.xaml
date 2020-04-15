@@ -36,8 +36,8 @@
             </StackLayout>
             <StackLayout Padding="20,0" BackgroundColor="{x:Static design:DesignClass.Color}">
                 <Label Text="Аккумуляторы" Style="{StaticResource BattaryLabel}" FontFamily="{x:Static design:DesignClass.FontBold}"/>
-                    <ListView ItemsSource="{Binding Goods}"
-                          SelectedItem="{Binding SelectedGoods}"
+                <ListView ItemsSource="{Binding Batteries}"
+                          SelectedItem="{Binding SelectedBattery}"
                           ItemSelected="ListView_OnItemSelected"
                           HasUnevenRows="True"
                           SeparatorVisibility="None"

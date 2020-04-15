@@ -26,7 +26,7 @@
     <EmbeddedResource Update="Pages\AuthorizationPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\DetailGoodsPage.xaml">
+    <EmbeddedResource Update="Pages\Battery\BatteryDetailPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\NewsDetailPage.xaml">
@@ -35,7 +35,7 @@
     <EmbeddedResource Update="Pages\NewsPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\ScanningPage.xaml">
+    <EmbeddedResource Update="Pages\Battery\ScanningPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\Shipment\ShipmentConfirmPage.xaml">
@@ -83,6 +83,9 @@
   <ItemGroup>
     <Compile Update="Pages\AuthorizationPage.xaml.cs">
       <DependentUpon>AuthorizationPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Pages\Battery\BatteryDetailPage.xaml.cs">
+      <DependentUpon>BatteryDetailPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Properties\Strings.Designer.cs">
       <DesignTime>True</DesignTime>

@@ -5,6 +5,7 @@ using battery.app.Core.Models;
 using battery.app.Core.Pages;
 using battery.app.Core.Repositories;
 using battery.app.Core.Services;
+using battery.app.Core.ViewModels.Battery;
 using battery.app.Core.ViewModels.ShipmentViewModels;
 using MvvmCross;
 using MvvmCross.Commands;
@@ -37,6 +38,10 @@ namespace battery.app.Core.ViewModels
 			if (_authService.User.Role == UserRole.Stockman)
 			{
 				NavigationService.Navigate<ShipmentViewModel>();
+				NavigationService.Navigate<ShippingListViewModel>();
+			}
+			if (_authService.User.Role == UserRole.Dealer)
+			{
 				NavigationService.Navigate<ShippingListViewModel>();
 			}
 			NavigationService.Navigate<NewsViewModel>();

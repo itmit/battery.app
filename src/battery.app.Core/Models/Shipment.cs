@@ -13,9 +13,9 @@ namespace battery.app.Core.Models
 		/// </summary>
 		/// <param name="goodsCodes">Коды товаров отгрузки.</param>
 		/// <param name="dealer">Дилер.</param>
-		public Shipment(IEnumerable<Goods> goodsCodes, Dealer dealer)
+		public Shipment(IEnumerable<Battery> goodsCodes, Dealer dealer)
 		{
-			Goods = new List<Goods>(goodsCodes);
+			Goods = new List<Battery>(goodsCodes);
 			Dealer = dealer;
 		}
 
@@ -30,7 +30,7 @@ namespace battery.app.Core.Models
 		/// <summary>
 		/// Возвращает коды товаров отгрузки.
 		/// </summary>
-		public List<Goods> Goods
+		public List<Battery> Goods
 		{
 			get;
 			set;
