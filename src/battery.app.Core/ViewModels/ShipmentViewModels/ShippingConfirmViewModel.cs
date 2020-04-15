@@ -16,7 +16,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 	/// <summary>
 	/// Представляет модель для страницы подтверждения отгрузки.
 	/// </summary>
-	public class ShippingConfirmViewModel : MvxViewModel<Shipment, bool>
+	public class ShippingConfirmViewModel : MvxViewModel<Shipment>
 	{
 		#region Data
 		#region Fields
@@ -194,7 +194,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		/// </summary>
 		private void ClosePage()
 		{
-			_navigationService.Close(this, false);
+			_navigationService.Close(this);
 		}
 
 		/// <summary>
@@ -204,7 +204,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		{
 			var result = false;
 
-			if (_shipment.Dealer == null)
+			if (_shipment.Dealer == null || _shipment.Dealer.Guid == Guid.Empty)
 			{
 				Device.BeginInvokeOnMainThread(async () =>
 				{
@@ -228,7 +228,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 				{
 					await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Отгрузка создана.", Strings.Ok);
 				});
-				await _navigationService.Close(this, true);
+				await Application.Current.MainPage.Navigation.PopToRootAsync();
 				return;
 			}
 

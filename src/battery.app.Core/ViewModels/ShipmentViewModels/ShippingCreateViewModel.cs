@@ -35,7 +35,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		/// <summary>
 		/// Отсканированные товаров.
 		/// </summary>
-		private MvxObservableCollection<Models.Battery> _goods = new MvxObservableCollection<Models.Battery>();
+		private MvxObservableCollection<Models.Battery> _batteries = new MvxObservableCollection<Models.Battery>();
 
 		/// <summary>
 		/// Сервис для навигации.
@@ -91,10 +91,10 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		/// <summary>
 		/// Возвращает товары в отгрузке.
 		/// </summary>
-		public MvxObservableCollection<Models.Battery> Goods
+		public MvxObservableCollection<Models.Battery> Batteries
 		{
-			get => _goods;
-			private set => SetProperty(ref _goods, value);
+			get => _batteries;
+			private set => SetProperty(ref _batteries, value);
 		}
 
 		/// <summary>
@@ -126,7 +126,6 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 
 						if (goods == null)
 						{
-							await Application.Current.MainPage.Navigation.PopModalAsync();
 							Device.BeginInvokeOnMainThread(async () =>
 							{
 								await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Батарея не найдена.", Strings.Ok);
@@ -135,13 +134,13 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 						}
 
 						var newCollection = new MvxObservableCollection<Models.Battery>();
-						foreach (var goodsCode in Goods)
+						foreach (var goodsCode in Batteries)
 						{
 							newCollection.Add(goodsCode);
 						}
 
 						newCollection.Add(goods);
-						Goods = newCollection;
+						Batteries = newCollection;
 					}
 				});
 				return _scanGoodsCommand;
@@ -174,7 +173,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		/// </summary>
 		private async void OpenShippingConfirm()
 		{
-			if (_goods.Count == 0)
+			if (_batteries.Count == 0)
 			{
 				Device.BeginInvokeOnMainThread(async () =>
 				{
@@ -185,17 +184,9 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 				return;
 			}
 
-			_shipment = _shipment == null ? new Shipment(_goods, _dealer) : new Shipment(_goods, _shipment.Dealer);
+			_shipment = _shipment == null ? new Shipment(_batteries, _dealer) : new Shipment(_batteries, _shipment.Dealer);
 
-			var result = await _navigationService.Navigate<ShippingConfirmViewModel, Shipment, bool>(_shipment);
-
-			if (result)
-			{
-				await Task.Run(() =>
-				{
-					_navigationService.Close(this, true);
-				});
-			}
+			await _navigationService.Navigate<ShippingConfirmViewModel, Shipment>(_shipment);
 		}
 
 		/// <summary>

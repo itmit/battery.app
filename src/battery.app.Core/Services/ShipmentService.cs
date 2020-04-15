@@ -44,12 +44,15 @@ namespace battery.app.Core.Services
 			{
 				cfg.AllowNullCollections = false;
 				cfg.CreateMap<Shipment, ShipmentDto>()
-				   .ForMember(dto => dto.GoodsCodes, m => m.MapFrom(ship => ship.Goods.Select(i => i.SerialNumber)));
+				   .ForMember(dto => dto.Serials, m => m.MapFrom(ship => ship.Goods.Select(i => i.SerialNumber)))
+				   .ForMember(dto => dto.Guid, m => m.MapFrom(ship => ship.Dealer.Guid));
+
+
 				cfg.CreateMap<ShipmentDto, Shipment>()
 				   .ForMember(ship => ship.CreatedAt, m => m.MapFrom(dto => dto.CreatedAt ?? DateTime.MinValue));
 				
 				cfg.CreateMap<Delivery, DeliveryDto>()
-				   .ForMember(dto => dto.GoodsCodes, m => m.MapFrom(ship => ship.Goods.Select(i => i.SerialNumber)));
+				   .ForMember(dto => dto.Serials, m => m.MapFrom(ship => ship.Goods.Select(i => i.SerialNumber)));
 				cfg.CreateMap<DeliveryDto, Delivery>()
 				   .ForMember(ship => ship.CreatedAt, m => m.MapFrom(dto => dto.CreatedAt ?? DateTime.MinValue));
 

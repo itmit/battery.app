@@ -30,14 +30,14 @@
                   <!--  
                   <Label Text="{Binding Battery.TabParams[6], StringFormat='Напряжение, В: {0}'}" Style="{StaticResource TextSaleLabel}"/>
                   -->
-                  <Label Text="{Binding Battery.Ah, StringFormat='Емкость (А*ч): {0}'}" Style="{StaticResource TextSaleLabel}"/>
-                  <Label Text="{Binding Battery.En, StringFormat='Пусковой ток, А: {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                  <Label Text="{Binding Ah, StringFormat='Емкость (А*ч): {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                  <Label Text="{Binding En, StringFormat='Пусковой ток, А: {0}'}" Style="{StaticResource TextSaleLabel}"/>
                   <!--
                   <Label Text="{Binding P4, StringFormat='Полярность: {0}'}" Style="{StaticResource TextSaleLabel}"/>
                   -->
-                  <Label Text="{Binding Battery.Lwh, StringFormat='ДxВxШ (mm): {0}'}" Style="{StaticResource TextSaleLabel}"/>
-                  <Label Text="{Binding Battery.WeightWet, StringFormat='Вес (kg): {0}'}" Style="{StaticResource TextSaleLabel}"/>
-                  <Label Text="{Binding Battery.Rc, StringFormat='Резервная емкость (m): {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                  <Label Text="{Binding Lwh, StringFormat='ДxВxШ (mm): {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                  <Label Text="{Binding WeightWet, StringFormat='Вес (kg): {0}'}" Style="{StaticResource TextSaleLabel}"/>
+                  <Label Text="{Binding Rc, StringFormat='Резервная емкость (m): {0}'}" Style="{StaticResource TextSaleLabel}"/>
               </StackLayout>
           </Grid>
       </Frame>

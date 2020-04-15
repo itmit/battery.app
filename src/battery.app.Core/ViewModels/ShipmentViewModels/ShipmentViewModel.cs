@@ -107,7 +107,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		/// </summary>
 		private async void OpenShippingCreatePage()
 		{
-			await NavigationService.Navigate<ShippingCreateViewModel, Dealer, bool>(SelectedDealer);
+			await NavigationService.Navigate<ShippingCreateViewModel, Dealer>(SelectedDealer);
 		}
 		#endregion
 	}

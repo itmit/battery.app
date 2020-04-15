@@ -40,6 +40,10 @@ namespace battery.app.Core.ViewModels
 				NavigationService.Navigate<ShipmentViewModel>();
 				NavigationService.Navigate<ShippingListViewModel>();
 			}
+			if (_authService.User.Role == UserRole.Dealer)
+			{
+				NavigationService.Navigate<ShippingListViewModel>();
+			}
 			NavigationService.Navigate<NewsViewModel>();
 			NavigationService.Navigate(_exitViewModel);
 		

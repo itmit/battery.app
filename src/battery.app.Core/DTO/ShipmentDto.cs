@@ -6,14 +6,14 @@ namespace battery.app.Core.DTO
 {
 	public class ShipmentDto
 	{
-		[JsonProperty("serial_numbers")]
-		public List<string> GoodsCodes
+		[JsonProperty("serials")]
+		public List<string> Serials
 		{
 			get;
 			set;
 		}
 
-		[JsonProperty("uuid")]
+		[JsonProperty("whom")]
 		public Guid Guid
 		{
 			get;
