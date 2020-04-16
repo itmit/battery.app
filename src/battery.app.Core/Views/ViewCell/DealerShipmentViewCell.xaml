@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             xmlns:design="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
+             mc:Ignorable="d"
+             x:Class="battery.app.Core.Views.ViewCell.DealerShipmentViewCell">
+    <ViewCell.View>
+        <!--Ячейка для списка отгрузок-->
+        <Frame BackgroundColor="White" CornerRadius="10" Padding="0" Margin="15,10,15,1">
+            <Frame.BorderColor>
+                <OnPlatform x:TypeArguments="Color">
+                    <On Platform="iOS" Value="LightGray"/>
+                </OnPlatform>
+            </Frame.BorderColor>
+            <Frame.HasShadow>
+                <OnPlatform x:TypeArguments="system:Boolean">
+                    <On Platform="Android" Value="True"/>
+                    <On Platform="iOS" Value="False"/>
+                </OnPlatform>
+            </Frame.HasShadow>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="130"/>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Image Grid.Column="0" Source="logo_tab.png" VerticalOptions="Center" Margin="20"/>
+                <BoxView Grid.Column="1" WidthRequest="1">
+                    <BoxView.BackgroundColor>
+                        <OnPlatform x:TypeArguments="Color">
+                            <On Platform="Android" Value="#eaeaea"/>
+                            <On Platform="iOS" Value="Gray"/>
+                        </OnPlatform>
+                    </BoxView.BackgroundColor>
+                </BoxView>
+                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
+                    <Label Text="{Binding Storekeeper.Login}" Style="{StaticResource Title}" FontFamily="{x:Static design:DesignClass.FontBold}"/>
+                    <Label Text="{Binding CreatedAt, StringFormat='{0:dd-MM-yyyy} г.'}"
+                           Style="{StaticResource Date}"
+                           FontFamily="{x:Static design:DesignClass.FontLight}"/>
+                </StackLayout>
+            </Grid>
+        </Frame>
+    </ViewCell.View>
+</ViewCell>

@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace battery.app.Core.Views.ViewCell
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ShipmentViewCell : Xamarin.Forms.ViewCell
+	public partial class DealerShipmentViewCell : Xamarin.Forms.ViewCell
 	{
-		public ShipmentViewCell()
+		public DealerShipmentViewCell()
 		{
 			InitializeComponent();
 		}

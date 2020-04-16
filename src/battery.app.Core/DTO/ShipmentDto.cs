@@ -6,6 +6,12 @@ namespace battery.app.Core.DTO
 {
 	public class ShipmentDto
 	{
+		public int? Id
+		{
+			get;
+			set;
+		}
+
 		[JsonProperty("serials")]
 		public List<string> Serials
 		{
@@ -14,7 +20,28 @@ namespace battery.app.Core.DTO
 		}
 
 		[JsonProperty("whom")]
-		public Guid Guid
+		public Guid? WhomUuid
+		{
+			get;
+			set;
+		}
+
+		[JsonProperty("from")]
+		public Guid? FromUuid
+		{
+			get;
+			set;
+		}
+
+		[JsonProperty("from_client_name")]
+		public string FromClientName
+		{
+			get;
+			set;
+		}
+
+		[JsonProperty("whom_client_name")]
+		public string WhomClientName
 		{
 			get;
 			set;

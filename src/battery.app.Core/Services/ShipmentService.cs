@@ -26,7 +26,7 @@ namespace battery.app.Core.Services
 		private readonly IAuthService _authService;
 
 		private const string CheckBatteryUri = "http://battery.itmit-studio.ru/api/delivery/getBatteryByCode";
-		private const string GetDeliveriesAndShipmentsUri = "http://battery.itmit-studio.ru/api/checkDeliveryAndShipment/listOfDeliveriesAndShipments";
+		private const string GetShipmentsUri = "http://battery.itmit-studio.ru/api/shipment";
 
 		/// <summary>
 		/// Адрес для получения дилеров.
@@ -45,16 +45,16 @@ namespace battery.app.Core.Services
 				cfg.AllowNullCollections = false;
 				cfg.CreateMap<Shipment, ShipmentDto>()
 				   .ForMember(dto => dto.Serials, m => m.MapFrom(ship => ship.Goods.Select(i => i.SerialNumber)))
-				   .ForMember(dto => dto.Guid, m => m.MapFrom(ship => ship.Dealer.Guid));
-
+				   .ForMember(dto => dto.WhomUuid, m => m.MapFrom(ship => ship.Dealer.Guid))
+				   .ForMember(dto => dto.FromUuid, m => m.MapFrom(ship => ship.Storekeeper.Guid));
 
 				cfg.CreateMap<ShipmentDto, Shipment>()
-				   .ForMember(ship => ship.CreatedAt, m => m.MapFrom(dto => dto.CreatedAt ?? DateTime.MinValue));
+				   .ForMember(ship => ship.CreatedAt, m => m.MapFrom(dto => dto.CreatedAt ?? DateTime.MinValue))
+				   .ForPath(ship => ship.Dealer.Guid, m => m.MapFrom(dto => dto.WhomUuid ?? Guid.Empty))
+				   .ForPath(ship => ship.Dealer.Login, m => m.MapFrom(dto => dto.WhomClientName))
+				   .ForPath(ship => ship.Storekeeper.Guid, m => m.MapFrom(dto => dto.FromUuid ?? Guid.Empty))
+				   .ForPath(ship => ship.Storekeeper.Login, m => m.MapFrom(dto => dto.FromClientName));
 				
-				cfg.CreateMap<Delivery, DeliveryDto>()
-				   .ForMember(dto => dto.Serials, m => m.MapFrom(ship => ship.Goods.Select(i => i.SerialNumber)));
-				cfg.CreateMap<DeliveryDto, Delivery>()
-				   .ForMember(ship => ship.CreatedAt, m => m.MapFrom(dto => dto.CreatedAt ?? DateTime.MinValue));
 
 				cfg.CreateMap<GoodsDto, Battery>()
 				   .ForMember(batter => batter.Delivery, m => m.MapFrom(dto => dto))
@@ -77,10 +77,10 @@ namespace battery.app.Core.Services
 
 				var response = await client.PostAsync(StoreUri,
 													  new StringContent(requestBody, Encoding.UTF8, "application/json"));
-
+#if (DEBUG)
 				var jsonString = await response.Content.ReadAsStringAsync();
 				Debug.WriteLine(jsonString);
-
+#endif
 				return response.IsSuccessStatusCode;
 			}
 		}
@@ -114,14 +114,14 @@ namespace battery.app.Core.Services
 			}
 		}
 
-		public async Task<List<Shipment>> GetDeliveriesAndShipments()
+		public async Task<List<Shipment>> GetShipments()
 		{
 			using (var client = new HttpClient())
 			{
 				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(_authService.UserToken.ToString());
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
-				var response = await client.GetAsync(GetDeliveriesAndShipmentsUri);
+				var response = await client.GetAsync(GetShipmentsUri);
 
 				var jsonString = await response.Content.ReadAsStringAsync();
 				Debug.WriteLine(jsonString);
@@ -130,9 +130,8 @@ namespace battery.app.Core.Services
 				{
 					if (!string.IsNullOrEmpty(jsonString))
 					{
-						var jsonData = JsonConvert.DeserializeObject<GeneralDto<DeliveriesShipmentsDto>>(jsonString);
-						var list = _mapper.Map<List<Shipment>>(jsonData.Data.Shipments);
-						list.AddRange(_mapper.Map<List<Delivery>>(jsonData.Data.Deliveries));
+						var jsonData = JsonConvert.DeserializeObject<GeneralDto<List<ShipmentDto>>>(jsonString);
+						var list = _mapper.Map<List<Shipment>>(jsonData.Data);
 						return list;
 					}
 				}
@@ -141,64 +140,6 @@ namespace battery.app.Core.Services
 			}
 		}
 
-		private const string GetBatteryInShipmentsUri = "http://battery.itmit-studio.ru/api/checkDeliveryAndShipment/getBatteriesFromShipment";
-		public async Task<List<Battery>> GetBatteryInShipments(Shipment shipment)
-		{
-			using (var client = new HttpClient())
-			{
-				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(_authService.UserToken.ToString());
-				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-				var response = await client.PostAsync(GetBatteryInShipmentsUri, new FormUrlEncodedContent(new Dictionary<string, string>
-				{
-					{"shipment_uuid", shipment.Guid.ToString() }
-				}));
-
-				var jsonString = await response.Content.ReadAsStringAsync();
-				Debug.WriteLine(jsonString);
-
-				if (response.IsSuccessStatusCode)
-				{
-					if (!string.IsNullOrEmpty(jsonString))
-					{
-						var jsonData = JsonConvert.DeserializeObject<GeneralDto<List<GoodsDto>>>(jsonString);
-						return await Task.FromResult(_mapper.Map<List<Battery>>(jsonData.Data));
-					}
-				}
-
-				return null;
-			}
-		}
-
-		private const string GetBatteryInDeliveryUri = "http://battery.itmit-studio.ru/api/checkDeliveryAndShipment/getBatteriesFromDelivery";
-		public async Task<List<Battery>> GetBatteryInDelivery(Delivery delivery)
-		{
-			using (var client = new HttpClient())
-			{
-				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(_authService.UserToken.ToString());
-				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-				var response = await client.PostAsync(GetDeliveriesAndShipmentsUri, new FormUrlEncodedContent(new Dictionary<string, string>
-				{
-					{"delivery_uuid", delivery.Guid.ToString() }
-				}));
-
-				var jsonString = await response.Content.ReadAsStringAsync();
-				Debug.WriteLine(jsonString);
-
-				if (response.IsSuccessStatusCode)
-				{
-					if (!string.IsNullOrEmpty(jsonString))
-					{
-						var jsonData = JsonConvert.DeserializeObject<GeneralDto<List<GoodsDto>>>(jsonString);
-						return await Task.FromResult(_mapper.Map<List<Battery>>(jsonData.Data));
-					}
-				}
-
-				return null;
-			}
-		}
-
-
+		public Task<List<Battery>> GetBatteryInShipments(int id) => throw new NotImplementedException();
 	}
 }

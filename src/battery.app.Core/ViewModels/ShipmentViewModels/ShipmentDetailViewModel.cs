@@ -29,14 +29,8 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		{
 			await base.Initialize();
 
-			if (_shipment is Delivery delivery)
-			{
-				Batteries = new MvxObservableCollection<Models.Battery>(await _shipmentService.GetBatteryInDelivery(delivery));
-			}
-			else
-			{
-				Batteries = new MvxObservableCollection<Models.Battery>(await _shipmentService.GetBatteryInShipments(_shipment));
-			}
+			Batteries = new MvxObservableCollection<Models.Battery>(await _shipmentService.GetBatteryInShipments(_shipment.Id));
+			
 		}
 
 		public Models.Battery SelectedBattery

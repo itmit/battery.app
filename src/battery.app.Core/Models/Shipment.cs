@@ -27,6 +27,12 @@ namespace battery.app.Core.Models
 			set;
 		}
 
+		public int Id
+		{
+			get;
+			set;
+		}
+
 		/// <summary>
 		/// Возвращает коды товаров отгрузки.
 		/// </summary>
@@ -40,6 +46,12 @@ namespace battery.app.Core.Models
 		/// Возвращает дилера.
 		/// </summary>
 		public Dealer Dealer
+		{
+			get;
+			set;
+		}
+
+		public User Storekeeper
 		{
 			get;
 			set;

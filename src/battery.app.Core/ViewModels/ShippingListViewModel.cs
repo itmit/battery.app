@@ -1,4 +1,5 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using battery.app.Core.Models;
@@ -18,24 +19,33 @@ namespace battery.app.Core.ViewModels
 	public class ShippingListViewModel : MvxNavigationViewModel
 	{
 		private IShipmentService _shipmentService;
+
+		public User User { get; }
+
 		private MvxObservableCollection<Shipment> _shipments;
 		private Shipment _selectedShipment;
 		private IMvxNavigationService _navigationService;
-		private IMvxCommand _check;
 
-		public ShippingListViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IShipmentService shipmentService)
+		public ShippingListViewModel(IMvxLogProvider logProvider, IMvxNavigationService navigationService, IShipmentService shipmentService, IAuthService authService)
 			: base(logProvider, navigationService)
 		{
 			_navigationService = navigationService;
 			_shipmentService = shipmentService;
+			User = authService.User;
 		}
 
 		public override async Task Initialize()
 		{
 			await base.Initialize();
-
-			Shipments = new MvxObservableCollection<Shipment>(
-				await _shipmentService.GetDeliveriesAndShipments());
+			try
+			{
+				Shipments = new MvxObservableCollection<Shipment>(
+					await _shipmentService.GetShipments());
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+			}
 		}
 
 		public MvxObservableCollection<Shipment> Shipments

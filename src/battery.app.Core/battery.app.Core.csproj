@@ -50,7 +50,7 @@
     <EmbeddedResource Update="Pages\Shipment\ShipmentPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Pages\ShippingListPage.xaml">
+    <EmbeddedResource Update="Pages\Shipment\ShipmentListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="Pages\TestPage.xaml">
@@ -75,7 +75,7 @@
     <EmbeddedResource Update="Views\ViewCell\NewsViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="Views\ViewCell\ShipmentViewCell.xaml">
+    <EmbeddedResource Update="Views\ViewCell\DealerShipmentViewCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>
@@ -87,13 +87,22 @@
     <Compile Update="Pages\Battery\BatteryDetailPage.xaml.cs">
       <DependentUpon>BatteryDetailPage.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Pages\Shipment\ShipmentListPage.xaml.cs">
+      <DependentUpon>ShipmentListPage.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Properties\Strings.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
       <DependentUpon>Strings.resx</DependentUpon>
     </Compile>
+    <Compile Update="Views\ViewCell\StockmanShipmentViewCell.xaml.cs">
+      <DependentUpon>StockmanShipmentViewCell.xaml</DependentUpon>
+    </Compile>
     <Compile Update="Views\ViewCell\GoodsViewCell.xaml.cs">
       <DependentUpon>GoodsViewCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="Views\ViewCell\DealerShipmentViewCell.xaml.cs">
+      <DependentUpon>DealerShipmentViewCell.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 

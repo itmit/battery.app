@@ -6,7 +6,7 @@
              xmlns:system="clr-namespace:System;assembly=netstandard"
              xmlns:design="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
              mc:Ignorable="d"
-             x:Class="battery.app.Core.Views.ViewCell.ShipmentViewCell">
+             x:Class="battery.app.Core.Views.ViewCell.StockmanShipmentViewCell">
     <ViewCell.View>
         <!--Ячейка для списка отгрузок-->
         <Frame BackgroundColor="White" CornerRadius="10" Padding="0" Margin="15,10,15,1">
@@ -37,8 +37,8 @@
                     </BoxView.BackgroundColor>
                 </BoxView>
                 <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
-                    <Label Text="TAB" Style="{StaticResource Title}" FontFamily="{x:Static design:DesignClass.FontBold}"/>
-                    <Label Text="{Binding CreatedAt, StringFormat='{0:dd-MM-yyyy} г'}"
+                    <Label Text="{Binding Dealer.Login}" Style="{StaticResource Title}" FontFamily="{x:Static design:DesignClass.FontBold}"/>
+                    <Label Text="{Binding CreatedAt, StringFormat='{0:dd-MM-yyyy} г.'}"
                            Style="{StaticResource Date}"
                            FontFamily="{x:Static design:DesignClass.FontLight}"/>
                 </StackLayout>

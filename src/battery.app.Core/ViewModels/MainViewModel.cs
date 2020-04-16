@@ -34,7 +34,7 @@ namespace battery.app.Core.ViewModels
 			
 			_exitViewModel = new ExitViewModel(Mvx.IoCProvider.GetSingleton<IMvxNavigationService>(), Mvx.IoCProvider.GetSingleton<IAuthService>());
 			NavigationService.Navigate<ScanningViewModel>();
-			var m = Application.Current.MainPage;
+
 			if (_authService.User.Role == UserRole.Stockman)
 			{
 				NavigationService.Navigate<ShipmentViewModel>();

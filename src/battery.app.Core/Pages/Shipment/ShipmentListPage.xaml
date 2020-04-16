@@ -5,12 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
              xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
-             xmlns:viewCell="clr-namespace:battery.app.Core.Views.ViewCell;assembly=battery.app.Core"
-             xmlns:system="clr-namespace:System;assembly=netstandard"
              xmlns:design="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
-             x:Class="battery.app.Core.Pages.ShippingListPage">
+             x:Class="battery.app.Core.Pages.Shipment.ShipmentListPage">
     <views:MvxContentPage.IconImageSource>
         <OnPlatform x:TypeArguments="ImageSource">
             <On Platform="Android" Value="list_ul"/>
@@ -33,13 +31,9 @@
                           SelectedItem="{Binding SelectedShipment}"
                           ItemSelected="ListView_OnItemSelected"
                           HasUnevenRows="True"
+                          x:Name="ShipmentListView"
                           SeparatorVisibility="None"
                           BackgroundColor="Transparent">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <viewCell:ShipmentViewCell/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
                 </ListView>
             </StackLayout>
         </StackLayout>
