@@ -12,12 +12,12 @@
                       BackgroundColor="#ebebeb"
                       NavigationPage.HasNavigationBar="False"
                       IconImageSource="plus.png"
-             x:Class="battery.app.Core.Pages.Shipment.ShipmentPage">
+                      x:Class="battery.app.Core.Pages.Shipment.ShipmentPage">
     <!--Отгрузка-->
     <ContentPage.Content>
         <AbsoluteLayout BackgroundColor="{x:Static design:DesignClass.Color}">
             <Grid AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0,AutoSize,AutoSize">
-                <Image Source="picture_600.png"/>
+                <Image x:Name="Image" Source="picture_600.png"/>
                 <StackLayout Margin="{x:Static design:DesignClass.Margin}">
                     <Label Text="ОТГРУЗКА"
                            Style="{StaticResource MainLabel}"
@@ -27,7 +27,7 @@
                 </StackLayout>
                 <BoxView Style="{StaticResource MainBoxView}" VerticalOptions="EndAndExpand"/>
             </Grid>
-            <Grid AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0.5,AutoSize,AutoSize">
+            <Grid x:Name="Grid" HeightRequest="85">
                 <Frame VerticalOptions="Center"
                        CornerRadius="10"
                        BackgroundColor="#fff"
@@ -35,7 +35,7 @@
                        HasShadow="{x:Static design:DesignClass.HasShadow}">
                     <FlexLayout>
                         <Image Source="ic_panorama_fish_eye.png" WidthRequest="{x:Static design:DesignClass.Width}" VerticalOptions="Center"/>
-                        <controls:PickerListGoods
+                        <controls:PickerListGoods x:Name="PickerListGoods"
                             ItemsSource="{Binding Dealers}"
                             ItemDisplayBinding="{Binding Login}"
                             SelectedItem="{Binding SelectedDealer}"

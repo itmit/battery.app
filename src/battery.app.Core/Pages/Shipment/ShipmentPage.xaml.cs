@@ -18,6 +18,10 @@ namespace battery.app.Core.Pages.Shipment
 		public ShipmentPage()
 		{
 			InitializeComponent();
+			Grid.TranslationY = getTranslationY();
 		}
+
+        private double getTranslationY()
+            => Device.Info.PixelScreenSize.Width / Device.Info.ScalingFactor - (Grid.HeightRequest / 2);
 	}
 }
