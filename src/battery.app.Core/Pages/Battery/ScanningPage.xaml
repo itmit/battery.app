@@ -10,13 +10,8 @@
              xmlns:battery="clr-namespace:battery.app.Core.ViewModels.Battery;assembly=battery.app.Core"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
+             IconImageSource="qrcode.png"
              x:Class="battery.app.Core.Pages.Battery.ScanningPage">
-    <views:MvxContentPage.IconImageSource>
-        <OnPlatform x:TypeArguments="ImageSource">
-            <On Platform="Android" Value="qrcode"/>
-            <On Platform="iOS" Value="qrcode@1x.png"/>
-        </OnPlatform>
-    </views:MvxContentPage.IconImageSource>
     <!--Сканирование-->
     <ContentPage.Content>
         <AbsoluteLayout BackgroundColor="{x:Static desing:DesignClass.Color}">

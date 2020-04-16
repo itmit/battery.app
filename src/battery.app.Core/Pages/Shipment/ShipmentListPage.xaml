@@ -9,13 +9,6 @@
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Core.Pages.Shipment.ShipmentListPage">
-    <views:MvxContentPage.IconImageSource>
-        <OnPlatform x:TypeArguments="ImageSource">
-            <On Platform="Android" Value="list_ul"/>
-            <On Platform="iOS" Value="baseline_format_list_bulleted_black_24pt_1x.png"/>
-        </OnPlatform>
-    </views:MvxContentPage.IconImageSource>
-    <!--Список отгрузок-->
     <ContentPage.Content>
         <StackLayout BackgroundColor="White">
             <StackLayout BackgroundColor="White" Margin="{x:Static design:DesignClass.LayoutThickness}">

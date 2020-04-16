@@ -10,13 +10,8 @@
              xmlns:design="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
+             IconImageSource="newspaper.png"
              x:Class="battery.app.Core.Pages.NewsPage">
-    <views:MvxContentPage.IconImageSource>
-        <OnPlatform x:TypeArguments="ImageSource">
-            <On Platform="Android" Value="baseline_list_alt_black_48.png"/>
-            <On Platform="iOS" Value="baseline_list_alt_black_24pt_1x.png"/>
-        </OnPlatform>
-    </views:MvxContentPage.IconImageSource>
     <!--Список новостей-->
     <ContentPage.Content>
         <StackLayout BackgroundColor="White">

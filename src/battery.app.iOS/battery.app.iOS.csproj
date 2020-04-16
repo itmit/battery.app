@@ -74,10 +74,6 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <BundleResource Include="Resources\Roboto-Bold.ttf" />
-    <BundleResource Include="Resources\roboto_light.ttf" />
-    <BundleResource Include="Resources\roboto_medium.ttf" />
-    <BundleResource Include="Resources\roboto_regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
@@ -152,7 +148,6 @@
     <ImageAsset Include="Assets.xcassets\AppIcons.appiconset\Icon87.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -189,69 +184,49 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\baseline_add_black_24pt_1x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\baseline_format_list_bulleted_black_24pt_1x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\baseline_arrow_forward_black_24pt_1x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\arrow_alt_left_white.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <BundleResource Include="Resources\.DS_Store" />
     <BundleResource Include="Resources\arrow_alt_left.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <BundleResource Include="Resources\arrow_alt_left_white.png" />
     <BundleResource Include="Resources\arrow_bottom.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\box_foto.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\icon.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\logo_tab.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\logo_topla.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\logo_vesna.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\logo_volthor.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\outline_camera_48dp.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\pict_2.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\picture_600.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\tab_1.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\baseline_list_alt_black_24pt_1x.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\qrcode%401x.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <BundleResource Include="Resources\Default.png" />
+    <BundleResource Include="Resources\Default%402x.png" />
+    <BundleResource Include="Resources\Default-568h%402x.png" />
+    <BundleResource Include="Resources\Default-Portrait.png" />
+    <BundleResource Include="Resources\Default-Portrait%402x.png" />
     <BundleResource Include="Resources\ic_add.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <BundleResource Include="Resources\ic_panorama_fish_eye.png" />
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="Resources\ic_lock_outline.png" />
+    <BundleResource Include="Resources\ic_panorama_fish_eye.png" />
+    <BundleResource Include="Resources\ic_person_outline.png" />
+    <BundleResource Include="Resources\icon.png" />
+    <BundleResource Include="Resources\logo_tab.png" />
+    <BundleResource Include="Resources\logo_topla.png" />
+    <BundleResource Include="Resources\logo_vesna.png" />
+    <BundleResource Include="Resources\logo_volthor.png" />
+    <BundleResource Include="Resources\outline_camera_48dp.png" />
+    <BundleResource Include="Resources\pict_2.jpg" />
+    <BundleResource Include="Resources\picture_600.png" />
+    <BundleResource Include="Resources\roboto_light.ttf" />
+    <BundleResource Include="Resources\roboto_medium.ttf" />
+    <BundleResource Include="Resources\roboto_regular.ttf" />
+    <BundleResource Include="Resources\Roboto-Bold.ttf" />
+    <BundleResource Include="Resources\tab_1.jpg" />
+    <BundleResource Include="Resources\tab_about.png" />
+    <BundleResource Include="Resources\tab_about%402x.png" />
+    <BundleResource Include="Resources\tab_about%403x.png" />
+    <BundleResource Include="Resources\tab_feed.png" />
+    <BundleResource Include="Resources\tab_feed%402x.png" />
+    <BundleResource Include="Resources\tab_feed%403x.png" />
+    <BundleResource Include="Resources\xamarin_logo.png" />
+    <BundleResource Include="Resources\xamarin_logo%402x.png" />
+    <BundleResource Include="Resources\xamarin_logo%403x.png" />
+    <BundleResource Include="Resources\arrow_right%403x.png" />
+    <BundleResource Include="Resources\list_ul%403x.png" />
+    <BundleResource Include="Resources\newspaper%403x.png" />
+    <BundleResource Include="Resources\plus%403x.png" />
+    <BundleResource Include="Resources\qrcode%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\ic_person_outline.png" />
+    <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
   </ItemGroup>
 </Project>

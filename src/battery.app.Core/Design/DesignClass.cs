@@ -10,7 +10,7 @@ namespace battery.app.Core.Design
 		public static Thickness Margin;
 		#endregion
 
-		#region Fields Font
+		#region Fields Fonts
 		public static string FontRegular, FontLight, FontMedium, FontBold;
 		#endregion
 
@@ -35,7 +35,7 @@ namespace battery.app.Core.Design
 				FontBold = "Roboto-Bold";
 				FontLight = "roboto_light";
 				FontMedium = "roboto_medium";
-				Width = 10;
+				Width = 20;
 			}
 			else if (Device.Android == Device.RuntimePlatform)
 			{
@@ -46,7 +46,7 @@ namespace battery.app.Core.Design
 				FontLight = "roboto_light.ttf#roboto_light";
 				FontMedium = "roboto_medium.ttf#roboto_medium";
 				Margin = new Thickness(10, 30, 0, 10);
-				Width = 25;
+				Width = 40;
 			}
 		}
 		#endregion
