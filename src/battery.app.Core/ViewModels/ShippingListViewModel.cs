@@ -59,7 +59,8 @@ namespace battery.app.Core.ViewModels
 			get => _selectedShipment;
 			set
 			{
-				if(value != null && SetProperty(ref _selectedShipment, value))
+				SetProperty(ref _selectedShipment, value);
+				if (value != null)
 				{
 					_navigationService.Navigate<ShipmentDetailViewModel, Shipment>(value);
 				}

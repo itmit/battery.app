@@ -50,18 +50,18 @@
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Frame Grid.Column="0" Padding="5" HasShadow="False" CornerRadius="24" BackgroundColor="#e61e29" WidthRequest="200" VerticalOptions="EndAndExpand">
+                    <design:CustomButton Grid.Column="0" Padding="5" HasShadow="False" CornerRadius="24" BackgroundColor="#e61e29" WidthRequest="200" VerticalOptions="EndAndExpand">
                         <Label Text="Подтвердить&#10;отгрузку" TextColor="White" FontFamily="{x:Static design:DesignClass.FontLight}" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding SendShipmentCommand}"/>
                         </Frame.GestureRecognizers>
-                    </Frame>
-                    <Frame Grid.Column="1" Padding="5" HasShadow="False" CornerRadius="24" BackgroundColor="#08407d" WidthRequest="200" VerticalOptions="EndAndExpand">
+                    </design:CustomButton>
+                    <design:CustomButton Grid.Column="1" Padding="5" HasShadow="False" CornerRadius="24" BackgroundColor="#08407d" WidthRequest="200" VerticalOptions="EndAndExpand">
                         <Label Text="Изменить&#10;список" TextColor="White" FontFamily="{x:Static design:DesignClass.FontLight}" VerticalOptions="Center" HorizontalOptions="Center" HorizontalTextAlignment="Center"/>
                         <Frame.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding ClosePageCommand}"/>
                         </Frame.GestureRecognizers>
-                    </Frame>
+                    </design:CustomButton>
                 </Grid>
             </Grid>
         </StackLayout>

@@ -8,6 +8,7 @@
              xmlns:design="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
+             IconImageSource="list_ul.png"
              x:Class="battery.app.Core.Pages.Shipment.ShipmentListPage">
     <ContentPage.Content>
         <StackLayout BackgroundColor="White">
