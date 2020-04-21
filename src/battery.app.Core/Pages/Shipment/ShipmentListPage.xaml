@@ -7,6 +7,7 @@
              xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
              xmlns:design="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
              mc:Ignorable="d"
+             IconImageSource="list_ul"
              NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Core.Pages.Shipment.ShipmentListPage">
     <ContentPage.Content>

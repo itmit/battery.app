@@ -6,6 +6,7 @@ namespace battery.app.Core.DTO
 {
 	public class ShipmentDto
 	{
+		[JsonProperty("shipment_id")]
 		public int? Id
 		{
 			get;

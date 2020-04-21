@@ -28,9 +28,10 @@
             </StackLayout>
             <BoxView Style="{StaticResource MainBoxView}"/>
             <StackLayout BackgroundColor="{x:Static design:DesignClass.Color}">
-                <Frame CornerRadius="10" BackgroundColor="#fff" Margin="20,10,20,5" HasShadow="{x:Static design:DesignClass.HasShadow}">
-                    <Label Text="{Binding Dealer}"
-                           WidthRequest="300"
+                <Frame HorizontalOptions="FillAndExpand" CornerRadius="10" BackgroundColor="#fff" Margin="20,10,20,5" HasShadow="{x:Static design:DesignClass.HasShadow}">
+                    <Label Text="{Binding Shipment.Dealer.Login}"
+                           HorizontalTextAlignment="Center"
+                           FontSize="16"
                            FontFamily="{x:Static design:DesignClass.FontRegular}"/>
                 </Frame>
             </StackLayout>

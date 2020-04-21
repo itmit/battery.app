@@ -1,4 +1,5 @@
-﻿using System.Threading.Tasks;
+﻿using System;
+using System.Threading.Tasks;
 using battery.app.Core.Models;
 using battery.app.Core.Repositories;
 using battery.app.Core.Services;
@@ -12,7 +13,13 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 	public class ShipmentDetailViewModel: MvxViewModel<Shipment>
 	{
 		private IMvxNavigationService _navigationService;
-		private Shipment _shipment;
+
+		public Shipment Shipment
+		{
+			get;
+			private set;
+		}
+
 		private Dealer _dealer;
 		private MvxObservableCollection<Models.Battery> _batteries;
 		private IShipmentService _shipmentService;
@@ -29,8 +36,14 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 		{
 			await base.Initialize();
 
-			Batteries = new MvxObservableCollection<Models.Battery>(await _shipmentService.GetBatteryInShipments(_shipment.Id));
-			
+			try
+			{
+				Batteries = new MvxObservableCollection<Models.Battery>(await _shipmentService.GetBatteryInShipments(Shipment.Id));
+			}
+			catch (Exception e)
+			{
+				Console.WriteLine(e);
+			}
 		}
 
 		public Models.Battery SelectedBattery
@@ -47,7 +60,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 
 		public override void Prepare(Shipment parameter)
 		{
-			_shipment = parameter;
+			Shipment = parameter;
 		}
 
 		public MvxCommand ClosePageCommand

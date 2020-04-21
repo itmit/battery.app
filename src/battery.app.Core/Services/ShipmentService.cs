@@ -15,24 +15,31 @@ namespace battery.app.Core.Services
 {
 	public class ShipmentService : IShipmentService
 	{
-		/// <summary>
-		/// Маппер.
-		/// </summary>
-		private readonly Mapper _mapper;
-
-		/// <summary>
-		/// Сервис авторизации, для получения токена доступа пользователя.
-		/// </summary>
-		private readonly IAuthService _authService;
-
+		#region Data
+		#region Consts
 		private const string CheckBatteryUri = "http://battery.itmit-studio.ru/api/delivery/getBatteryByCode";
+		private const string GetBatteryInShipmentsUri = "http://battery.itmit-studio.ru/api/shipment/{0}";
 		private const string GetShipmentsUri = "http://battery.itmit-studio.ru/api/shipment";
 
 		/// <summary>
 		/// Адрес для получения дилеров.
 		/// </summary>
-		private const string StoreUri = "http://battery.itmit-studio.ru/api/shipment/store";
+		private const string StoreUri = "http://battery.itmit-studio.ru/api/shipment";
+		#endregion
 
+		#region Fields
+		/// <summary>
+		/// Сервис авторизации, для получения токена доступа пользователя.
+		/// </summary>
+		private readonly IAuthService _authService;
+		/// <summary>
+		/// Маппер.
+		/// </summary>
+		private readonly Mapper _mapper;
+		#endregion
+		#endregion
+
+		#region .ctor
 		/// <summary>
 		/// Инициализирует новый экземпляр <see cref="DealerService" />.
 		/// </summary>
@@ -54,7 +61,6 @@ namespace battery.app.Core.Services
 				   .ForPath(ship => ship.Dealer.Login, m => m.MapFrom(dto => dto.WhomClientName))
 				   .ForPath(ship => ship.Storekeeper.Guid, m => m.MapFrom(dto => dto.FromUuid ?? Guid.Empty))
 				   .ForPath(ship => ship.Storekeeper.Login, m => m.MapFrom(dto => dto.FromClientName));
-				
 
 				cfg.CreateMap<GoodsDto, Battery>()
 				   .ForMember(batter => batter.Delivery, m => m.MapFrom(dto => dto))
@@ -63,28 +69,9 @@ namespace battery.app.Core.Services
 				cfg.CreateMap<GoodsDto, Delivery>();
 			}));
 		}
+		#endregion
 
-		public async Task<bool> Store(Shipment shipment)
-		{
-			using (var client = new HttpClient())
-			{
-				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(_authService.UserToken.ToString());
-				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-				var requestBody = JsonConvert.SerializeObject(_mapper.Map<ShipmentDto>(shipment));
-
-				Debug.WriteLine(requestBody);
-
-				var response = await client.PostAsync(StoreUri,
-													  new StringContent(requestBody, Encoding.UTF8, "application/json"));
-#if (DEBUG)
-				var jsonString = await response.Content.ReadAsStringAsync();
-				Debug.WriteLine(jsonString);
-#endif
-				return response.IsSuccessStatusCode;
-			}
-		}
-
+		#region IShipmentService members
 		public async Task<Battery> CheckGoods(string code)
 		{
 			using (var client = new HttpClient())
@@ -93,10 +80,12 @@ namespace battery.app.Core.Services
 				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
 
 				var response = await client.PostAsync(CheckBatteryUri,
-								   new FormUrlEncodedContent(new Dictionary<string, string>
-								   {
-									   { "code", code }
-								   }));
+													  new FormUrlEncodedContent(new Dictionary<string, string>
+													  {
+														  {
+															  "code", code
+														  }
+													  }));
 
 				var jsonString = await response.Content.ReadAsStringAsync();
 				Debug.WriteLine(jsonString);
@@ -107,6 +96,32 @@ namespace battery.app.Core.Services
 					{
 						var jsonData = JsonConvert.DeserializeObject<GeneralDto<GoodsDto>>(jsonString);
 						return await Task.FromResult(_mapper.Map<Battery>(jsonData.Data));
+					}
+				}
+
+				return null;
+			}
+		}
+
+		public async Task<List<Battery>> GetBatteryInShipments(int id)
+		{
+			using (var client = new HttpClient())
+			{
+				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(_authService.UserToken.ToString());
+				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+				var response = await client.GetAsync(string.Format(GetBatteryInShipmentsUri, id));
+
+				var jsonString = await response.Content.ReadAsStringAsync();
+				Debug.WriteLine(jsonString);
+
+				if (response.IsSuccessStatusCode)
+				{
+					if (!string.IsNullOrEmpty(jsonString))
+					{
+						var jsonData = JsonConvert.DeserializeObject<GeneralDto<List<GoodsDto>>>(jsonString);
+						var list = _mapper.Map<List<Battery>>(jsonData.Data);
+						return list;
 					}
 				}
 
@@ -140,6 +155,25 @@ namespace battery.app.Core.Services
 			}
 		}
 
-		public Task<List<Battery>> GetBatteryInShipments(int id) => throw new NotImplementedException();
+		public async Task<bool> Store(Shipment shipment)
+		{
+			using (var client = new HttpClient())
+			{
+				client.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse(_authService.UserToken.ToString());
+				client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+
+				var requestBody = JsonConvert.SerializeObject(_mapper.Map<ShipmentDto>(shipment));
+
+				Debug.WriteLine(requestBody);
+
+				var response = await client.PostAsync(StoreUri, new StringContent(requestBody, Encoding.UTF8, "application/json"));
+#if (DEBUG)
+				var jsonString = await response.Content.ReadAsStringAsync();
+				Debug.WriteLine(jsonString);
+#endif
+				return response.IsSuccessStatusCode;
+			}
+		}
+		#endregion
 	}
 }

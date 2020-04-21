@@ -10,7 +10,8 @@ namespace battery.app.Droid
 	[Activity(Label = "Батарейки",
 		MainLauncher = true,
 		Icon = "@drawable/icon",
-		Theme = "@style/MainTheme",
+		Theme = "@style/MainTheme", 
+		ScreenOrientation = ScreenOrientation.Portrait,
 		ConfigurationChanges = ConfigChanges.ScreenSize | ConfigChanges.Orientation)]
 	public class FormsActivity : MvxFormsAppCompatActivity
 	{
