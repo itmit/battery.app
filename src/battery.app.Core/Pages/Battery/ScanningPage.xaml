@@ -16,7 +16,7 @@
     <ContentPage.Content>
         <AbsoluteLayout BackgroundColor="{x:Static desing:DesignClass.Color}">
             <Grid AbsoluteLayout.LayoutFlags="PositionProportional" AbsoluteLayout.LayoutBounds="0.5,0,AutoSize,AutoSize">
-                <Image Source="picture_600.png"/>
+                <Image Source="{x:Static desing:DesignClass.BackGroundImageSource}"/>
                 <StackLayout Margin="{x:Static desing:DesignClass.Margin}">
                     <Label Text="СКАНИРОВАНИЕ" Style="{StaticResource MainLabel}" FontFamily="{x:Static desing:DesignClass.FontBold}"/>
                     <Label Text="Наведите сканер на QR-код" Style="{StaticResource MainLabelSmall}" FontFamily="{x:Static desing:DesignClass.FontLight}"/>

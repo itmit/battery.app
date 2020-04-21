@@ -3,6 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              mc:Ignorable="d"
              x:Class="battery.app.Core.Views.ViewCell.NewsViewCell">
     <ViewCell.View>
@@ -14,8 +16,12 @@
                         <ColumnDefinition Width="Auto"/>
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
-                    <Image Grid.Column="0" Source="{Binding ImageSource}" VerticalOptions="Center" Aspect="AspectFill"/>
-                    <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
+                <forms:CachedImage Source="{Binding ImageSource}" VerticalOptions="Center" Aspect="AspectFill">
+                    <forms:CachedImage.Transformations>
+                        <transformations:RoundedTransformation Radius="100"/>
+                    </forms:CachedImage.Transformations>
+                </forms:CachedImage>
+                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
                         <Label Text="{Binding Head}" Style="{StaticResource Title}" LineBreakMode="TailTruncation" MaxLines="4"/>
                         <Label Text="{Binding CreatedAt}" Style="{StaticResource Date}"/>
                     </StackLayout>

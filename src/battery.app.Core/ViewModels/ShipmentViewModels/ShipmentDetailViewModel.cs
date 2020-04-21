@@ -51,10 +51,15 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 			get => _selectedBattery;
 			set
 			{
-				if (value != null && SetProperty(ref _selectedBattery, value))
+				if (value == null)
 				{
-					_navigationService.Navigate<BatteryDetailViewModel, Models.Battery>(value);
+					return;
 				}
+
+				SetProperty(ref _selectedBattery, value);
+
+				_navigationService.Navigate<BatteryDetailViewModel, Models.Battery>(value);
+				
 			}
 		}
 

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:MvxContentPage x:TypeArguments="viewModels:NewsDetailViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:views="clr-namespace:MvvmCross.Forms.Views;assembly=MvvmCross.Forms"
+             xmlns:viewModels="clr-namespace:battery.app.Core.ViewModels;assembly=battery.app.Core"
+             xmlns:design="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
+             xmlns:system="clr-namespace:System;assembly=netstandard"
+             xmlns:viewCell="clr-namespace:battery.app.Core.Views.ViewCell;assembly=battery.app.Core"
+             xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="battery.app.Core.Pages.News.NewsDetailPage">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout BackgroundColor="White">
+                <StackLayout BackgroundColor="White" Margin="{x:Static design:DesignClass.LayoutThickness}">
+                    <ImageButton Source="arrow_alt_left.png" WidthRequest="24" Style="{StaticResource ImageBack}" Command="{Binding ClosePageCommand}" Margin="10,5,0,0"/>
+                    <Label Text="{Binding News.Head}" Style="{StaticResource MainLabelBlack}" Padding="10,5,10,30" FontFamily="{x:Static design:DesignClass.FontBold}">
+                        <Label.GestureRecognizers>
+                            <TapGestureRecognizer Command="{Binding Check}"/>
+                        </Label.GestureRecognizers>
+                    </Label>
+                </StackLayout>
+                <StackLayout>
+                    <BoxView Style="{StaticResource MainBoxView}"/>
+                    <forms:CachedImage Source="{Binding News.ImageSource}" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"/>
+                    <Label Text="{Binding News.Body}"  Margin="5"/>
+
+                    <Label Text="{Binding News.CreatedAt}" Margin="15" Style="{StaticResource Date}"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</views:MvxContentPage>

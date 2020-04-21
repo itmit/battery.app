@@ -1,28 +1,27 @@
-﻿using Xamarin.Forms;
+﻿using battery.app.Core.Models;
+using battery.app.Core.Services;
+using MvvmCross;
+using Xamarin.Forms;
 
 namespace battery.app.Core.Design
 {
-	static class DesignClass
+	internal static class DesignClass
 	{
-		#region Fields
-		#region Fields Margin
+		#region Data
+		#region Static
+		public static Color Color;
+		public static readonly string FontBold;
+		public static readonly string FontLight;
+		public static readonly string FontMedium;
+		public static readonly string FontRegular;
+		public static readonly bool HasShadow;
 		public static Thickness LayoutThickness;
 		public static Thickness Margin;
-		#endregion
-
-		#region Fields Fonts
-		public static string FontRegular, FontLight, FontMedium, FontBold;
-		#endregion
-
-		#region Fields Other
-		public static Color Color;
-		public static bool HasShadow;
-		public static double Number, Width;
+		public static readonly double Width;
 		#endregion
 		#endregion
 
-
-		#region Ctor
+		#region .ctor
 		static DesignClass()
 		{
 			if (Device.iOS == Device.RuntimePlatform)
@@ -51,5 +50,17 @@ namespace battery.app.Core.Design
 		}
 		#endregion
 
+		public static string BackGroundImageSource
+		{
+			get
+			{
+				if (Mvx.IoCProvider.Resolve<IAuthService>().User.Role == UserRole.Dealer)
+				{
+					return "bg_red";
+				}
+
+				return "picture_600";
+			}
+		}
 	}
 }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using battery.app.Core;
+using FFImageLoading.Forms.Platform;
 using Foundation;
 using MvvmCross;
 using MvvmCross.Forms.Platforms.Ios.Core;
@@ -25,7 +26,7 @@ namespace battery.app.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+			CachedImageRenderer.Init();
 
             return base.FinishedLaunching(app, options);
         }

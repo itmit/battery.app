@@ -17,5 +17,10 @@ namespace battery.app.Core.Pages.Shipment
 		{
 			InitializeComponent();
 		}
+
+		private void TapGestureRecognizer_OnTapped(object sender, EventArgs e)
+		{
+			ViewModel.SelectedBattery = (sender as View)?.BindingContext as Models.Battery;
+		}
 	}
 }

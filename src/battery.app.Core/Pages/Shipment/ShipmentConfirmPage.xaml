@@ -40,7 +40,11 @@
                     <StackLayout BindableLayout.ItemsSource ="{Binding Batteries}" Margin="20,0">
                         <BindableLayout.ItemTemplate>
                             <DataTemplate>
-                                <viewCell:GoodsContentView/>
+                                <viewCell:GoodsContentView>
+                                    <viewCell:GoodsContentView.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="TapGestureRecognizer_OnTapped"/>
+                                    </viewCell:GoodsContentView.GestureRecognizers>
+                                </viewCell:GoodsContentView>
                             </DataTemplate>
                         </BindableLayout.ItemTemplate>
                     </StackLayout>

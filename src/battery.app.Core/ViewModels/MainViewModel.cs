@@ -6,6 +6,7 @@ using battery.app.Core.Pages;
 using battery.app.Core.Repositories;
 using battery.app.Core.Services;
 using battery.app.Core.ViewModels.Battery;
+using battery.app.Core.ViewModels.News;
 using battery.app.Core.ViewModels.ShipmentViewModels;
 using MvvmCross;
 using MvvmCross.Commands;

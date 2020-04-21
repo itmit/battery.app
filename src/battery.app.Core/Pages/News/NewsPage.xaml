@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<views:MvxContentPage x:TypeArguments="viewModels:NewsViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
+<views:MvxContentPage x:TypeArguments="news:NewsViewModel" xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -8,10 +8,11 @@
              xmlns:viewCell="clr-namespace:battery.app.Core.Views.ViewCell;assembly=battery.app.Core"
              xmlns:system="clr-namespace:System;assembly=netstandard"
              xmlns:design="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
+             xmlns:news="clr-namespace:battery.app.Core.ViewModels.News;assembly=battery.app.Core"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
              IconImageSource="newspaper.png"
-             x:Class="battery.app.Core.Pages.NewsPage">
+             x:Class="battery.app.Core.Pages.News.NewsPage">
     <!--Список новостей-->
     <ContentPage.Content>
         <StackLayout BackgroundColor="White">
@@ -26,13 +27,16 @@
                 </Label>
             </StackLayout>
             <Grid>
-                <Image Source="picture_600.png" Aspect="AspectFill"/>
+                <Image Source="{x:Static design:DesignClass.BackGroundImageSource}" Aspect="AspectFill"/>
                 <StackLayout>
                     <BoxView Style="{StaticResource MainBoxView}"/>
                     <ListView ItemsSource="{Binding News}"
                               SelectedItem="{Binding SelectedNews}"
                               ItemSelected="ListView_OnItemSelected"
                               HasUnevenRows="True"
+                              IsPullToRefreshEnabled="True"
+                              RefreshCommand="{Binding RefreshCommand}"
+                              IsRefreshing="{Binding IsRefreshing}"
                               Margin="15,0"
                               SeparatorVisibility="None"
                               BackgroundColor="Transparent">

@@ -23,7 +23,7 @@ namespace battery.app.Core.Services
 		/// </summary>
 		private readonly IAuthService _authService;
 
-		public const string StorageUri = "http://battery.itmit-studio.ru/storage/";
+		public const string StorageUri = "http://battery.itmit-studio.ru";
 
 		/// <summary>
 		/// Инициализирует новый экземпляр <see cref="DealerService" />.

@@ -1,5 +1,6 @@
 ﻿using battery.app.Core.Models;
 using battery.app.Core.ViewModels;
+using battery.app.Core.ViewModels.ShipmentViewModels;
 using battery.app.Core.Views.ViewCell;
 using MvvmCross.Forms.Presenters.Attributes;
 using MvvmCross.Forms.Views;

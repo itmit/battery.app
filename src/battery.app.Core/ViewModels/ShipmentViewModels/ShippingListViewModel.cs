@@ -1,17 +1,12 @@
 ﻿using System;
-using System.Diagnostics;
-using System.Linq;
 using System.Threading.Tasks;
 using battery.app.Core.Models;
-using battery.app.Core.Repositories;
 using battery.app.Core.Services;
-using battery.app.Core.ViewModels.ShipmentViewModels;
-using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
 using MvvmCross.ViewModels;
 
-namespace battery.app.Core.ViewModels
+namespace battery.app.Core.ViewModels.ShipmentViewModels
 {
 	/// <summary>
 	/// Представляет модель представления для страницы списка отгрузок.

@@ -89,6 +89,9 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 			}
 		}
 
+
+		public event EventHandler BatteryAdded;
+
 		/// <summary>
 		/// Возвращает товары в отгрузке.
 		/// </summary>
@@ -151,6 +154,7 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 
 						newCollection.Add(goods);
 						Batteries = newCollection;
+						BatteryAdded?.Invoke(this, EventArgs.Empty);
 					}
 				});
 				return _scanGoodsCommand;
