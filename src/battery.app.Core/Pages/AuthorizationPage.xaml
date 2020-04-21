@@ -13,8 +13,8 @@
              xmlns:design="clr-namespace:battery.app.Core.Design;assembly=battery.app.Core"
              x:Class="battery.app.Core.Pages.AuthorizationPage">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout VerticalOptions="FillAndExpand" Margin="20">
+            <ScrollView>
+            <StackLayout Margin="20">
                 <Image Source="icon.png" HorizontalOptions="Center" Margin="0,20"/>
                 <Label Text="ВОЙТИ" Style="{StaticResource AuthLabel}" FontFamily="{x:Static design:DesignClass.FontBold}"/>
                     <StackLayout Margin="0,20">

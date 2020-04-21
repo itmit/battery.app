@@ -192,11 +192,6 @@
     <BundleResource Include="Resources\arrow_alt_left_white.png" />
     <BundleResource Include="Resources\arrow_bottom.png" />
     <BundleResource Include="Resources\box_foto.png" />
-    <BundleResource Include="Resources\Default.png" />
-    <BundleResource Include="Resources\Default%402x.png" />
-    <BundleResource Include="Resources\Default-568h%402x.png" />
-    <BundleResource Include="Resources\Default-Portrait.png" />
-    <BundleResource Include="Resources\Default-Portrait%402x.png" />
     <BundleResource Include="Resources\ic_add.png" />
     <BundleResource Include="Resources\ic_lock_outline.png" />
     <BundleResource Include="Resources\ic_panorama_fish_eye.png" />
@@ -214,15 +209,6 @@
     <BundleResource Include="Resources\roboto_regular.ttf" />
     <BundleResource Include="Resources\Roboto-Bold.ttf" />
     <BundleResource Include="Resources\tab_1.jpg" />
-    <BundleResource Include="Resources\tab_about.png" />
-    <BundleResource Include="Resources\tab_about%402x.png" />
-    <BundleResource Include="Resources\tab_about%403x.png" />
-    <BundleResource Include="Resources\tab_feed.png" />
-    <BundleResource Include="Resources\tab_feed%402x.png" />
-    <BundleResource Include="Resources\tab_feed%403x.png" />
-    <BundleResource Include="Resources\xamarin_logo.png" />
-    <BundleResource Include="Resources\xamarin_logo%402x.png" />
-    <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <BundleResource Include="Resources\arrow_right%403x.png" />
     <BundleResource Include="Resources\list_ul%403x.png" />
     <BundleResource Include="Resources\newspaper%403x.png" />

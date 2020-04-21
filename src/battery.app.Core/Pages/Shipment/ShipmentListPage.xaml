@@ -10,6 +10,7 @@
              mc:Ignorable="d"
              IconImageSource="list_ul"
              NavigationPage.HasNavigationBar="False"
+             IconImageSource="list_ul.png"
              x:Class="battery.app.Core.Pages.Shipment.ShipmentListPage">
     <ContentPage.Content>
         <StackLayout BackgroundColor="White">
