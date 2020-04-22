@@ -9,8 +9,8 @@
              x:Class="battery.app.Core.Views.ViewCell.NewsViewCell">
     <ViewCell.View>
         <!--Ячейка для списка новостей-->
-        <Frame Style="{StaticResource MainFrame}" Margin="0,5" HasShadow="False">
-                <Grid>
+        <Frame Style="{StaticResource MainFrame}" Margin="0,5" HasShadow="False" Padding="5,5">
+                <Grid ColumnSpacing="0">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="150"/>
                         <ColumnDefinition Width="Auto"/>
@@ -21,10 +21,10 @@
                         <transformations:RoundedTransformation Radius="100"/>
                     </forms:CachedImage.Transformations>
                 </forms:CachedImage>
-                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="20">
+                <StackLayout Grid.Column="2" VerticalOptions="Center" Margin="10">
                         <Label Text="{Binding Head}" Style="{StaticResource Title}" LineBreakMode="TailTruncation" MaxLines="4"/>
                         <Label Text="{Binding CreatedAt}" Style="{StaticResource Date}"/>
-                    </StackLayout>
+                </StackLayout>
                 </Grid>
             </Frame>
     </ViewCell.View>

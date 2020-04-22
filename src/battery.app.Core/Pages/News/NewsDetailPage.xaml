@@ -9,28 +9,33 @@
              xmlns:system="clr-namespace:System;assembly=netstandard"
              xmlns:viewCell="clr-namespace:battery.app.Core.Views.ViewCell;assembly=battery.app.Core"
              xmlns:forms="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:transformations="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
              mc:Ignorable="d"
              NavigationPage.HasNavigationBar="False"
              x:Class="battery.app.Core.Pages.News.NewsDetailPage">
     <ContentPage.Content>
-        <ScrollView>
-            <StackLayout BackgroundColor="White">
+            <StackLayout BackgroundColor="White" Spacing="0">
                 <StackLayout BackgroundColor="White" Margin="{x:Static design:DesignClass.LayoutThickness}">
                     <ImageButton Source="arrow_alt_left.png" WidthRequest="24" Style="{StaticResource ImageBack}" Command="{Binding ClosePageCommand}" Margin="10,5,0,0"/>
-                    <Label Text="{Binding News.Head}" Style="{StaticResource MainLabelBlack}" Padding="10,5,10,30" FontFamily="{x:Static design:DesignClass.FontBold}">
+                    <Label Text="НОВОСТИ" Style="{StaticResource MainLabelBlack}" Padding="10,5,10,30" FontFamily="{x:Static design:DesignClass.FontBold}">
                         <Label.GestureRecognizers>
                             <TapGestureRecognizer Command="{Binding Check}"/>
                         </Label.GestureRecognizers>
                     </Label>
-                </StackLayout>
-                <StackLayout>
                     <BoxView Style="{StaticResource MainBoxView}"/>
-                    <forms:CachedImage Source="{Binding News.ImageSource}" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand"/>
-                    <Label Text="{Binding News.Body}"  Margin="5"/>
-
-                    <Label Text="{Binding News.CreatedAt}" Margin="15" Style="{StaticResource Date}"/>
                 </StackLayout>
+                <ScrollView Margin="10,0">
+                    <StackLayout>
+                        <forms:CachedImage Source="{Binding News.ImageSource}" Aspect="AspectFill" VerticalOptions="FillAndExpand" HorizontalOptions="CenterAndExpand" Margin="0,10,0,0">
+                             <forms:CachedImage.Transformations>
+                                 <transformations:RoundedTransformation Radius="20"/>
+                             </forms:CachedImage.Transformations>
+                        </forms:CachedImage>
+                        <Label Text="{Binding News.Head}" FontAttributes="Bold" Margin="5" TextColor="Black" FontSize="Body"/>
+                        <Label Text="{Binding News.Body}"  Margin="5"/>
+                        <Label Text="{Binding News.CreatedAt}" Margin="15" Style="{StaticResource Date}"/>
+                    </StackLayout>
+                </ScrollView>
             </StackLayout>
-        </ScrollView>
     </ContentPage.Content>
 </views:MvxContentPage>

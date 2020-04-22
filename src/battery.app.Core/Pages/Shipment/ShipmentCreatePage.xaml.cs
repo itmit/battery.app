@@ -17,7 +17,12 @@ namespace battery.app.Core.Pages.Shipment
 		public ShipmentCreatePage()
 		{
 			InitializeComponent();
+
+            StackLayot.TranslationY = getTranslationY();
 		}
+
+        private double getTranslationY()
+            => Device.Info.PixelScreenSize.Width / Device.Info.ScalingFactor;
 
 		private bool _firstTime = true;
 
@@ -33,11 +38,11 @@ namespace battery.app.Core.Pages.Shipment
 					QRs.Children.Insert(0, new Frame
 					{
 						Margin = 5,
+						Padding = 10,
 						Style = Application.Current.Resources["FrameShipment"] as Style,
 						HeightRequest = 50,
-						WidthRequest = 50,
 						IsClippedToBounds = true,
-						VerticalOptions = LayoutOptions.Center,
+						VerticalOptions = LayoutOptions.Start,
 						HasShadow = DesignClass.HasShadow,
 						Content = new Image
 						{
