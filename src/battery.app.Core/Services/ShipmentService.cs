@@ -129,6 +129,8 @@ namespace battery.app.Core.Services
 			}
 		}
 
+		public event EventHandler CreatedShipment;
+
 		public async Task<List<Shipment>> GetShipments()
 		{
 			using (var client = new HttpClient())
@@ -171,6 +173,10 @@ namespace battery.app.Core.Services
 				var jsonString = await response.Content.ReadAsStringAsync();
 				Debug.WriteLine(jsonString);
 #endif
+				if (response.IsSuccessStatusCode)
+				{
+					CreatedShipment?.Invoke(this, EventArgs.Empty);
+				}
 				return response.IsSuccessStatusCode;
 			}
 		}

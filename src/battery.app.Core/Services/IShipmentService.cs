@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using battery.app.Core.Models;
 
@@ -13,5 +14,7 @@ namespace battery.app.Core.Services
 		Task<List<Shipment>> GetShipments();
 
 		Task<List<Battery>> GetBatteryInShipments(int id);
+
+		event EventHandler CreatedShipment;
 	}
 }

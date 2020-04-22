@@ -27,6 +27,18 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 			_navigationService = navigationService;
 			_shipmentService = shipmentService;
 			User = authService.User;
+			_shipmentService.CreatedShipment += async (sender, args) =>
+			{
+				try
+				{
+					Shipments = new MvxObservableCollection<Shipment>(
+						await _shipmentService.GetShipments());
+				}
+				catch (Exception e)
+				{
+					Console.WriteLine(e);
+				}
+			};
 		}
 
 		public override async Task Initialize()
