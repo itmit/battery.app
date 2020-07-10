@@ -90,16 +90,19 @@ namespace battery.app.Core.Services
 				var jsonString = await response.Content.ReadAsStringAsync();
 				Debug.WriteLine(jsonString);
 
-				if (response.IsSuccessStatusCode)
+				if (!response.IsSuccessStatusCode)
 				{
-					if (!string.IsNullOrEmpty(jsonString))
-					{
-						var jsonData = JsonConvert.DeserializeObject<GeneralDto<GoodsDto>>(jsonString);
-						return await Task.FromResult(_mapper.Map<Battery>(jsonData.Data));
-					}
+					return null;
 				}
 
-				return null;
+				if (string.IsNullOrEmpty(jsonString))
+				{
+					return null;
+				}
+
+				var jsonData = JsonConvert.DeserializeObject<GeneralDto<GoodsDto>>(jsonString);
+				return await Task.FromResult(_mapper.Map<Battery>(jsonData.Data));
+
 			}
 		}
 
@@ -115,17 +118,20 @@ namespace battery.app.Core.Services
 				var jsonString = await response.Content.ReadAsStringAsync();
 				Debug.WriteLine(jsonString);
 
-				if (response.IsSuccessStatusCode)
+				if (!response.IsSuccessStatusCode)
 				{
-					if (!string.IsNullOrEmpty(jsonString))
-					{
-						var jsonData = JsonConvert.DeserializeObject<GeneralDto<List<GoodsDto>>>(jsonString);
-						var list = _mapper.Map<List<Battery>>(jsonData.Data);
-						return list;
-					}
+					return null;
 				}
 
-				return null;
+				if (string.IsNullOrEmpty(jsonString))
+				{
+					return null;
+				}
+
+				var jsonData = JsonConvert.DeserializeObject<GeneralDto<List<GoodsDto>>>(jsonString);
+				var list = _mapper.Map<List<Battery>>(jsonData.Data);
+				return list;
+
 			}
 		}
 
@@ -143,17 +149,19 @@ namespace battery.app.Core.Services
 				var jsonString = await response.Content.ReadAsStringAsync();
 				Debug.WriteLine(jsonString);
 
-				if (response.IsSuccessStatusCode)
+				if (!response.IsSuccessStatusCode)
 				{
-					if (!string.IsNullOrEmpty(jsonString))
-					{
-						var jsonData = JsonConvert.DeserializeObject<GeneralDto<List<ShipmentDto>>>(jsonString);
-						var list = _mapper.Map<List<Shipment>>(jsonData.Data);
-						return list;
-					}
+					return null;
 				}
 
-				return null;
+				if (string.IsNullOrEmpty(jsonString))
+				{
+					return null;
+				}
+
+				var jsonData = JsonConvert.DeserializeObject<GeneralDto<List<ShipmentDto>>>(jsonString);
+				var list = _mapper.Map<List<Shipment>>(jsonData.Data);
+				return list;
 			}
 		}
 

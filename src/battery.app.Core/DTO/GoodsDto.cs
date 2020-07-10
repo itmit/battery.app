@@ -51,13 +51,13 @@ namespace battery.app.Core.DTO
 		}
 
 		[JsonProperty("SSCC_QUANTITY")]
-		public double SsccQuantity
+		public float SsccQuantity
 		{
 			get;
 			set;
 		}
 
-		public int Batch
+		public float Batch
 		{
 			get;
 			set;
@@ -198,7 +198,7 @@ namespace battery.app.Core.DTO
 		}
 
 		[JsonProperty("weight_wet")]
-		public int WeightWet
+		public float WeightWet
 		{
 			get;
 			set;

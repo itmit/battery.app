@@ -1,7 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Windows.Input;
 using battery.app.Core.Properties;
 using battery.app.Core.Services;
+using Microsoft.AppCenter.Crashes;
 using MvvmCross.Commands;
 using MvvmCross.Logging;
 using MvvmCross.Navigation;
@@ -51,37 +53,42 @@ namespace battery.app.Core.ViewModels.Battery
 			get
 			{
 				_scanCommand = _scanCommand ?? new MvxCommand(async () =>
-				{											  
-					if (await _permissionsService.CheckPermission(Permission.Camera, "Для сканирования батарей необходимо разрешение на использование камеры."))
+				{
+					if (!await _permissionsService.CheckPermission(Permission.Camera, "Для сканирования батарей необходимо разрешение на использование камеры."))
 					{
-						string result = await NavigationService.Navigate<ScannerViewModel, object, string>(null);
-						if (string.IsNullOrEmpty(result))
-						{
-							return;
-						}
-
-						Models.Battery battery = null;
-
-						try
-						{
-							battery = await _shipmentService.CheckGoods(result);
-						}
-						catch (Exception e)
-						{
-							Console.WriteLine(e);
-						}
-
-						if (battery == null)
-						{
-							Device.BeginInvokeOnMainThread(async () =>
-							{
-								await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Батарея не найдена.", Strings.Ok);
-							});
-							return;
-						}
-
-						await NavigationService.Navigate<BatteryDetailViewModel, Models.Battery>(battery);
+						return;
 					}
+
+					var result = await NavigationService.Navigate<ScannerViewModel, object, string>(null);
+					if (string.IsNullOrEmpty(result))
+					{
+						return;
+					}
+
+					Models.Battery battery = null;
+
+					try
+					{
+						battery = await _shipmentService.CheckGoods(result);
+					}
+					catch (Exception e)
+					{
+						Console.WriteLine(e);
+						Crashes.TrackError(e, new Dictionary<string, string> {
+							{ "Sender", GetType().FullName }
+						});
+					}
+
+					if (battery == null)
+					{
+						Device.BeginInvokeOnMainThread(async () =>
+						{
+							await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Батарея не найдена.", Strings.Ok);
+						});
+						return;
+					}
+
+					await NavigationService.Navigate<BatteryDetailViewModel, Models.Battery>(battery);
 				});
 				return _scanCommand;
 			}
