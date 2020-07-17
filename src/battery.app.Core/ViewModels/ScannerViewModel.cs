@@ -5,22 +5,15 @@ using ZXing;
 
 namespace battery.app.Core.ViewModels
 {
-	public class ScannerViewModel: MvxViewModel<object, string>
+	public class ScannerViewModel: MvxViewModelResult<string>
 	{
 		private readonly IMvxNavigationService _navigationService;
 
-		public ScannerViewModel(IMvxNavigationService navigationService)
-		{
-			_navigationService = navigationService;
-		}
+		public ScannerViewModel(IMvxNavigationService navigationService) => _navigationService = navigationService;
 
 		public void OnScanResult(Result result)
 		{
 			_navigationService.Close(this, result.Text);
-
 		}
-
-		public override void Prepare(object parameter)
-		{ }
 	}
 }

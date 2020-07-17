@@ -41,10 +41,8 @@ namespace battery.app.Core.ViewModels.Battery
 			get => _isScanning;
 			set
 			{
-				if (SetProperty(ref _isScanning, value))
-				{
-					RaisePropertyChanged(() => IsNotScanning);
-				}
+				SetProperty(ref _isScanning, value);
+				RaisePropertyChanged(() => IsNotScanning);
 			}
 		}
 
@@ -59,7 +57,7 @@ namespace battery.app.Core.ViewModels.Battery
 						return;
 					}
 
-					var result = await NavigationService.Navigate<ScannerViewModel, object, string>(null);
+					var result = await NavigationService.Navigate<ScannerViewModel, string>();
 					if (string.IsNullOrEmpty(result))
 					{
 						return;

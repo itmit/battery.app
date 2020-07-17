@@ -122,40 +122,42 @@ namespace battery.app.Core.ViewModels.ShipmentViewModels
 			{
 				_scanGoodsCommand = _scanGoodsCommand ?? new MvxCommand(async () =>
 				{
-					if (await _permissionsService.CheckPermission(Permission.Camera, "Для сканирования QR-кода необходимо разрешение на использование камеры."))
+					if (!await _permissionsService.CheckPermission(Permission.Camera, "Для сканирования QR-кода необходимо разрешение на использование камеры."))
 					{
-						string result = await _navigationService.Navigate<ScannerViewModel, object, string>(null);
-
-						if (Batteries.Any(bat => bat.SerialNumber.Equals(result)))
-						{
-							Device.BeginInvokeOnMainThread(async () =>
-							{
-								await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Батарея уже добавлена в отгрузку.", Strings.Ok);
-							});
-							return;
-						}
-
-						var goods = await _shipmentService.CheckGoods(result);
-
-						if (goods == null)
-						{
-							Device.BeginInvokeOnMainThread(async () =>
-							{
-								await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Батарея не найдена.", Strings.Ok);
-							});
-							return;
-						}
-
-						var newCollection = new MvxObservableCollection<Models.Battery>();
-						foreach (var goodsCode in Batteries)
-						{
-							newCollection.Add(goodsCode);
-						}
-
-						newCollection.Add(goods);
-						Batteries = newCollection;
-						BatteryAdded?.Invoke(this, EventArgs.Empty);
+						return;
 					}
+
+					var result = await _navigationService.Navigate<ScannerViewModel, string>();
+
+					if (Batteries.Any(bat => bat.SerialNumber.Equals(result)))
+					{
+						Device.BeginInvokeOnMainThread(async () =>
+						{
+							await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Батарея уже добавлена в отгрузку.", Strings.Ok);
+						});
+						return;
+					}
+
+					var goods = await _shipmentService.CheckGoods(result);
+
+					if (goods == null)
+					{
+						Device.BeginInvokeOnMainThread(async () =>
+						{
+							await Application.Current.MainPage.DisplayAlert(Strings.Alert, "Батарея не найдена.", Strings.Ok);
+						});
+						return;
+					}
+
+					var newCollection = new MvxObservableCollection<Models.Battery>();
+					foreach (var goodsCode in Batteries)
+					{
+						newCollection.Add(goodsCode);
+					}
+
+					newCollection.Add(goods);
+					Batteries = newCollection;
+					BatteryAdded?.Invoke(this, EventArgs.Empty);
 				});
 				return _scanGoodsCommand;
 			}

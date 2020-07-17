@@ -25,7 +25,7 @@
                            BorderColor="{x:Static design:DesignClass.Color}">
                         <StackLayout>
                             <Label Text="TAB" Style="{StaticResource TitleDetail}" FontFamily="{x:Static design:DesignClass.FontBold}"/>
-                            <Label Text="{Binding Battery.Delivery.PackingDate, StringFormat='{0:dd.MM.yyyy}'}" Style="{StaticResource DateDetail}" FontFamily="{x:Static design:DesignClass.FontRegular}"/>
+                            <Label Text="{Binding Battery.Delivery.DispatchDate, StringFormat='{0:dd.MM.yyyy}'}" Style="{StaticResource DateDetail}" FontFamily="{x:Static design:DesignClass.FontRegular}"/>
                                 <Image Source="tab_1.jpg" HorizontalOptions="Start"/>
                             <Grid Margin="0,20">
                                 <Grid.ColumnDefinitions>

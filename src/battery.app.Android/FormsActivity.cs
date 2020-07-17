@@ -11,6 +11,7 @@ using Microsoft.AppCenter.Crashes;
 using MvvmCross.Forms.Platforms.Android.Views;
 using Plugin.Permissions;
 using Realms;
+using ZXing.Mobile;
 
 namespace battery.app.Droid
 {
@@ -32,8 +33,12 @@ namespace battery.app.Droid
 			base.OnCreate(bundle);
 			TabLayoutResource = Resource.Layout.Tabbar;
 			ToolbarResource = Resource.Layout.Toolbar;
+
+			Xamarin.Forms.Forms.Init(this, bundle);
+
 			Xamarin.Essentials.Platform.Init(this, bundle);
 			ZXing.Net.Mobile.Forms.Android.Platform.Init();
+			MobileBarcodeScanner.Initialize(Application);
 			CachedImageRenderer.Init(true);
 		}
 
